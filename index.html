@@ -23,6 +23,16 @@
   <meta name="twitter:image:alt" content="ModelRigs vedvarende AI-forløb fra kognitiv kerne til kropsliggjort intelligens" />
   <link rel="canonical" href="https://ternedal.github.io/Kaliv/" />
   <title>ModelRig — AI, der kan bestå</title>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareSourceCode",
+      "name": "ModelRig / Kaliv",
+      "description": "Et local-first fundament for vedvarende, kropsliggjort AI under eksplicit kontrol.",
+      "codeRepository": "https://github.com/Ternedal/Kaliv",
+      "url": "https://ternedal.github.io/Kaliv/"
+    }
+  </script>
   <link rel="preload" as="image" href="assets/modelrig-continuity-female-hair-1920.webp" type="image/webp" fetchpriority="high" media="(max-width: 899px), (max-resolution: 1.49dppx)" />
   <link rel="preload" as="image" href="assets/modelrig-continuity-female-hair-hires.webp" type="image/webp" fetchpriority="high" media="(min-width: 900px) and (min-resolution: 1.5dppx)" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2305070a'/%3E%3Cpath d='M32 7C23.7 7 18 12.6 18 20.2c0 6.2 4.2 10.9 9.2 15H13v9h14.5v13h9v-13H51v-9H36.8c5-4.1 9.2-8.8 9.2-15C46 12.6 40.3 7 32 7Zm0 8c3.7 0 6 2 6 5.2 0 3.1-2.4 6.1-6 9.5-3.6-3.4-6-6.4-6-9.5 0-3.2 2.3-5.2 6-5.2Z' fill='%237da3ff'/%3E%3C/svg%3E" />
@@ -224,6 +234,7 @@
     .hero-foot {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       gap: 2rem;
       margin-top: auto;
       padding-top: 1rem;
@@ -234,9 +245,13 @@
       text-transform: uppercase;
     }
     .hero-art { display: none; }
+    .hero-foot-actions { display: flex; align-items: center; gap: 1.25rem; }
     .hero-scroll { min-height: 2.75rem; display: inline-flex; align-items: center; gap: .55rem; color: inherit; text-decoration: none; }
     .hero-scroll::after { content: "↓"; color: #7da3ff; font-size: .95rem; transition: transform .2s ease; }
     .hero-scroll:hover, .hero-scroll:focus-visible { color: #fff; }
+    .hero-source { min-height: 2.75rem; display: inline-flex; align-items: center; color: #a9c7ff; text-decoration: none; }
+    .hero-source::after { content: "↗"; margin-left: .45rem; font-size: .95rem; }
+    .hero-source:hover, .hero-source:focus-visible { color: #fff; }
 
     .hero-system {
       display: flex;
@@ -392,6 +407,41 @@
     .surface h3 { margin: 0 0 .45rem; font-size: clamp(1.5rem,2.5vw,2.6rem); letter-spacing: -.045em; }
     .surface p { margin: 0; color: #8f98a4; font-size: .9rem; }
     .surface strong { color: #779fff; font: 650 .75rem var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+
+    .continuity {
+      display: grid;
+      grid-template-columns: minmax(17rem,.7fr) minmax(0,1.3fr);
+      border-bottom: 1px solid var(--line-dark);
+      background: #05070a;
+      color: #fff;
+    }
+    .continuity-intro {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(4.5rem,8vw,8rem) clamp(1.25rem,4vw,4.5rem);
+      border-right: 1px solid var(--line-dark);
+    }
+    .continuity-intro h2 { max-width: 9ch; margin: 2.5rem 0; }
+    .continuity-intro p { max-width: 31rem; margin: 0; color: #9da6b2; font-size: clamp(1.02rem,1.35vw,1.18rem); }
+    .continuity-tag { color: #87a9ff; font: 650 .75rem var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .continuity-track { margin: 0; padding: 0; list-style: none; counter-reset: continuity; }
+    .continuity-step {
+      counter-increment: continuity;
+      display: grid;
+      grid-template-columns: 4.75rem minmax(9rem,.55fr) minmax(0,1.45fr);
+      gap: 1.5rem;
+      align-items: center;
+      min-height: 10.5rem;
+      padding: 1.5rem clamp(1.25rem,3.5vw,3.5rem);
+      border-bottom: 1px solid var(--line-dark);
+    }
+    .continuity-step:last-child { border-bottom: 0; }
+    .continuity-step::before { content: "0" counter(continuity); color: #6f7986; font: 650 .75rem var(--mono); }
+    .continuity-step span { color: #87a9ff; font: 650 .75rem var(--mono); letter-spacing: .07em; text-transform: uppercase; }
+    .continuity-step h3 { margin: 0 0 .45rem; font-size: clamp(1.3rem,2vw,2rem); letter-spacing: -.035em; }
+    .continuity-step p { max-width: 36rem; margin: 0; color: #929ba7; font-size: .92rem; }
+    .continuity-step strong { color: #fff; font-weight: 680; }
 
     .band {
       display: grid;
@@ -587,6 +637,25 @@
     .closing-aside strong { color: #fff; }
     .closing-copy { display: flex; flex-direction: column; justify-content: space-between; gap: 4rem; }
     .closing h2 { max-width: 12ch; margin: 0; font-size: clamp(3.2rem, 7vw, 8rem); }
+    .closing-actions { display: flex; flex-wrap: wrap; gap: .85rem; margin-bottom: 1.5rem; }
+    .closing-action {
+      min-height: 3.25rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: .75rem 1rem;
+      border: 1px solid rgba(255,255,255,.7);
+      background: #fff;
+      color: var(--blue);
+      font: 700 .75rem var(--mono);
+      letter-spacing: .06em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .closing-action::after { content: "↗"; margin-left: .65rem; }
+    .closing-action.secondary { background: transparent; color: #fff; }
+    .closing-action.secondary::after { content: "↑"; }
+    .closing-action:hover, .closing-action:focus-visible { background: #05070a; border-color: #05070a; color: #fff; }
     .closing-meta { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); border-top: 1px solid rgba(255,255,255,.35); border-left: 1px solid rgba(255,255,255,.35); }
     .closing-meta span { min-height: 5rem; display: flex; align-items: flex-end; padding: .8rem; border-right: 1px solid rgba(255,255,255,.35); border-bottom: 1px solid rgba(255,255,255,.35); color: rgba(255,255,255,.92); font: 650 .7rem var(--mono); letter-spacing: .05em; text-transform: uppercase; }
 
@@ -642,6 +711,8 @@
       .system-evidence { grid-template-columns: 1fr; }
       .product-wedge { grid-template-columns: 1fr; }
       .product-copy { border-right: 0; border-bottom: 1px solid var(--line-dark); }
+      .continuity { grid-template-columns: 1fr; }
+      .continuity-intro { min-height: 30rem; border-right: 0; border-bottom: 1px solid var(--line-dark); }
       .band { grid-template-columns: repeat(2,1fr); }
       .band div:nth-child(2) { border-right: 0; }
       .band div:nth-child(-n+2) { border-bottom: 1px solid var(--line-dark); }
@@ -684,7 +755,8 @@
       }
       .surface { grid-template-columns: 3rem 1fr; }
       .surface strong { grid-column: 2; }
-      .hero-foot { flex-direction: column; gap: .5rem; margin-top: 0; }
+      .hero-foot { align-items: flex-start; flex-direction: column; gap: .5rem; margin-top: 0; }
+      .hero-foot-actions { width: 100%; justify-content: space-between; gap: 1rem; }
       .section { padding-block: 4.5rem; }
       .section-head { grid-template-columns: 1fr; gap: 1.25rem; margin-bottom: 3rem; }
       .principles { grid-template-columns: 1fr; }
@@ -718,6 +790,8 @@
       .gate-item h3 { font-size: 1.05rem; }
       .gate-item p { font-size: .84rem; }
       .shift-list { grid-template-columns: 1fr; }
+      .continuity-step { grid-template-columns: 2.25rem 1fr; gap: 1rem; }
+      .continuity-step > div { grid-column: 2; }
       .closing-meta { grid-template-columns: 1fr; }
       footer { flex-direction: column; }
     }
@@ -740,7 +814,7 @@
   <header>
     <a class="brand" href="#top" aria-label="ModelRig — til toppen"><span class="brand-mark">MR</span><span>ModelRig</span></a>
     <div class="header-type"><img src="assets/kaliv-ankh-transparent.webp" alt="" width="1054" height="1421" decoding="async" /><span><strong>Kaliv</strong> / embodiment layer</span></div>
-    <nav aria-label="Primær navigation"><a href="#architecture">Arkitektur</a><a href="#kaliv">Kaliv</a><a href="#control">Kontrol</a><a href="#status">Status</a></nav>
+    <nav aria-label="Primær navigation"><a href="#architecture">Arkitektur</a><a href="#kaliv">Kaliv</a><a href="#control">Kontrol</a><a href="#status">Status</a><a href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer">Kode ↗</a></nav>
   </header>
 
   <main id="content" tabindex="-1">
@@ -752,7 +826,7 @@
           <p class="lead">ModelRig flytter AI fra isolerede sessioner til én vedvarende, lokalt ejet og kropsliggjort intelligens — med hukommelse, tid, perception og handling under eksplicit kontrol.</p>
         </div>
         <div class="hero-art" aria-hidden="true"></div>
-        <div class="hero-foot"><span>Local-first · Model-agnostic · Embodied</span><a class="hero-scroll" href="#shift-title">Se systemet</a></div>
+        <div class="hero-foot"><span>Local-first · Model-agnostic · Embodied</span><div class="hero-foot-actions"><a class="hero-scroll" href="#shift-title">Se systemet</a><a class="hero-source" href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer">Kildekode</a></div></div>
       </div>
 
     </section>
@@ -825,9 +899,23 @@
       </div>
     </section>
 
+    <section class="continuity" aria-labelledby="continuity-title">
+      <div class="continuity-intro">
+        <span class="continuity-tag">03 / Kontinuitetsløftet</span>
+        <h2 id="continuity-title" tabindex="-1">Du skal ikke starte forfra.</h2>
+        <p>Værdien opstår ikke i én imponerende samtale. Den opstår, når relationen, arbejdet og erfaringen fortsætter — selv når model, enhed og virkelighed skifter.</p>
+      </div>
+      <ol class="continuity-track" aria-label="Et illustrativt forløb på tværs af Kalivs produktflader">
+        <li class="continuity-step"><span>Windows</span><div><h3>Planen opstår.</h3><p>Kaliv hjælper med et mål og forstår de beslutninger, der bliver taget undervejs.</p></div></li>
+        <li class="continuity-step"><span>Android</span><div><h3>Dagen fortsætter.</h3><p>Samme tilstand følger med. <strong>Ingen genfortælling, ingen ny persona, ingen tabt kontekst.</strong></p></div></li>
+        <li class="continuity-step"><span>Quest</span><div><h3>Personen træder frem.</h3><p>Stemme, blik og krop udtrykker den samme identitet i et rumligt møde.</p></div></li>
+        <li class="continuity-step"><span>Memory 4</span><div><h3>Oplevelsen består.</h3><p>Det observerede resultat bliver dokumenteret erfaring, som næste øjeblik kan bygge videre på.</p></div></li>
+      </ol>
+    </section>
+
     <section class="section white" aria-labelledby="principles-title">
       <div class="section-head">
-        <div class="section-label"><strong>03</strong> / Arkitektur</div>
+        <div class="section-label"><strong>04</strong> / Arkitektur</div>
         <div><h2 id="principles-title" tabindex="-1">Ambitionen kræver en ny arkitektur.</h2><p>Det kan ikke bygges som én stor model. Systemet er opdelt efter autoritet, så intelligens kan vokse uden at kontrollen forsvinder.</p></div>
       </div>
       <div class="principles" role="list">
@@ -840,7 +928,7 @@
 
     <section class="section dark" aria-labelledby="runtime-title">
       <div class="section-head">
-        <div class="section-label"><strong>04</strong> / Driftsloop</div>
+        <div class="section-label"><strong>05</strong> / Driftsloop</div>
         <div><h2 id="runtime-title" tabindex="-1">Fra observation til verificeret resultat.</h2><p>Det lukkede loop skelner mellem det, systemet havde til hensigt, det der blev udført, og det miljøet bagefter viste.</p></div>
       </div>
       <div class="flow" role="list" tabindex="0" aria-label="Runtime-flow fra perception til observeret resultat. Kan rulles vandret på små skærme.">
@@ -851,7 +939,7 @@
 
     <section class="section white" id="control" aria-labelledby="control-title">
       <div class="section-head">
-        <div class="section-label"><strong>05</strong> / Autoritet</div>
+        <div class="section-label"><strong>06</strong> / Autoritet</div>
         <div><h2 id="control-title" tabindex="-1">Kontrol er en del af datamodellen.</h2><p>Grænserne er ikke promptinstruktioner. De er systemkontrakter, testbare policies og fail-closed aktivering.</p></div>
       </div>
       <div class="table-wrap" role="region" tabindex="0" aria-label="Ansvarstabel. Kan rulles vandret på små skærme.">
@@ -873,7 +961,7 @@
 
     <section class="section dark" aria-labelledby="security-title">
       <div class="section-head">
-        <div class="section-label"><strong>06</strong> / Sikkerhed</div>
+        <div class="section-label"><strong>07</strong> / Sikkerhed</div>
         <div><h2 id="security-title" tabindex="-1">Bygget til kontrolleret autonomi.</h2><p>ModelRig må gerne være kapabelt. Det må ikke være uigennemsigtigt.</p></div>
       </div>
       <div class="control-grid" role="list">
@@ -888,7 +976,7 @@
 
     <section class="section" id="status" aria-labelledby="status-title">
       <div class="section-head">
-        <div class="section-label"><strong>07</strong> / Status</div>
+        <div class="section-label"><strong>08</strong> / Status</div>
         <div><h2 id="status-title" tabindex="-1">Integreret er ikke det samme som bevist.</h2><p>Status adskiller software, der er landet, fra adfærd der er kvalificeret på faktisk hardware. Det er en bevidst del af projektets definition af færdig.</p></div>
       </div>
       <div class="status-list" role="list">
@@ -903,7 +991,7 @@
 
     <section class="section white" aria-labelledby="qualification-title">
       <div class="section-head">
-        <div class="section-label"><strong>08</strong> / Kvalificering</div>
+        <div class="section-label"><strong>09</strong> / Kvalificering</div>
         <div><h2 id="qualification-title" tabindex="-1">Det, der skal bevises før produktionsdrift.</h2><p>Projektet er først færdigt, når hele systemet består som én person under realistisk drift — ikke når endnu en komponent kan demonstreres isoleret.</p></div>
       </div>
       <div class="gates" role="list">
@@ -915,14 +1003,17 @@
     </section>
 
     <section class="closing" aria-labelledby="closing-title">
-      <div class="closing-aside"><span class="closing-label">09 / ModelRig-tesen</span><p>ModelRig er infrastrukturen.<br /><strong>Kaliv er personen.</strong></p></div>
+      <div class="closing-aside"><span class="closing-label">10 / ModelRig-tesen</span><p>ModelRig er infrastrukturen.<br /><strong>Kaliv er personen.</strong></p></div>
       <div class="closing-copy">
         <h2 id="closing-title" tabindex="-1">Vi bygger ikke en bedre chatbot. Vi bygger det, der kommer efter.</h2>
-        <div class="closing-meta" role="list" aria-label="ModelRigs fire grundegenskaber"><span role="listitem">Vedvarende hukommelse</span><span role="listitem">Udskiftelig intelligens</span><span role="listitem">Kontrolleret handling</span><span role="listitem">Fysisk tilstedeværelse</span></div>
+        <div>
+          <div class="closing-actions"><a class="closing-action" href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer">Følg udviklingen</a><a class="closing-action secondary" href="#architecture">Udforsk arkitekturen</a></div>
+          <div class="closing-meta" role="list" aria-label="ModelRigs fire grundegenskaber"><span role="listitem">Vedvarende hukommelse</span><span role="listitem">Udskiftelig intelligens</span><span role="listitem">Kontrolleret handling</span><span role="listitem">Fysisk tilstedeværelse</span></div>
+        </div>
       </div>
     </section>
   </main>
-  <footer><span>ModelRig / Projektets hovedoverblik</span><span>Local-first · Stateful · Auditable · Embodied</span></footer>
+  <footer><span>ModelRig / Projektets hovedoverblik</span><a href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer">GitHub / Ternedal/Kaliv ↗</a></footer>
   <a class="back-top" href="#top" aria-label="Til toppen" aria-hidden="true" tabindex="-1"><span aria-hidden="true">↑</span></a>
   <script>
     (() => {
@@ -967,7 +1058,7 @@
         });
       };
 
-      [document.querySelector('.hero-scroll'), ...links].filter(Boolean).forEach(anchor => {
+      [document.querySelector('.hero-scroll'), document.querySelector('.closing-action.secondary'), ...links].filter(Boolean).forEach(anchor => {
         anchor.addEventListener('click', () => focusAnchorDestination(anchor));
       });
 
