@@ -44,6 +44,21 @@
       "url": "https://ternedal.github.io/Kaliv/"
     }
   </script>
+  <script type="application/ld+json" id="faq-structured-data">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "inLanguage": "da",
+      "mainEntity": [
+        {"@type":"Question","name":"Er ModelRig en ny sprogmodel?","acceptedAnswer":{"@type":"Answer","text":"Nej. ModelRig er et lokalt kontrol- og orkestreringslag omkring modeller, hukommelse, perception og handling. ThoughtEngine kan udskiftes; den vedvarende tilstand og autoriteten bliver i systemet."}},
+        {"@type":"Question","name":"Hvor ligger identiteten?","acceptedAnswer":{"@type":"Answer","text":"Uden for sprogmodellen. Consciousness Core samler SelfState, WorldState, tid, opmærksomhed og kontinuitet, mens Memory 4 ejer den dokumenterede autobiografiske genkaldelse. En modelændring kan løfte evnerne uden at nulstille personen."}},
+        {"@type":"Question","name":"Er alt lokalt?","acceptedAnswer":{"@type":"Answer","text":"Systemet er local-first, ikke dogmatisk offline. Intent og dataklasse afgøres lokalt. Eksterne modeller eller tjenester bruges kun, når policy tillader det, og kaldet kan spores."}},
+        {"@type":"Question","name":"Hvad er Kaliv?","acceptedAnswer":{"@type":"Answer","text":"Kaliv er den første konkrete person bygget på ModelRig: samme identitet, hukommelse og adfærd på tværs af Windows, Android og Quest. ModelRig er infrastrukturen; Kaliv er den oplevelse, et menneske møder."}},
+        {"@type":"Question","name":"Hvor færdigt er projektet?","acceptedAnswer":{"@type":"Answer","text":"Softwareintegrationen er langt fremme, men projektet kaldes ikke produktionsklart endnu. Kontrolleret Core-aktivering, fysisk perception, enhedstest og længerevarende end-to-end drift er eksplicitte gates — og står åbent på siden."}},
+        {"@type":"Question","name":"Hvorfor skal intelligensen have en krop?","acceptedAnswer":{"@type":"Answer","text":"Fordi kontinuitet ikke kun er tekst. Stemme, blik, bevægelse og rumlig tilstedeværelse gør det muligt at opleve den samme identitet på tværs af flader — og lukker loopet fra perception til handling og observeret resultat."}}
+      ]
+    }
+  </script>
   <link rel="preload" as="image" href="assets/modelrig-continuity-female-hair-1920.webp" type="image/webp" fetchpriority="high" media="(max-width: 899px), (max-resolution: 1.49dppx)" />
   <link rel="preload" as="image" href="assets/modelrig-continuity-female-hair-hires.webp" type="image/webp" fetchpriority="high" media="(min-width: 900px) and (min-resolution: 1.5dppx)" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2305070a'/%3E%3Cpath d='M32 7C23.7 7 18 12.6 18 20.2c0 6.2 4.2 10.9 9.2 15H13v9h14.5v13h9v-13H51v-9H36.8c5-4.1 9.2-8.8 9.2-15C46 12.6 40.3 7 32 7Zm0 8c3.7 0 6 2 6 5.2 0 3.1-2.4 6.1-6 9.5-3.6-3.4-6-6.4-6-9.5 0-3.2 2.3-5.2 6-5.2Z' fill='%237da3ff'/%3E%3C/svg%3E" />
@@ -579,13 +594,39 @@
       padding: 1rem;
       border: 1px solid var(--line-dark);
       border-right: 0;
+      border-radius: 0;
+      background: transparent;
+      color: #fff;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
       scroll-snap-align: start;
+      transition: background-color .2s ease, border-color .2s ease, color .2s ease;
     }
     .flow-step:last-child { border-right: 1px solid var(--line-dark); }
     .flow-step em { color: #77808c; font: normal 650 .75rem var(--mono); }
     .flow-step b { font-size: .92rem; }
-    .flow-step.active { border-color: var(--blue); background: #111a2c; }
-    .flow-step.active em { color: #7da3ff; }
+    .flow-step:hover { background: #0c121d; }
+    .flow-step:focus-visible { position: relative; z-index: 2; outline: 2px solid var(--blue-light); outline-offset: -2px; }
+    .flow-step[aria-selected="true"] { border-color: var(--blue); background: #111a2c; }
+    .flow-step[aria-selected="true"] em { color: #7da3ff; }
+    .flow-detail {
+      display: grid;
+      grid-template-columns: minmax(11rem,.42fr) minmax(0,1.1fr) minmax(15rem,.7fr);
+      gap: clamp(1.5rem, 4vw, 5rem);
+      min-height: 16rem;
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      border: 1px solid var(--blue);
+      background: linear-gradient(135deg, #111a2c, #090d14 62%);
+    }
+    .flow-detail[hidden] { display: none; }
+    .flow-detail-phase { color: var(--blue-light); font: 650 .72rem var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .flow-detail h3 { max-width: 18ch; margin: 0 0 1rem; font-size: clamp(1.75rem, 3.2vw, 3.3rem); line-height: 1; letter-spacing: -.05em; }
+    .flow-detail p { max-width: 43rem; margin: 0; color: #aeb5bf; }
+    .flow-detail dl { display: grid; align-content: start; gap: 1rem; margin: 0; }
+    .flow-detail dl div { padding-bottom: 1rem; border-bottom: 1px solid var(--line-dark); }
+    .flow-detail dt { margin-bottom: .25rem; color: #77808c; font: 650 .68rem var(--mono); letter-spacing: .07em; text-transform: uppercase; }
+    .flow-detail dd { margin: 0; color: #fff; font-size: .92rem; }
     .flow-caption { max-width: 55rem; margin: 1.5rem 0 0 auto; color: #949ca7; }
 
     .authority-table { width: 100%; border-collapse: collapse; background: white; }
@@ -855,6 +896,8 @@
       .control-grid { grid-template-columns: 1fr; }
       .control { min-height: 12.5rem; }
       .control h3 { margin-top: 2.25rem; }
+      .flow-detail { grid-template-columns: 1fr 1.7fr; }
+      .flow-detail dl { grid-column: 1 / -1; grid-template-columns: repeat(3,minmax(0,1fr)); }
       .status-row { grid-template-columns: 1fr auto; gap: 1rem; padding-block: 1.4rem; }
       .status-row p { grid-column: 1 / -1; grid-row: 2; }
       .gate-item { min-height: 15rem; }
@@ -877,6 +920,8 @@
       .shift-list { grid-template-columns: 1fr; }
       .continuity-step { grid-template-columns: 2.25rem 1fr; gap: 1rem; }
       .continuity-step > div { grid-column: 2; }
+      .flow-detail { grid-template-columns: 1fr; min-height: 0; }
+      .flow-detail dl { grid-column: auto; grid-template-columns: 1fr; }
       .faq-item summary { grid-template-columns: 2.25rem minmax(0,1fr) 1.5rem; gap: .75rem; }
       .faq-answer { margin-right: 0; margin-left: 3rem; }
       .closing-meta { grid-template-columns: 1fr; }
@@ -901,7 +946,7 @@
   <header>
     <a class="brand" href="#top" aria-label="ModelRig — til toppen"><span class="brand-mark">MR</span><span>ModelRig</span></a>
     <div class="header-type"><img src="assets/kaliv-ankh-transparent.webp" alt="" width="1054" height="1421" decoding="async" /><span><strong>Kaliv</strong> / embodiment layer</span></div>
-    <nav aria-label="Primær navigation"><a href="#architecture">Arkitektur</a><a href="#kaliv">Kaliv</a><a href="#control">Kontrol</a><a href="#status">Status</a><a href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Se projektets GitHub-repository — åbner i ny fane">GitHub ↗</a><span class="lang-switch" aria-label="Vælg sprog"><a href="?lang=da" lang="da" data-language="da" class="is-current" aria-current="page">DA</a><a href="?lang=en" lang="en" data-language="en">EN</a></span></nav>
+    <nav aria-label="Primær navigation"><a href="#architecture">Arkitektur</a><a href="#kaliv">Kaliv</a><a href="#control">Kontrol</a><a href="#status">Status</a><a href="#questions">Spørgsmål</a><a href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Se projektets GitHub-repository — åbner i ny fane">GitHub ↗</a><span class="lang-switch" aria-label="Vælg sprog"><a href="?lang=da" lang="da" data-language="da" class="is-current" aria-current="page">DA</a><a href="?lang=en" lang="en" data-language="en">EN</a></span></nav>
   </header>
 
   <main id="content" tabindex="-1">
@@ -1018,8 +1063,17 @@
         <div class="section-label"><strong>05</strong> / Driftsloop</div>
         <div><h2 id="runtime-title" tabindex="-1">Fra observation til verificeret resultat.</h2><p>Det lukkede loop skelner mellem det, systemet havde til hensigt, det der blev udført, og det miljøet bagefter viste.</p></div>
       </div>
-      <div class="flow" role="list" tabindex="0" aria-label="Runtime-flow fra perception til observeret resultat. Kan rulles vandret på små skærme.">
-        <div class="flow-step" role="listitem"><em>01</em><b>Perception</b></div><div class="flow-step" role="listitem"><em>02</em><b>Admission</b></div><div class="flow-step" role="listitem"><em>03</em><b>WorldEvidence</b></div><div class="flow-step active" role="listitem"><em>04</em><b>WorldState</b></div><div class="flow-step" role="listitem"><em>05</em><b>Thought</b></div><div class="flow-step" role="listitem"><em>06</em><b>Action</b></div><div class="flow-step" role="listitem"><em>07</em><b>Observed result</b></div>
+      <div class="flow" role="tablist" aria-label="Interaktivt runtime-flow fra perception til observeret resultat. Kan rulles vandret på små skærme.">
+        <button class="flow-step" type="button" role="tab" id="flow-tab-perception" aria-controls="flow-panel-perception" aria-selected="false" tabindex="-1"><em>01</em><b>Perception</b></button><button class="flow-step" type="button" role="tab" id="flow-tab-admission" aria-controls="flow-panel-admission" aria-selected="false" tabindex="-1"><em>02</em><b>Admission</b></button><button class="flow-step" type="button" role="tab" id="flow-tab-evidence" aria-controls="flow-panel-evidence" aria-selected="false" tabindex="-1"><em>03</em><b>WorldEvidence</b></button><button class="flow-step" type="button" role="tab" id="flow-tab-state" aria-controls="flow-panel-state" aria-selected="true"><em>04</em><b>WorldState</b></button><button class="flow-step" type="button" role="tab" id="flow-tab-thought" aria-controls="flow-panel-thought" aria-selected="false" tabindex="-1"><em>05</em><b>Thought</b></button><button class="flow-step" type="button" role="tab" id="flow-tab-action" aria-controls="flow-panel-action" aria-selected="false" tabindex="-1"><em>06</em><b>Action</b></button><button class="flow-step" type="button" role="tab" id="flow-tab-result" aria-controls="flow-panel-result" aria-selected="false" tabindex="-1"><em>07</em><b>Observed result</b></button>
+      </div>
+      <div class="flow-panels">
+        <article class="flow-detail" id="flow-panel-perception" role="tabpanel" aria-labelledby="flow-tab-perception" tabindex="0" hidden><span class="flow-detail-phase">Fase 01 / Sansning</span><div><h3>Virkeligheden bliver til signaler.</h3><p>VisionRig registrerer synlige forhold og sensorstatus uden at tillægge observationerne varig betydning.</p></div><dl><div><dt>Autoritet</dt><dd>VisionRig</dd></div><div><dt>Input</dt><dd>Kamera, Kinect og adaptere</dd></div><div><dt>Output</dt><dd>Rå og afledte observationer</dd></div></dl></article>
+        <article class="flow-detail" id="flow-panel-admission" role="tabpanel" aria-labelledby="flow-tab-admission" tabindex="0" hidden><span class="flow-detail-phase">Fase 02 / Optagelse</span><div><h3>Kun gyldig evidens kommer videre.</h3><p>Admission-laget validerer kontrakt, oprindelse, aktualitet og tilladelse, før en observation kan påvirke systemets tilstand.</p></div><dl><div><dt>Autoritet</dt><dd>Policy Gate</dd></div><div><dt>Input</dt><dd>Signeret perception event</dd></div><div><dt>Output</dt><dd>Godkendt eller afvist evidens</dd></div></dl></article>
+        <article class="flow-detail" id="flow-panel-evidence" role="tabpanel" aria-labelledby="flow-tab-evidence" tabindex="0" hidden><span class="flow-detail-phase">Fase 03 / Evidens</span><div><h3>Observationen får dokumenteret oprindelse.</h3><p>WorldEvidence fastholder, hvad der faktisk blev observeret, hvornår det skete, og hvilken kilde der står bag.</p></div><dl><div><dt>Autoritet</dt><dd>Evidenskontrakten</dd></div><div><dt>Input</dt><dd>Godkendte observationer</dd></div><div><dt>Output</dt><dd>Sporbar verdensevidens</dd></div></dl></article>
+        <article class="flow-detail" id="flow-panel-state" role="tabpanel" aria-labelledby="flow-tab-state" tabindex="0"><span class="flow-detail-phase">Fase 04 / Tilstand</span><div><h3>Nuet bliver forståeligt.</h3><p>Consciousness Core sammenholder evidens med tid, SelfState, relevant hukommelse og den eksisterende WorldState.</p></div><dl><div><dt>Autoritet</dt><dd>Consciousness Core</dd></div><div><dt>Input</dt><dd>Evidens, tid og genkaldelse</dd></div><div><dt>Output</dt><dd>Opdateret oplevet tilstand</dd></div></dl></article>
+        <article class="flow-detail" id="flow-panel-thought" role="tabpanel" aria-labelledby="flow-tab-thought" tabindex="0" hidden><span class="flow-detail-phase">Fase 05 / Kognition</span><div><h3>Modellen rådgiver uden at eje personen.</h3><p>ThoughtEngine modtager den relevante tilstand og foreslår forståelse, respons eller næste skridt. Forslaget er ikke i sig selv en tilladelse.</p></div><dl><div><dt>Autoritet</dt><dd>ThoughtEngine</dd></div><div><dt>Input</dt><dd>Tilstand og relevant kontekst</dd></div><div><dt>Output</dt><dd>Kognitivt forslag</dd></div></dl></article>
+        <article class="flow-detail" id="flow-panel-action" role="tabpanel" aria-labelledby="flow-tab-action" tabindex="0" hidden><span class="flow-detail-phase">Fase 06 / Handling</span><div><h3>Intention passerer kontrollen.</h3><p>Agent 3 må først eksekvere, når adgang, dataklasse, værktøjskontrakt og skrivemandat er godkendt.</p></div><dl><div><dt>Autoritet</dt><dd>Agent 3 + Policy Gate</dd></div><div><dt>Input</dt><dd>Godkendt intention</dd></div><div><dt>Output</dt><dd>Sporbar eksekvering</dd></div></dl></article>
+        <article class="flow-detail" id="flow-panel-result" role="tabpanel" aria-labelledby="flow-tab-result" tabindex="0" hidden><span class="flow-detail-phase">Fase 07 / Resultat</span><div><h3>Systemet ser, hvad der faktisk skete.</h3><p>Resultatet observeres på ny og føres tilbage som evidens. Først dér kan systemet skelne mellem intention, udførelse og virkning.</p></div><dl><div><dt>Autoritet</dt><dd>Observeret virkelighed</dd></div><div><dt>Input</dt><dd>Handlingens målbare effekt</dd></div><div><dt>Output</dt><dd>Ny erfaring til næste cyklus</dd></div></dl></article>
       </div>
       <p class="flow-caption">VisionRig leverer afledt evidens. Consciousness Core opdaterer den oplevede tilstand. ThoughtEngine rådgiver. Agent 3 eksekverer. Resultatet føres tilbage som ny evidens.</p>
     </section>
@@ -1146,6 +1200,7 @@
           ['Arkitektur', 'Architecture'],
           ['/ Arkitektur', '/ Architecture'],
           ['Kontrol', 'Control'],
+          ['Spørgsmål', 'Questions'],
           ['Fundamentet efter chatbotten', 'The foundation beyond the chatbot'],
           ['Vi bygger AI, der kan bestå.', 'We build AI that endures.'],
           ['ModelRig flytter AI fra isolerede sessioner til én vedvarende, lokalt ejet og kropsliggjort intelligens — med hukommelse, tid, perception og handling under eksplicit kontrol.', 'ModelRig moves AI beyond isolated sessions into one persistent, locally owned and embodied intelligence — with memory, time, perception and action under explicit control.'],
@@ -1213,6 +1268,47 @@
           ['/ Driftsloop', '/ Runtime loop'],
           ['Fra observation til verificeret resultat.', 'From observation to verified outcome.'],
           ['Det lukkede loop skelner mellem det, systemet havde til hensigt, det der blev udført, og det miljøet bagefter viste.', 'The closed loop distinguishes between what the system intended, what was executed and what the environment subsequently revealed.'],
+          ['Fase 01 / Sansning', 'Phase 01 / Perception'],
+          ['Virkeligheden bliver til signaler.', 'Reality becomes signals.'],
+          ['VisionRig registrerer synlige forhold og sensorstatus uden at tillægge observationerne varig betydning.', 'VisionRig registers visible conditions and sensor status without assigning lasting meaning to the observations.'],
+          ['Autoritet', 'Authority'],
+          ['Input', 'Input'],
+          ['Output', 'Output'],
+          ['Kamera, Kinect og adaptere', 'Camera, Kinect and adapters'],
+          ['Rå og afledte observationer', 'Raw and derived observations'],
+          ['Fase 02 / Optagelse', 'Phase 02 / Admission'],
+          ['Kun gyldig evidens kommer videre.', 'Only valid evidence moves forward.'],
+          ['Admission-laget validerer kontrakt, oprindelse, aktualitet og tilladelse, før en observation kan påvirke systemets tilstand.', 'The admission layer validates contract, provenance, freshness and permission before an observation can affect system state.'],
+          ['Signeret perception event', 'Signed perception event'],
+          ['Godkendt eller afvist evidens', 'Accepted or rejected evidence'],
+          ['Fase 03 / Evidens', 'Phase 03 / Evidence'],
+          ['Observationen får dokumenteret oprindelse.', 'The observation gains documented provenance.'],
+          ['WorldEvidence fastholder, hvad der faktisk blev observeret, hvornår det skete, og hvilken kilde der står bag.', 'WorldEvidence preserves what was actually observed, when it happened and which source produced it.'],
+          ['Evidenskontrakten', 'The evidence contract'],
+          ['Godkendte observationer', 'Accepted observations'],
+          ['Sporbar verdensevidens', 'Traceable world evidence'],
+          ['Fase 04 / Tilstand', 'Phase 04 / State'],
+          ['Nuet bliver forståeligt.', 'The present becomes intelligible.'],
+          ['Consciousness Core sammenholder evidens med tid, SelfState, relevant hukommelse og den eksisterende WorldState.', 'Consciousness Core reconciles evidence with time, SelfState, relevant memory and the existing WorldState.'],
+          ['Evidens, tid og genkaldelse', 'Evidence, time and recall'],
+          ['Opdateret oplevet tilstand', 'Updated experienced state'],
+          ['Fase 05 / Kognition', 'Phase 05 / Cognition'],
+          ['Modellen rådgiver uden at eje personen.', 'The model advises without owning the person.'],
+          ['ThoughtEngine modtager den relevante tilstand og foreslår forståelse, respons eller næste skridt. Forslaget er ikke i sig selv en tilladelse.', 'ThoughtEngine receives the relevant state and proposes understanding, a response or a next step. The proposal is not permission in itself.'],
+          ['Tilstand og relevant kontekst', 'State and relevant context'],
+          ['Kognitivt forslag', 'Cognitive proposal'],
+          ['Fase 06 / Handling', 'Phase 06 / Action'],
+          ['Intention passerer kontrollen.', 'Intent passes through control.'],
+          ['Agent 3 må først eksekvere, når adgang, dataklasse, værktøjskontrakt og skrivemandat er godkendt.', 'Agent 3 may execute only after access, data class, tool contract and write authority have been approved.'],
+          ['Agent 3 + Policy Gate', 'Agent 3 + Policy Gate'],
+          ['Godkendt intention', 'Approved intent'],
+          ['Sporbar eksekvering', 'Traceable execution'],
+          ['Fase 07 / Resultat', 'Phase 07 / Outcome'],
+          ['Systemet ser, hvad der faktisk skete.', 'The system sees what actually happened.'],
+          ['Resultatet observeres på ny og føres tilbage som evidens. Først dér kan systemet skelne mellem intention, udførelse og virkning.', 'The outcome is observed again and returned as evidence. Only then can the system distinguish intent, execution and effect.'],
+          ['Observeret virkelighed', 'Observed reality'],
+          ['Handlingens målbare effekt', 'The measurable effect of the action'],
+          ['Ny erfaring til næste cyklus', 'New experience for the next cycle'],
           ['VisionRig leverer afledt evidens. Consciousness Core opdaterer den oplevede tilstand. ThoughtEngine rådgiver. Agent 3 eksekverer. Resultatet føres tilbage som ny evidens.', 'VisionRig provides derived evidence. Consciousness Core updates the experienced state. ThoughtEngine advises. Agent 3 executes. The outcome returns as new evidence.'],
           ['/ Autoritet', '/ Authority'],
           ['Kontrol er en del af datamodellen.', 'Control is part of the data model.'],
@@ -1330,7 +1426,7 @@
           ['ModelRigs overordnede systemarkitektur', 'ModelRig high-level system architecture'],
           ['Kalivs tre produktflader', 'Kaliv’s three product surfaces'],
           ['Et illustrativt forløb på tværs af Kalivs produktflader', 'An illustrative journey across Kaliv product surfaces'],
-          ['Runtime-flow fra perception til observeret resultat. Kan rulles vandret på små skærme.', 'Runtime flow from perception to observed outcome. Scrolls horizontally on small screens.'],
+          ['Interaktivt runtime-flow fra perception til observeret resultat. Kan rulles vandret på små skærme.', 'Interactive runtime flow from perception to observed outcome. Scrolls horizontally on small screens.'],
           ['Ansvarstabel. Kan rulles vandret på små skærme.', 'Authority table. Scrolls horizontally on small screens.'],
           ['Følg udviklingen på GitHub — åbner i ny fane', 'Follow development on GitHub — opens in a new tab'],
           ['ModelRigs fire grundegenskaber', 'ModelRig’s four core properties'],
@@ -1377,6 +1473,19 @@
           } catch {}
         }
 
+        const faqStructuredData = document.querySelector('#faq-structured-data');
+        if (faqStructuredData) {
+          try {
+            const data = JSON.parse(faqStructuredData.textContent);
+            data.inLanguage = 'en';
+            data.mainEntity?.forEach(item => {
+              item.name = english.get(item.name) || item.name;
+              if (item.acceptedAnswer?.text) item.acceptedAnswer.text = english.get(item.acceptedAnswer.text) || item.acceptedAnswer.text;
+            });
+            faqStructuredData.textContent = JSON.stringify(data);
+          } catch {}
+        }
+
         document.querySelectorAll('[data-language]').forEach(link => {
           const current = link.dataset.language === 'en';
           link.classList.toggle('is-current', current);
@@ -1397,6 +1506,37 @@
       const sections = links.map(link => document.querySelector(link.hash)).filter(Boolean);
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
       const supportsObserver = 'IntersectionObserver' in window;
+      const flow = document.querySelector('.flow');
+      const flowTabs = [...document.querySelectorAll('.flow-step[role="tab"]')];
+
+      const selectFlowTab = (selected, moveFocus = false) => {
+        flowTabs.forEach(tab => {
+          const active = tab === selected;
+          tab.setAttribute('aria-selected', String(active));
+          tab.tabIndex = active ? 0 : -1;
+          const panel = document.getElementById(tab.getAttribute('aria-controls'));
+          if (panel) panel.hidden = !active;
+        });
+        if (moveFocus) selected.focus();
+        if (flow && flow.scrollWidth > flow.clientWidth + 1) {
+          const target = selected.offsetLeft - (flow.clientWidth - selected.offsetWidth) / 2;
+          flow.scrollTo({ left: Math.max(0, target), behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+        }
+      };
+
+      flowTabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => selectFlowTab(tab));
+        tab.addEventListener('keydown', event => {
+          let next = null;
+          if (event.key === 'ArrowRight') next = flowTabs[(index + 1) % flowTabs.length];
+          if (event.key === 'ArrowLeft') next = flowTabs[(index - 1 + flowTabs.length) % flowTabs.length];
+          if (event.key === 'Home') next = flowTabs[0];
+          if (event.key === 'End') next = flowTabs[flowTabs.length - 1];
+          if (!next) return;
+          event.preventDefault();
+          selectFlowTab(next, true);
+        });
+      });
 
       let scrollDistance = 0;
       let viewportHeight = window.innerHeight;
