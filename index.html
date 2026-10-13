@@ -1,0 +1,1095 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#05070a" />
+  <meta name="description" content="ModelRig er et local-first fundament for vedvarende AI med hukommelse, perception, handling og krop under eksplicit kontrol." />
+  <meta property="og:title" content="ModelRig — AI, der kan bestå" />
+  <meta property="og:description" content="Et local-first fundament for vedvarende, kropsliggjort AI under eksplicit kontrol." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="da_DK" />
+  <meta property="og:site_name" content="ModelRig" />
+  <meta property="og:url" content="https://ternedal.github.io/Kaliv/" />
+  <meta property="og:image" content="https://ternedal.github.io/Kaliv/assets/modelrig-continuity-female-hair-1920.webp" />
+  <meta property="og:image:type" content="image/webp" />
+  <meta property="og:image:width" content="1920" />
+  <meta property="og:image:height" content="1080" />
+  <meta property="og:image:alt" content="ModelRigs vedvarende AI-forløb fra kognitiv kerne til kropsliggjort intelligens" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ModelRig — AI, der kan bestå" />
+  <meta name="twitter:description" content="Et local-first fundament for vedvarende, kropsliggjort AI under eksplicit kontrol." />
+  <meta name="twitter:image" content="https://ternedal.github.io/Kaliv/assets/modelrig-continuity-female-hair-1920.webp" />
+  <meta name="twitter:image:alt" content="ModelRigs vedvarende AI-forløb fra kognitiv kerne til kropsliggjort intelligens" />
+  <link rel="canonical" href="https://ternedal.github.io/Kaliv/" />
+  <title>ModelRig — AI, der kan bestå</title>
+  <link rel="preload" as="image" href="assets/modelrig-continuity-female-hair-1920.webp" type="image/webp" fetchpriority="high" media="(max-width: 899px), (max-resolution: 1.49dppx)" />
+  <link rel="preload" as="image" href="assets/modelrig-continuity-female-hair-hires.webp" type="image/webp" fetchpriority="high" media="(min-width: 900px) and (min-resolution: 1.5dppx)" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2305070a'/%3E%3Cpath d='M32 7C23.7 7 18 12.6 18 20.2c0 6.2 4.2 10.9 9.2 15H13v9h14.5v13h9v-13H51v-9H36.8c5-4.1 9.2-8.8 9.2-15C46 12.6 40.3 7 32 7Zm0 8c3.7 0 6 2 6 5.2 0 3.1-2.4 6.1-6 9.5-3.6-3.4-6-6.4-6-9.5 0-3.2 2.3-5.2 6-5.2Z' fill='%237da3ff'/%3E%3C/svg%3E" />
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #0e1116;
+      --ink-2: #222831;
+      --paper: #f4f6f8;
+      --white: #ffffff;
+      --blue: #1457ff;
+      --blue-soft: #eaf0ff;
+      --muted: #5c6674;
+      --line: #cfd5dc;
+      --line-dark: #2b313a;
+      --green: #147648;
+      --green-soft: #e5f4ec;
+      --amber: #9a5700;
+      --amber-soft: #fff1dc;
+      --violet: #5f3dc4;
+      --violet-soft: #eee9ff;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      overflow-x: clip;
+      background: var(--paper);
+      color: var(--ink);
+      font: 400 1rem/1.6 var(--sans);
+      text-rendering: optimizeLegibility;
+    }
+    a { color: inherit; }
+    a:focus-visible { outline: 2px solid #8fb0ff; outline-offset: 4px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { text-wrap: balance; }
+    p { text-wrap: pretty; }
+    button, input, select { font: inherit; }
+    ::selection { background: var(--blue); color: #fff; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+    .skip {
+      position: fixed;
+      top: .75rem;
+      left: .75rem;
+      z-index: 100;
+      transform: translateY(-160%);
+      padding: .7rem 1rem;
+      background: var(--ink);
+      color: #fff;
+    }
+    .skip:focus { transform: translateY(0); }
+    main:focus { outline: none; }
+    .flow:focus-visible, .table-wrap:focus-visible { outline: 2px solid #7da3ff; outline-offset: 4px; }
+    #hero-title:focus, h2[tabindex="-1"]:focus { outline: none; }
+
+    .topline {
+      --scroll-progress: 9%;
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 50;
+      height: .34rem;
+      background: #0b0e14;
+    }
+    .topline::after {
+      content: "";
+      display: block;
+      width: var(--scroll-progress);
+      height: 100%;
+      background: linear-gradient(90deg, #1457ff, #79a4ff);
+      box-shadow: 0 0 16px rgba(20,87,255,.75);
+      transition: width .1s linear;
+    }
+    header {
+      position: fixed;
+      top: .34rem;
+      left: 0;
+      right: 0;
+      z-index: 40;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      min-height: 5rem;
+      padding: 0 clamp(1.25rem, 4vw, 4.5rem);
+      border-bottom: 1px solid rgba(255,255,255,.22);
+      background: rgba(5,7,10,.72);
+      color: #fff;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      transition: background-color .24s ease, border-color .24s ease, box-shadow .24s ease, min-height .24s ease, padding .24s ease;
+    }
+    header.is-scrolled {
+      border-bottom-color: rgba(255,255,255,.14);
+      background: rgba(5,7,10,.94);
+      box-shadow: 0 1rem 2.5rem rgba(0,0,0,.24);
+    }
+    .brand {
+      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+      text-decoration: none;
+      font-weight: 760;
+      letter-spacing: -.035em;
+    }
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 2.2rem;
+      height: 2.2rem;
+      border: 1px solid rgba(255,255,255,.7);
+      background: transparent;
+      color: #fff;
+      font: 700 .75rem var(--mono);
+      transition: width .24s ease, height .24s ease, font-size .24s ease;
+    }
+    .header-type {
+      display: inline-flex;
+      align-items: center;
+      gap: .95rem;
+      color: rgba(255,255,255,.72);
+      font: 650 .82rem var(--mono);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .header-type img {
+      width: 2.65rem;
+      height: auto;
+      max-height: 3.9rem;
+      object-fit: contain;
+      filter: drop-shadow(0 0 12px rgba(68,132,255,.42));
+      transition: width .24s ease, max-height .24s ease;
+    }
+    .header-type strong { color: #a9c7ff; font-weight: 700; }
+    nav { justify-self: end; display: flex; gap: 1.35rem; }
+    nav a { position: relative; min-height: 2.75rem; display: inline-flex; align-items: center; color: rgba(255,255,255,.76); font-size: .84rem; text-decoration: none; }
+    nav a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -.45rem; height: 1px; background: #7da3ff; transition: right .2s ease; }
+    nav a:hover, nav a:focus-visible { color: #fff; }
+    nav a:hover::after, nav a:focus-visible::after { right: 0; }
+    nav a.is-active { color: #fff; }
+    nav a.is-active::after { right: 0; }
+
+    section[id], h1[id], h2[id] { scroll-margin-top: 5.75rem; }
+
+    .hero {
+      --hero-art: url("assets/modelrig-continuity-female-hair-1920.webp");
+      position: relative;
+      display: block;
+      min-height: calc(100svh - .34rem);
+      border-bottom: 1px solid var(--line-dark);
+      background:
+        linear-gradient(90deg, rgba(5,7,10,.97) 0%, rgba(5,7,10,.89) 31%, rgba(5,7,10,.43) 58%, rgba(5,7,10,.12) 100%),
+        linear-gradient(0deg, rgba(5,7,10,.68), transparent 34%),
+        var(--hero-art) right 2.25vw center / auto 100% no-repeat;
+      background-color: #05070a;
+      color: #fff;
+    }
+    @media (min-width: 900px) and (min-resolution: 1.5dppx) {
+      .hero { --hero-art: url("assets/modelrig-continuity-female-hair-hires.webp"); }
+    }
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: min(56rem, 58vw);
+      min-height: calc(100svh - .34rem);
+      padding: clamp(8rem, 11vw, 10.5rem) clamp(1.25rem, 4vw, 4.5rem) 2.25rem;
+    }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      margin-bottom: 2rem;
+      color: #87a9ff;
+      font: 650 .75rem var(--mono);
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 2.5rem; height: 2px; background: currentColor; }
+    h1 {
+      max-width: 8.35ch;
+      margin-bottom: 2rem;
+      font-size: clamp(3.5rem, 6.55vw, 7.65rem);
+      line-height: .92;
+      letter-spacing: -.073em;
+      font-weight: 735;
+    }
+    .lead {
+      max-width: 39rem;
+      margin-bottom: 2rem;
+      color: rgba(255,255,255,.76);
+      font-size: clamp(1.08rem, 1.55vw, 1.28rem);
+      line-height: 1.58;
+    }
+    .hero-foot {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,.24);
+      color: rgba(255,255,255,.56);
+      font: 600 .75rem var(--mono);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .hero-art { display: none; }
+    .hero-scroll { min-height: 2.75rem; display: inline-flex; align-items: center; gap: .55rem; color: inherit; text-decoration: none; }
+    .hero-scroll::after { content: "↓"; color: #7da3ff; font-size: .95rem; transition: transform .2s ease; }
+    .hero-scroll:hover, .hero-scroll:focus-visible { color: #fff; }
+
+    .hero-system {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(2rem, 5vw, 5.5rem);
+      background: var(--white);
+    }
+    .diagram-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 1.5rem;
+      color: #697380;
+      font: 650 .75rem var(--mono);
+      text-transform: uppercase;
+      letter-spacing: .07em;
+    }
+    .diagram {
+      border: 1px solid var(--ink);
+      background: #fff;
+    }
+    .diagram-row {
+      display: grid;
+      grid-template-columns: 7.5rem minmax(0,1fr);
+      min-height: 7.5rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .diagram-row:last-child { border-bottom: 0; }
+    .diagram-stage {
+      padding: 1rem;
+      border-right: 1px solid var(--line);
+      color: #697380;
+      font: 650 .75rem/1.45 var(--mono);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .diagram-content {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      padding: 1rem;
+    }
+    .diagram-content::after {
+      content: "↓";
+      position: absolute;
+      left: 50%;
+      bottom: -.9rem;
+      z-index: 3;
+      display: grid;
+      place-items: center;
+      width: 1.8rem;
+      height: 1.8rem;
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--blue);
+      font: 700 .9rem var(--mono);
+      transform: translateX(-50%);
+    }
+    .diagram-row:last-child .diagram-content::after { display: none; }
+    .unit {
+      flex: 1;
+      min-width: 0;
+      min-height: 3.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: .7rem .8rem;
+      border: 1px solid var(--line);
+      background: #f8f9fb;
+    }
+    .unit.core { border: 2px solid var(--blue); background: var(--blue-soft); }
+    .unit strong { font-size: .84rem; line-height: 1.25; }
+    .unit span { margin-top: .25rem; color: #65707d; font: 600 .75rem var(--mono); text-transform: uppercase; }
+    .diagram-note {
+      margin: 1.1rem 0 0;
+      color: #5d6774;
+      font-size: .85rem;
+    }
+
+    .system-evidence {
+      display: grid;
+      grid-template-columns: minmax(0,1.4fr) minmax(18rem,.6fr);
+      gap: clamp(2rem,5vw,6rem);
+      align-items: start;
+    }
+    .system-evidence .hero-system { padding: 0; background: transparent; }
+    .acceptance {
+      border-top: 3px solid var(--blue);
+      background: #eef2f7;
+    }
+    .acceptance-head { padding: 1.25rem; border-bottom: 1px solid var(--line); }
+    .acceptance-head span { display: block; margin-bottom: .65rem; color: var(--blue); font: 650 .75rem var(--mono); letter-spacing: .07em; text-transform: uppercase; }
+    .acceptance-head h3 { margin: 0; font-size: 1.45rem; line-height: 1.15; letter-spacing: -.035em; }
+    .acceptance ol { margin: 0; padding: 0; list-style: none; counter-reset: moment; }
+    .acceptance li { counter-increment: moment; display: grid; grid-template-columns: 2rem 1fr; gap: .75rem; padding: 1rem 1.25rem; border-bottom: 1px solid var(--line); color: #4f5a67; font-size: .9rem; }
+    .acceptance li::before { content: "0" counter(moment); color: var(--blue); font: 650 .75rem var(--mono); }
+    .acceptance-foot { margin: 0; padding: 1.25rem; color: #505b68; font-size: .85rem; }
+
+    .product-wedge {
+      display: grid;
+      grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr);
+      border-bottom: 1px solid var(--line-dark);
+      background: #070a0f;
+      color: #fff;
+    }
+    .product-copy {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      padding: clamp(4rem,8vw,9rem) clamp(1.25rem,4vw,4.5rem);
+      border-right: 1px solid var(--line-dark);
+    }
+    .product-copy::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 5rem;
+      right: -9rem;
+      width: 28rem;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(20,87,255,.18), rgba(20,87,255,0) 68%);
+      pointer-events: none;
+    }
+    .product-copy .section-label { margin-bottom: 2.5rem; }
+    .product-brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      width: fit-content;
+      margin-bottom: 2.5rem;
+      color: #a9c7ff;
+      font: 700 .8rem var(--mono);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .product-brand img {
+      width: clamp(8rem, 11vw, 12rem);
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 30px rgba(20,87,255,.48));
+    }
+    .product-brand span { padding-top: .1rem; }
+    .product-copy h2 { max-width: 9ch; }
+    .product-copy p { max-width: 36rem; color: #a0a8b3; font-size: clamp(1.05rem,1.5vw,1.25rem); }
+    .product-note { display: inline-block; margin-top: 2rem; padding: .55rem .75rem; border: 1px solid #315cae; background: rgba(20,87,255,.08); color: #b9ceff; font: 650 .75rem var(--mono); letter-spacing: .05em; text-transform: uppercase; }
+    .surfaces { display: grid; grid-template-rows: repeat(3,1fr); }
+    .surface { display: grid; grid-template-columns: 6rem 1fr auto; gap: 1.2rem; align-items: center; min-height: 12rem; padding: 1.5rem clamp(1.25rem,3vw,3rem); border-bottom: 1px solid var(--line-dark); }
+    .surface:last-child { border-bottom: 0; }
+    .surface-num { color: #75808c; font: 650 .75rem var(--mono); }
+    .surface h3 { margin: 0 0 .45rem; font-size: clamp(1.5rem,2.5vw,2.6rem); letter-spacing: -.045em; }
+    .surface p { margin: 0; color: #8f98a4; font-size: .9rem; }
+    .surface strong { color: #779fff; font: 650 .75rem var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+
+    .band {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid var(--line);
+      background: var(--ink);
+      color: #fff;
+    }
+    .band div { min-height: 7rem; padding: 1.2rem clamp(1rem, 2.8vw, 3rem); border-right: 1px solid var(--line-dark); display: flex; flex-direction: column; justify-content: center; }
+    .band div:last-child { border-right: 0; }
+    .band b { margin-bottom: .3rem; font-size: .95rem; }
+    .band span { color: #929aa5; font: 600 .75rem var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+
+    .shift {
+      display: grid;
+      grid-template-columns: minmax(14rem,.55fr) minmax(0,1.45fr);
+      min-height: 88svh;
+      border-bottom: 1px solid var(--line-dark);
+      background: var(--blue);
+      color: #fff;
+    }
+    .shift-side {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(2rem, 5vw, 5rem) clamp(1.25rem, 4vw, 4.5rem);
+      border-right: 1px solid rgba(255,255,255,.35);
+      font: 650 .75rem var(--mono);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .shift-side strong { max-width: 18rem; font-size: .95rem; line-height: 1.5; letter-spacing: 0; text-transform: none; }
+    .shift-main { display: flex; flex-direction: column; justify-content: center; padding: clamp(4rem, 9vw, 9rem) clamp(1.25rem, 5vw, 6rem); }
+    .shift-main h2 { max-width: 12ch; margin-bottom: 2rem; font-size: clamp(3.5rem, 8vw, 9.5rem); line-height: .88; letter-spacing: -.075em; }
+    .shift-main p { max-width: 42rem; margin: 0; color: rgba(255,255,255,.9); font-size: clamp(1.08rem, 1.7vw, 1.35rem); }
+    .shift-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); margin-top: 4rem; border-top: 1px solid rgba(255,255,255,.35); border-left: 1px solid rgba(255,255,255,.35); }
+    .shift-list div { min-height: 8rem; padding: 1rem; border-right: 1px solid rgba(255,255,255,.35); border-bottom: 1px solid rgba(255,255,255,.35); display: flex; align-items: flex-end; }
+    .shift-list span { display: block; margin-right: .7rem; color: rgba(255,255,255,.9); font: 650 .75rem var(--mono); }
+    .shift-list b { font-size: 1rem; }
+
+    .section {
+      padding: clamp(5rem, 9vw, 9rem) clamp(1.25rem, 4vw, 4.5rem);
+      border-bottom: 1px solid var(--line);
+    }
+    .section.white { background: var(--white); }
+    .section.dark { background: var(--ink); color: #fff; border-color: var(--line-dark); }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(10rem,.45fr) minmax(0,1.55fr);
+      gap: clamp(2rem, 6vw, 8rem);
+      margin-bottom: clamp(3.5rem, 7vw, 7rem);
+    }
+    .section-label { color: #66717e; font: 650 .75rem var(--mono); text-transform: uppercase; letter-spacing: .08em; }
+    .section-label strong { color: var(--blue); }
+    h2 {
+      max-width: 14ch;
+      margin-bottom: 1.5rem;
+      font-size: clamp(2.7rem, 5.8vw, 6.5rem);
+      line-height: .96;
+      letter-spacing: -.06em;
+      font-weight: 715;
+    }
+    .section-head p { max-width: 43rem; margin: 0; color: #56616e; font-size: clamp(1.05rem, 1.5vw, 1.25rem); }
+    .dark .section-head p { color: #9ca4af; }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+    .principle {
+      min-height: 18rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(1.3rem, 3vw, 3rem);
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .principle .number { color: var(--blue); font: 650 .75rem var(--mono); }
+    .principle h3 { margin-bottom: 1rem; font-size: clamp(1.6rem, 2.7vw, 3rem); line-height: 1.02; letter-spacing: -.045em; }
+    .principle p { max-width: 31rem; margin: 0; color: #5c6673; }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(7.5rem,1fr));
+      overflow-x: auto;
+      overscroll-behavior-inline: contain;
+      padding-bottom: .5rem;
+      scrollbar-color: #44505f transparent;
+      scroll-snap-type: x proximity;
+      -webkit-overflow-scrolling: touch;
+    }
+    .flow:focus-visible, .table-wrap:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+    .flow-step {
+      min-width: 7.5rem;
+      min-height: 13rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1rem;
+      border: 1px solid var(--line-dark);
+      border-right: 0;
+      scroll-snap-align: start;
+    }
+    .flow-step:last-child { border-right: 1px solid var(--line-dark); }
+    .flow-step em { color: #77808c; font: normal 650 .75rem var(--mono); }
+    .flow-step b { font-size: .92rem; }
+    .flow-step.active { border-color: var(--blue); background: #111a2c; }
+    .flow-step.active em { color: #7da3ff; }
+    .flow-caption { max-width: 55rem; margin: 1.5rem 0 0 auto; color: #949ca7; }
+
+    .authority-table { width: 100%; border-collapse: collapse; background: white; }
+    .authority-table th,
+    .authority-table td { padding: 1.1rem 1.2rem; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+    .authority-table thead th { background: #f1f3f6; color: #626d7a; font: 650 .75rem var(--mono); letter-spacing: .07em; text-transform: uppercase; }
+    .authority-table td { color: #46505d; font-size: .92rem; }
+    .authority-table tbody th { background: #fff; color: var(--ink); font-size: .92rem; font-weight: 680; letter-spacing: normal; text-transform: none; }
+    .authority-table .boundary { color: #68727f; }
+
+    .control-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      border-top: 1px solid var(--line-dark);
+      border-left: 1px solid var(--line-dark);
+    }
+    .control {
+      min-height: 16rem;
+      padding: 1.4rem;
+      border-right: 1px solid var(--line-dark);
+      border-bottom: 1px solid var(--line-dark);
+    }
+    .control span { color: #78818d; font: 650 .75rem var(--mono); text-transform: uppercase; letter-spacing: .07em; }
+    .control h3 { margin: 3.3rem 0 .8rem; font-size: 1.35rem; letter-spacing: -.025em; }
+    .control p { margin: 0; color: #9ba3ad; font-size: .91rem; }
+
+    .status-list { border-top: 1px solid var(--line); }
+    .status-row {
+      display: grid;
+      grid-template-columns: minmax(11rem,.55fr) minmax(0,1.45fr) auto;
+      gap: 2rem;
+      align-items: center;
+      min-height: 8rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .status-row h3 { margin: 0; font-size: clamp(1.35rem, 2.2vw, 2.2rem); letter-spacing: -.04em; }
+    .status-row p { margin: 0; color: #5d6774; }
+    .status {
+      min-width: 8rem;
+      padding: .5rem .7rem;
+      border: 1px solid currentColor;
+      text-align: center;
+      font: 650 .75rem var(--mono);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .status.integrated { color: var(--green); background: var(--green-soft); }
+    .status.guarded { color: var(--violet); background: var(--violet-soft); }
+    .status.gate { color: var(--amber); background: var(--amber-soft); }
+
+    .gates {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      counter-reset: gates;
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+    .gate-item {
+      counter-increment: gates;
+      min-height: 18rem;
+      padding: 1.3rem;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: white;
+    }
+    .gate-item::before { content: "0" counter(gates); display: block; margin-bottom: 5rem; color: var(--blue); font: 650 .75rem var(--mono); }
+    .gate-item h3 { margin-bottom: .8rem; font-size: 1.18rem; }
+    .gate-item p { margin: 0; color: #5c6673; font-size: .9rem; }
+
+    .closing {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      min-height: 78svh;
+      background: var(--blue);
+      color: #fff;
+    }
+    .closing > div { padding: clamp(3rem, 7vw, 7rem) clamp(1.25rem, 4vw, 4.5rem); }
+    .closing-aside { display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid rgba(255,255,255,.35); }
+    .closing-label { font: 650 .75rem var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .closing-aside p { max-width: 23rem; margin: 4rem 0 0; color: rgba(255,255,255,.9); font-size: clamp(1.15rem, 2vw, 1.7rem); line-height: 1.35; letter-spacing: -.025em; }
+    .closing-aside strong { color: #fff; }
+    .closing-copy { display: flex; flex-direction: column; justify-content: space-between; gap: 4rem; }
+    .closing h2 { max-width: 12ch; margin: 0; font-size: clamp(3.2rem, 7vw, 8rem); }
+    .closing-meta { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); border-top: 1px solid rgba(255,255,255,.35); border-left: 1px solid rgba(255,255,255,.35); }
+    .closing-meta span { min-height: 5rem; display: flex; align-items: flex-end; padding: .8rem; border-right: 1px solid rgba(255,255,255,.35); border-bottom: 1px solid rgba(255,255,255,.35); color: rgba(255,255,255,.92); font: 650 .7rem var(--mono); letter-spacing: .05em; text-transform: uppercase; }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: 2rem clamp(1.25rem, 4vw, 4.5rem);
+      background: var(--ink);
+      color: #8e97a3;
+      font: 600 .75rem var(--mono);
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+    .surface, .principle, .control, .gate-item, .unit {
+      transition: background-color .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
+    .back-top {
+      position: fixed;
+      right: max(1rem, env(safe-area-inset-right));
+      bottom: max(1rem, env(safe-area-inset-bottom));
+      z-index: 35;
+      width: 3rem;
+      height: 3rem;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(125,163,255,.62);
+      background: rgba(5,7,10,.88);
+      color: #fff;
+      text-decoration: none;
+      box-shadow: 0 .8rem 2rem rgba(0,0,0,.28);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(.75rem);
+      transition: opacity .2s ease, transform .2s ease, border-color .2s ease;
+    }
+    .back-top:hover, .back-top:focus-visible { border-color: #a9c7ff; }
+    .back-top.is-visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
+    @media (hover: hover) and (pointer: fine) {
+      .hero-scroll:hover::after { transform: translateY(.2rem); }
+      .surface:hover { background: #0b1019; box-shadow: inset 3px 0 #1457ff; }
+      .principle:hover, .gate-item:hover { background: #f7f9fd; box-shadow: inset 0 3px #1457ff; }
+      .control:hover { background: #121722; box-shadow: inset 0 3px #1457ff; }
+      .unit:hover { border-color: #7da3ff; background: #f6f8ff; }
+      .back-top.is-visible:hover { transform: translateY(-.18rem); }
+    }
+
+    @media (max-width: 1050px) {
+      .hero-copy { width: min(48rem, 80vw); }
+      .system-evidence { grid-template-columns: 1fr; }
+      .product-wedge { grid-template-columns: 1fr; }
+      .product-copy { border-right: 0; border-bottom: 1px solid var(--line-dark); }
+      .band { grid-template-columns: repeat(2,1fr); }
+      .band div:nth-child(2) { border-right: 0; }
+      .band div:nth-child(-n+2) { border-bottom: 1px solid var(--line-dark); }
+      .gates { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 760px) {
+      header { grid-template-columns: 1fr auto; grid-template-rows: 4.6rem auto; min-height: 7.6rem; padding-bottom: .7rem; }
+      section[id], h1[id], h2[id] { scroll-margin-top: 8.35rem; }
+      .header-type { justify-self: end; font-size: 0; gap: 0; }
+      .header-type img { width: 2.45rem; height: auto; max-height: 3.45rem; }
+      nav { grid-column: 1 / -1; justify-self: stretch; gap: 1.2rem; overflow-x: auto; overscroll-behavior-inline: contain; padding: .1rem .15rem .45rem; scrollbar-width: none; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; }
+      nav::-webkit-scrollbar { display: none; }
+      nav a { flex: 0 0 auto; font-size: .75rem; text-transform: uppercase; letter-spacing: .04em; scroll-snap-align: start; }
+      header.is-scrolled { grid-template-rows: 3.65rem auto; min-height: 6.55rem; padding-bottom: .45rem; }
+      header.is-scrolled .brand-mark { width: 1.95rem; height: 1.95rem; font-size: .66rem; }
+      header.is-scrolled .header-type img { width: 2.05rem; max-height: 2.8rem; }
+      h1 { font-size: clamp(3.65rem, 17.5vw, 5.75rem); }
+      .hero {
+        background-color: #05070a;
+        background-image: none;
+      }
+      .hero-copy {
+        width: 100%;
+        min-height: auto;
+        padding-top: 9.25rem;
+        padding-bottom: 1.75rem;
+        background: none;
+      }
+      .hero-art {
+        display: block;
+        flex: 0 0 auto;
+        height: clamp(25rem, 52svh, 33rem);
+        margin: 1.25rem -1.25rem 1.75rem;
+        border-block: 1px solid rgba(255,255,255,.12);
+        background:
+          linear-gradient(180deg, #05070a 0%, rgba(5,7,10,0) 14%, rgba(5,7,10,0) 82%, #05070a 100%),
+          linear-gradient(90deg, rgba(5,7,10,.38) 0%, rgba(5,7,10,.06) 38%, rgba(5,7,10,0) 100%),
+          var(--hero-art) right center / auto 100% no-repeat;
+        background-color: #05070a;
+      }
+      .surface { grid-template-columns: 3rem 1fr; }
+      .surface strong { grid-column: 2; }
+      .hero-foot { flex-direction: column; gap: .5rem; margin-top: 0; }
+      .section { padding-block: 4.5rem; }
+      .section-head { grid-template-columns: 1fr; gap: 1.25rem; margin-bottom: 3rem; }
+      .principles { grid-template-columns: 1fr; }
+      .principle { min-height: 14rem; }
+      .shift { grid-template-columns: 1fr; }
+      .shift-side { min-height: 9rem; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.35); }
+      .shift-side strong { margin-top: 2rem; }
+      .shift-main { padding-block: 4.5rem; }
+      .shift-main h2 { font-size: clamp(3.25rem, 15vw, 5.25rem); }
+      .authority-table { min-width: 48rem; }
+      .table-wrap { overflow-x: auto; overscroll-behavior-inline: contain; scrollbar-width: thin; -webkit-overflow-scrolling: touch; touch-action: pan-x pan-y; }
+      .control-grid { grid-template-columns: 1fr; }
+      .control { min-height: 12.5rem; }
+      .control h3 { margin-top: 2.25rem; }
+      .status-row { grid-template-columns: 1fr auto; gap: 1rem; padding-block: 1.4rem; }
+      .status-row p { grid-column: 1 / -1; grid-row: 2; }
+      .gate-item { min-height: 15rem; }
+      .gate-item::before { margin-bottom: 3rem; }
+      .closing { grid-template-columns: 1fr; }
+      .closing-aside { min-height: 17rem; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.35); }
+      .closing h2 { min-height: 46svh; display: flex; align-items: center; }
+    }
+    @media (max-width: 540px) {
+      .band div { min-height: 6.4rem; padding: 1rem; }
+      .band b { font-size: .88rem; }
+      .band span { font-size: .66rem; line-height: 1.45; }
+      .diagram-row { grid-template-columns: 5.4rem 1fr; }
+      .diagram-content { flex-direction: column; align-items: stretch; }
+      .unit { min-height: 3.5rem; }
+      .gate-item { padding: 1.05rem; }
+      .gate-item h3 { font-size: 1.05rem; }
+      .gate-item p { font-size: .84rem; }
+      .shift-list { grid-template-columns: 1fr; }
+      .closing-meta { grid-template-columns: 1fr; }
+      footer { flex-direction: column; }
+    }
+    @media (max-width: 360px) {
+      header { padding-inline: 1rem; }
+      nav { gap: 1rem; }
+      .hero-copy { padding-inline: 1rem; }
+      .hero-art { margin-inline: -1rem; }
+      h1 { font-size: 3.45rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      header, .topline::after, nav a::after, .hero-scroll::after, .back-top, .surface, .principle, .control, .gate-item, .unit { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#content">Gå til indhold</a>
+  <div class="topline" aria-hidden="true"></div>
+  <header>
+    <a class="brand" href="#top" aria-label="ModelRig — til toppen"><span class="brand-mark">MR</span><span>ModelRig</span></a>
+    <div class="header-type"><img src="assets/kaliv-ankh-transparent.webp" alt="" width="1054" height="1421" decoding="async" /><span><strong>Kaliv</strong> / embodiment layer</span></div>
+    <nav aria-label="Primær navigation"><a href="#architecture">Arkitektur</a><a href="#kaliv">Kaliv</a><a href="#control">Kontrol</a><a href="#status">Status</a></nav>
+  </header>
+
+  <main id="content" tabindex="-1">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div>
+          <p class="eyebrow">Fundamentet efter chatbotten</p>
+          <h1 id="hero-title" tabindex="-1">Vi bygger AI, der kan bestå.</h1>
+          <p class="lead">ModelRig flytter AI fra isolerede sessioner til én vedvarende, lokalt ejet og kropsliggjort intelligens — med hukommelse, tid, perception og handling under eksplicit kontrol.</p>
+        </div>
+        <div class="hero-art" aria-hidden="true"></div>
+        <div class="hero-foot"><span>Local-first · Model-agnostic · Embodied</span><a class="hero-scroll" href="#shift-title">Se systemet</a></div>
+      </div>
+
+    </section>
+
+    <div class="band" role="list" aria-label="ModelRigs designinvarianter">
+      <div role="listitem"><b>Local-first</b><span>Dataklasse afgør routing</span></div>
+      <div role="listitem"><b>Fail-closed</b><span>Ingen uautoriserede writes</span></div>
+      <div role="listitem"><b>Auditable</b><span>Eksterne kald er sporbare</span></div>
+      <div role="listitem"><b>Model-agnostic</b><span>LLM’en kan udskiftes</span></div>
+    </div>
+
+    <section class="shift" aria-labelledby="shift-title">
+      <div class="shift-side"><span>00 / Kategoriskiftet</span><strong>Ikke en wrapper. Ikke en persona-prompt. Ikke endnu et chatvindue.</strong></div>
+      <div class="shift-main">
+        <h2 id="shift-title" tabindex="-1">Fra session til eksistens.</h2>
+        <p>Nutidens AI nulstilles, når vinduet lukker. ModelRig bygger et andet fundament: kontinuitet uden for modellen, hukommelse med dokumenteret oprindelse, sanser med tydelig autoritet og en krop, der kan opleves på tværs af virkeligheder.</p>
+        <div class="shift-list" role="list" aria-label="Skiftet fra traditionelle AI-systemer til ModelRig">
+          <div role="listitem"><span>01</span><b>Fra kontekstvindue til vedvarende tilstand</b></div>
+          <div role="listitem"><span>02</span><b>Fra leverandørmodel til udskiftelig kognition</b></div>
+          <div role="listitem"><span>03</span><b>Fra cloud-afhængighed til lokalt ejerskab</b></div>
+          <div role="listitem"><span>04</span><b>Fra tekstinterface til sansning og krop</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white" id="architecture" aria-labelledby="architecture-title">
+      <div class="section-head">
+        <div class="section-label"><strong>01</strong> / Systembevis</div>
+        <div><h2 id="architecture-title" tabindex="-1">Det afgørende øjeblik er konkret.</h2><p>ModelRig skal ikke vurderes på en chatbot-demo. Systemet består først, når den samme person kan sanse, huske, forstå, handle og erfare resultatet som ét sammenhængende loop.</p></div>
+      </div>
+      <div class="system-evidence">
+        <div class="hero-system" role="group" aria-label="ModelRigs overordnede systemarkitektur">
+          <div class="diagram-head"><span>Autoritativ arkitektur</span><span>Ansvarsgrænser vist</span></div>
+          <div class="diagram">
+            <div class="diagram-row"><div class="diagram-stage">Perception<br>& input</div><div class="diagram-content"><div class="unit"><strong>VisionRig</strong><span>Perception authority</span></div><div class="unit"><strong>Chat + Clock</strong><span>Human / temporal input</span></div></div></div>
+            <div class="diagram-row"><div class="diagram-stage">Persistent<br>state</div><div class="diagram-content"><div class="unit core"><strong>Consciousness Core</strong><span>Self · world · time · continuity</span></div><div class="unit"><strong>Memory 4</strong><span>Autobiographical memory</span></div></div></div>
+            <div class="diagram-row"><div class="diagram-stage">Cognition<br>& policy</div><div class="diagram-content"><div class="unit"><strong>ThoughtEngine</strong><span>Replaceable cognition</span></div><div class="unit"><strong>Policy Gate</strong><span>Admission / authorization</span></div></div></div>
+            <div class="diagram-row"><div class="diagram-stage">Action &<br>embodiment</div><div class="diagram-content"><div class="unit"><strong>Agent 3</strong><span>Execution authority</span></div><div class="unit"><strong>VoiceRig</strong><span>Voice authority</span></div><div class="unit"><strong>BodyRig + Kaliv</strong><span>Body / manifestation</span></div></div></div>
+          </div>
+          <p class="diagram-note">Ingen pil er implicit: hændelser valideres, tilstandsovergange logges, og handlinger passerer reglerne før eksekvering.</p>
+        </div>
+        <aside class="acceptance">
+          <div class="acceptance-head"><span>Nordstjerne / acceptkriterium</span><h3>Én ubrudt oplevelse</h3></div>
+          <ol>
+            <li>VisionRig registrerer personen og rummet.</li>
+            <li>Memory 4 genkalder relevant fælles historik.</li>
+            <li>Consciousness Core forstår nuet i tid og kontekst.</li>
+            <li>ThoughtEngine foreslår en respons uden at eje tilstanden.</li>
+            <li>VoiceRig og BodyRig udtrykker samme person.</li>
+            <li>Agent 3 handler inden for eksplicitte regler.</li>
+            <li>Resultatet observeres og bliver ny erfaring.</li>
+          </ol>
+          <p class="acceptance-foot">Det er dén kæde — på rigtig hardware, under reel drift — som gør projektet kategorisk anderledes.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="product-wedge" id="kaliv" aria-labelledby="kaliv-title">
+      <div class="product-copy">
+        <div class="section-label"><strong>02</strong> / Første produkt</div>
+        <div class="product-brand"><img src="assets/kaliv-ankh-transparent.webp" alt="" width="1054" height="1421" loading="lazy" decoding="async" /><span>Kaliv</span></div>
+        <h2 id="kaliv-title" tabindex="-1">Én person. Tre virkeligheder.</h2>
+        <p>Kaliv er den første konkrete manifestation af ModelRig: en vedvarende personlig AI, der ikke bor i et chatvindue, men følger samme identitet gennem arbejde, hverdag og rumlig tilstedeværelse.</p>
+        <span class="product-note">Første produktspor · fysisk kvalificering i gang</span>
+      </div>
+      <div class="surfaces" role="list" aria-label="Kalivs tre produktflader">
+        <article class="surface" role="listitem"><span class="surface-num">01</span><div><h3>Windows</h3><p>Arbejde, værktøjer, research, hukommelse og kontrolleret handling.</p></div><strong>Arbejder</strong></article>
+        <article class="surface" role="listitem"><span class="surface-num">02</span><div><h3>Android</h3><p>Kontinuitet i hverdagen, lokal stemme og adgang til samme personlige tilstand.</p></div><strong>Følger</strong></article>
+        <article class="surface" role="listitem"><span class="surface-num">03</span><div><h3>Quest / Kaliv VR</h3><p>Krop, blik, bevægelse og tilstedeværelse i et delt rum.</p></div><strong>Kropsliggør</strong></article>
+      </div>
+    </section>
+
+    <section class="section white" aria-labelledby="principles-title">
+      <div class="section-head">
+        <div class="section-label"><strong>03</strong> / Arkitektur</div>
+        <div><h2 id="principles-title" tabindex="-1">Ambitionen kræver en ny arkitektur.</h2><p>Det kan ikke bygges som én stor model. Systemet er opdelt efter autoritet, så intelligens kan vokse uden at kontrollen forsvinder.</p></div>
+      </div>
+      <div class="principles" role="list">
+        <article class="principle" role="listitem"><span class="number">01 / STATE</span><div><h3>Identitet ligger uden for modellen.</h3><p>SelfState, WorldState, tid, opmærksomhed og kontinuitet samles i Consciousness Core. En modelopgradering ændrer evner — ikke person.</p></div></article>
+        <article class="principle" role="listitem"><span class="number">02 / MEMORY</span><div><h3>Hukommelse har dokumenteret oprindelse.</h3><p>Memory 4 ejer den autobiografiske genkaldelse. Modellen får relevant kontekst, men kan ikke frit omskrive historikken.</p></div></article>
+        <article class="principle" role="listitem"><span class="number">03 / ACTION</span><div><h3>Intention er ikke tilladelse.</h3><p>Agent 3 kan kun eksekvere efter reglerne. Adgang, dataklasse, budget og skrivemandat er eksplicitte kontrakter.</p></div></article>
+        <article class="principle" role="listitem"><span class="number">04 / EMBODIMENT</span><div><h3>Samme person på alle flader.</h3><p>VoiceRig, BodyRig og Kaliv manifesterer den samme vedvarende identitet på Windows, Android og i VR.</p></div></article>
+      </div>
+    </section>
+
+    <section class="section dark" aria-labelledby="runtime-title">
+      <div class="section-head">
+        <div class="section-label"><strong>04</strong> / Driftsloop</div>
+        <div><h2 id="runtime-title" tabindex="-1">Fra observation til verificeret resultat.</h2><p>Det lukkede loop skelner mellem det, systemet havde til hensigt, det der blev udført, og det miljøet bagefter viste.</p></div>
+      </div>
+      <div class="flow" role="list" tabindex="0" aria-label="Runtime-flow fra perception til observeret resultat. Kan rulles vandret på små skærme.">
+        <div class="flow-step" role="listitem"><em>01</em><b>Perception</b></div><div class="flow-step" role="listitem"><em>02</em><b>Admission</b></div><div class="flow-step" role="listitem"><em>03</em><b>WorldEvidence</b></div><div class="flow-step active" role="listitem"><em>04</em><b>WorldState</b></div><div class="flow-step" role="listitem"><em>05</em><b>Thought</b></div><div class="flow-step" role="listitem"><em>06</em><b>Action</b></div><div class="flow-step" role="listitem"><em>07</em><b>Observed result</b></div>
+      </div>
+      <p class="flow-caption">VisionRig leverer afledt evidens. Consciousness Core opdaterer den oplevede tilstand. ThoughtEngine rådgiver. Agent 3 eksekverer. Resultatet føres tilbage som ny evidens.</p>
+    </section>
+
+    <section class="section white" id="control" aria-labelledby="control-title">
+      <div class="section-head">
+        <div class="section-label"><strong>05</strong> / Autoritet</div>
+        <div><h2 id="control-title" tabindex="-1">Kontrol er en del af datamodellen.</h2><p>Grænserne er ikke promptinstruktioner. De er systemkontrakter, testbare policies og fail-closed aktivering.</p></div>
+      </div>
+      <div class="table-wrap" role="region" tabindex="0" aria-label="Ansvarstabel. Kan rulles vandret på små skærme.">
+        <table class="authority-table">
+          <caption class="sr-only">ModelRigs delsystemer, deres autoritet, input og eksplicitte ansvarsgrænser.</caption>
+          <thead><tr><th scope="col">Delsystem</th><th scope="col">Autoritativ for</th><th scope="col">Modtager</th><th scope="col">Må ikke eje</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Consciousness Core</th><td>Selv, verden, tid, kontinuitet og opmærksomhed</td><td>Evidens, genkaldelse, mål og modeloutput</td><td class="boundary">Direkte værktøjsudførelse</td></tr>
+            <tr><th scope="row">Memory 4</th><td>Autobiografisk hukommelse og dokumenteret oprindelse</td><td>Godkendte episoder og kontekst</td><td class="boundary">Aktuel sensorisk sandhed</td></tr>
+            <tr><th scope="row">ThoughtEngine</th><td>Kognitive forslag i den aktuelle cyklus</td><td>Tilstand, prompt og relevant genkaldelse</td><td class="boundary">Identitet, permanent tilstand eller adgang</td></tr>
+            <tr><th scope="row">Agent 3</th><td>Regelgodkendt eksekvering</td><td>Godkendt intention og værktøjskontrakter</td><td class="boundary">Egne mål eller skjulte skrivninger</td></tr>
+            <tr><th scope="row">VisionRig</th><td>Visuel perception og sensorstatus</td><td>Kamera, Kinect og adaptere</td><td class="boundary">Varig betydning eller identitet</td></tr>
+            <tr><th scope="row">VoiceRig</th><td>Stemme, prosodi og timing</td><td>Intention, tekst og personprofil</td><td class="boundary">Personlighed eller samtalemål</td></tr>
+            <tr><th scope="row">BodyRig</th><td>Krop, geometri, bevægelse og lighed</td><td>Personprofil og tilsigtet udtryk</td><td class="boundary">Hele personligheden</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section dark" aria-labelledby="security-title">
+      <div class="section-head">
+        <div class="section-label"><strong>06</strong> / Sikkerhed</div>
+        <div><h2 id="security-title" tabindex="-1">Bygget til kontrolleret autonomi.</h2><p>ModelRig må gerne være kapabelt. Det må ikke være uigennemsigtigt.</p></div>
+      </div>
+      <div class="control-grid" role="list">
+        <article class="control" role="listitem"><span>Adgang</span><h3>ToolGate</h3><p>Værktøjer og skrivninger kræver eksplicit mandat og regelgodkendelse.</p></article>
+        <article class="control" role="listitem"><span>Aktivering</span><h3>Fail-closed</h3><p>Nye evner starter deaktiveret og åbnes først efter exact-head-evidens.</p></article>
+        <article class="control" role="listitem"><span>Sporbarhed</span><h3>Audit</h3><p>Eksterne kald, beslutningsgrundlag og resultater kan spores tilbage.</p></article>
+        <article class="control" role="listitem"><span>Data</span><h3>Local-first routing</h3><p>Intent og dataklasse afgøres lokalt før eventuel cloud-routing.</p></article>
+        <article class="control" role="listitem"><span>Modeller</span><h3>Replaceable cognition</h3><p>ThoughtEngine kan skiftes uden at flytte autoritet eller vedvarende tilstand.</p></article>
+        <article class="control" role="listitem"><span>Drift</span><h3>Crash-correct execution</h3><p>Scheduler og agentspor er designet til en synlig, genoptagelig opgavelivscyklus.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="status" aria-labelledby="status-title">
+      <div class="section-head">
+        <div class="section-label"><strong>07</strong> / Status</div>
+        <div><h2 id="status-title" tabindex="-1">Integreret er ikke det samme som bevist.</h2><p>Status adskiller software, der er landet, fra adfærd der er kvalificeret på faktisk hardware. Det er en bevidst del af projektets definition af færdig.</p></div>
+      </div>
+      <div class="status-list" role="list">
+        <article class="status-row" role="listitem"><h3>ModelRig</h3><p>Control plane, policy, RAG, audit, scheduler og klientintegration er samlet.</p><span class="status integrated">Integreret</span></article>
+        <article class="status-row" role="listitem"><h3>Consciousness Core</h3><p>Chat→Core, exact-event cognition og same-turn guidance er landet. Kontrolleret produktionsaktivering mangler.</p><span class="status guarded">Kontrolleret</span></article>
+        <article class="status-row" role="listitem"><h3>VisionRig</h3><p>PerceptionEvents, admission og health er integreret. Kamera-/Kinect-kæden mangler fysisk accept.</p><span class="status gate">Hardware-gate</span></article>
+        <article class="status-row" role="listitem"><h3>VoiceRig</h3><p>Stemmegrænsen og den lokale danske stemmepipeline er stabil.</p><span class="status integrated">Stabil</span></article>
+        <article class="status-row" role="listitem"><h3>BodyRig</h3><p>Person Studio og softwarepipen er langt fremme. Fysisk lighed er stadig acceptkriteriet.</p><span class="status gate">Accept</span></article>
+        <article class="status-row" role="listitem"><h3>Kaliv VR</h3><p>Unity/OpenXR og rendering-loopet er integreret. Quest, latency og soak-test står tilbage.</p><span class="status gate">Enhedsgate</span></article>
+      </div>
+    </section>
+
+    <section class="section white" aria-labelledby="qualification-title">
+      <div class="section-head">
+        <div class="section-label"><strong>08</strong> / Kvalificering</div>
+        <div><h2 id="qualification-title" tabindex="-1">Det, der skal bevises før produktionsdrift.</h2><p>Projektet er først færdigt, når hele systemet består som én person under realistisk drift — ikke når endnu en komponent kan demonstreres isoleret.</p></div>
+      </div>
+      <div class="gates" role="list">
+        <article class="gate-item" role="listitem"><h3>Kontrolleret Core-aktivering</h3><p>Live-aktivering, genstart og modelskift uden tab af session eller kontinuitet.</p></article>
+        <article class="gate-item" role="listitem"><h3>Fysisk perception</h3><p>Kamera og Kinect gennem hele VisionRig→WorldState-kæden med exact-head evidens.</p></article>
+        <article class="gate-item" role="listitem"><h3>Én vedvarende person</h3><p>Identitet, stemme, krop og adfærd gennem Windows, Android og Quest.</p></article>
+        <article class="gate-item" role="listitem"><h3>Driftsbevis</h3><p>End-to-end latency, længere soak-test, cross-repo manifest og branch protection.</p></article>
+      </div>
+    </section>
+
+    <section class="closing" aria-labelledby="closing-title">
+      <div class="closing-aside"><span class="closing-label">09 / ModelRig-tesen</span><p>ModelRig er infrastrukturen.<br /><strong>Kaliv er personen.</strong></p></div>
+      <div class="closing-copy">
+        <h2 id="closing-title" tabindex="-1">Vi bygger ikke en bedre chatbot. Vi bygger det, der kommer efter.</h2>
+        <div class="closing-meta" role="list" aria-label="ModelRigs fire grundegenskaber"><span role="listitem">Vedvarende hukommelse</span><span role="listitem">Udskiftelig intelligens</span><span role="listitem">Kontrolleret handling</span><span role="listitem">Fysisk tilstedeværelse</span></div>
+      </div>
+    </section>
+  </main>
+  <footer><span>ModelRig / Projektets hovedoverblik</span><span>Local-first · Stateful · Auditable · Embodied</span></footer>
+  <a class="back-top" href="#top" aria-label="Til toppen" aria-hidden="true" tabindex="-1"><span aria-hidden="true">↑</span></a>
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const line = document.querySelector('.topline');
+      const header = document.querySelector('header');
+      const backTop = document.querySelector('.back-top');
+      const content = document.querySelector('#content');
+      const skip = document.querySelector('.skip');
+      const heroTitle = document.querySelector('#hero-title');
+      const nav = document.querySelector('nav');
+      const links = [...document.querySelectorAll('nav a[href^="#"]')];
+      const sections = links.map(link => document.querySelector(link.hash)).filter(Boolean);
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const supportsObserver = 'IntersectionObserver' in window;
+
+      let scrollDistance = 0;
+      let viewportHeight = window.innerHeight;
+      let firstSectionThreshold = 0;
+      let sectionTops = [];
+      let activeId = null;
+      let activeLink = null;
+      let lastProgress = '';
+      let headerScrolled = false;
+      let backTopVisible = false;
+
+      skip.addEventListener('click', () => {
+        requestAnimationFrame(() => content.focus({ preventScroll: true }));
+      });
+
+      backTop.addEventListener('click', () => {
+        requestAnimationFrame(() => heroTitle.focus({ preventScroll: true }));
+      });
+
+      const focusAnchorDestination = anchor => {
+        const destination = document.querySelector(anchor.hash);
+        if (!destination) return;
+        const labelId = destination.getAttribute('aria-labelledby')?.trim().split(/\s+/)[0];
+        const focusTarget = labelId ? document.getElementById(labelId) : destination;
+        requestAnimationFrame(() => {
+          if (typeof focusTarget?.focus === 'function') focusTarget.focus({ preventScroll: true });
+        });
+      };
+
+      [document.querySelector('.hero-scroll'), ...links].filter(Boolean).forEach(anchor => {
+        anchor.addEventListener('click', () => focusAnchorDestination(anchor));
+      });
+
+      const measureLayout = () => {
+        viewportHeight = window.innerHeight;
+        scrollDistance = Math.max(0, root.scrollHeight - viewportHeight);
+        sectionTops = sections.map(section => section.offsetTop);
+        firstSectionThreshold = sections.length
+          ? sections[0].offsetTop - viewportHeight * .35 - header.offsetHeight
+          : 0;
+      };
+
+      const revealActiveLink = link => {
+        if (!link || nav.scrollWidth <= nav.clientWidth + 1) return;
+        const gutter = 10;
+        const left = link.offsetLeft;
+        const right = left + link.offsetWidth;
+        const visibleLeft = nav.scrollLeft + gutter;
+        const visibleRight = nav.scrollLeft + nav.clientWidth - gutter;
+        if (left < visibleLeft || right > visibleRight) {
+          const target = left < visibleLeft ? left - gutter : right - nav.clientWidth + gutter;
+          if (typeof nav.scrollTo === 'function') {
+            nav.scrollTo({ left: target, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+          } else nav.scrollLeft = target;
+        }
+      };
+
+      const setActive = id => {
+        if (id === activeId) return;
+        activeId = id;
+        activeLink = null;
+        links.forEach(link => {
+          const active = link.hash === '#' + id;
+          link.classList.toggle('is-active', active);
+          if (active) {
+            activeLink = link;
+            link.setAttribute('aria-current', 'location');
+          }
+          else link.removeAttribute('aria-current');
+        });
+        revealActiveLink(activeLink);
+      };
+
+      const updateProgress = () => {
+        const progress = scrollDistance > 0
+          ? Math.min(100, Math.max(9, window.scrollY / scrollDistance * 100))
+          : 9;
+        const value = (Math.round(progress * 10) / 10) + '%';
+        if (value !== lastProgress) {
+          lastProgress = value;
+          line.style.setProperty('--scroll-progress', value);
+        }
+      };
+
+      const updateChrome = () => {
+        updateProgress();
+
+        const nextHeaderScrolled = window.scrollY > 48;
+        if (nextHeaderScrolled !== headerScrolled) {
+          headerScrolled = nextHeaderScrolled;
+          header.classList.toggle('is-scrolled', headerScrolled);
+        }
+
+        const nextBackTopVisible = window.scrollY > viewportHeight * 1.15;
+        if (nextBackTopVisible !== backTopVisible) {
+          backTopVisible = nextBackTopVisible;
+          backTop.classList.toggle('is-visible', backTopVisible);
+          backTop.tabIndex = backTopVisible ? 0 : -1;
+          backTop.setAttribute('aria-hidden', backTopVisible ? 'false' : 'true');
+        }
+
+        if (sections.length && window.scrollY < firstSectionThreshold) setActive(null);
+
+        if (!supportsObserver && sectionTops.length) {
+          const anchor = window.scrollY + viewportHeight * .32;
+          let index = -1;
+          for (let i = 0; i < sectionTops.length && sectionTops[i] <= anchor; i += 1) index = i;
+          if (index >= 0) setActive(sections[index].id);
+        }
+      };
+
+      if (supportsObserver) {
+        const visibleSections = new Map();
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) visibleSections.set(entry.target.id, entry.intersectionRatio);
+            else visibleSections.delete(entry.target.id);
+          });
+          const visible = [...visibleSections.entries()].sort((a, b) => b[1] - a[1])[0];
+          if (visible) setActive(visible[0]);
+        }, { rootMargin: '-20% 0px -62% 0px', threshold: [0, .15, .4] });
+        sections.forEach(section => observer.observe(section));
+      }
+
+      let chromeFrame = 0;
+      const requestChromeUpdate = () => {
+        if (chromeFrame) return;
+        chromeFrame = requestAnimationFrame(() => {
+          chromeFrame = 0;
+          updateChrome();
+        });
+      };
+
+      let layoutFrame = 0;
+      const requestLayoutUpdate = () => {
+        if (layoutFrame) return;
+        layoutFrame = requestAnimationFrame(() => {
+          layoutFrame = 0;
+          measureLayout();
+          updateChrome();
+          revealActiveLink(activeLink);
+        });
+      };
+
+      measureLayout();
+      updateChrome();
+      window.addEventListener('scroll', requestChromeUpdate, { passive: true });
+      window.addEventListener('resize', requestLayoutUpdate);
+      window.addEventListener('load', requestLayoutUpdate, { once: true });
+      window.addEventListener('pageshow', requestLayoutUpdate);
+      window.visualViewport?.addEventListener('resize', requestLayoutUpdate, { passive: true });
+    })();
+  </script>
+</body>
+</html>
