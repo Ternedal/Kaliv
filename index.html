@@ -55,6 +55,7 @@
       --paper: #f4f6f8;
       --white: #ffffff;
       --blue: #1457ff;
+      --blue-light: #7da3ff;
       --blue-soft: #eaf0ff;
       --muted: #5c6674;
       --line: #cfd5dc;
@@ -655,6 +656,56 @@
     .gate-item h3 { margin-bottom: .8rem; font-size: 1.18rem; }
     .gate-item p { margin: 0; color: #5c6673; font-size: .9rem; }
 
+    .faq-section { background: #070a0f; }
+    .faq-list {
+      border-top: 1px solid var(--line-dark);
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--line-dark);
+    }
+    .faq-item summary {
+      display: grid;
+      grid-template-columns: 3.5rem minmax(0,1fr) 2rem;
+      gap: clamp(1rem, 3vw, 3rem);
+      align-items: center;
+      min-height: 7.5rem;
+      padding: 1rem 0;
+      color: #fff;
+      cursor: pointer;
+      list-style: none;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-index {
+      color: var(--blue-light);
+      font: 650 .72rem var(--mono);
+      letter-spacing: .07em;
+    }
+    .faq-question {
+      max-width: 30ch;
+      font-size: clamp(1.35rem, 2.7vw, 2.65rem);
+      line-height: 1.05;
+      letter-spacing: -.045em;
+    }
+    .faq-item summary::after {
+      content: "+";
+      color: var(--blue-light);
+      font: 400 1.8rem/1 var(--mono);
+      text-align: right;
+      transition: transform .2s ease;
+    }
+    .faq-item[open] summary::after { content: "−"; }
+    .faq-item summary:hover .faq-question,
+    .faq-item summary:focus-visible .faq-question { color: var(--blue-light); }
+    .faq-item summary:focus-visible { outline: 2px solid var(--blue-light); outline-offset: .4rem; }
+    .faq-answer {
+      max-width: 48rem;
+      margin: 0 2rem 0 calc(3.5rem + clamp(1rem, 3vw, 3rem));
+      padding: 0 0 2.4rem;
+      color: #aeb5bf;
+      font-size: clamp(1rem, 1.45vw, 1.18rem);
+      line-height: 1.62;
+    }
+
     .closing {
       display: grid;
       grid-template-columns: .8fr 1.2fr;
@@ -808,6 +859,7 @@
       .status-row p { grid-column: 1 / -1; grid-row: 2; }
       .gate-item { min-height: 15rem; }
       .gate-item::before { margin-bottom: 3rem; }
+      .faq-item summary { min-height: 6.5rem; }
       .closing { grid-template-columns: 1fr; }
       .closing-aside { min-height: 17rem; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.35); }
       .closing h2 { min-height: 46svh; display: flex; align-items: center; }
@@ -825,6 +877,8 @@
       .shift-list { grid-template-columns: 1fr; }
       .continuity-step { grid-template-columns: 2.25rem 1fr; gap: 1rem; }
       .continuity-step > div { grid-column: 2; }
+      .faq-item summary { grid-template-columns: 2.25rem minmax(0,1fr) 1.5rem; gap: .75rem; }
+      .faq-answer { margin-right: 0; margin-left: 3rem; }
       .closing-meta { grid-template-columns: 1fr; }
       footer { flex-direction: column; }
     }
@@ -1035,8 +1089,41 @@
       </div>
     </section>
 
+    <section class="section dark faq-section" id="questions" aria-labelledby="questions-title">
+      <div class="section-head">
+        <div class="section-label"><strong>10</strong> / Klare svar</div>
+        <div><h2 id="questions-title" tabindex="-1">Hvad er det egentlig, vi bygger?</h2><p>ModelRig er ambitiøst. Derfor skal arkitekturen, grænserne og det, der endnu mangler at blive bevist, kunne forklares uden mystik.</p></div>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary><span class="faq-index">Q01</span><span class="faq-question">Er ModelRig en ny sprogmodel?</span></summary>
+          <p class="faq-answer">Nej. ModelRig er et lokalt kontrol- og orkestreringslag omkring modeller, hukommelse, perception og handling. ThoughtEngine kan udskiftes; den vedvarende tilstand og autoriteten bliver i systemet.</p>
+        </details>
+        <details class="faq-item">
+          <summary><span class="faq-index">Q02</span><span class="faq-question">Hvor ligger identiteten?</span></summary>
+          <p class="faq-answer">Uden for sprogmodellen. Consciousness Core samler SelfState, WorldState, tid, opmærksomhed og kontinuitet, mens Memory 4 ejer den dokumenterede autobiografiske genkaldelse. En modelændring kan løfte evnerne uden at nulstille personen.</p>
+        </details>
+        <details class="faq-item">
+          <summary><span class="faq-index">Q03</span><span class="faq-question">Er alt lokalt?</span></summary>
+          <p class="faq-answer">Systemet er local-first, ikke dogmatisk offline. Intent og dataklasse afgøres lokalt. Eksterne modeller eller tjenester bruges kun, når policy tillader det, og kaldet kan spores.</p>
+        </details>
+        <details class="faq-item">
+          <summary><span class="faq-index">Q04</span><span class="faq-question">Hvad er Kaliv?</span></summary>
+          <p class="faq-answer">Kaliv er den første konkrete person bygget på ModelRig: samme identitet, hukommelse og adfærd på tværs af Windows, Android og Quest. ModelRig er infrastrukturen; Kaliv er den oplevelse, et menneske møder.</p>
+        </details>
+        <details class="faq-item">
+          <summary><span class="faq-index">Q05</span><span class="faq-question">Hvor færdigt er projektet?</span></summary>
+          <p class="faq-answer">Softwareintegrationen er langt fremme, men projektet kaldes ikke produktionsklart endnu. Kontrolleret Core-aktivering, fysisk perception, enhedstest og længerevarende end-to-end drift er eksplicitte gates — og står åbent på siden.</p>
+        </details>
+        <details class="faq-item">
+          <summary><span class="faq-index">Q06</span><span class="faq-question">Hvorfor skal intelligensen have en krop?</span></summary>
+          <p class="faq-answer">Fordi kontinuitet ikke kun er tekst. Stemme, blik, bevægelse og rumlig tilstedeværelse gør det muligt at opleve den samme identitet på tværs af flader — og lukker loopet fra perception til handling og observeret resultat.</p>
+        </details>
+      </div>
+    </section>
+
     <section class="closing" aria-labelledby="closing-title">
-      <div class="closing-aside"><span class="closing-label">10 / ModelRig-tesen</span><p>ModelRig er infrastrukturen.<br /><strong>Kaliv er personen.</strong></p></div>
+      <div class="closing-aside"><span class="closing-label">11 / ModelRig-tesen</span><p>ModelRig er infrastrukturen.<br /><strong>Kaliv er personen.</strong></p></div>
       <div class="closing-copy">
         <h2 id="closing-title" tabindex="-1">Vi bygger ikke en bedre chatbot. Vi bygger det, der kommer efter.</h2>
         <div>
@@ -1196,7 +1283,22 @@
           ['Identitet, stemme, krop og adfærd gennem Windows, Android og Quest.', 'Identity, voice, body and behavior across Windows, Android and Quest.'],
           ['Driftsbevis', 'Operational proof'],
           ['End-to-end latency, længere soak-test, cross-repo manifest og branch protection.', 'End-to-end latency, extended soak testing, cross-repository manifest and branch protection.'],
-          ['10 / ModelRig-tesen', '10 / The ModelRig thesis'],
+          ['/ Klare svar', '/ Clear answers'],
+          ['Hvad er det egentlig, vi bygger?', 'What are we actually building?'],
+          ['ModelRig er ambitiøst. Derfor skal arkitekturen, grænserne og det, der endnu mangler at blive bevist, kunne forklares uden mystik.', 'ModelRig is ambitious. That is why its architecture, boundaries and remaining proof points must be explainable without mystique.'],
+          ['Er ModelRig en ny sprogmodel?', 'Is ModelRig a new language model?'],
+          ['Nej. ModelRig er et lokalt kontrol- og orkestreringslag omkring modeller, hukommelse, perception og handling. ThoughtEngine kan udskiftes; den vedvarende tilstand og autoriteten bliver i systemet.', 'No. ModelRig is a local control and orchestration layer around models, memory, perception and action. ThoughtEngine can be replaced; persistent state and authority remain in the system.'],
+          ['Hvor ligger identiteten?', 'Where does identity live?'],
+          ['Uden for sprogmodellen. Consciousness Core samler SelfState, WorldState, tid, opmærksomhed og kontinuitet, mens Memory 4 ejer den dokumenterede autobiografiske genkaldelse. En modelændring kan løfte evnerne uden at nulstille personen.', 'Outside the language model. Consciousness Core brings together SelfState, WorldState, time, attention and continuity, while Memory 4 owns documented autobiographical recall. A model change can improve capabilities without resetting the person.'],
+          ['Er alt lokalt?', 'Is everything local?'],
+          ['Systemet er local-first, ikke dogmatisk offline. Intent og dataklasse afgøres lokalt. Eksterne modeller eller tjenester bruges kun, når policy tillader det, og kaldet kan spores.', 'The system is local-first, not dogmatically offline. Intent and data class are resolved locally. External models or services are used only when policy permits it, and the call can be traced.'],
+          ['Hvad er Kaliv?', 'What is Kaliv?'],
+          ['Kaliv er den første konkrete person bygget på ModelRig: samme identitet, hukommelse og adfærd på tværs af Windows, Android og Quest. ModelRig er infrastrukturen; Kaliv er den oplevelse, et menneske møder.', 'Kaliv is the first concrete person built on ModelRig: the same identity, memory and behavior across Windows, Android and Quest. ModelRig is the infrastructure; Kaliv is the experience a person encounters.'],
+          ['Hvor færdigt er projektet?', 'How far along is the project?'],
+          ['Softwareintegrationen er langt fremme, men projektet kaldes ikke produktionsklart endnu. Kontrolleret Core-aktivering, fysisk perception, enhedstest og længerevarende end-to-end drift er eksplicitte gates — og står åbent på siden.', 'Software integration is well advanced, but the project is not yet described as production-ready. Controlled Core activation, physical perception, device testing and sustained end-to-end operation are explicit gates — and are stated openly on this page.'],
+          ['Hvorfor skal intelligensen have en krop?', 'Why does intelligence need a body?'],
+          ['Fordi kontinuitet ikke kun er tekst. Stemme, blik, bevægelse og rumlig tilstedeværelse gør det muligt at opleve den samme identitet på tværs af flader — og lukker loopet fra perception til handling og observeret resultat.', 'Because continuity is more than text. Voice, gaze, movement and spatial presence make it possible to experience the same identity across surfaces — and close the loop from perception to action and observed outcome.'],
+          ['11 / ModelRig-tesen', '11 / The ModelRig thesis'],
           ['ModelRig er infrastrukturen.', 'ModelRig is the infrastructure.'],
           ['Kaliv er personen.', 'Kaliv is the person.'],
           ['Vi bygger ikke en bedre chatbot. Vi bygger det, der kommer efter.', 'We are not building a better chatbot. We are building what comes next.'],
