@@ -4,11 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#05070a" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="application-name" content="ModelRig" />
+  <meta name="apple-mobile-web-app-title" content="ModelRig" />
   <meta name="description" content="ModelRig er et local-first fundament for vedvarende AI med hukommelse, perception, handling og krop under eksplicit kontrol." />
   <meta property="og:title" content="ModelRig — AI, der kan bestå" />
   <meta property="og:description" content="Et local-first fundament for vedvarende, kropsliggjort AI under eksplicit kontrol." />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="da_DK" />
+  <meta property="og:locale:alternate" content="en_US" />
   <meta property="og:site_name" content="ModelRig" />
   <meta property="og:url" content="https://ternedal.github.io/Kaliv/" />
   <meta property="og:image" content="https://ternedal.github.io/Kaliv/assets/modelrig-continuity-female-hair-1920.webp" />
@@ -22,14 +27,20 @@
   <meta name="twitter:image" content="https://ternedal.github.io/Kaliv/assets/modelrig-continuity-female-hair-1920.webp" />
   <meta name="twitter:image:alt" content="ModelRigs vedvarende AI-forløb fra kognitiv kerne til kropsliggjort intelligens" />
   <link rel="canonical" href="https://ternedal.github.io/Kaliv/" />
+  <link rel="alternate" hreflang="da" href="https://ternedal.github.io/Kaliv/" />
+  <link rel="alternate" hreflang="en" href="https://ternedal.github.io/Kaliv/?lang=en" />
+  <link rel="alternate" hreflang="x-default" href="https://ternedal.github.io/Kaliv/" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="sitemap" type="application/xml" href="sitemap.xml" />
   <title>ModelRig — AI, der kan bestå</title>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "SoftwareSourceCode",
+      "@type": "WebSite",
       "name": "ModelRig / Kaliv",
       "description": "Et local-first fundament for vedvarende, kropsliggjort AI under eksplicit kontrol.",
-      "codeRepository": "https://github.com/Ternedal/Kaliv",
+      "inLanguage": "da",
+      "sameAs": "https://github.com/Ternedal/Kaliv",
       "url": "https://ternedal.github.io/Kaliv/"
     }
   </script>
@@ -178,6 +189,27 @@
     nav a:hover::after, nav a:focus-visible::after { right: 0; }
     nav a.is-active { color: #fff; }
     nav a.is-active::after { right: 0; }
+    .lang-switch {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      gap: .18rem;
+      margin-left: .25rem;
+      padding-left: 1rem;
+      border-left: 1px solid rgba(255,255,255,.24);
+    }
+    .lang-switch a {
+      min-width: 2.15rem;
+      min-height: 2.15rem;
+      justify-content: center;
+      padding: 0 .4rem;
+      color: rgba(255,255,255,.58);
+      font: 700 .7rem var(--mono);
+      letter-spacing: .06em;
+    }
+    .lang-switch a::after { display: none; }
+    .lang-switch a:hover, .lang-switch a:focus-visible { color: #fff; }
+    .lang-switch a.is-current { background: rgba(125,163,255,.14); color: #a9c7ff; }
 
     section[id], h1[id], h2[id] { scroll-margin-top: 5.75rem; }
 
@@ -726,6 +758,7 @@
       nav { grid-column: 1 / -1; justify-self: stretch; gap: 1.2rem; overflow-x: auto; overscroll-behavior-inline: contain; padding: .1rem .15rem .45rem; scrollbar-width: none; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; }
       nav::-webkit-scrollbar { display: none; }
       nav a { flex: 0 0 auto; font-size: .75rem; text-transform: uppercase; letter-spacing: .04em; scroll-snap-align: start; }
+      .lang-switch { margin-left: 0; padding-left: .8rem; }
       header.is-scrolled { grid-template-rows: 3.65rem auto; min-height: 6.55rem; padding-bottom: .45rem; }
       header.is-scrolled .brand-mark { width: 1.95rem; height: 1.95rem; font-size: .66rem; }
       header.is-scrolled .header-type img { width: 2.05rem; max-height: 2.8rem; }
@@ -814,7 +847,7 @@
   <header>
     <a class="brand" href="#top" aria-label="ModelRig — til toppen"><span class="brand-mark">MR</span><span>ModelRig</span></a>
     <div class="header-type"><img src="assets/kaliv-ankh-transparent.webp" alt="" width="1054" height="1421" decoding="async" /><span><strong>Kaliv</strong> / embodiment layer</span></div>
-    <nav aria-label="Primær navigation"><a href="#architecture">Arkitektur</a><a href="#kaliv">Kaliv</a><a href="#control">Kontrol</a><a href="#status">Status</a><a href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer">Kode ↗</a></nav>
+    <nav aria-label="Primær navigation"><a href="#architecture">Arkitektur</a><a href="#kaliv">Kaliv</a><a href="#control">Kontrol</a><a href="#status">Status</a><a href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Se projektets GitHub-repository — åbner i ny fane">GitHub ↗</a><span class="lang-switch" aria-label="Vælg sprog"><a href="?lang=da" lang="da" data-language="da" class="is-current" aria-current="page">DA</a><a href="?lang=en" lang="en" data-language="en">EN</a></span></nav>
   </header>
 
   <main id="content" tabindex="-1">
@@ -826,7 +859,7 @@
           <p class="lead">ModelRig flytter AI fra isolerede sessioner til én vedvarende, lokalt ejet og kropsliggjort intelligens — med hukommelse, tid, perception og handling under eksplicit kontrol.</p>
         </div>
         <div class="hero-art" aria-hidden="true"></div>
-        <div class="hero-foot"><span>Local-first · Model-agnostic · Embodied</span><div class="hero-foot-actions"><a class="hero-scroll" href="#shift-title">Se systemet</a><a class="hero-source" href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer">Kildekode</a></div></div>
+        <div class="hero-foot"><span>Local-first · Model-agnostic · Embodied</span><div class="hero-foot-actions"><a class="hero-scroll" href="#shift-title">Se systemet</a><a class="hero-source" href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Se projektets GitHub-repository — åbner i ny fane">GitHub</a></div></div>
       </div>
 
     </section>
@@ -1007,16 +1040,249 @@
       <div class="closing-copy">
         <h2 id="closing-title" tabindex="-1">Vi bygger ikke en bedre chatbot. Vi bygger det, der kommer efter.</h2>
         <div>
-          <div class="closing-actions"><a class="closing-action" href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer">Følg udviklingen</a><a class="closing-action secondary" href="#architecture">Udforsk arkitekturen</a></div>
+          <div class="closing-actions"><a class="closing-action" href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Følg udviklingen på GitHub — åbner i ny fane">Følg udviklingen</a><a class="closing-action secondary" href="#architecture">Udforsk arkitekturen</a></div>
           <div class="closing-meta" role="list" aria-label="ModelRigs fire grundegenskaber"><span role="listitem">Vedvarende hukommelse</span><span role="listitem">Udskiftelig intelligens</span><span role="listitem">Kontrolleret handling</span><span role="listitem">Fysisk tilstedeværelse</span></div>
         </div>
       </div>
     </section>
   </main>
-  <footer><span>ModelRig / Projektets hovedoverblik</span><a href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer">GitHub / Ternedal/Kaliv ↗</a></footer>
+  <footer><span>ModelRig / Projektets hovedoverblik</span><a href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Åbn Ternedal/Kaliv på GitHub — åbner i ny fane">GitHub / Ternedal/Kaliv ↗</a></footer>
   <a class="back-top" href="#top" aria-label="Til toppen" aria-hidden="true" tabindex="-1"><span aria-hidden="true">↑</span></a>
   <script>
     (() => {
+      const requestedLanguage = new URLSearchParams(window.location.search).get('lang');
+      const isEnglish = requestedLanguage === 'en';
+
+      if (isEnglish) {
+        const english = new Map([
+          ['Gå til indhold', 'Skip to content'],
+          ['Arkitektur', 'Architecture'],
+          ['/ Arkitektur', '/ Architecture'],
+          ['Kontrol', 'Control'],
+          ['Fundamentet efter chatbotten', 'The foundation beyond the chatbot'],
+          ['Vi bygger AI, der kan bestå.', 'We build AI that endures.'],
+          ['ModelRig flytter AI fra isolerede sessioner til én vedvarende, lokalt ejet og kropsliggjort intelligens — med hukommelse, tid, perception og handling under eksplicit kontrol.', 'ModelRig moves AI beyond isolated sessions into one persistent, locally owned and embodied intelligence — with memory, time, perception and action under explicit control.'],
+          ['Se systemet', 'Explore the system'],
+          ['Dataklasse afgør routing', 'Data class determines routing'],
+          ['Ingen uautoriserede writes', 'No unauthorized writes'],
+          ['Eksterne kald er sporbare', 'External calls are traceable'],
+          ['LLM’en kan udskiftes', 'The LLM can be replaced'],
+          ['00 / Kategoriskiftet', '00 / The category shift'],
+          ['Ikke en wrapper. Ikke en persona-prompt. Ikke endnu et chatvindue.', 'Not a wrapper. Not a persona prompt. Not another chat window.'],
+          ['Fra session til eksistens.', 'From session to existence.'],
+          ['Nutidens AI nulstilles, når vinduet lukker. ModelRig bygger et andet fundament: kontinuitet uden for modellen, hukommelse med dokumenteret oprindelse, sanser med tydelig autoritet og en krop, der kan opleves på tværs af virkeligheder.', 'Today’s AI resets when the window closes. ModelRig builds a different foundation: continuity outside the model, memory with documented provenance, senses with explicit authority and a body that can be experienced across realities.'],
+          ['Fra kontekstvindue til vedvarende tilstand', 'From context window to persistent state'],
+          ['Fra leverandørmodel til udskiftelig kognition', 'From vendor model to replaceable cognition'],
+          ['Fra cloud-afhængighed til lokalt ejerskab', 'From cloud dependency to local ownership'],
+          ['Fra tekstinterface til sansning og krop', 'From text interface to perception and embodiment'],
+          ['/ Systembevis', '/ System proof'],
+          ['Det afgørende øjeblik er konkret.', 'The defining moment is concrete.'],
+          ['ModelRig skal ikke vurderes på en chatbot-demo. Systemet består først, når den samme person kan sanse, huske, forstå, handle og erfare resultatet som ét sammenhængende loop.', 'ModelRig should not be judged by a chatbot demo. The system endures only when the same person can perceive, remember, understand, act and experience the outcome as one coherent loop.'],
+          ['Autoritativ arkitektur', 'Authoritative architecture'],
+          ['Ansvarsgrænser vist', 'Boundaries made explicit'],
+          ['Ingen pil er implicit: hændelser valideres, tilstandsovergange logges, og handlinger passerer reglerne før eksekvering.', 'No arrow is implicit: events are validated, state transitions are logged, and actions pass policy before execution.'],
+          ['Nordstjerne / acceptkriterium', 'North Star / acceptance criterion'],
+          ['Én ubrudt oplevelse', 'One uninterrupted experience'],
+          ['VisionRig registrerer personen og rummet.', 'VisionRig registers the person and the room.'],
+          ['Memory 4 genkalder relevant fælles historik.', 'Memory 4 recalls relevant shared history.'],
+          ['Consciousness Core forstår nuet i tid og kontekst.', 'Consciousness Core understands the present in time and context.'],
+          ['ThoughtEngine foreslår en respons uden at eje tilstanden.', 'ThoughtEngine proposes a response without owning the state.'],
+          ['VoiceRig og BodyRig udtrykker samme person.', 'VoiceRig and BodyRig express the same person.'],
+          ['Agent 3 handler inden for eksplicitte regler.', 'Agent 3 acts within explicit rules.'],
+          ['Resultatet observeres og bliver ny erfaring.', 'The outcome is observed and becomes new experience.'],
+          ['Det er dén kæde — på rigtig hardware, under reel drift — som gør projektet kategorisk anderledes.', 'That chain — on real hardware, under real operating conditions — is what makes the project categorically different.'],
+          ['/ Første produkt', '/ First product'],
+          ['Én person. Tre virkeligheder.', 'One person. Three realities.'],
+          ['Kaliv er den første konkrete manifestation af ModelRig: en vedvarende personlig AI, der ikke bor i et chatvindue, men følger samme identitet gennem arbejde, hverdag og rumlig tilstedeværelse.', 'Kaliv is the first concrete manifestation of ModelRig: a persistent personal AI that does not live in a chat window, but carries the same identity through work, daily life and spatial presence.'],
+          ['Første produktspor · fysisk kvalificering i gang', 'First product track · physical qualification in progress'],
+          ['Arbejde, værktøjer, research, hukommelse og kontrolleret handling.', 'Work, tools, research, memory and controlled action.'],
+          ['Arbejder', 'Works'],
+          ['Kontinuitet i hverdagen, lokal stemme og adgang til samme personlige tilstand.', 'Continuity throughout the day, local voice and access to the same personal state.'],
+          ['Følger', 'Follows'],
+          ['Krop, blik, bevægelse og tilstedeværelse i et delt rum.', 'Body, gaze, movement and presence in a shared space.'],
+          ['Kropsliggør', 'Embodies'],
+          ['03 / Kontinuitetsløftet', '03 / The continuity promise'],
+          ['Du skal ikke starte forfra.', 'You should not have to start over.'],
+          ['Værdien opstår ikke i én imponerende samtale. Den opstår, når relationen, arbejdet og erfaringen fortsætter — selv når model, enhed og virkelighed skifter.', 'The value is not created in one impressive conversation. It emerges when the relationship, the work and the experience continue — even as the model, device and reality change.'],
+          ['Planen opstår.', 'The plan takes shape.'],
+          ['Kaliv hjælper med et mål og forstår de beslutninger, der bliver taget undervejs.', 'Kaliv helps pursue a goal and understands the decisions made along the way.'],
+          ['Dagen fortsætter.', 'The day continues.'],
+          ['Samme tilstand følger med.', 'The same state carries forward.'],
+          ['Ingen genfortælling, ingen ny persona, ingen tabt kontekst.', 'No recap, no new persona, no lost context.'],
+          ['Personen træder frem.', 'The person steps forward.'],
+          ['Stemme, blik og krop udtrykker den samme identitet i et rumligt møde.', 'Voice, gaze and body express the same identity in a spatial encounter.'],
+          ['Oplevelsen består.', 'The experience endures.'],
+          ['Det observerede resultat bliver dokumenteret erfaring, som næste øjeblik kan bygge videre på.', 'The observed outcome becomes documented experience that the next moment can build upon.'],
+          ['Ambitionen kræver en ny arkitektur.', 'The ambition demands a new architecture.'],
+          ['Det kan ikke bygges som én stor model. Systemet er opdelt efter autoritet, så intelligens kan vokse uden at kontrollen forsvinder.', 'It cannot be built as one giant model. The system is divided by authority, allowing intelligence to grow without losing control.'],
+          ['Identitet ligger uden for modellen.', 'Identity lives outside the model.'],
+          ['SelfState, WorldState, tid, opmærksomhed og kontinuitet samles i Consciousness Core. En modelopgradering ændrer evner — ikke person.', 'SelfState, WorldState, time, attention and continuity converge in Consciousness Core. A model upgrade changes capabilities — not the person.'],
+          ['Hukommelse har dokumenteret oprindelse.', 'Memory has documented provenance.'],
+          ['Memory 4 ejer den autobiografiske genkaldelse. Modellen får relevant kontekst, men kan ikke frit omskrive historikken.', 'Memory 4 owns autobiographical recall. The model receives relevant context, but cannot freely rewrite history.'],
+          ['Intention er ikke tilladelse.', 'Intent is not permission.'],
+          ['Agent 3 kan kun eksekvere efter reglerne. Adgang, dataklasse, budget og skrivemandat er eksplicitte kontrakter.', 'Agent 3 can execute only after policy approval. Access, data class, budget and write authority are explicit contracts.'],
+          ['Samme person på alle flader.', 'The same person across every surface.'],
+          ['VoiceRig, BodyRig og Kaliv manifesterer den samme vedvarende identitet på Windows, Android og i VR.', 'VoiceRig, BodyRig and Kaliv manifest the same persistent identity on Windows, Android and in VR.'],
+          ['/ Driftsloop', '/ Runtime loop'],
+          ['Fra observation til verificeret resultat.', 'From observation to verified outcome.'],
+          ['Det lukkede loop skelner mellem det, systemet havde til hensigt, det der blev udført, og det miljøet bagefter viste.', 'The closed loop distinguishes between what the system intended, what was executed and what the environment subsequently revealed.'],
+          ['VisionRig leverer afledt evidens. Consciousness Core opdaterer den oplevede tilstand. ThoughtEngine rådgiver. Agent 3 eksekverer. Resultatet føres tilbage som ny evidens.', 'VisionRig provides derived evidence. Consciousness Core updates the experienced state. ThoughtEngine advises. Agent 3 executes. The outcome returns as new evidence.'],
+          ['/ Autoritet', '/ Authority'],
+          ['Kontrol er en del af datamodellen.', 'Control is part of the data model.'],
+          ['Grænserne er ikke promptinstruktioner. De er systemkontrakter, testbare policies og fail-closed aktivering.', 'The boundaries are not prompt instructions. They are system contracts, testable policies and fail-closed activation.'],
+          ['ModelRigs delsystemer, deres autoritet, input og eksplicitte ansvarsgrænser.', 'ModelRig subsystems, their authority, inputs and explicit boundaries.'],
+          ['Delsystem', 'Subsystem'],
+          ['Autoritativ for', 'Authoritative for'],
+          ['Modtager', 'Receives'],
+          ['Må ikke eje', 'Must not own'],
+          ['Selv, verden, tid, kontinuitet og opmærksomhed', 'Self, world, time, continuity and attention'],
+          ['Evidens, genkaldelse, mål og modeloutput', 'Evidence, recall, goals and model output'],
+          ['Direkte værktøjsudførelse', 'Direct tool execution'],
+          ['Autobiografisk hukommelse og dokumenteret oprindelse', 'Autobiographical memory and documented provenance'],
+          ['Godkendte episoder og kontekst', 'Approved episodes and context'],
+          ['Aktuel sensorisk sandhed', 'Current sensory truth'],
+          ['Kognitive forslag i den aktuelle cyklus', 'Cognitive proposals in the current cycle'],
+          ['Tilstand, prompt og relevant genkaldelse', 'State, prompt and relevant recall'],
+          ['Identitet, permanent tilstand eller adgang', 'Identity, persistent state or access'],
+          ['Regelgodkendt eksekvering', 'Policy-approved execution'],
+          ['Godkendt intention og værktøjskontrakter', 'Approved intent and tool contracts'],
+          ['Egne mål eller skjulte skrivninger', 'Independent goals or hidden writes'],
+          ['Visuel perception og sensorstatus', 'Visual perception and sensor status'],
+          ['Kamera, Kinect og adaptere', 'Camera, Kinect and adapters'],
+          ['Varig betydning eller identitet', 'Persistent meaning or identity'],
+          ['Stemme, prosodi og timing', 'Voice, prosody and timing'],
+          ['Intention, tekst og personprofil', 'Intent, text and person profile'],
+          ['Personlighed eller samtalemål', 'Personality or conversational goals'],
+          ['Krop, geometri, bevægelse og lighed', 'Body, geometry, movement and likeness'],
+          ['Personprofil og tilsigtet udtryk', 'Person profile and intended expression'],
+          ['Hele personligheden', 'The entire personality'],
+          ['/ Sikkerhed', '/ Safety'],
+          ['Bygget til kontrolleret autonomi.', 'Built for controlled autonomy.'],
+          ['ModelRig må gerne være kapabelt. Det må ikke være uigennemsigtigt.', 'ModelRig may be capable. It must not be opaque.'],
+          ['Adgang', 'Access'],
+          ['Værktøjer og skrivninger kræver eksplicit mandat og regelgodkendelse.', 'Tools and writes require explicit authority and policy approval.'],
+          ['Aktivering', 'Activation'],
+          ['Nye evner starter deaktiveret og åbnes først efter exact-head-evidens.', 'New capabilities start disabled and open only after exact-head evidence.'],
+          ['Sporbarhed', 'Traceability'],
+          ['Eksterne kald, beslutningsgrundlag og resultater kan spores tilbage.', 'External calls, decision grounds and outcomes can be traced.'],
+          ['Data', 'Data'],
+          ['Intent og dataklasse afgøres lokalt før eventuel cloud-routing.', 'Intent and data class are resolved locally before any cloud routing.'],
+          ['Modeller', 'Models'],
+          ['ThoughtEngine kan skiftes uden at flytte autoritet eller vedvarende tilstand.', 'ThoughtEngine can be replaced without moving authority or persistent state.'],
+          ['Drift', 'Operations'],
+          ['Scheduler og agentspor er designet til en synlig, genoptagelig opgavelivscyklus.', 'The scheduler and agent trail are designed for a visible, resumable task lifecycle.'],
+          ['Integreret er ikke det samme som bevist.', 'Integrated is not the same as proven.'],
+          ['Status adskiller software, der er landet, fra adfærd der er kvalificeret på faktisk hardware. Det er en bevidst del af projektets definition af færdig.', 'Status separates landed software from behavior qualified on real hardware. That distinction is a deliberate part of the project’s definition of done.'],
+          ['Control plane, policy, RAG, audit, scheduler og klientintegration er samlet.', 'Control plane, policy, RAG, audit, scheduler and client integration are assembled.'],
+          ['Integreret', 'Integrated'],
+          ['Chat→Core, exact-event cognition og same-turn guidance er landet. Kontrolleret produktionsaktivering mangler.', 'Chat→Core, exact-event cognition and same-turn guidance have landed. Controlled production activation remains.'],
+          ['Kontrolleret', 'Controlled'],
+          ['PerceptionEvents, admission og health er integreret. Kamera-/Kinect-kæden mangler fysisk accept.', 'PerceptionEvents, admission and health are integrated. The camera/Kinect chain still needs physical acceptance.'],
+          ['Hardware-gate', 'Hardware gate'],
+          ['Stemmegrænsen og den lokale danske stemmepipeline er stabil.', 'The voice boundary and local Danish voice pipeline are stable.'],
+          ['Stabil', 'Stable'],
+          ['Person Studio og softwarepipen er langt fremme. Fysisk lighed er stadig acceptkriteriet.', 'Person Studio and the software pipeline are well advanced. Physical likeness remains the acceptance criterion.'],
+          ['Accept', 'Acceptance'],
+          ['Unity/OpenXR og rendering-loopet er integreret. Quest, latency og soak-test står tilbage.', 'Unity/OpenXR and the rendering loop are integrated. Quest, latency and soak testing remain.'],
+          ['Enhedsgate', 'Device gate'],
+          ['/ Kvalificering', '/ Qualification'],
+          ['Det, der skal bevises før produktionsdrift.', 'What must be proven before production.'],
+          ['Projektet er først færdigt, når hele systemet består som én person under realistisk drift — ikke når endnu en komponent kan demonstreres isoleret.', 'The project is complete only when the full system endures as one person under realistic operation — not when another component can be demonstrated in isolation.'],
+          ['Kontrolleret Core-aktivering', 'Controlled Core activation'],
+          ['Live-aktivering, genstart og modelskift uden tab af session eller kontinuitet.', 'Live activation, restart and model switching without loss of session or continuity.'],
+          ['Fysisk perception', 'Physical perception'],
+          ['Kamera og Kinect gennem hele VisionRig→WorldState-kæden med exact-head evidens.', 'Camera and Kinect through the complete VisionRig→WorldState chain with exact-head evidence.'],
+          ['Én vedvarende person', 'One persistent person'],
+          ['Identitet, stemme, krop og adfærd gennem Windows, Android og Quest.', 'Identity, voice, body and behavior across Windows, Android and Quest.'],
+          ['Driftsbevis', 'Operational proof'],
+          ['End-to-end latency, længere soak-test, cross-repo manifest og branch protection.', 'End-to-end latency, extended soak testing, cross-repository manifest and branch protection.'],
+          ['10 / ModelRig-tesen', '10 / The ModelRig thesis'],
+          ['ModelRig er infrastrukturen.', 'ModelRig is the infrastructure.'],
+          ['Kaliv er personen.', 'Kaliv is the person.'],
+          ['Vi bygger ikke en bedre chatbot. Vi bygger det, der kommer efter.', 'We are not building a better chatbot. We are building what comes next.'],
+          ['Følg udviklingen', 'Follow the development'],
+          ['Udforsk arkitekturen', 'Explore the architecture'],
+          ['Vedvarende hukommelse', 'Persistent memory'],
+          ['Udskiftelig intelligens', 'Replaceable intelligence'],
+          ['Kontrolleret handling', 'Controlled action'],
+          ['Fysisk tilstedeværelse', 'Physical presence'],
+          ['ModelRig / Projektets hovedoverblik', 'ModelRig / Project overview']
+        ]);
+
+        const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+        const nodes = [];
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+        nodes.forEach(node => {
+          const source = node.nodeValue.trim();
+          const translated = english.get(source);
+          if (translated) node.nodeValue = node.nodeValue.replace(source, translated);
+        });
+
+        const ariaEnglish = new Map([
+          ['ModelRig — til toppen', 'ModelRig — back to top'],
+          ['Primær navigation', 'Primary navigation'],
+          ['Se projektets GitHub-repository — åbner i ny fane', 'View the project repository on GitHub — opens in a new tab'],
+          ['Vælg sprog', 'Choose language'],
+          ['ModelRigs designinvarianter', 'ModelRig design invariants'],
+          ['Skiftet fra traditionelle AI-systemer til ModelRig', 'The shift from traditional AI systems to ModelRig'],
+          ['ModelRigs overordnede systemarkitektur', 'ModelRig high-level system architecture'],
+          ['Kalivs tre produktflader', 'Kaliv’s three product surfaces'],
+          ['Et illustrativt forløb på tværs af Kalivs produktflader', 'An illustrative journey across Kaliv product surfaces'],
+          ['Runtime-flow fra perception til observeret resultat. Kan rulles vandret på små skærme.', 'Runtime flow from perception to observed outcome. Scrolls horizontally on small screens.'],
+          ['Ansvarstabel. Kan rulles vandret på små skærme.', 'Authority table. Scrolls horizontally on small screens.'],
+          ['Følg udviklingen på GitHub — åbner i ny fane', 'Follow development on GitHub — opens in a new tab'],
+          ['ModelRigs fire grundegenskaber', 'ModelRig’s four core properties'],
+          ['Åbn Ternedal/Kaliv på GitHub — åbner i ny fane', 'Open Ternedal/Kaliv on GitHub — opens in a new tab'],
+          ['Til toppen', 'Back to top']
+        ]);
+        document.querySelectorAll('[aria-label]').forEach(element => {
+          const translated = ariaEnglish.get(element.getAttribute('aria-label'));
+          if (translated) element.setAttribute('aria-label', translated);
+        });
+
+        document.documentElement.lang = 'en';
+        document.title = 'ModelRig — AI that endures';
+        const englishDescription = 'ModelRig is a local-first foundation for persistent AI with memory, perception, action and embodiment under explicit control.';
+        const englishImageAlt = 'ModelRig’s path from cognitive core to embodied intelligence';
+        const setMeta = (selector, value) => {
+          const element = document.querySelector(selector);
+          if (element) element.setAttribute('content', value);
+        };
+        setMeta('meta[name="description"]', englishDescription);
+        setMeta('meta[property="og:title"]', 'ModelRig — AI that endures');
+        setMeta('meta[property="og:description"]', englishDescription);
+        setMeta('meta[property="og:locale"]', 'en_US');
+        setMeta('meta[property="og:image:alt"]', englishImageAlt);
+        setMeta('meta[name="twitter:title"]', 'ModelRig — AI that endures');
+        setMeta('meta[name="twitter:description"]', englishDescription);
+        setMeta('meta[name="twitter:image:alt"]', englishImageAlt);
+
+        const englishUrl = new URL(window.location.href);
+        englishUrl.search = '?lang=en';
+        englishUrl.hash = '';
+        const canonical = document.querySelector('link[rel="canonical"]');
+        if (canonical) canonical.href = englishUrl.href;
+        setMeta('meta[property="og:url"]', englishUrl.href);
+
+        const structuredData = document.querySelector('script[type="application/ld+json"]');
+        if (structuredData) {
+          try {
+            const data = JSON.parse(structuredData.textContent);
+            data.description = englishDescription;
+            data.inLanguage = 'en';
+            data.url = englishUrl.href;
+            structuredData.textContent = JSON.stringify(data);
+          } catch {}
+        }
+
+        document.querySelectorAll('[data-language]').forEach(link => {
+          const current = link.dataset.language === 'en';
+          link.classList.toggle('is-current', current);
+          if (current) link.setAttribute('aria-current', 'page');
+          else link.removeAttribute('aria-current');
+        });
+      }
+
       const root = document.documentElement;
       const line = document.querySelector('.topline');
       const header = document.querySelector('header');

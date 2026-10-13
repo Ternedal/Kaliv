@@ -1,0 +1,13 @@
+{
+  "name": "ModelRig — AI, der kan bestå",
+  "short_name": "ModelRig",
+  "description": "Et local-first fundament for vedvarende, kropsliggjort AI under eksplicit kontrol.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#05070a",
+  "theme_color": "#05070a",
+  "lang": "da",
+  "orientation": "any"
+}

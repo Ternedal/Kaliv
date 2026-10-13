@@ -1,13 +1,27 @@
-# Kaliv
+# Kaliv / ModelRig
 
-Offentlig projekt- og arkitekturside for Kaliv og ModelRig.
+Dette repository indeholder den offentlige projektside for **ModelRig** og den første produktmanifestation, **Kaliv**.
 
-## Webside
+- [Dansk side](https://ternedal.github.io/Kaliv/)
+- [English site](https://ternedal.github.io/Kaliv/?lang=en)
 
-https://ternedal.github.io/Kaliv/
+## Hvad siden forklarer
 
-Siden er et GitHub Pages-spejl af ModelRig Sites version 35.
+ModelRig er et local-first fundament for vedvarende AI med hukommelse, tid, perception, handling og kropsliggørelse under eksplicit kontrol. Kaliv er produktlaget på tværs af Windows, Android og Quest.
+
+## Struktur
+
+- `index.html` — den responsive DA/EN-præsentation
+- `404.html` — brandet fejlside
+- `assets/` — hero-grafik og Kaliv-ankh
+- `robots.txt` og `sitemap.xml` — søgemaskineindeksering
+- `site.webmanifest` — webapp-metadata
+- `.github/workflows/pages.yml` — automatisk GitHub Pages-deployment
 
 ## Publicering
 
-GitHub Actions publicerer automatisk indholdet på `main` til GitHub Pages.
+Hver ændring på `main` udløser den fastlåste GitHub Pages-workflow. Den offentlige side bliver publiceret på [ternedal.github.io/Kaliv](https://ternedal.github.io/Kaliv/).
+
+## Repositoryets rolle
+
+Dette repository er den offentlige webpræsentation. ModelRig-systemets komponenter og runtime udvikles i deres respektive projekt-repositories.
