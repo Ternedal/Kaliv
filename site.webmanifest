@@ -1,6 +1,6 @@
 {
-  "name": "ModelRig — AI, der kan bestå",
-  "short_name": "ModelRig",
+  "name": "Kaliv — bygget på ModelRig",
+  "short_name": "Kaliv",
   "description": "Et local-first fundament for vedvarende, kropsliggjort AI under eksplicit kontrol.",
   "id": "./",
   "start_url": "./",
@@ -9,5 +9,46 @@
   "background_color": "#05070a",
   "theme_color": "#05070a",
   "lang": "da",
-  "orientation": "any"
+  "orientation": "any",
+  "categories": [
+    "productivity",
+    "utilities"
+  ],
+  "icons": [
+    {
+      "src": "assets/kaliv-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/kaliv-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/kaliv-icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Arkitektur",
+      "short_name": "Arkitektur",
+      "url": "./#architecture"
+    },
+    {
+      "name": "Kaliv",
+      "short_name": "Kaliv",
+      "url": "./#kaliv"
+    },
+    {
+      "name": "Status",
+      "short_name": "Status",
+      "url": "./#status"
+    }
+  ]
 }
