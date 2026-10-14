@@ -574,6 +574,44 @@
     .principle h3 { margin-bottom: 1rem; font-size: clamp(1.6rem, 2.7vw, 3rem); line-height: 1.02; letter-spacing: -.045em; }
     .principle p { max-width: 31rem; margin: 0; color: #5c6673; }
 
+    .manifest {
+      padding: clamp(5rem, 9vw, 9rem) clamp(1.25rem, 4vw, 4.5rem);
+      border-bottom: 1px solid var(--line-dark);
+      background:
+        radial-gradient(circle at 78% 18%, rgba(20,87,255,.3), transparent 29rem),
+        #07101f;
+      color: #fff;
+    }
+    .manifest .section-head { margin-bottom: clamp(3.5rem, 7vw, 6rem); }
+    .manifest .section-head p { color: #aab4c3; }
+    .manifest-grid {
+      display: grid;
+      grid-template-columns: minmax(0,.82fr) minmax(0,1.18fr);
+      border-top: 1px solid rgba(255,255,255,.25);
+      border-left: 1px solid rgba(255,255,255,.25);
+    }
+    .manifest-column {
+      min-height: 35rem;
+      display: flex;
+      flex-direction: column;
+      padding: clamp(1.5rem, 3vw, 3rem);
+      border-right: 1px solid rgba(255,255,255,.25);
+      border-bottom: 1px solid rgba(255,255,255,.25);
+    }
+    .manifest-column.mutable { background: rgba(255,255,255,.055); }
+    .manifest-column.invariant { background: linear-gradient(145deg, rgba(20,87,255,.92), rgba(7,26,65,.72) 72%); }
+    .manifest-kicker { color: #9eabc0; font: 650 .72rem var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .manifest-column.invariant .manifest-kicker { color: #d5e1ff; }
+    .manifest-column h3 { max-width: 10ch; margin: 1.5rem 0 .9rem; font-size: clamp(2.5rem, 5vw, 5.5rem); line-height: .9; letter-spacing: -.065em; }
+    .manifest-column > p { max-width: 31rem; margin: 0; color: #aeb8c7; }
+    .manifest-column.invariant > p { color: #dbe5ff; }
+    .manifest-list { display: grid; gap: 0; margin: auto 0 0; padding: 0; list-style: none; border-top: 1px solid rgba(255,255,255,.25); }
+    .manifest-list li { display: grid; grid-template-columns: 2.2rem 1fr; gap: .65rem; align-items: center; min-height: 4rem; padding: .7rem 0; border-bottom: 1px solid rgba(255,255,255,.18); font-size: clamp(.92rem, 1.2vw, 1.05rem); }
+    .manifest-list li::before { content: "↻"; color: var(--blue-light); font: 700 1rem var(--mono); }
+    .manifest-column.invariant .manifest-list li::before { content: "◆"; color: #fff; font-size: .66rem; }
+    .manifest-rule { display: flex; justify-content: space-between; gap: 2rem; margin-top: 1.25rem; color: #9eabc0; font: 650 .72rem/1.6 var(--mono); letter-spacing: .05em; text-transform: uppercase; }
+    .manifest-rule strong { color: #fff; font-weight: 650; }
+
     .flow {
       display: grid;
       grid-template-columns: repeat(7, minmax(7.5rem,1fr));
@@ -917,6 +955,8 @@
       .section-head { grid-template-columns: 1fr; gap: 1.25rem; margin-bottom: 3rem; }
       .principles { grid-template-columns: 1fr; }
       .principle { min-height: 14rem; }
+      .manifest-grid { grid-template-columns: 1fr; }
+      .manifest-column { min-height: 29rem; }
       .shift { grid-template-columns: 1fr; }
       .shift-side { min-height: 9rem; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.35); }
       .shift-side strong { margin-top: 2rem; }
@@ -950,6 +990,8 @@
       .gate-item h3 { font-size: 1.05rem; }
       .gate-item p { font-size: .84rem; }
       .shift-list { grid-template-columns: 1fr; }
+      .manifest-column { min-height: 25rem; }
+      .manifest-rule { flex-direction: column; gap: .35rem; }
       .repo-grid { grid-template-columns: 1fr; }
       .repo-card { min-height: 15rem; }
       .repo-footnote { flex-direction: column; gap: .4rem; }
@@ -1093,9 +1135,42 @@
       </div>
     </section>
 
+    <section class="manifest" id="manifest" aria-labelledby="manifest-title">
+      <div class="section-head">
+        <div class="section-label"><strong>05</strong> / Systemmanifest</div>
+        <div><h2 id="manifest-title" tabindex="-1">Udskift intelligensen. Bevar personen.</h2><p>ModelRig skelner mellem kapacitet, som skal kunne udvikle sig, og autoritet, som skal blive under lokal, dokumenteret kontrol.</p></div>
+      </div>
+      <div class="manifest-grid" role="group" aria-label="ModelRigs grænse mellem udskiftelig kapacitet og uflytbar autoritet">
+        <article class="manifest-column mutable">
+          <span class="manifest-kicker">Kapacitet / bevægelig</span>
+          <h3>Må skiftes.</h3>
+          <p>Det, der gør systemet bedre, skal kunne udvikles uden at nulstille personen.</p>
+          <ul class="manifest-list">
+            <li>Sprogmodel og modelleverandør</li>
+            <li>Enhed, interface og rendering</li>
+            <li>Sensor- og cloud-adaptere</li>
+            <li>Værktøjer og kognitive strategier</li>
+          </ul>
+        </article>
+        <article class="manifest-column invariant">
+          <span class="manifest-kicker">Autoritet / invariant</span>
+          <h3>Må aldrig flyttes.</h3>
+          <p>Det, der gør systemet til den samme person, skal forblive eksplicit, lokalt ejet og efterprøveligt.</p>
+          <ul class="manifest-list">
+            <li>Identitet uden for modellen</li>
+            <li>Hukommelse med dokumenteret oprindelse</li>
+            <li>Eksplicit handleautoritet</li>
+            <li>Sporbare tilstandsovergange</li>
+            <li>Fail-closed aktivering</li>
+          </ul>
+        </article>
+      </div>
+      <p class="manifest-rule"><span>Designregel 01</span><strong>Evner kan opgraderes. Kontinuitet kan ikke outsources.</strong></p>
+    </section>
+
     <section class="section dark" aria-labelledby="runtime-title">
       <div class="section-head">
-        <div class="section-label"><strong>05</strong> / Driftsloop</div>
+        <div class="section-label"><strong>06</strong> / Driftsloop</div>
         <div><h2 id="runtime-title" tabindex="-1">Fra observation til verificeret resultat.</h2><p>Det lukkede loop skelner mellem det, systemet havde til hensigt, det der blev udført, og det miljøet bagefter viste.</p></div>
       </div>
       <div class="flow" role="tablist" aria-label="Interaktivt runtime-flow fra perception til observeret resultat. Kan rulles vandret på små skærme.">
@@ -1115,7 +1190,7 @@
 
     <section class="section white" id="control" aria-labelledby="control-title">
       <div class="section-head">
-        <div class="section-label"><strong>06</strong> / Autoritet</div>
+        <div class="section-label"><strong>07</strong> / Autoritet</div>
         <div><h2 id="control-title" tabindex="-1">Kontrol er en del af datamodellen.</h2><p>Grænserne er ikke promptinstruktioner. De er systemkontrakter, testbare policies og fail-closed aktivering.</p></div>
       </div>
       <div class="table-wrap" role="region" tabindex="0" aria-label="Ansvarstabel. Kan rulles vandret på små skærme.">
@@ -1137,7 +1212,7 @@
 
     <section class="section dark" aria-labelledby="security-title">
       <div class="section-head">
-        <div class="section-label"><strong>07</strong> / Sikkerhed</div>
+        <div class="section-label"><strong>08</strong> / Sikkerhed</div>
         <div><h2 id="security-title" tabindex="-1">Bygget til kontrolleret autonomi.</h2><p>ModelRig må gerne være kapabelt. Det må ikke være uigennemsigtigt.</p></div>
       </div>
       <div class="control-grid" role="list">
@@ -1152,7 +1227,7 @@
 
     <section class="section repo-landscape" aria-labelledby="repositories-title">
       <div class="section-head">
-        <div class="section-label"><strong>08</strong> / Projektlandskab</div>
+        <div class="section-label"><strong>09</strong> / Projektlandskab</div>
         <div><h2 id="repositories-title" tabindex="-1">Arkitekturen kan efterprøves.</h2><p>Fire offentlige repositories gør ansvarsgrænserne konkrete. De viser delsystemerne som selvstændige arbejdsflader — ikke som marketingetiketter.</p></div>
       </div>
       <div class="repo-grid" role="list" aria-label="ModelRigs offentlige systemrepositories">
@@ -1166,7 +1241,7 @@
 
     <section class="section" id="status" aria-labelledby="status-title">
       <div class="section-head">
-        <div class="section-label"><strong>09</strong> / Status</div>
+        <div class="section-label"><strong>10</strong> / Status</div>
         <div><h2 id="status-title" tabindex="-1">Integreret er ikke det samme som bevist.</h2><p>Status adskiller software, der er landet, fra adfærd der er kvalificeret på faktisk hardware. Det er en bevidst del af projektets definition af færdig.</p></div>
       </div>
       <div class="status-list" role="list">
@@ -1181,7 +1256,7 @@
 
     <section class="section white" aria-labelledby="qualification-title">
       <div class="section-head">
-        <div class="section-label"><strong>10</strong> / Kvalificering</div>
+        <div class="section-label"><strong>11</strong> / Kvalificering</div>
         <div><h2 id="qualification-title" tabindex="-1">Det, der skal bevises før produktionsdrift.</h2><p>Projektet er først færdigt, når hele systemet består som én person under realistisk drift — ikke når endnu en komponent kan demonstreres isoleret.</p></div>
       </div>
       <div class="gates" role="list">
@@ -1194,7 +1269,7 @@
 
     <section class="section dark faq-section" id="questions" aria-labelledby="questions-title">
       <div class="section-head">
-        <div class="section-label"><strong>11</strong> / Klare svar</div>
+        <div class="section-label"><strong>12</strong> / Klare svar</div>
         <div><h2 id="questions-title" tabindex="-1">Hvad er det egentlig, vi bygger?</h2><p>ModelRig er ambitiøst. Derfor skal arkitekturen, grænserne og det, der endnu mangler at blive bevist, kunne forklares uden mystik.</p></div>
       </div>
       <div class="faq-list">
@@ -1226,7 +1301,7 @@
     </section>
 
     <section class="closing" aria-labelledby="closing-title">
-      <div class="closing-aside"><span class="closing-label">12 / ModelRig-tesen</span><p>ModelRig er infrastrukturen.<br /><strong>Kaliv er personen.</strong></p></div>
+      <div class="closing-aside"><span class="closing-label">13 / ModelRig-tesen</span><p>ModelRig er infrastrukturen.<br /><strong>Kaliv er personen.</strong></p></div>
       <div class="closing-copy">
         <h2 id="closing-title" tabindex="-1">Vi bygger ikke en bedre chatbot. Vi bygger det, der kommer efter.</h2>
         <div>
@@ -1314,6 +1389,26 @@
           ['Agent 3 kan kun eksekvere efter reglerne. Adgang, dataklasse, budget og skrivemandat er eksplicitte kontrakter.', 'Agent 3 can execute only after policy approval. Access, data class, budget and write authority are explicit contracts.'],
           ['Samme person på alle flader.', 'The same person across every surface.'],
           ['VoiceRig, BodyRig og Kaliv manifesterer den samme vedvarende identitet på Windows, Android og i VR.', 'VoiceRig, BodyRig and Kaliv manifest the same persistent identity on Windows, Android and in VR.'],
+          ['/ Systemmanifest', '/ System manifesto'],
+          ['Udskift intelligensen. Bevar personen.', 'Replace the intelligence. Preserve the person.'],
+          ['ModelRig skelner mellem kapacitet, som skal kunne udvikle sig, og autoritet, som skal blive under lokal, dokumenteret kontrol.', 'ModelRig separates capacity, which must be free to evolve, from authority, which must remain under local, documented control.'],
+          ['Kapacitet / bevægelig', 'Capacity / movable'],
+          ['Må skiftes.', 'May be replaced.'],
+          ['Det, der gør systemet bedre, skal kunne udvikles uden at nulstille personen.', 'What makes the system better must be able to evolve without resetting the person.'],
+          ['Sprogmodel og modelleverandør', 'Language model and model provider'],
+          ['Enhed, interface og rendering', 'Device, interface and rendering'],
+          ['Sensor- og cloud-adaptere', 'Sensor and cloud adapters'],
+          ['Værktøjer og kognitive strategier', 'Tools and cognitive strategies'],
+          ['Autoritet / invariant', 'Authority / invariant'],
+          ['Må aldrig flyttes.', 'Must never move.'],
+          ['Det, der gør systemet til den samme person, skal forblive eksplicit, lokalt ejet og efterprøveligt.', 'What makes the system the same person must remain explicit, locally owned and inspectable.'],
+          ['Identitet uden for modellen', 'Identity outside the model'],
+          ['Hukommelse med dokumenteret oprindelse', 'Memory with documented provenance'],
+          ['Eksplicit handleautoritet', 'Explicit authority to act'],
+          ['Sporbare tilstandsovergange', 'Traceable state transitions'],
+          ['Fail-closed aktivering', 'Fail-closed activation'],
+          ['Designregel 01', 'Design rule 01'],
+          ['Evner kan opgraderes. Kontinuitet kan ikke outsources.', 'Capabilities can be upgraded. Continuity cannot be outsourced.'],
           ['/ Driftsloop', '/ Runtime loop'],
           ['Fra observation til verificeret resultat.', 'From observation to verified outcome.'],
           ['Det lukkede loop skelner mellem det, systemet havde til hensigt, det der blev udført, og det miljøet bagefter viste.', 'The closed loop distinguishes between what the system intended, what was executed and what the environment subsequently revealed.'],
@@ -1454,7 +1549,7 @@
           ['Softwareintegrationen er langt fremme, men projektet kaldes ikke produktionsklart endnu. Kontrolleret Core-aktivering, fysisk perception, enhedstest og længerevarende end-to-end drift er eksplicitte gates — og står åbent på siden.', 'Software integration is well advanced, but the project is not yet described as production-ready. Controlled Core activation, physical perception, device testing and sustained end-to-end operation are explicit gates — and are stated openly on this page.'],
           ['Hvorfor skal intelligensen have en krop?', 'Why does intelligence need a body?'],
           ['Fordi kontinuitet ikke kun er tekst. Stemme, blik, bevægelse og rumlig tilstedeværelse gør det muligt at opleve den samme identitet på tværs af flader — og lukker loopet fra perception til handling og observeret resultat.', 'Because continuity is more than text. Voice, gaze, movement and spatial presence make it possible to experience the same identity across surfaces — and close the loop from perception to action and observed outcome.'],
-          ['12 / ModelRig-tesen', '12 / The ModelRig thesis'],
+          ['13 / ModelRig-tesen', '13 / The ModelRig thesis'],
           ['ModelRig er infrastrukturen.', 'ModelRig is the infrastructure.'],
           ['Kaliv er personen.', 'Kaliv is the person.'],
           ['Vi bygger ikke en bedre chatbot. Vi bygger det, der kommer efter.', 'We are not building a better chatbot. We are building what comes next.'],
@@ -1486,6 +1581,7 @@
           ['ModelRigs overordnede systemarkitektur', 'ModelRig high-level system architecture'],
           ['Kalivs tre produktflader', 'Kaliv’s three product surfaces'],
           ['Et illustrativt forløb på tværs af Kalivs produktflader', 'An illustrative journey across Kaliv product surfaces'],
+          ['ModelRigs grænse mellem udskiftelig kapacitet og uflytbar autoritet', 'ModelRig boundary between replaceable capacity and immovable authority'],
           ['Interaktivt runtime-flow fra perception til observeret resultat. Kan rulles vandret på små skærme.', 'Interactive runtime flow from perception to observed outcome. Scrolls horizontally on small screens.'],
           ['Ansvarstabel. Kan rulles vandret på små skærme.', 'Authority table. Scrolls horizontally on small screens.'],
           ['ModelRigs offentlige systemrepositories', 'ModelRig public system repositories'],
