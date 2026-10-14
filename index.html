@@ -59,7 +59,9 @@
       ]
     }
   </script>
-  <link rel="preload" as="image" href="assets/modelrig-continuity-female-hair-1920.webp" type="image/webp" fetchpriority="high" media="(max-width: 899px), (max-resolution: 1.49dppx)" />
+  <link rel="preload" as="image" href="assets/modelrig-continuity-female-hair-mobile.webp" type="image/webp" fetchpriority="high" media="(max-width: 760px)" />
+  <link rel="preload" as="image" href="assets/modelrig-continuity-female-hair-1920.webp" type="image/webp" fetchpriority="high" media="(min-width: 761px) and (max-width: 899px)" />
+  <link rel="preload" as="image" href="assets/modelrig-continuity-female-hair-1920.webp" type="image/webp" fetchpriority="high" media="(min-width: 900px) and (max-resolution: 1.49dppx)" />
   <link rel="preload" as="image" href="assets/modelrig-continuity-female-hair-hires.webp" type="image/webp" fetchpriority="high" media="(min-width: 900px) and (min-resolution: 1.5dppx)" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2305070a'/%3E%3Cpath d='M32 7C23.7 7 18 12.6 18 20.2c0 6.2 4.2 10.9 9.2 15H13v9h14.5v13h9v-13H51v-9H36.8c5-4.1 9.2-8.8 9.2-15C46 12.6 40.3 7 32 7Zm0 8c3.7 0 6 2 6 5.2 0 3.1-2.4 6.1-6 9.5-3.6-3.4-6-6.4-6-9.5 0-3.2 2.3-5.2 6-5.2Z' fill='%237da3ff'/%3E%3C/svg%3E" />
   <style>
@@ -916,6 +918,7 @@
       .gates { grid-template-columns: repeat(2,1fr); }
     }
     @media (max-width: 760px) {
+      .hero { --hero-art: url("assets/modelrig-continuity-female-hair-mobile.webp"); }
       header { grid-template-columns: 1fr auto; grid-template-rows: 4.6rem auto; min-height: 7.6rem; padding-bottom: .7rem; }
       section[id], h1[id], h2[id] { scroll-margin-top: 8.35rem; }
       .header-type { justify-self: end; font-size: 0; gap: 0; }
