@@ -2,8 +2,8 @@
 
 Dette repository indeholder den offentlige projektside for **ModelRig** og den første produktmanifestation, **Kaliv**.
 
-- [Dansk side](https://ternedal.github.io/Kaliv/)
-- [English site](https://ternedal.github.io/Kaliv/?lang=en)
+- [Dansk side](https://kaliv.dk/)
+- [English site](https://kaliv.dk/?lang=en)
 
 ## Hvad siden forklarer
 
@@ -20,7 +20,7 @@ ModelRig er et local-first fundament for vedvarende AI med hukommelse, tid, perc
 
 ## Publicering
 
-Hver ændring på `main` udløser den fastlåste GitHub Pages-workflow. Den offentlige side bliver publiceret på [ternedal.github.io/Kaliv](https://ternedal.github.io/Kaliv/).
+Hver ændring på `main` udløser den fastlåste GitHub Pages-workflow. Den offentlige side bliver publiceret på [kaliv.dk](https://kaliv.dk/).
 
 ## Repositoryets rolle
 

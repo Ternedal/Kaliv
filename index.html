@@ -15,8 +15,8 @@
   <meta property="og:locale" content="da_DK" />
   <meta property="og:locale:alternate" content="en_US" />
   <meta property="og:site_name" content="ModelRig" />
-  <meta property="og:url" content="https://ternedal.github.io/Kaliv/" />
-  <meta property="og:image" content="https://ternedal.github.io/Kaliv/assets/modelrig-continuity-female-hair-1920.webp" />
+  <meta property="og:url" content="https://kaliv.dk/" />
+  <meta property="og:image" content="https://kaliv.dk/assets/modelrig-continuity-female-hair-1920.webp" />
   <meta property="og:image:type" content="image/webp" />
   <meta property="og:image:width" content="1920" />
   <meta property="og:image:height" content="1080" />
@@ -24,12 +24,12 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="ModelRig — AI, der kan bestå" />
   <meta name="twitter:description" content="Et local-first fundament for vedvarende, kropsliggjort AI under eksplicit kontrol." />
-  <meta name="twitter:image" content="https://ternedal.github.io/Kaliv/assets/modelrig-continuity-female-hair-1920.webp" />
+  <meta name="twitter:image" content="https://kaliv.dk/assets/modelrig-continuity-female-hair-1920.webp" />
   <meta name="twitter:image:alt" content="ModelRigs vedvarende AI-forløb fra kognitiv kerne til kropsliggjort intelligens" />
-  <link rel="canonical" href="https://ternedal.github.io/Kaliv/" />
-  <link rel="alternate" hreflang="da" href="https://ternedal.github.io/Kaliv/" />
-  <link rel="alternate" hreflang="en" href="https://ternedal.github.io/Kaliv/?lang=en" />
-  <link rel="alternate" hreflang="x-default" href="https://ternedal.github.io/Kaliv/" />
+  <link rel="canonical" href="https://kaliv.dk/" />
+  <link rel="alternate" hreflang="da" href="https://kaliv.dk/" />
+  <link rel="alternate" hreflang="en" href="https://kaliv.dk/?lang=en" />
+  <link rel="alternate" hreflang="x-default" href="https://kaliv.dk/" />
   <link rel="manifest" href="site.webmanifest" />
   <link rel="sitemap" type="application/xml" href="sitemap.xml" />
   <title>ModelRig — AI, der kan bestå</title>
@@ -41,7 +41,7 @@
       "description": "Et local-first fundament for vedvarende, kropsliggjort AI under eksplicit kontrol.",
       "inLanguage": "da",
       "sameAs": "https://github.com/Ternedal/Kaliv",
-      "url": "https://ternedal.github.io/Kaliv/"
+      "url": "https://kaliv.dk/"
     }
   </script>
   <script type="application/ld+json" id="faq-structured-data">
@@ -653,6 +653,36 @@
     .control h3 { margin: 3.3rem 0 .8rem; font-size: 1.35rem; letter-spacing: -.025em; }
     .control p { margin: 0; color: #9ba3ad; font-size: .91rem; }
 
+    .repo-landscape { background: #eef2f8; }
+    .repo-grid {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+    .repo-card {
+      min-height: 20rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 3rem;
+      padding: clamp(1.25rem, 3vw, 2.4rem);
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      text-decoration: none;
+      transition: background-color .22s ease, box-shadow .22s ease, transform .22s ease;
+    }
+    .repo-card-top { display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start; }
+    .repo-card-code { color: var(--blue); font: 650 .72rem var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .repo-card-state { color: #68727f; font: 650 .65rem var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+    .repo-card h3 { margin: 0 0 1rem; font-size: clamp(2rem, 4vw, 4.5rem); line-height: .95; letter-spacing: -.06em; }
+    .repo-card p { max-width: 34rem; margin: 0; color: #596472; font-size: .96rem; }
+    .repo-card-link { display: inline-flex; align-items: center; gap: .55rem; margin-top: 2rem; color: var(--blue); font: 700 .7rem var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+    .repo-card-link::after { content: "↗"; font-size: .95rem; }
+    .repo-footnote { display: flex; justify-content: space-between; gap: 2rem; margin-top: 1.5rem; color: #68727f; font: 600 .7rem/1.6 var(--mono); letter-spacing: .04em; text-transform: uppercase; }
+
     .status-list { border-top: 1px solid var(--line); }
     .status-row {
       display: grid;
@@ -826,6 +856,7 @@
       .surface:hover { background: #0b1019; box-shadow: inset 3px 0 #1457ff; }
       .principle:hover, .gate-item:hover { background: #f7f9fd; box-shadow: inset 0 3px #1457ff; }
       .control:hover { background: #121722; box-shadow: inset 0 3px #1457ff; }
+      .repo-card:hover { background: #f8faff; box-shadow: inset 0 3px #1457ff; transform: translateY(-2px); }
       .unit:hover { border-color: #7da3ff; background: #f6f8ff; }
       .back-top.is-visible:hover { transform: translateY(-.18rem); }
     }
@@ -896,6 +927,7 @@
       .control-grid { grid-template-columns: 1fr; }
       .control { min-height: 12.5rem; }
       .control h3 { margin-top: 2.25rem; }
+      .repo-card { min-height: 17rem; }
       .flow-detail { grid-template-columns: 1fr 1.7fr; }
       .flow-detail dl { grid-column: 1 / -1; grid-template-columns: repeat(3,minmax(0,1fr)); }
       .status-row { grid-template-columns: 1fr auto; gap: 1rem; padding-block: 1.4rem; }
@@ -918,6 +950,9 @@
       .gate-item h3 { font-size: 1.05rem; }
       .gate-item p { font-size: .84rem; }
       .shift-list { grid-template-columns: 1fr; }
+      .repo-grid { grid-template-columns: 1fr; }
+      .repo-card { min-height: 15rem; }
+      .repo-footnote { flex-direction: column; gap: .4rem; }
       .continuity-step { grid-template-columns: 2.25rem 1fr; gap: 1rem; }
       .continuity-step > div { grid-column: 2; }
       .flow-detail { grid-template-columns: 1fr; min-height: 0; }
@@ -1115,9 +1150,23 @@
       </div>
     </section>
 
+    <section class="section repo-landscape" aria-labelledby="repositories-title">
+      <div class="section-head">
+        <div class="section-label"><strong>08</strong> / Projektlandskab</div>
+        <div><h2 id="repositories-title" tabindex="-1">Arkitekturen kan efterprøves.</h2><p>Fire offentlige repositories gør ansvarsgrænserne konkrete. De viser delsystemerne som selvstændige arbejdsflader — ikke som marketingetiketter.</p></div>
+      </div>
+      <div class="repo-grid" role="list" aria-label="ModelRigs offentlige systemrepositories">
+        <a class="repo-card" role="listitem" href="https://github.com/Ternedal/ModelRig" target="_blank" rel="noopener noreferrer" aria-label="Åbn ModelRig på GitHub — åbner i ny fane"><span class="repo-card-top"><span class="repo-card-code">01 / Control plane</span><span class="repo-card-state">Offentligt repository</span></span><span><h3>ModelRig</h3><p>Control plane, policy, hukommelsesrouting, Consciousness Core og klientintegration.</p><span class="repo-card-link">Åbn på GitHub</span></span></a>
+        <a class="repo-card" role="listitem" href="https://github.com/Ternedal/BodyRig" target="_blank" rel="noopener noreferrer" aria-label="Åbn BodyRig på GitHub — åbner i ny fane"><span class="repo-card-top"><span class="repo-card-code">02 / Embodiment</span><span class="repo-card-state">Offentligt repository</span></span><span><h3>BodyRig</h3><p>Krop, geometri, bevægelse, identitetslighed og fysisk kvalificering.</p><span class="repo-card-link">Åbn på GitHub</span></span></a>
+        <a class="repo-card" role="listitem" href="https://github.com/Ternedal/VoiceRig" target="_blank" rel="noopener noreferrer" aria-label="Åbn VoiceRig på GitHub — åbner i ny fane"><span class="repo-card-top"><span class="repo-card-code">03 / Voice</span><span class="repo-card-state">Offentligt repository</span></span><span><h3>VoiceRig</h3><p>Stemmeprofil, prosodi, timing og den lokale danske stemmepipeline.</p><span class="repo-card-link">Åbn på GitHub</span></span></a>
+        <a class="repo-card" role="listitem" href="https://github.com/Ternedal/VisionRig" target="_blank" rel="noopener noreferrer" aria-label="Åbn VisionRig på GitHub — åbner i ny fane"><span class="repo-card-top"><span class="repo-card-code">04 / Perception</span><span class="repo-card-state">Offentligt repository</span></span><span><h3>VisionRig</h3><p>PerceptionEvents, sensorkontrakter, admission og sporbar WorldState-evidens.</p><span class="repo-card-link">Åbn på GitHub</span></span></a>
+      </div>
+      <p class="repo-footnote"><span>Runtime-kode og præsentationssite holdes adskilt.</span><span>Denne side: Ternedal/Kaliv</span></p>
+    </section>
+
     <section class="section" id="status" aria-labelledby="status-title">
       <div class="section-head">
-        <div class="section-label"><strong>08</strong> / Status</div>
+        <div class="section-label"><strong>09</strong> / Status</div>
         <div><h2 id="status-title" tabindex="-1">Integreret er ikke det samme som bevist.</h2><p>Status adskiller software, der er landet, fra adfærd der er kvalificeret på faktisk hardware. Det er en bevidst del af projektets definition af færdig.</p></div>
       </div>
       <div class="status-list" role="list">
@@ -1132,7 +1181,7 @@
 
     <section class="section white" aria-labelledby="qualification-title">
       <div class="section-head">
-        <div class="section-label"><strong>09</strong> / Kvalificering</div>
+        <div class="section-label"><strong>10</strong> / Kvalificering</div>
         <div><h2 id="qualification-title" tabindex="-1">Det, der skal bevises før produktionsdrift.</h2><p>Projektet er først færdigt, når hele systemet består som én person under realistisk drift — ikke når endnu en komponent kan demonstreres isoleret.</p></div>
       </div>
       <div class="gates" role="list">
@@ -1145,7 +1194,7 @@
 
     <section class="section dark faq-section" id="questions" aria-labelledby="questions-title">
       <div class="section-head">
-        <div class="section-label"><strong>10</strong> / Klare svar</div>
+        <div class="section-label"><strong>11</strong> / Klare svar</div>
         <div><h2 id="questions-title" tabindex="-1">Hvad er det egentlig, vi bygger?</h2><p>ModelRig er ambitiøst. Derfor skal arkitekturen, grænserne og det, der endnu mangler at blive bevist, kunne forklares uden mystik.</p></div>
       </div>
       <div class="faq-list">
@@ -1177,7 +1226,7 @@
     </section>
 
     <section class="closing" aria-labelledby="closing-title">
-      <div class="closing-aside"><span class="closing-label">11 / ModelRig-tesen</span><p>ModelRig er infrastrukturen.<br /><strong>Kaliv er personen.</strong></p></div>
+      <div class="closing-aside"><span class="closing-label">12 / ModelRig-tesen</span><p>ModelRig er infrastrukturen.<br /><strong>Kaliv er personen.</strong></p></div>
       <div class="closing-copy">
         <h2 id="closing-title" tabindex="-1">Vi bygger ikke en bedre chatbot. Vi bygger det, der kommer efter.</h2>
         <div>
@@ -1354,6 +1403,17 @@
           ['ThoughtEngine kan skiftes uden at flytte autoritet eller vedvarende tilstand.', 'ThoughtEngine can be replaced without moving authority or persistent state.'],
           ['Drift', 'Operations'],
           ['Scheduler og agentspor er designet til en synlig, genoptagelig opgavelivscyklus.', 'The scheduler and agent trail are designed for a visible, resumable task lifecycle.'],
+          ['/ Projektlandskab', '/ Project landscape'],
+          ['Arkitekturen kan efterprøves.', 'The architecture can be inspected.'],
+          ['Fire offentlige repositories gør ansvarsgrænserne konkrete. De viser delsystemerne som selvstændige arbejdsflader — ikke som marketingetiketter.', 'Four public repositories make the boundaries concrete. They show the subsystems as independent working surfaces — not as marketing labels.'],
+          ['Offentligt repository', 'Public repository'],
+          ['Control plane, policy, hukommelsesrouting, Consciousness Core og klientintegration.', 'Control plane, policy, memory routing, Consciousness Core and client integration.'],
+          ['Krop, geometri, bevægelse, identitetslighed og fysisk kvalificering.', 'Body, geometry, movement, identity likeness and physical qualification.'],
+          ['Stemmeprofil, prosodi, timing og den lokale danske stemmepipeline.', 'Voice profile, prosody, timing and the local Danish voice pipeline.'],
+          ['PerceptionEvents, sensorkontrakter, admission og sporbar WorldState-evidens.', 'PerceptionEvents, sensor contracts, admission and traceable WorldState evidence.'],
+          ['Åbn på GitHub', 'Open on GitHub'],
+          ['Runtime-kode og præsentationssite holdes adskilt.', 'Runtime code and the presentation site are kept separate.'],
+          ['Denne side: Ternedal/Kaliv', 'This site: Ternedal/Kaliv'],
           ['Integreret er ikke det samme som bevist.', 'Integrated is not the same as proven.'],
           ['Status adskiller software, der er landet, fra adfærd der er kvalificeret på faktisk hardware. Det er en bevidst del af projektets definition af færdig.', 'Status separates landed software from behavior qualified on real hardware. That distinction is a deliberate part of the project’s definition of done.'],
           ['Control plane, policy, RAG, audit, scheduler og klientintegration er samlet.', 'Control plane, policy, RAG, audit, scheduler and client integration are assembled.'],
@@ -1394,7 +1454,7 @@
           ['Softwareintegrationen er langt fremme, men projektet kaldes ikke produktionsklart endnu. Kontrolleret Core-aktivering, fysisk perception, enhedstest og længerevarende end-to-end drift er eksplicitte gates — og står åbent på siden.', 'Software integration is well advanced, but the project is not yet described as production-ready. Controlled Core activation, physical perception, device testing and sustained end-to-end operation are explicit gates — and are stated openly on this page.'],
           ['Hvorfor skal intelligensen have en krop?', 'Why does intelligence need a body?'],
           ['Fordi kontinuitet ikke kun er tekst. Stemme, blik, bevægelse og rumlig tilstedeværelse gør det muligt at opleve den samme identitet på tværs af flader — og lukker loopet fra perception til handling og observeret resultat.', 'Because continuity is more than text. Voice, gaze, movement and spatial presence make it possible to experience the same identity across surfaces — and close the loop from perception to action and observed outcome.'],
-          ['11 / ModelRig-tesen', '11 / The ModelRig thesis'],
+          ['12 / ModelRig-tesen', '12 / The ModelRig thesis'],
           ['ModelRig er infrastrukturen.', 'ModelRig is the infrastructure.'],
           ['Kaliv er personen.', 'Kaliv is the person.'],
           ['Vi bygger ikke en bedre chatbot. Vi bygger det, der kommer efter.', 'We are not building a better chatbot. We are building what comes next.'],
@@ -1428,6 +1488,11 @@
           ['Et illustrativt forløb på tværs af Kalivs produktflader', 'An illustrative journey across Kaliv product surfaces'],
           ['Interaktivt runtime-flow fra perception til observeret resultat. Kan rulles vandret på små skærme.', 'Interactive runtime flow from perception to observed outcome. Scrolls horizontally on small screens.'],
           ['Ansvarstabel. Kan rulles vandret på små skærme.', 'Authority table. Scrolls horizontally on small screens.'],
+          ['ModelRigs offentlige systemrepositories', 'ModelRig public system repositories'],
+          ['Åbn ModelRig på GitHub — åbner i ny fane', 'Open ModelRig on GitHub — opens in a new tab'],
+          ['Åbn BodyRig på GitHub — åbner i ny fane', 'Open BodyRig on GitHub — opens in a new tab'],
+          ['Åbn VoiceRig på GitHub — åbner i ny fane', 'Open VoiceRig on GitHub — opens in a new tab'],
+          ['Åbn VisionRig på GitHub — åbner i ny fane', 'Open VisionRig on GitHub — opens in a new tab'],
           ['Følg udviklingen på GitHub — åbner i ny fane', 'Follow development on GitHub — opens in a new tab'],
           ['ModelRigs fire grundegenskaber', 'ModelRig’s four core properties'],
           ['Åbn Ternedal/Kaliv på GitHub — åbner i ny fane', 'Open Ternedal/Kaliv on GitHub — opens in a new tab'],

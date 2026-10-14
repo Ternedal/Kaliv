@@ -3,28 +3,28 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://ternedal.github.io/Kaliv/</loc>
-    <lastmod>2026-10-13</lastmod>
+    <loc>https://kaliv.dk/</loc>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://ternedal.github.io/Kaliv/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://ternedal.github.io/Kaliv/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ternedal.github.io/Kaliv/" />
+    <xhtml:link rel="alternate" hreflang="da" href="https://kaliv.dk/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kaliv.dk/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kaliv.dk/" />
     <image:image>
-      <image:loc>https://ternedal.github.io/Kaliv/assets/modelrig-continuity-female-hair-1920.webp</image:loc>
+      <image:loc>https://kaliv.dk/assets/modelrig-continuity-female-hair-1920.webp</image:loc>
       <image:caption>ModelRigs vej fra kognitiv kerne til kropsliggjort intelligens</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://ternedal.github.io/Kaliv/?lang=en</loc>
-    <lastmod>2026-10-13</lastmod>
+    <loc>https://kaliv.dk/?lang=en</loc>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="da" href="https://ternedal.github.io/Kaliv/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://ternedal.github.io/Kaliv/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ternedal.github.io/Kaliv/" />
+    <xhtml:link rel="alternate" hreflang="da" href="https://kaliv.dk/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kaliv.dk/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kaliv.dk/" />
     <image:image>
-      <image:loc>https://ternedal.github.io/Kaliv/assets/modelrig-continuity-female-hair-1920.webp</image:loc>
+      <image:loc>https://kaliv.dk/assets/modelrig-continuity-female-hair-1920.webp</image:loc>
       <image:caption>ModelRig’s path from cognitive core to embodied intelligence</image:caption>
     </image:image>
   </url>
