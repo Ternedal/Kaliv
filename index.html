@@ -753,6 +753,43 @@
     .status.guarded { color: var(--violet); background: var(--violet-soft); }
     .status.gate { color: var(--amber); background: var(--amber-soft); }
 
+    .roadmap-summary {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      margin-bottom: 1.5rem;
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+    .roadmap-summary article {
+      min-height: 15rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(1.35rem, 3vw, 2.4rem);
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: #0b1019;
+      color: #fff;
+    }
+    .roadmap-summary article:last-child { background: var(--blue); }
+    .roadmap-kicker {
+      color: #9fb0ca;
+      font: 650 .72rem var(--mono);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .roadmap-summary article:last-child .roadmap-kicker { color: #dce7ff; }
+    .roadmap-summary strong {
+      display: block;
+      max-width: 15ch;
+      margin: 3.5rem 0 .85rem;
+      font-size: clamp(1.65rem, 3vw, 3.15rem);
+      line-height: 1;
+      letter-spacing: -.055em;
+    }
+    .roadmap-summary p { max-width: 42rem; margin: 0; color: #aeb8c7; }
+    .roadmap-summary article:last-child p { color: #e2e9ff; }
+
     .gates {
       display: grid;
       grid-template-columns: repeat(4,1fr);
@@ -762,15 +799,22 @@
     }
     .gate-item {
       counter-increment: gates;
-      min-height: 18rem;
+      min-height: 25rem;
+      display: flex;
+      flex-direction: column;
       padding: 1.3rem;
       border-right: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
       background: white;
     }
-    .gate-item::before { content: "0" counter(gates); display: block; margin-bottom: 5rem; color: var(--blue); font: 650 .75rem var(--mono); }
+    .gate-item::before { content: "0" counter(gates); display: block; margin-bottom: .65rem; color: var(--blue); font: 650 .75rem var(--mono); }
+    .gate-scope { color: #758090; font: 650 .67rem var(--mono); letter-spacing: .07em; text-transform: uppercase; }
+    .gate-copy { margin: 4rem 0 2rem; }
     .gate-item h3 { margin-bottom: .8rem; font-size: 1.18rem; }
     .gate-item p { margin: 0; color: #5c6673; font-size: .9rem; }
+    .gate-pass { margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--line); }
+    .gate-pass span { display: block; margin-bottom: .5rem; color: var(--blue); font: 650 .65rem var(--mono); letter-spacing: .07em; text-transform: uppercase; }
+    .gate-pass strong { display: block; color: #333c48; font-size: .82rem; line-height: 1.5; }
 
     .faq-section { background: #070a0f; }
     .faq-list {
@@ -984,8 +1028,10 @@
       .flow-detail dl { grid-column: 1 / -1; grid-template-columns: repeat(3,minmax(0,1fr)); }
       .status-row { grid-template-columns: 1fr auto; gap: 1rem; padding-block: 1.4rem; }
       .status-row p { grid-column: 1 / -1; grid-row: 2; }
-      .gate-item { min-height: 15rem; }
-      .gate-item::before { margin-bottom: 3rem; }
+      .roadmap-summary { grid-template-columns: 1fr; }
+      .roadmap-summary article { min-height: 13.5rem; }
+      .gate-item { min-height: 22rem; }
+      .gate-copy { margin-top: 2.8rem; }
       .faq-item summary { min-height: 6.5rem; }
       .closing { grid-template-columns: 1fr; }
       .closing-aside { min-height: 17rem; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.35); }
@@ -1001,6 +1047,8 @@
       .gate-item { padding: 1.05rem; }
       .gate-item h3 { font-size: 1.05rem; }
       .gate-item p { font-size: .84rem; }
+      .gates { grid-template-columns: 1fr; }
+      .gate-item { min-height: 19rem; }
       .shift-list { grid-template-columns: 1fr; }
       .manifest-column { min-height: 25rem; }
       .manifest-rule { flex-direction: column; gap: .35rem; }
@@ -1035,7 +1083,7 @@
   <header>
     <a class="brand" href="#top" aria-label="ModelRig — til toppen"><span class="brand-mark">MR</span><span>ModelRig</span></a>
     <div class="header-type"><img src="assets/kaliv-ankh-160.webp" alt="" width="160" height="216" decoding="async" /><span><strong>Kaliv</strong> / embodiment layer</span></div>
-    <nav aria-label="Primær navigation"><a href="#architecture">Arkitektur</a><a href="#kaliv">Kaliv</a><a href="#control">Kontrol</a><a href="#status">Status</a><a href="#questions">Spørgsmål</a><a href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Se projektets GitHub-repository — åbner i ny fane">GitHub ↗</a><span class="lang-switch" aria-label="Vælg sprog"><a href="?lang=da" lang="da" data-language="da" class="is-current" aria-current="page">DA</a><a href="?lang=en" lang="en" data-language="en">EN</a></span></nav>
+    <nav aria-label="Primær navigation"><a href="#architecture">Arkitektur</a><a href="#kaliv">Kaliv</a><a href="#control">Kontrol</a><a href="#status">Status</a><a href="#roadmap">V1-plan</a><a href="#questions">Spørgsmål</a><a href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Se projektets GitHub-repository — åbner i ny fane">GitHub ↗</a><span class="lang-switch" aria-label="Vælg sprog"><a href="?lang=da" lang="da" data-language="da" class="is-current" aria-current="page">DA</a><a href="?lang=en" lang="en" data-language="en">EN</a></span></nav>
   </header>
 
   <main id="content" tabindex="-1">
@@ -1266,16 +1314,20 @@
       </div>
     </section>
 
-    <section class="section white" aria-labelledby="qualification-title">
+    <section class="section white" id="roadmap" aria-labelledby="qualification-title">
       <div class="section-head">
         <div class="section-label"><strong>11</strong> / Kvalificering</div>
-        <div><h2 id="qualification-title" tabindex="-1">Det, der skal bevises før produktionsdrift.</h2><p>Projektet er først færdigt, når hele systemet består som én person under realistisk drift — ikke når endnu en komponent kan demonstreres isoleret.</p></div>
+        <div><h2 id="qualification-title" tabindex="-1">V1 er ikke en dato. Det er fire beviser.</h2><p>Vejen til produktionsdrift er gjort konkret: hvert åbent risikoområde har et tydeligt bevis, der skal bestås på rigtig hardware og under realistisk drift.</p></div>
       </div>
-      <div class="gates" role="list">
-        <article class="gate-item" role="listitem"><h3>Kontrolleret Core-aktivering</h3><p>Live-aktivering, genstart og modelskift uden tab af session eller kontinuitet.</p></article>
-        <article class="gate-item" role="listitem"><h3>Fysisk perception</h3><p>Kamera og Kinect gennem hele VisionRig→WorldState-kæden med exact-head evidens.</p></article>
-        <article class="gate-item" role="listitem"><h3>Én vedvarende person</h3><p>Identitet, stemme, krop og adfærd gennem Windows, Android og Quest.</p></article>
-        <article class="gate-item" role="listitem"><h3>Driftsbevis</h3><p>End-to-end latency, længere soak-test, cross-repo manifest og branch protection.</p></article>
+      <div class="roadmap-summary">
+        <article><span class="roadmap-kicker">Udgangspunkt</span><div><strong>Softwarefundamentet er samlet.</strong><p>De åbne risici ligger nu i kontrolleret aktivering, rigtig hardware og vedvarende drift.</p></div></article>
+        <article><span class="roadmap-kicker">Definitionen af V1</span><div><strong>Én person gennem hele systemet.</strong><p>Samme identitet skal sanse, huske, handle og bestå på tværs af Windows, Android og Quest.</p></div></article>
+      </div>
+      <div class="gates" role="list" aria-label="ModelRigs fire V1-beviser">
+        <article class="gate-item" role="listitem"><span class="gate-scope">Software-gate</span><div class="gate-copy"><h3>Kontrolleret Core-aktivering</h3><p>Live-aktivering, genstart og modelskift uden tab af session eller kontinuitet.</p></div><div class="gate-pass"><span>Bestået når</span><strong>Kontinuiteten overlever genstart og modelskift uden tilstandsdivergens.</strong></div></article>
+        <article class="gate-item" role="listitem"><span class="gate-scope">Hardware-gate</span><div class="gate-copy"><h3>Fysisk perception</h3><p>Kamera og Kinect gennem hele VisionRig→WorldState-kæden med exact-head evidens.</p></div><div class="gate-pass"><span>Bestået når</span><strong>Fysiske sensorhændelser når WorldState med accepteret, sporbar oprindelse.</strong></div></article>
+        <article class="gate-item" role="listitem"><span class="gate-scope">Tværflade-gate</span><div class="gate-copy"><h3>Én vedvarende person</h3><p>Identitet, stemme, krop og adfærd gennem Windows, Android og Quest.</p></div><div class="gate-pass"><span>Bestået når</span><strong>Identitet, stemme, krop og adfærd er sammenhængende på alle tre flader.</strong></div></article>
+        <article class="gate-item" role="listitem"><span class="gate-scope">Release-gate</span><div class="gate-copy"><h3>Driftsbevis</h3><p>End-to-end latency, længere soak-test, cross-repo manifest og branch protection.</p></div><div class="gate-pass"><span>Bestået når</span><strong>Latency, soak-test og exact-head-kontroller består det registrerede release-manifest.</strong></div></article>
       </div>
     </section>
 
@@ -1336,6 +1388,7 @@
           ['Arkitektur', 'Architecture'],
           ['/ Arkitektur', '/ Architecture'],
           ['Kontrol', 'Control'],
+          ['V1-plan', 'V1 plan'],
           ['Spørgsmål', 'Questions'],
           ['Fundamentet efter chatbotten', 'The foundation beyond the chatbot'],
           ['Vi bygger AI, der kan bestå.', 'We build AI that endures.'],
@@ -1536,16 +1589,30 @@
           ['Unity/OpenXR og rendering-loopet er integreret. Quest, latency og soak-test står tilbage.', 'Unity/OpenXR and the rendering loop are integrated. Quest, latency and soak testing remain.'],
           ['Enhedsgate', 'Device gate'],
           ['/ Kvalificering', '/ Qualification'],
-          ['Det, der skal bevises før produktionsdrift.', 'What must be proven before production.'],
-          ['Projektet er først færdigt, når hele systemet består som én person under realistisk drift — ikke når endnu en komponent kan demonstreres isoleret.', 'The project is complete only when the full system endures as one person under realistic operation — not when another component can be demonstrated in isolation.'],
+          ['V1 er ikke en dato. Det er fire beviser.', 'V1 is not a date. It is four proofs.'],
+          ['Vejen til produktionsdrift er gjort konkret: hvert åbent risikoområde har et tydeligt bevis, der skal bestås på rigtig hardware og under realistisk drift.', 'The path to production is concrete: every open risk area has a clear proof that must pass on real hardware under realistic operating conditions.'],
+          ['Udgangspunkt', 'Starting point'],
+          ['Softwarefundamentet er samlet.', 'The software foundation is assembled.'],
+          ['De åbne risici ligger nu i kontrolleret aktivering, rigtig hardware og vedvarende drift.', 'The open risks now sit in controlled activation, real hardware and sustained operation.'],
+          ['Definitionen af V1', 'The definition of V1'],
+          ['Én person gennem hele systemet.', 'One person throughout the system.'],
+          ['Samme identitet skal sanse, huske, handle og bestå på tværs af Windows, Android og Quest.', 'The same identity must perceive, remember, act and endure across Windows, Android and Quest.'],
+          ['Software-gate', 'Software gate'],
+          ['Tværflade-gate', 'Cross-surface gate'],
+          ['Release-gate', 'Release gate'],
+          ['Bestået når', 'Passes when'],
           ['Kontrolleret Core-aktivering', 'Controlled Core activation'],
           ['Live-aktivering, genstart og modelskift uden tab af session eller kontinuitet.', 'Live activation, restart and model switching without loss of session or continuity.'],
+          ['Kontinuiteten overlever genstart og modelskift uden tilstandsdivergens.', 'Continuity survives restart and model switching without state divergence.'],
           ['Fysisk perception', 'Physical perception'],
           ['Kamera og Kinect gennem hele VisionRig→WorldState-kæden med exact-head evidens.', 'Camera and Kinect through the complete VisionRig→WorldState chain with exact-head evidence.'],
+          ['Fysiske sensorhændelser når WorldState med accepteret, sporbar oprindelse.', 'Physical sensor events reach WorldState with accepted, traceable provenance.'],
           ['Én vedvarende person', 'One persistent person'],
           ['Identitet, stemme, krop og adfærd gennem Windows, Android og Quest.', 'Identity, voice, body and behavior across Windows, Android and Quest.'],
+          ['Identitet, stemme, krop og adfærd er sammenhængende på alle tre flader.', 'Identity, voice, body and behavior remain coherent across all three surfaces.'],
           ['Driftsbevis', 'Operational proof'],
           ['End-to-end latency, længere soak-test, cross-repo manifest og branch protection.', 'End-to-end latency, extended soak testing, cross-repository manifest and branch protection.'],
+          ['Latency, soak-test og exact-head-kontroller består det registrerede release-manifest.', 'Latency, soak testing and exact-head checks pass the recorded release manifest.'],
           ['/ Klare svar', '/ Clear answers'],
           ['Hvad er det egentlig, vi bygger?', 'What are we actually building?'],
           ['ModelRig er ambitiøst. Derfor skal arkitekturen, grænserne og det, der endnu mangler at blive bevist, kunne forklares uden mystik.', 'ModelRig is ambitious. That is why its architecture, boundaries and remaining proof points must be explainable without mystique.'],
@@ -1597,6 +1664,7 @@
           ['Interaktivt runtime-flow fra perception til observeret resultat. Kan rulles vandret på små skærme.', 'Interactive runtime flow from perception to observed outcome. Scrolls horizontally on small screens.'],
           ['Ansvarstabel. Kan rulles vandret på små skærme.', 'Authority table. Scrolls horizontally on small screens.'],
           ['ModelRigs offentlige systemrepositories', 'ModelRig public system repositories'],
+          ['ModelRigs fire V1-beviser', 'ModelRig’s four V1 proofs'],
           ['Åbn ModelRig på GitHub — åbner i ny fane', 'Open ModelRig on GitHub — opens in a new tab'],
           ['Åbn BodyRig på GitHub — åbner i ny fane', 'Open BodyRig on GitHub — opens in a new tab'],
           ['Åbn VoiceRig på GitHub — åbner i ny fane', 'Open VoiceRig on GitHub — opens in a new tab'],
