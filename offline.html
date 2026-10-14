@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#05070a" />
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/kaliv-favicon-32.png" />
+  <title>Kaliv — offline</title>
+  <style>
+    :root { color-scheme: dark; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    * { box-sizing: border-box; }
+    body { min-width: 320px; min-height: 100svh; margin: 0; display: grid; place-items: center; overflow: hidden; background: #05070a; color: #fff; }
+    body::before { content: ""; position: fixed; inset: 0; pointer-events: none; background: radial-gradient(circle at 70% 38%, rgba(20,87,255,.22), transparent 30%), linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px); background-size: auto, 4rem 4rem, 4rem 4rem; mask-image: linear-gradient(#000, transparent 90%); }
+    main { position: relative; width: min(64rem, calc(100% - 2rem)); display: grid; grid-template-columns: minmax(0,1.2fr) minmax(14rem,.8fr); border: 1px solid #29313c; background: rgba(5,7,10,.92); box-shadow: 0 2rem 7rem rgba(0,0,0,.5); }
+    .copy { padding: clamp(2rem,6vw,5rem); border-right: 1px solid #29313c; }
+    .eyebrow { margin: 0 0 1.5rem; color: #7da3ff; font: 650 .75rem ui-monospace, monospace; letter-spacing: .1em; text-transform: uppercase; }
+    h1 { max-width: 8ch; margin: 0 0 1.5rem; font-size: clamp(3.3rem,8vw,7rem); line-height: .9; letter-spacing: -.07em; text-wrap: balance; }
+    p { max-width: 34rem; margin: 0; color: #a8b0bc; font-size: clamp(1rem,1.6vw,1.2rem); line-height: 1.65; }
+    button { min-height: 3.25rem; margin-top: 2.5rem; padding: .75rem 1.1rem; border: 1px solid #7da3ff; background: #1457ff; color: #fff; cursor: pointer; font: 700 .75rem ui-monospace, monospace; letter-spacing: .07em; text-transform: uppercase; }
+    button:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+    .symbol { display: grid; place-items: center; padding: clamp(2rem,5vw,4rem); }
+    .symbol img { width: min(100%,17rem); height: auto; filter: drop-shadow(0 0 38px rgba(20,87,255,.48)); }
+    @media (max-width: 700px) { main { grid-template-columns: 1fr; } .copy { border-right: 0; } .symbol { min-height: 15rem; border-top: 1px solid #29313c; } .symbol img { width: 9rem; } }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="copy" aria-labelledby="offline-title">
+      <p class="eyebrow">Local-first / Offline</p>
+      <h1 id="offline-title">Forbindelsen er væk.</h1>
+      <p>Kaliv er stadig her. Når forbindelsen vender tilbage, kan du fortsætte direkte på projektets seneste version.</p>
+      <button type="button" onclick="window.location.reload()">Prøv forbindelsen igen</button>
+    </section>
+    <aside class="symbol" aria-label="Kaliv"><img src="assets/kaliv-ankh-640.webp" alt="Kalivs futuristiske ankh-symbol" width="640" height="863" /></aside>
+  </main>
+  <script>
+    window.addEventListener('online', () => window.location.reload(), { once: true });
+  </script>
+</body>
+</html>

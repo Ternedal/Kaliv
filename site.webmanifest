@@ -10,10 +10,8 @@
   "theme_color": "#05070a",
   "lang": "da",
   "orientation": "any",
-  "categories": [
-    "productivity",
-    "utilities"
-  ],
+  "prefer_related_applications": false,
+  "categories": ["productivity", "utilities"],
   "icons": [
     {
       "src": "assets/kaliv-icon-192.png",
