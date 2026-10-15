@@ -52,6 +52,11 @@
       "name": "Projektbrief",
       "short_name": "Brief",
       "url": "./brief.html"
+    },
+    {
+      "name": "V1-beviser",
+      "short_name": "Beviser",
+      "url": "./proofs.html"
     }
   ]
 }

@@ -815,6 +815,22 @@
     .gate-pass { margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--line); }
     .gate-pass span { display: block; margin-bottom: .5rem; color: var(--blue); font: 650 .65rem var(--mono); letter-spacing: .07em; text-transform: uppercase; }
     .gate-pass strong { display: block; color: #333c48; font-size: .82rem; line-height: 1.5; }
+    .gate-ledger {
+      display: grid;
+      grid-template-columns: minmax(0,1fr) auto;
+      gap: 2rem;
+      align-items: center;
+      margin-top: 1rem;
+      padding: 1.4rem;
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: #fff;
+      text-decoration: none;
+    }
+    .gate-ledger span { color: var(--blue-light); font: 650 .68rem var(--mono); letter-spacing: .07em; text-transform: uppercase; }
+    .gate-ledger strong { display: block; margin-top: .35rem; font-size: clamp(1.25rem,2.1vw,2rem); line-height: 1.05; letter-spacing: -.035em; }
+    .gate-ledger-action { color: #fff !important; white-space: nowrap; font: 700 .68rem var(--mono) !important; letter-spacing: .07em !important; text-transform: uppercase; }
+    .gate-ledger:hover, .gate-ledger:focus-visible { background: var(--blue); border-color: var(--blue); }
 
     .faq-section { background: #070a0f; }
     .faq-list {
@@ -1049,6 +1065,7 @@
       .gate-item p { font-size: .84rem; }
       .gates { grid-template-columns: 1fr; }
       .gate-item { min-height: 19rem; }
+      .gate-ledger { grid-template-columns: 1fr; gap: 1.2rem; }
       .shift-list { grid-template-columns: 1fr; }
       .manifest-column { min-height: 25rem; }
       .manifest-rule { flex-direction: column; gap: .35rem; }
@@ -1083,7 +1100,7 @@
   <header>
     <a class="brand" href="#top" aria-label="ModelRig — til toppen"><span class="brand-mark">MR</span><span>ModelRig</span></a>
     <div class="header-type"><img src="assets/kaliv-ankh-160.webp" alt="" width="160" height="216" decoding="async" /><span><strong>Kaliv</strong> / embodiment layer</span></div>
-    <nav aria-label="Primær navigation"><a href="#architecture">Arkitektur</a><a href="#kaliv">Kaliv</a><a href="#control">Kontrol</a><a href="#status">Status</a><a href="#roadmap">V1-plan</a><a href="#questions">Spørgsmål</a><a href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Se projektets GitHub-repository — åbner i ny fane">GitHub ↗</a><span class="lang-switch" aria-label="Vælg sprog"><a href="?lang=da" lang="da" data-language="da" class="is-current" aria-current="page">DA</a><a href="?lang=en" lang="en" data-language="en">EN</a></span></nav>
+    <nav aria-label="Primær navigation"><a href="#architecture">Arkitektur</a><a href="#kaliv">Kaliv</a><a href="#control">Kontrol</a><a href="#status">Status</a><a href="#roadmap">V1-plan</a><a href="proofs.html" data-proof-link>Beviser</a><a href="#questions">Spørgsmål</a><a href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Se projektets GitHub-repository — åbner i ny fane">GitHub ↗</a><span class="lang-switch" aria-label="Vælg sprog"><a href="?lang=da" lang="da" data-language="da" class="is-current" aria-current="page">DA</a><a href="?lang=en" lang="en" data-language="en">EN</a></span></nav>
   </header>
 
   <main id="content" tabindex="-1">
@@ -1329,6 +1346,7 @@
         <article class="gate-item" role="listitem"><span class="gate-scope">Tværflade-gate</span><div class="gate-copy"><h3>Én vedvarende person</h3><p>Identitet, stemme, krop og adfærd gennem Windows, Android og Quest.</p></div><div class="gate-pass"><span>Bestået når</span><strong>Identitet, stemme, krop og adfærd er sammenhængende på alle tre flader.</strong></div></article>
         <article class="gate-item" role="listitem"><span class="gate-scope">Release-gate</span><div class="gate-copy"><h3>Driftsbevis</h3><p>End-to-end latency, længere soak-test, cross-repo manifest og branch protection.</p></div><div class="gate-pass"><span>Bestået når</span><strong>Latency, soak-test og exact-head-kontroller består det registrerede release-manifest.</strong></div></article>
       </div>
+      <a class="gate-ledger" href="proofs.html" data-proof-link><span>Offentligt V1-bevisregister<strong>Se status, acceptkriterier og krævet evidens for alle fire gates.</strong></span><span class="gate-ledger-action">Åbn register ↗</span></a>
     </section>
 
     <section class="section dark faq-section" id="questions" aria-labelledby="questions-title">
@@ -1369,13 +1387,13 @@
       <div class="closing-copy">
         <h2 id="closing-title" tabindex="-1">Vi bygger ikke en bedre chatbot. Vi bygger det, der kommer efter.</h2>
         <div>
-          <div class="closing-actions"><a class="closing-action" href="brief.html" data-brief-link>Læs projektbrief</a><a class="closing-action" href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Følg udviklingen på GitHub — åbner i ny fane">Følg udviklingen</a><a class="closing-action secondary" href="#architecture">Udforsk arkitekturen</a></div>
+          <div class="closing-actions"><a class="closing-action" href="brief.html" data-brief-link>Læs projektbrief</a><a class="closing-action" href="proofs.html" data-proof-link>Se bevisregister</a><a class="closing-action" href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Følg udviklingen på GitHub — åbner i ny fane">Følg udviklingen</a><a class="closing-action secondary" href="#architecture">Udforsk arkitekturen</a></div>
           <div class="closing-meta" role="list" aria-label="ModelRigs fire grundegenskaber"><span role="listitem">Vedvarende hukommelse</span><span role="listitem">Udskiftelig intelligens</span><span role="listitem">Kontrolleret handling</span><span role="listitem">Fysisk tilstedeværelse</span></div>
         </div>
       </div>
     </section>
   </main>
-  <footer><span>ModelRig / Projektets hovedoverblik</span><span><a href="brief.html" data-brief-link>Projektbrief ↗</a> · <a href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Åbn Ternedal/Kaliv på GitHub — åbner i ny fane">GitHub / Ternedal/Kaliv ↗</a></span></footer>
+  <footer><span>ModelRig / Projektets hovedoverblik</span><span><a href="brief.html" data-brief-link>Projektbrief ↗</a> · <a href="proofs.html" data-proof-link>V1-beviser ↗</a> · <a href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Åbn Ternedal/Kaliv på GitHub — åbner i ny fane">GitHub / Ternedal/Kaliv ↗</a></span></footer>
   <a class="back-top" href="#top" aria-label="Til toppen" aria-hidden="true" tabindex="-1"><span aria-hidden="true">↑</span></a>
   <script>
     (() => {
@@ -1389,6 +1407,7 @@
           ['/ Arkitektur', '/ Architecture'],
           ['Kontrol', 'Control'],
           ['V1-plan', 'V1 plan'],
+          ['Beviser', 'Proofs'],
           ['Spørgsmål', 'Questions'],
           ['Fundamentet efter chatbotten', 'The foundation beyond the chatbot'],
           ['Vi bygger AI, der kan bestå.', 'We build AI that endures.'],
@@ -1615,6 +1634,11 @@
           ['Driftsbevis', 'Operational proof'],
           ['End-to-end latency, længere soak-test, cross-repo manifest og branch protection.', 'End-to-end latency, extended soak testing, cross-repository manifest and branch protection.'],
           ['Latency, soak-test og exact-head-kontroller består det registrerede release-manifest.', 'Latency, soak testing and exact-head checks pass the recorded release manifest.'],
+          ['Offentligt V1-bevisregister', 'Public V1 proof ledger'],
+          ['Se status, acceptkriterier og krævet evidens for alle fire gates.', 'Inspect status, acceptance criteria and required evidence for all four gates.'],
+          ['Åbn register ↗', 'Open ledger ↗'],
+          ['Se bevisregister', 'View proof ledger'],
+          ['V1-beviser ↗', 'V1 proofs ↗'],
           ['/ Klare svar', '/ Clear answers'],
           ['Hvad er det egentlig, vi bygger?', 'What are we actually building?'],
           ['ModelRig er ambitiøst. Derfor skal arkitekturen, grænserne og det, der endnu mangler at blive bevist, kunne forklares uden mystik.', 'ModelRig is ambitious. That is why its architecture, boundaries and remaining proof points must be explainable without mystique.'],
@@ -1737,6 +1761,7 @@
           else link.removeAttribute('aria-current');
         });
         document.querySelectorAll('[data-brief-link]').forEach(link => { link.href = 'brief.html?lang=en'; });
+        document.querySelectorAll('[data-proof-link]').forEach(link => { link.href = 'proofs.html?lang=en'; });
       }
 
       const root = document.documentElement;

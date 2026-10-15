@@ -1,11 +1,13 @@
 const CACHE_PREFIX = 'kaliv-shell-';
-const CACHE_NAME = `${CACHE_PREFIX}v49`;
+const CACHE_NAME = `${CACHE_PREFIX}v50`;
 
 const CORE_ASSETS = [
   './',
   './?lang=en',
   './brief.html',
   './brief.html?lang=en',
+  './proofs.html',
+  './proofs.html?lang=en',
   './offline.html',
   './404.html',
   './site.webmanifest',
