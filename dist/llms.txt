@@ -22,6 +22,8 @@ Kaliv is designed as one continuous identity across Windows, Android and Quest, 
 - System architecture (English): https://kaliv.dk/architecture.html?lang=en
 - V1 proof ledger (Danish): https://kaliv.dk/proofs.html
 - V1 proof ledger (English): https://kaliv.dk/proofs.html?lang=en
+- Project Room (Danish): https://kaliv.dk/progress.html
+- Project Room (English): https://kaliv.dk/progress.html?lang=en
 - Machine-readable manifest: https://kaliv.dk/project.json
 
 ## Public repositories

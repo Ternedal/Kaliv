@@ -62,6 +62,11 @@
       "name": "Systemarkitektur",
       "short_name": "Arkitektur",
       "url": "./architecture.html"
+    },
+    {
+      "name": "Project Room",
+      "short_name": "Status",
+      "url": "./progress.html"
     }
   ]
 }

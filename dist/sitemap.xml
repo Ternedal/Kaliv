@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://kaliv.dk/</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="da" href="https://kaliv.dk/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kaliv.dk/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kaliv.dk/" />
+    <image:image>
+      <image:loc>https://kaliv.dk/assets/modelrig-continuity-female-hair-1920.webp</image:loc>
+      <image:caption>ModelRigs vej fra kognitiv kerne til kropsliggjort intelligens</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kaliv.dk/?lang=en</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="da" href="https://kaliv.dk/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kaliv.dk/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kaliv.dk/" />
+    <image:image>
+      <image:loc>https://kaliv.dk/assets/modelrig-continuity-female-hair-1920.webp</image:loc>
+      <image:caption>ModelRig’s path from cognitive core to embodied intelligence</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://kaliv.dk/brief.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="da" href="https://kaliv.dk/brief.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kaliv.dk/brief.html?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kaliv.dk/brief.html" />
+  </url>
+  <url>
+    <loc>https://kaliv.dk/brief.html?lang=en</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="da" href="https://kaliv.dk/brief.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kaliv.dk/brief.html?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kaliv.dk/brief.html" />
+  </url>
+  <url>
+    <loc>https://kaliv.dk/proofs.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="da" href="https://kaliv.dk/proofs.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kaliv.dk/proofs.html?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kaliv.dk/proofs.html" />
+  </url>
+  <url>
+    <loc>https://kaliv.dk/proofs.html?lang=en</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="da" href="https://kaliv.dk/proofs.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kaliv.dk/proofs.html?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kaliv.dk/proofs.html" />
+  </url>
+  <url>
+    <loc>https://kaliv.dk/architecture.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="da" href="https://kaliv.dk/architecture.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kaliv.dk/architecture.html?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kaliv.dk/architecture.html" />
+  </url>
+  <url>
+    <loc>https://kaliv.dk/architecture.html?lang=en</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="da" href="https://kaliv.dk/architecture.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kaliv.dk/architecture.html?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kaliv.dk/architecture.html" />
+  </url>
+  <url>
+    <loc>https://kaliv.dk/progress.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="da" href="https://kaliv.dk/progress.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kaliv.dk/progress.html?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kaliv.dk/progress.html" />
+  </url>
+  <url>
+    <loc>https://kaliv.dk/progress.html?lang=en</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="da" href="https://kaliv.dk/progress.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kaliv.dk/progress.html?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kaliv.dk/progress.html" />
+  </url>
+</urlset>

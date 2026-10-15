@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#05070a" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="description" content="ModelRig Project Room: et offentligt statussnapshot med repository-heads, åbne V1-beviser og næste kvalificeringsskridt." />
+  <meta property="og:title" content="ModelRig — Project Room" />
+  <meta property="og:description" content="Se hvad der er landet, hvad der står åbent, og hvilken evidens der kræves før ModelRig og Kaliv kan kaldes V1." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="da_DK" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:url" content="https://kaliv.dk/progress.html" />
+  <meta property="og:image" content="https://kaliv.dk/assets/modelrig-continuity-female-hair-1920.webp" />
+  <meta property="og:image:alt" content="ModelRig fra kognitiv kerne til kropsliggjort intelligens" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ModelRig — Project Room" />
+  <meta name="twitter:description" content="Offentlig projektstatus, kilde-heads og vejen til V1." />
+  <meta name="twitter:image" content="https://kaliv.dk/assets/modelrig-continuity-female-hair-1920.webp" />
+  <link rel="canonical" href="https://kaliv.dk/progress.html" />
+  <link rel="alternate" hreflang="da" href="https://kaliv.dk/progress.html" />
+  <link rel="alternate" hreflang="en" href="https://kaliv.dk/progress.html?lang=en" />
+  <link rel="alternate" hreflang="x-default" href="https://kaliv.dk/progress.html" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/kaliv-favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/kaliv-apple-touch-icon.png" />
+  <title>ModelRig — Project Room</title>
+  <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"WebPage",
+      "name":"ModelRig — Project Room",
+      "description":"Et offentligt statussnapshot med repository-heads, åbne V1-beviser og næste kvalificeringsskridt.",
+      "dateModified":"2026-10-15",
+      "inLanguage":"da",
+      "isPartOf":{"@type":"WebSite","name":"ModelRig / Kaliv","url":"https://kaliv.dk/"},
+      "url":"https://kaliv.dk/progress.html"
+    }
+  </script>
+  <style>
+    :root {
+      --ink:#070a0f; --panel:#0d121b; --paper:#eef2f8; --white:#fff;
+      --blue:#1457ff; --blue-light:#8aabff; --green:#16a56f; --green-soft:#e7f8f1;
+      --amber:#b36a00; --amber-soft:#fff2da; --line:#cbd2dc; --line-dark:#2a3340; --muted:#626d7a;
+      --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+      --sans:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; min-width:320px; overflow-x:clip; background:var(--paper); color:var(--ink); font:400 1rem/1.6 var(--sans); text-rendering:optimizeLegibility; }
+    a { color:inherit; }
+    a:focus-visible { outline:2px solid var(--blue-light); outline-offset:4px; }
+    h1,h2,h3,p { margin-top:0; }
+    h1,h2,h3 { text-wrap:balance; }
+    p { text-wrap:pretty; }
+    ::selection { background:var(--blue); color:#fff; }
+    .skip { position:fixed; left:1rem; top:1rem; z-index:100; transform:translateY(-180%); padding:.7rem 1rem; background:#fff; color:#000; }
+    .skip:focus { transform:none; }
+    .topline { position:fixed; inset:0 0 auto; z-index:60; height:.35rem; background:linear-gradient(90deg,var(--blue),#7fa8ff); box-shadow:0 0 18px rgba(20,87,255,.55); }
+    header { position:relative; z-index:10; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; min-height:6.3rem; padding:.35rem clamp(1.25rem,4vw,4.5rem) 0; border-bottom:1px solid #2b313a; background:#05070a; color:#fff; }
+    .brand { display:inline-flex; align-items:center; gap:.85rem; justify-self:start; font-weight:750; text-decoration:none; }
+    .brand-mark { width:2.55rem; height:2.55rem; display:grid; place-items:center; border:1px solid #7c8592; font:700 .7rem var(--mono); }
+    .document-type { justify-self:center; color:#8f98a6; font:650 .7rem var(--mono); letter-spacing:.08em; text-transform:uppercase; }
+    .header-actions { display:flex; align-items:center; justify-self:end; gap:1rem; }
+    .header-actions a { color:#bdc4ce; font:650 .72rem var(--mono); letter-spacing:.05em; text-decoration:none; text-transform:uppercase; }
+    .header-actions a:hover { color:#fff; }
+    .lang { display:inline-flex; gap:.55rem; padding-left:.8rem; border-left:1px solid #353c47; }
+    .lang .is-current { color:#fff; text-decoration:underline; text-decoration-color:var(--blue-light); text-underline-offset:.4rem; }
+
+    .hero { min-height:78svh; display:grid; grid-template-columns:minmax(0,1.2fr) minmax(23rem,.8fr); background:#05070a; color:#fff; }
+    .hero-copy { display:flex; flex-direction:column; justify-content:space-between; padding:clamp(4rem,8vw,8rem) clamp(1.25rem,4vw,4.5rem); }
+    .eyebrow,.section-label,.micro { color:var(--blue-light); font:700 .72rem var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+    h1 { max-width:9ch; margin:1.5rem 0 2rem; font-size:clamp(4rem,8vw,9rem); line-height:.84; letter-spacing:-.075em; }
+    .lead { max-width:46rem; color:#c3cad4; font-size:clamp(1.05rem,1.6vw,1.38rem); line-height:1.52; }
+    .snapshot { display:flex; flex-wrap:wrap; gap:1.3rem 2.2rem; margin-top:4rem; padding-top:1.2rem; border-top:1px solid #343d4a; color:#929ca9; font:650 .68rem var(--mono); letter-spacing:.06em; text-transform:uppercase; }
+    .hero-signal { display:flex; flex-direction:column; justify-content:space-between; padding:clamp(2rem,5vw,5rem); border-left:1px solid var(--line-dark); background:radial-gradient(circle at 55% 45%,rgba(20,87,255,.23),transparent 34%),#080b11; }
+    .hero-signal-top { display:flex; justify-content:space-between; gap:1rem; color:#8e99a8; font:700 .68rem var(--mono); letter-spacing:.07em; text-transform:uppercase; }
+    .hero-signal strong { display:block; font-size:clamp(7rem,14vw,15rem); line-height:.72; letter-spacing:-.09em; }
+    .hero-signal strong span { color:var(--blue); }
+    .hero-signal h2 { max-width:10ch; margin:1.5rem 0 .8rem; font-size:clamp(1.8rem,3vw,3.2rem); line-height:.95; letter-spacing:-.05em; }
+    .hero-signal p { margin:0; color:#9ca6b4; }
+
+    .metrics { display:grid; grid-template-columns:repeat(4,1fr); border-left:1px solid var(--line); }
+    .metric { min-height:13rem; display:flex; flex-direction:column; justify-content:space-between; padding:1.35rem; border-right:1px solid var(--line); border-bottom:1px solid var(--line); background:#fff; }
+    .metric span { color:var(--muted); font:700 .67rem var(--mono); letter-spacing:.07em; text-transform:uppercase; }
+    .metric strong { font-size:clamp(3.4rem,6vw,6.5rem); line-height:.8; letter-spacing:-.07em; }
+    .metric:nth-child(2) strong { color:var(--blue); }
+
+    .section { padding:clamp(4.5rem,8vw,8.5rem) clamp(1.25rem,4vw,4.5rem); }
+    .section-head { display:grid; grid-template-columns:minmax(9rem,.35fr) minmax(0,1.65fr); gap:clamp(2rem,6vw,7rem); margin-bottom:clamp(3rem,6vw,6rem); }
+    .section-head h2 { max-width:13ch; margin-bottom:1.2rem; font-size:clamp(3rem,6vw,6.8rem); line-height:.9; letter-spacing:-.065em; }
+    .section-head p { max-width:48rem; margin:0; color:var(--muted); font-size:clamp(1rem,1.35vw,1.18rem); }
+    .dark { background:var(--ink); color:#fff; }
+    .dark .section-head p { color:#aab2be; }
+
+    .state-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); border-top:1px solid var(--line); border-left:1px solid var(--line); }
+    .state-card { min-height:21rem; display:flex; flex-direction:column; justify-content:space-between; padding:clamp(1.4rem,3vw,2.5rem); border-right:1px solid var(--line); border-bottom:1px solid var(--line); background:#fff; }
+    .state-card > span { align-self:flex-start; padding:.42rem .6rem; border:1px solid currentColor; font:700 .65rem var(--mono); letter-spacing:.07em; text-transform:uppercase; }
+    .state-card.landed > span { color:var(--green); background:var(--green-soft); }
+    .state-card.open > span { color:var(--amber); background:var(--amber-soft); }
+    .state-card h3 { max-width:14ch; margin:0 0 .75rem; font-size:clamp(1.7rem,3vw,3.2rem); line-height:.95; letter-spacing:-.05em; }
+    .state-card p { max-width:40rem; margin:0; color:var(--muted); }
+
+    .repos { border-top:1px solid var(--line-dark); }
+    .repo { display:grid; grid-template-columns:3.6rem minmax(12rem,.55fr) minmax(0,1fr) auto; gap:1.5rem; align-items:center; min-height:9.5rem; padding:1.2rem 0; border-bottom:1px solid var(--line-dark); }
+    .repo-index { color:var(--blue-light); font:700 .7rem var(--mono); }
+    .repo-name h3 { margin:0 0 .2rem; font-size:clamp(1.45rem,2.4vw,2.5rem); letter-spacing:-.045em; }
+    .repo-name span,.repo-change time { color:#7f8997; font:650 .65rem var(--mono); letter-spacing:.06em; text-transform:uppercase; }
+    .repo-change p { margin:0 0 .35rem; color:#d1d7df; }
+    .repo-link { padding:.65rem .8rem; border:1px solid #485362; color:#fff; font:700 .65rem var(--mono); letter-spacing:.06em; text-decoration:none; text-transform:uppercase; }
+    .repo-link:hover { background:#fff; color:var(--ink); }
+
+    .gates { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border-top:1px solid var(--line); border-left:1px solid var(--line); }
+    .gate { min-height:25rem; display:flex; flex-direction:column; padding:1.35rem; border-right:1px solid var(--line); border-bottom:1px solid var(--line); background:#fff; }
+    .gate-top { display:flex; justify-content:space-between; gap:1rem; color:var(--blue); font:700 .7rem var(--mono); letter-spacing:.06em; text-transform:uppercase; }
+    .gate-top span:last-child { color:var(--amber); }
+    .gate h3 { margin:4rem 0 .8rem; font-size:1.35rem; line-height:1.05; }
+    .gate p { margin:0; color:var(--muted); font-size:.91rem; }
+    .gate strong { margin-top:auto; padding-top:1rem; border-top:1px solid var(--line); color:#303945; font-size:.82rem; }
+
+    .rules { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line-dark); border-left:1px solid var(--line-dark); }
+    .rule-card { min-height:22rem; display:flex; flex-direction:column; justify-content:space-between; padding:1.4rem; border-right:1px solid var(--line-dark); border-bottom:1px solid var(--line-dark); }
+    .rule-card > span { color:var(--blue-light); font:700 .68rem var(--mono); }
+    .rule-card h3 { margin:0 0 .8rem; font-size:clamp(1.7rem,3vw,3rem); line-height:.95; letter-spacing:-.05em; }
+    .rule-card p { margin:0; color:#aeb7c3; }
+
+    .closing { display:grid; grid-template-columns:.75fr 1.25fr; min-height:68svh; background:var(--blue); color:#fff; }
+    .closing > div { padding:clamp(3rem,7vw,7rem) clamp(1.25rem,4vw,4.5rem); }
+    .closing-aside { display:flex; flex-direction:column; justify-content:space-between; border-right:1px solid rgba(255,255,255,.4); }
+    .closing-aside img { width:min(9rem,45%); height:auto; }
+    .closing-main { display:flex; flex-direction:column; justify-content:space-between; gap:4rem; }
+    .closing h2 { max-width:11ch; margin:0; font-size:clamp(3.2rem,7vw,8rem); line-height:.88; letter-spacing:-.07em; }
+    .closing p { max-width:45rem; color:#e2e9ff; font-size:1.08rem; }
+    .actions { display:flex; flex-wrap:wrap; gap:.8rem; }
+    .action { min-height:3.25rem; display:inline-flex; align-items:center; justify-content:center; padding:.75rem 1rem; border:1px solid #fff; background:#fff; color:var(--ink); font:700 .72rem var(--mono); letter-spacing:.06em; text-decoration:none; text-transform:uppercase; }
+    .action::after { content:"↗"; margin-left:.65rem; }
+    .action.secondary { background:transparent; color:#fff; }
+    .action:hover { background:var(--ink); border-color:var(--ink); color:#fff; }
+    footer { display:flex; justify-content:space-between; gap:2rem; padding:2rem clamp(1.25rem,4vw,4.5rem); background:#05070a; color:#939daa; font:650 .7rem var(--mono); letter-spacing:.06em; text-transform:uppercase; }
+    footer a { text-underline-offset:.25rem; }
+
+    @media (max-width:1050px) {
+      .hero { grid-template-columns:1fr; }
+      .hero-signal { min-height:34rem; border-left:0; border-top:1px solid var(--line-dark); }
+      .metrics,.gates { grid-template-columns:repeat(2,1fr); }
+      .repo { grid-template-columns:3rem minmax(10rem,.6fr) minmax(0,1.4fr); }
+      .repo-link { grid-column:2/-1; justify-self:start; }
+      .closing { grid-template-columns:1fr; }
+      .closing-aside { min-height:17rem; border-right:0; border-bottom:1px solid rgba(255,255,255,.4); }
+    }
+    @media (max-width:760px) {
+      header { grid-template-columns:1fr auto; min-height:8.5rem; align-content:center; row-gap:.7rem; }
+      .document-type { display:none; }
+      .header-actions { grid-column:1/-1; justify-self:stretch; justify-content:space-between; overflow-x:auto; }
+      h1 { font-size:clamp(3.8rem,17vw,5.9rem); }
+      .section-head { grid-template-columns:1fr; gap:1.2rem; }
+      .section-head h2 { font-size:clamp(3rem,14vw,5.2rem); }
+      .state-grid,.rules { grid-template-columns:1fr; }
+      .state-card { min-height:17rem; }
+      .repo { grid-template-columns:2.5rem 1fr; gap:1rem; align-items:start; padding-block:1.5rem; }
+      .repo-change,.repo-link { grid-column:2; }
+      footer { flex-direction:column; }
+    }
+    @media (max-width:520px) {
+      .metrics,.gates { grid-template-columns:1fr; }
+      .metric { min-height:10rem; }
+      .gate { min-height:21rem; }
+    }
+    @media print {
+      .topline,.skip,.header-actions,.actions { display:none !important; }
+      header { min-height:4rem; }
+      .hero { min-height:0; }
+      .hero-copy,.section { padding-block:2.5rem; }
+      .state-card,.repo,.gate,.rule-card { break-inside:avoid; }
+    }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#content" data-da="Gå til indhold" data-en="Skip to content">Gå til indhold</a>
+  <div class="topline" aria-hidden="true"></div>
+  <header>
+    <a class="brand" href="./" data-en-href="./?lang=en" aria-label="Tilbage til ModelRig"><span class="brand-mark">MR</span><span>ModelRig</span></a>
+    <span class="document-type">Project room / Public status</span>
+    <div class="header-actions"><a href="brief.html" data-en-href="brief.html?lang=en" data-da="Projektbrief" data-en="Project brief">Projektbrief</a><a href="architecture.html" data-en-href="architecture.html?lang=en" data-da="Arkitektur" data-en="Architecture">Arkitektur</a><a href="proofs.html" data-en-href="proofs.html?lang=en" data-da="V1-beviser" data-en="V1 proofs">V1-beviser</a><span class="lang" aria-label="Vælg sprog"><a href="progress.html" data-language="da" class="is-current" aria-current="page">DA</a><a href="progress.html?lang=en" data-language="en">EN</a></span></div>
+  </header>
+
+  <main id="content">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div><span class="eyebrow" data-da="ModelRig / Offentligt projektrum" data-en="ModelRig / Public project room">ModelRig / Offentligt projektrum</span><h1 id="hero-title" data-da="Vi bygger offentligt." data-en="We build in public.">Vi bygger offentligt.</h1><p class="lead" data-da="Dette er projektets aktuelle kontrolrum: hvad der er landet, hvad der fortsat står åbent, og hvilken evidens der skal eksistere, før ModelRig og Kaliv kan kaldes V1." data-en="This is the project’s current control room: what has landed, what remains open and which evidence must exist before ModelRig and Kaliv can be called V1.">Dette er projektets aktuelle kontrolrum: hvad der er landet, hvad der fortsat står åbent, og hvilken evidens der skal eksistere, før ModelRig og Kaliv kan kaldes V1.</p></div>
+        <div class="snapshot"><span data-da="Snapshot · 15. oktober 2026" data-en="Snapshot · 15 October 2026">Snapshot · 15. oktober 2026</span><span data-da="Kilde · Offentlige repository-heads" data-en="Source · Public repository heads">Kilde · Offentlige repository-heads</span></div>
+      </div>
+      <div class="hero-signal" aria-label="Aktuel V1-status">
+        <div class="hero-signal-top"><span data-da="V1-kvalificering" data-en="V1 qualification">V1-kvalificering</span><span data-da="Ikke kvalificeret" data-en="Not qualified">Ikke kvalificeret</span></div>
+        <div><strong><span>0</span>/4</strong><h2 data-da="Systembeviser markeret bestået." data-en="System proofs marked as passed.">Systembeviser markeret bestået.</h2><p data-da="Softwarefundamentet er samlet. De åbne risici ligger i kontrolleret aktivering, fysisk hardware, tværfladekontinuitet og vedvarende drift." data-en="The software foundation is assembled. Open risks remain in controlled activation, physical hardware, cross-surface continuity and sustained operation.">Softwarefundamentet er samlet. De åbne risici ligger i kontrolleret aktivering, fysisk hardware, tværfladekontinuitet og vedvarende drift.</p></div>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Projektets offentlige nøglepunkter">
+      <article class="metric"><span data-da="Runtime-repositories" data-en="Runtime repositories">Runtime-repositories</span><strong>4</strong></article>
+      <article class="metric"><span data-da="Åbne V1-beviser" data-en="Open V1 proofs">Åbne V1-beviser</span><strong>4</strong></article>
+      <article class="metric"><span data-da="Produktflader" data-en="Product surfaces">Produktflader</span><strong>3</strong></article>
+      <article class="metric"><span data-da="Vedvarende identitet" data-en="Persistent identity">Vedvarende identitet</span><strong>1</strong></article>
+    </section>
+
+    <section class="section" aria-labelledby="snapshot-title">
+      <div class="section-head"><span class="section-label" data-da="01 / Snapshot" data-en="01 / Snapshot">01 / Snapshot</span><div><h2 id="snapshot-title" data-da="Integreret er ikke det samme som bevist." data-en="Integrated is not the same as proven.">Integreret er ikke det samme som bevist.</h2><p data-da="Status opdeles bevidst i det, der er implementeret i software, og det, der stadig kræver observerbar kvalificering på de faktiske enheder." data-en="Status deliberately separates what is implemented in software from what still requires observable qualification on the actual devices.">Status opdeles bevidst i det, der er implementeret i software, og det, der stadig kræver observerbar kvalificering på de faktiske enheder.</p></div></div>
+      <div class="state-grid">
+        <article class="state-card landed"><span data-da="Landet" data-en="Landed">Landet</span><div><h3 data-da="Control plane og policy er samlet." data-en="Control plane and policy are assembled.">Control plane og policy er samlet.</h3><p data-da="ModelRig samler RAG, audit, scheduler, klientintegration og de eksplicitte grænser mellem state, kognition og handling." data-en="ModelRig brings together RAG, audit, scheduling, client integration and the explicit boundaries between state, cognition and action.">ModelRig samler RAG, audit, scheduler, klientintegration og de eksplicitte grænser mellem state, kognition og handling.</p></div></article>
+        <article class="state-card landed"><span data-da="Landet" data-en="Landed">Landet</span><div><h3 data-da="Exact-head gates er etableret." data-en="Exact-head gates are established.">Exact-head gates er etableret.</h3><p data-da="VoiceRig og VisionRig har offentlige qualification gates, og ModelRig har fail-closed diagnose af den kørende voice-worker." data-en="VoiceRig and VisionRig expose qualification gates, while ModelRig provides fail-closed diagnosis of the running voice worker.">VoiceRig og VisionRig har offentlige qualification gates, og ModelRig har fail-closed diagnose af den kørende voice-worker.</p></div></article>
+        <article class="state-card open"><span data-da="Åben" data-en="Open">Åben</span><div><h3 data-da="Virkeligheden skal gennem hele loopet." data-en="Reality must pass through the whole loop.">Virkeligheden skal gennem hele loopet.</h3><p data-da="Kamera, Kinect, Quest og klienthandover skal kvalificeres som én korreleret, reproducerbar kørsel — ikke som isolerede demos." data-en="Camera, Kinect, Quest and client handover must qualify as one correlated, reproducible run — not isolated demos.">Kamera, Kinect, Quest og klienthandover skal kvalificeres som én korreleret, reproducerbar kørsel — ikke som isolerede demos.</p></div></article>
+        <article class="state-card open"><span data-da="Åben" data-en="Open">Åben</span><div><h3 data-da="Kontinuitet skal overleve drift." data-en="Continuity must survive operation.">Kontinuitet skal overleve drift.</h3><p data-da="Live Core-aktivering, modelskift, genstart, latency og soak-test skal bestå uden tilstandsdivergens eller skjult degradering." data-en="Live Core activation, model switching, restart, latency and soak testing must pass without state divergence or hidden degradation.">Live Core-aktivering, modelskift, genstart, latency og soak-test skal bestå uden tilstandsdivergens eller skjult degradering.</p></div></article>
+      </div>
+    </section>
+
+    <section class="section dark" aria-labelledby="source-title">
+      <div class="section-head"><span class="section-label" data-da="02 / Kildepuls" data-en="02 / Source pulse">02 / Kildepuls</span><div><h2 id="source-title" data-da="De aktuelle runtime-heads." data-en="The current runtime heads.">De aktuelle runtime-heads.</h2><p data-da="Snapshot af de seneste offentlige commits på tværs af de fire runtime-repositories. SHA’er og links gør status efterprøvbar." data-en="Snapshot of the latest public commits across the four runtime repositories. SHAs and links make the status inspectable.">Snapshot af de seneste offentlige commits på tværs af de fire runtime-repositories. SHA’er og links gør status efterprøvbar.</p></div></div>
+      <div class="repos" role="list" aria-label="Aktuelle repository-heads">
+        <article class="repo" role="listitem"><span class="repo-index">01</span><div class="repo-name"><h3>ModelRig</h3><span>0b2ff45 · Control plane</span></div><div class="repo-change"><p data-da="Fail-closed ASR/TTS-diagnose for den kørende V1-worker." data-en="Fail-closed ASR/TTS diagnosis for the running V1 worker.">Fail-closed ASR/TTS-diagnose for den kørende V1-worker.</p><time datetime="2026-10-08" data-da="8. oktober 2026" data-en="8 October 2026">8. oktober 2026</time></div><a class="repo-link" href="https://github.com/Ternedal/ModelRig/commit/0b2ff455116f4f28a1a41704d9cb81503f17d2df" target="_blank" rel="noopener noreferrer" data-da="Se commit ↗" data-en="View commit ↗">Se commit ↗</a></article>
+        <article class="repo" role="listitem"><span class="repo-index">02</span><div class="repo-name"><h3>BodyRig</h3><span>8a85597 · Embodiment</span></div><div class="repo-change"><p data-da="Fail-closed validering af kamerageometri og regressionsdækning." data-en="Fail-closed camera geometry validation and regression coverage.">Fail-closed validering af kamerageometri og regressionsdækning.</p><time datetime="2026-10-08" data-da="8. oktober 2026" data-en="8 October 2026">8. oktober 2026</time></div><a class="repo-link" href="https://github.com/Ternedal/BodyRig/commit/8a85597637d0b59947bd179366e27be1bb847c16" target="_blank" rel="noopener noreferrer" data-da="Se commit ↗" data-en="View commit ↗">Se commit ↗</a></article>
+        <article class="repo" role="listitem"><span class="repo-index">03</span><div class="repo-name"><h3>VoiceRig</h3><span>9f3e594 · Voice</span></div><div class="repo-change"><p data-da="Exact-head qualification gate for stemmepipelinen." data-en="Exact-head qualification gate for the voice pipeline.">Exact-head qualification gate for stemmepipelinen.</p><time datetime="2026-10-01" data-da="1. oktober 2026" data-en="1 October 2026">1. oktober 2026</time></div><a class="repo-link" href="https://github.com/Ternedal/VoiceRig/commit/9f3e594996db7eb2c6e035247ecb168bf17c1dae" target="_blank" rel="noopener noreferrer" data-da="Se commit ↗" data-en="View commit ↗">Se commit ↗</a></article>
+        <article class="repo" role="listitem"><span class="repo-index">04</span><div class="repo-name"><h3>VisionRig</h3><span>66ea9bf · Perception</span></div><div class="repo-change"><p data-da="Exact-head qualification gate for perceptionskæden." data-en="Exact-head qualification gate for the perception chain.">Exact-head qualification gate for perceptionskæden.</p><time datetime="2026-10-01" data-da="1. oktober 2026" data-en="1 October 2026">1. oktober 2026</time></div><a class="repo-link" href="https://github.com/Ternedal/VisionRig/commit/66ea9bfce1c4d219e4bac1d85324a0e6e3f042e5" target="_blank" rel="noopener noreferrer" data-da="Se commit ↗" data-en="View commit ↗">Se commit ↗</a></article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="gates-title">
+      <div class="section-head"><span class="section-label" data-da="03 / Næste bevis" data-en="03 / Next proof">03 / Næste bevis</span><div><h2 id="gates-title" data-da="Vejen frem er observerbar." data-en="The path forward is observable.">Vejen frem er observerbar.</h2><p data-da="Der vises ingen kunstig procent. Hvert workstream flytter sig først, når det definerede systembevis kan reproduceres og dokumenteres." data-en="No artificial percentage is shown. Each workstream moves only when its defined system proof can be reproduced and documented.">Der vises ingen kunstig procent. Hvert workstream flytter sig først, når det definerede systembevis kan reproduceres og dokumenteres.</p></div></div>
+      <div class="gates" role="list" aria-label="Næste bevis for de fire V1-gates">
+        <article class="gate" role="listitem"><div class="gate-top"><span>P01</span><span data-da="Åben" data-en="Open">Åben</span></div><h3 data-da="Core-kontinuitet" data-en="Core continuity">Core-kontinuitet</h3><p data-da="Kør live-aktivering, genstart og modelskift på samme session med korreleret eventlog." data-en="Run live activation, restart and model switching on the same session with a correlated event log.">Kør live-aktivering, genstart og modelskift på samme session med korreleret eventlog.</p><strong data-da="Kræver · State-diff + exact-head run" data-en="Requires · State diff + exact-head run">Kræver · State-diff + exact-head run</strong></article>
+        <article class="gate" role="listitem"><div class="gate-top"><span>P02</span><span data-da="Åben" data-en="Open">Åben</span></div><h3 data-da="Fysisk perception" data-en="Physical perception">Fysisk perception</h3><p data-da="Før rigtige kamera- og Kinect-events gennem VisionRig, admission og ind i WorldState." data-en="Pass real camera and Kinect events through VisionRig, admission and into WorldState.">Før rigtige kamera- og Kinect-events gennem VisionRig, admission og ind i WorldState.</p><strong data-da="Kræver · Sensorcapture + event-ID-kæde" data-en="Requires · Sensor capture + event ID chain">Kræver · Sensorcapture + event-ID-kæde</strong></article>
+        <article class="gate" role="listitem"><div class="gate-top"><span>P03</span><span data-da="Åben" data-en="Open">Åben</span></div><h3 data-da="Én vedvarende person" data-en="One persistent person">Én vedvarende person</h3><p data-da="Gennemfør én sammenhængende session på Windows, Android og Quest med samme identitet." data-en="Complete one coherent session across Windows, Android and Quest with the same identity.">Gennemfør én sammenhængende session på Windows, Android og Quest med samme identitet.</p><strong data-da="Kræver · Optaget klienthandover" data-en="Requires · Recorded client handover">Kræver · Optaget klienthandover</strong></article>
+        <article class="gate" role="listitem"><div class="gate-top"><span>P04</span><span data-da="Åben" data-en="Open">Åben</span></div><h3 data-da="Driftsbevis" data-en="Operational proof">Driftsbevis</h3><p data-da="Mål latency, gennemfør soak-test og bind alle deltagende heads i ét release-manifest." data-en="Measure latency, complete soak testing and bind all participating heads into one release manifest.">Mål latency, gennemfør soak-test og bind alle deltagende heads i ét release-manifest.</p><strong data-da="Kræver · Målinger + versionslåst manifest" data-en="Requires · Measurements + version-locked manifest">Kræver · Målinger + versionslåst manifest</strong></article>
+      </div>
+    </section>
+
+    <section class="section dark" aria-labelledby="rules-title">
+      <div class="section-head"><span class="section-label" data-da="04 / Arbejdsregler" data-en="04 / Working rules">04 / Arbejdsregler</span><div><h2 id="rules-title" data-da="Troværdighed er en del af arkitekturen." data-en="Credibility is part of the architecture.">Troværdighed er en del af arkitekturen.</h2><p data-da="Project Room følger de samme principper som runtime-systemet: eksplicit autoritet, sporbar oprindelse og fail-closed status." data-en="The Project Room follows the same principles as the runtime system: explicit authority, traceable provenance and fail-closed status.">Project Room følger de samme principper som runtime-systemet: eksplicit autoritet, sporbar oprindelse og fail-closed status.</p></div></div>
+      <div class="rules">
+        <article class="rule-card"><span>01</span><div><h3 data-da="Sandhed før teater." data-en="Truth before theatre.">Sandhed før teater.</h3><p data-da="Et flot interface må ikke udviske forskellen mellem implementeret, kontrolleret og fysisk bevist." data-en="A polished interface must not blur the difference between implemented, controlled and physically proven.">Et flot interface må ikke udviske forskellen mellem implementeret, kontrolleret og fysisk bevist.</p></div></article>
+        <article class="rule-card"><span>02</span><div><h3 data-da="Exact-head eller intet bevis." data-en="Exact head or no proof.">Exact-head eller intet bevis.</h3><p data-da="Alle kvalificeringsruns bindes til de konkrete commits, konfigurationer og enheder, der faktisk blev testet." data-en="Every qualification run is bound to the concrete commits, configurations and devices that were actually tested.">Alle kvalificeringsruns bindes til de konkrete commits, konfigurationer og enheder, der faktisk blev testet.</p></div></article>
+        <article class="rule-card"><span>03</span><div><h3 data-da="Virkeligheden har sidste ord." data-en="Reality has the final word.">Virkeligheden har sidste ord.</h3><p data-da="Mocks og syntetiske fixtures kan beskytte software. Kun rigtig hardware kan lukke de fysiske V1-gates." data-en="Mocks and synthetic fixtures can protect software. Only real hardware can close the physical V1 gates.">Mocks og syntetiske fixtures kan beskytte software. Kun rigtig hardware kan lukke de fysiske V1-gates.</p></div></article>
+      </div>
+    </section>
+
+    <section class="closing" aria-labelledby="closing-title">
+      <div class="closing-aside"><span class="micro" data-da="05 / Efterprøv" data-en="05 / Inspect">05 / Efterprøv</span><img src="assets/kaliv-ankh-640.webp" alt="Kalivs futuristiske ankh-symbol" width="640" height="863" loading="lazy" /></div>
+      <div class="closing-main"><h2 id="closing-title" data-da="Følg evidensen. Ikke fortællingen." data-en="Follow the evidence. Not the narrative.">Følg evidensen. Ikke fortællingen.</h2><div><p data-da="V1-registeret definerer beviserne. Arkitekturen definerer grænserne. De offentlige repositories viser det arbejde, der faktisk er landet." data-en="The V1 ledger defines the proofs. The architecture defines the boundaries. The public repositories show the work that has actually landed.">V1-registeret definerer beviserne. Arkitekturen definerer grænserne. De offentlige repositories viser det arbejde, der faktisk er landet.</p><div class="actions"><a class="action" href="proofs.html" data-en-href="proofs.html?lang=en" data-da="Åbn V1-register" data-en="Open V1 ledger">Åbn V1-register</a><a class="action secondary" href="architecture.html" data-en-href="architecture.html?lang=en" data-da="Se arkitekturen" data-en="View architecture">Se arkitekturen</a><a class="action secondary" href="project.json" data-da="Læs manifest" data-en="Read manifest">Læs manifest</a></div></div></div>
+    </section>
+  </main>
+
+  <footer><span data-da="ModelRig / Offentligt Project Room" data-en="ModelRig / Public Project Room">ModelRig / Offentligt Project Room</span><a href="./" data-en-href="./?lang=en" data-da="Tilbage til hovedsiden ↑" data-en="Back to main site ↑">Tilbage til hovedsiden ↑</a></footer>
+  <script>
+    (() => {
+      const isEnglish = new URLSearchParams(location.search).get('lang') === 'en';
+      if (!isEnglish) return;
+      document.documentElement.lang = 'en';
+      document.querySelectorAll('[data-en]').forEach(node => { node.textContent = node.dataset.en; });
+      document.querySelectorAll('[data-en-href]').forEach(node => { node.href = node.dataset.enHref; });
+      document.querySelectorAll('[data-language]').forEach(link => { const current = link.dataset.language === 'en'; link.classList.toggle('is-current',current); if (current) link.setAttribute('aria-current','page'); else link.removeAttribute('aria-current'); });
+      document.querySelector('.lang')?.setAttribute('aria-label','Choose language');
+      document.querySelector('.brand')?.setAttribute('aria-label','Back to ModelRig');
+      document.querySelector('.hero-signal')?.setAttribute('aria-label','Current V1 status');
+      document.querySelector('.metrics')?.setAttribute('aria-label','Public project key points');
+      document.querySelector('.repos')?.setAttribute('aria-label','Current repository heads');
+      document.querySelector('.gates')?.setAttribute('aria-label','Next proof for the four V1 gates');
+      document.querySelector('.closing-aside img')?.setAttribute('alt','Kaliv’s futuristic ankh symbol');
+      document.title = 'ModelRig — Project Room';
+      const description = 'ModelRig Project Room: a public status snapshot with repository heads, open V1 proofs and the next qualification steps.';
+      const setMeta = (selector,value) => { const el = document.querySelector(selector); if (el) el.content = value; };
+      setMeta('meta[name="description"]',description); setMeta('meta[property="og:description"]','See what has landed, what remains open and which evidence is required before ModelRig and Kaliv can be called V1.'); setMeta('meta[property="og:locale"]','en_US'); setMeta('meta[name="twitter:description"]','Public project status, source heads and the path to V1.');
+      const url = new URL('https://kaliv.dk/progress.html?lang=en'); document.querySelector('link[rel="canonical"]').href = url.href; setMeta('meta[property="og:url"]',url.href);
+      const structured = document.querySelector('script[type="application/ld+json"]'); if (structured) { try { const data = JSON.parse(structured.textContent); data.description = description; data.inLanguage = 'en'; data.url = url.href; structured.textContent = JSON.stringify(data); } catch {} }
+    })();
+  </script>
+  <script>
+    if ('serviceWorker' in navigator && location.protocol === 'https:') window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js',{scope:'./',updateViaCache:'none'}).catch(()=>{}),{once:true});
+  </script>
+</body>
+</html>

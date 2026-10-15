@@ -1369,7 +1369,7 @@
           <a class="dossier-card" role="listitem" href="brief.html" data-brief-link><span class="dossier-card-code"><strong>01</strong><span>Strategi</span></span><div><h4>Projektbrief</h4><p>Tesen, problemet, produktfladerne og den konkrete vej til V1.</p><span class="dossier-card-action">Læs brief</span></div></a>
           <a class="dossier-card" role="listitem" href="architecture.html" data-architecture-link><span class="dossier-card-code"><strong>02</strong><span>System</span></span><div><h4>Teknisk arkitektur</h4><p>Runtime-loop, autoritetsgrænser, sikkerhed og ufravigelige invarianter.</p><span class="dossier-card-action">Se arkitektur</span></div></a>
           <a class="dossier-card" role="listitem" href="proofs.html" data-proof-link><span class="dossier-card-code"><strong>03</strong><span>Evidens</span></span><div><h4>V1-bevisregister</h4><p>Fire åbne gates med acceptkriterier, ejerskab og krævet dokumentation.</p><span class="dossier-card-action">Se beviser</span></div></a>
-          <a class="dossier-card" role="listitem" href="project.json"><span class="dossier-card-code"><strong>04</strong><span>Maskinlæsbar</span></span><div><h4>Projektmanifest</h4><p>Komponenter, repositories, dokumenter og kvalificeringsstatus som JSON.</p><span class="dossier-card-action">Åbn manifest</span></div></a>
+          <a class="dossier-card" role="listitem" href="progress.html" data-progress-link><span class="dossier-card-code"><strong>04</strong><span>Live status</span></span><div><h4>Project Room</h4><p>Repository-heads, åbne risici og næste observerbare skridt mod V1.</p><span class="dossier-card-action">Se fremdrift</span></div></a>
         </div>
       </div>
     </section>
@@ -1445,13 +1445,13 @@
       <div class="closing-copy">
         <h2 id="closing-title" tabindex="-1">Vi bygger ikke en bedre chatbot. Vi bygger det, der kommer efter.</h2>
         <div>
-          <div class="closing-actions"><a class="closing-action" href="brief.html" data-brief-link>Læs projektbrief</a><a class="closing-action" href="architecture.html" data-architecture-link>Teknisk arkitektur</a><a class="closing-action" href="proofs.html" data-proof-link>Se bevisregister</a><a class="closing-action" href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Følg udviklingen på GitHub — åbner i ny fane">Følg udviklingen</a></div>
+          <div class="closing-actions"><a class="closing-action" href="brief.html" data-brief-link>Læs projektbrief</a><a class="closing-action" href="architecture.html" data-architecture-link>Teknisk arkitektur</a><a class="closing-action" href="proofs.html" data-proof-link>Se bevisregister</a><a class="closing-action" href="progress.html" data-progress-link>Project Room</a><a class="closing-action" href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Følg udviklingen på GitHub — åbner i ny fane">Følg udviklingen</a></div>
           <div class="closing-meta" role="list" aria-label="ModelRigs fire grundegenskaber"><span role="listitem">Vedvarende hukommelse</span><span role="listitem">Udskiftelig intelligens</span><span role="listitem">Kontrolleret handling</span><span role="listitem">Fysisk tilstedeværelse</span></div>
         </div>
       </div>
     </section>
   </main>
-  <footer><span>ModelRig / Projektets hovedoverblik</span><span><a href="brief.html" data-brief-link>Projektbrief ↗</a> · <a href="architecture.html" data-architecture-link>Arkitektur ↗</a> · <a href="proofs.html" data-proof-link>V1-beviser ↗</a> · <a href="project.json">Manifest / JSON ↗</a> · <a href="llms.txt">LLMs.txt ↗</a> · <a href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Åbn Ternedal/Kaliv på GitHub — åbner i ny fane">GitHub / Ternedal/Kaliv ↗</a></span></footer>
+  <footer><span>ModelRig / Projektets hovedoverblik</span><span><a href="brief.html" data-brief-link>Projektbrief ↗</a> · <a href="architecture.html" data-architecture-link>Arkitektur ↗</a> · <a href="proofs.html" data-proof-link>V1-beviser ↗</a> · <a href="progress.html" data-progress-link>Project Room ↗</a> · <a href="project.json">Manifest / JSON ↗</a> · <a href="llms.txt">LLMs.txt ↗</a> · <a href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Åbn Ternedal/Kaliv på GitHub — åbner i ny fane">GitHub / Ternedal/Kaliv ↗</a></span></footer>
   <a class="back-top" href="#top" aria-label="Til toppen" aria-hidden="true" tabindex="-1"><span aria-hidden="true">↑</span></a>
   <script>
     (() => {
@@ -1666,10 +1666,9 @@
           ['V1-bevisregister', 'V1 proof ledger'],
           ['Fire åbne gates med acceptkriterier, ejerskab og krævet dokumentation.', 'Four open gates with acceptance criteria, ownership and required documentation.'],
           ['Se beviser', 'View proofs'],
-          ['Maskinlæsbar', 'Machine-readable'],
-          ['Projektmanifest', 'Project manifest'],
-          ['Komponenter, repositories, dokumenter og kvalificeringsstatus som JSON.', 'Components, repositories, documents and qualification status as JSON.'],
-          ['Åbn manifest', 'Open manifest'],
+          ['Live status', 'Live status'],
+          ['Repository-heads, åbne risici og næste observerbare skridt mod V1.', 'Repository heads, open risks and the next observable steps towards V1.'],
+          ['Se fremdrift', 'View progress'],
           ['Integreret er ikke det samme som bevist.', 'Integrated is not the same as proven.'],
           ['Status adskiller software, der er landet, fra adfærd der er kvalificeret på faktisk hardware. Det er en bevidst del af projektets definition af færdig.', 'Status separates landed software from behavior qualified on real hardware. That distinction is a deliberate part of the project’s definition of done.'],
           ['Control plane, policy, RAG, audit, scheduler og klientintegration er samlet.', 'Control plane, policy, RAG, audit, scheduler and client integration are assembled.'],
@@ -1844,6 +1843,7 @@
         document.querySelectorAll('[data-brief-link]').forEach(link => { link.href = 'brief.html?lang=en'; });
         document.querySelectorAll('[data-proof-link]').forEach(link => { link.href = 'proofs.html?lang=en'; });
         document.querySelectorAll('[data-architecture-link]').forEach(link => { link.href = 'architecture.html?lang=en'; });
+        document.querySelectorAll('[data-progress-link]').forEach(link => { link.href = 'progress.html?lang=en'; });
       }
 
       const root = document.documentElement;

@@ -100,7 +100,18 @@
     "architecture_en": "https://kaliv.dk/architecture.html?lang=en",
     "proof_ledger_da": "https://kaliv.dk/proofs.html",
     "proof_ledger_en": "https://kaliv.dk/proofs.html?lang=en",
+    "project_room_da": "https://kaliv.dk/progress.html",
+    "project_room_en": "https://kaliv.dk/progress.html?lang=en",
     "llms": "https://kaliv.dk/llms.txt"
+  },
+  "source_snapshot": {
+    "recorded": "2026-10-15",
+    "heads": {
+      "ModelRig": "0b2ff455116f4f28a1a41704d9cb81503f17d2df",
+      "BodyRig": "8a85597637d0b59947bd179366e27be1bb847c16",
+      "VoiceRig": "9f3e594996db7eb2c6e035247ecb168bf17c1dae",
+      "VisionRig": "66ea9bfce1c4d219e4bac1d85324a0e6e3f042e5"
+    }
   },
   "repositories": [
     "https://github.com/Ternedal/Kaliv",

@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#05070a" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="description" content="En kompakt projektbrief om ModelRig og Kaliv: tesen, produktet, arkitekturen, status og de fire V1-beviser." />
+  <meta property="og:title" content="ModelRig / Kaliv — projektbrief" />
+  <meta property="og:description" content="Fra vedvarende state til kropsliggjort intelligens — projektet forklaret på én side." />
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="da_DK" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:url" content="https://kaliv.dk/brief.html" />
+  <meta property="og:image" content="https://kaliv.dk/assets/modelrig-continuity-female-hair-1920.webp" />
+  <meta property="og:image:alt" content="ModelRigs vej fra kognitiv kerne til kropsliggjort intelligens" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ModelRig / Kaliv — projektbrief" />
+  <meta name="twitter:description" content="Tesen, produktet, arkitekturen, status og V1-beviserne samlet på én side." />
+  <meta name="twitter:image" content="https://kaliv.dk/assets/modelrig-continuity-female-hair-1920.webp" />
+  <link rel="canonical" href="https://kaliv.dk/brief.html" />
+  <link rel="alternate" hreflang="da" href="https://kaliv.dk/brief.html" />
+  <link rel="alternate" hreflang="en" href="https://kaliv.dk/brief.html?lang=en" />
+  <link rel="alternate" hreflang="x-default" href="https://kaliv.dk/brief.html" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/kaliv-favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/kaliv-apple-touch-icon.png" />
+  <title>ModelRig / Kaliv — projektbrief</title>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "ModelRig / Kaliv — projektbrief",
+      "description": "En kompakt projektbrief om ModelRig og Kaliv: tesen, produktet, arkitekturen, status og de fire V1-beviser.",
+      "inLanguage": "da",
+      "isPartOf": {"@type":"WebSite","name":"ModelRig / Kaliv","url":"https://kaliv.dk/"},
+      "url": "https://kaliv.dk/brief.html"
+    }
+  </script>
+  <style>
+    :root {
+      --ink: #0b0e14;
+      --paper: #f2f4f7;
+      --white: #fff;
+      --blue: #1457ff;
+      --blue-light: #8aabff;
+      --line: #cbd2dc;
+      --muted: #5f6876;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; min-width: 320px; overflow-x: clip; background: var(--paper); color: var(--ink); font: 400 1rem/1.6 var(--sans); text-rendering: optimizeLegibility; }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--blue-light); outline-offset: 4px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { text-wrap: balance; }
+    p { text-wrap: pretty; }
+    ::selection { background: var(--blue); color: #fff; }
+    .skip { position: fixed; left: 1rem; top: 1rem; z-index: 100; transform: translateY(-180%); padding: .7rem 1rem; background: #fff; color: #000; }
+    .skip:focus { transform: none; }
+    .topline { position: fixed; inset: 0 0 auto; z-index: 50; height: .35rem; background: linear-gradient(90deg,var(--blue),#7fa8ff); box-shadow: 0 0 18px rgba(20,87,255,.55); }
+    header { position: relative; z-index: 10; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; min-height: 6.3rem; padding: .35rem clamp(1.25rem,4vw,4.5rem) 0; border-bottom: 1px solid #2b313a; background: #05070a; color: #fff; }
+    .brand { display: inline-flex; align-items: center; gap: .85rem; justify-self: start; font-weight: 750; text-decoration: none; }
+    .brand-mark { width: 2.55rem; height: 2.55rem; display: grid; place-items: center; border: 1px solid #7c8592; font: 700 .7rem var(--mono); }
+    .brief-type { justify-self: center; color: #8f98a6; font: 650 .7rem var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .header-actions { display: flex; align-items: center; justify-self: end; gap: 1rem; }
+    .header-actions a { color: #bdc4ce; font: 650 .72rem var(--mono); letter-spacing: .05em; text-decoration: none; text-transform: uppercase; }
+    .header-actions a:hover { color: #fff; }
+    .lang { display: inline-flex; border-left: 1px solid #353c47; padding-left: .8rem; gap: .55rem; }
+    .lang .is-current { color: #fff; text-decoration: underline; text-decoration-color: var(--blue-light); text-underline-offset: .4rem; }
+
+    main { overflow: hidden; }
+    .hero { min-height: 76svh; display: grid; grid-template-columns: minmax(0,1.05fr) minmax(25rem,.95fr); background: #05070a; color: #fff; }
+    .hero-copy { display: flex; flex-direction: column; justify-content: space-between; padding: clamp(3.5rem,7vw,7.5rem) clamp(1.25rem,4vw,4.5rem); }
+    .eyebrow, .section-tag, .meta-label { color: var(--blue-light); font: 700 .72rem var(--mono); letter-spacing: .09em; text-transform: uppercase; }
+    h1 { max-width: 9ch; margin: 1.5rem 0 2rem; font-size: clamp(4.2rem,8vw,9rem); line-height: .84; letter-spacing: -.075em; }
+    .hero-lead { max-width: 42rem; color: #c5cbd4; font-size: clamp(1.05rem,1.65vw,1.42rem); line-height: 1.5; }
+    .hero-thesis { display: grid; grid-template-columns: repeat(3,1fr); margin-top: 4rem; border-top: 1px solid #343b47; border-left: 1px solid #343b47; }
+    .hero-thesis span { min-height: 5rem; display: flex; align-items: flex-end; padding: .8rem; border-right: 1px solid #343b47; border-bottom: 1px solid #343b47; color: #aab3c0; font: 650 .68rem var(--mono); letter-spacing: .05em; text-transform: uppercase; }
+    .hero-art { position: relative; min-height: 38rem; border-left: 1px solid #252b34; background: linear-gradient(90deg,#05070a 0%,rgba(5,7,10,.15) 35%,rgba(5,7,10,0) 100%), url("assets/modelrig-continuity-female-hair-1920.webp") 63% center / cover no-repeat; }
+    .hero-art::after { content: "KALIV / EMBODIMENT"; position: absolute; right: 1.4rem; bottom: 1.2rem; color: rgba(255,255,255,.6); font: 650 .68rem var(--mono); letter-spacing: .08em; }
+
+    .signal { display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+    .signal article { min-height: 16rem; display: flex; flex-direction: column; justify-content: space-between; padding: 1.4rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #fff; }
+    .signal-index { color: var(--blue); font: 700 .7rem var(--mono); }
+    .signal h2 { margin: 3rem 0 .7rem; font-size: clamp(1.45rem,2.2vw,2.3rem); line-height: 1; letter-spacing: -.045em; }
+    .signal p { margin: 0; color: var(--muted); font-size: .9rem; }
+
+    .section { padding: clamp(4.5rem,8vw,8.5rem) clamp(1.25rem,4vw,4.5rem); }
+    .section-head { display: grid; grid-template-columns: minmax(9rem,.35fr) minmax(0,1.65fr); gap: clamp(2rem,6vw,7rem); margin-bottom: clamp(3rem,6vw,6rem); }
+    .section-head h2 { max-width: 12ch; margin-bottom: 1.25rem; font-size: clamp(3.2rem,6vw,7rem); line-height: .9; letter-spacing: -.065em; }
+    .section-head p { max-width: 47rem; margin: 0; color: var(--muted); font-size: clamp(1rem,1.35vw,1.18rem); }
+    .dark { background: #0b0f16; color: #fff; }
+    .dark .section-head p { color: #aab2be; }
+    .blue { background: var(--blue); color: #fff; }
+    .blue .section-tag { color: #dbe5ff; }
+    .blue .section-head p { color: #e1e8ff; }
+
+    .problem-grid { display: grid; grid-template-columns: repeat(2,1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+    .problem { min-height: 17rem; padding: 1.4rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #fff; }
+    .problem span { color: var(--blue); font: 700 .68rem var(--mono); letter-spacing: .07em; }
+    .problem h3 { margin: 4rem 0 .8rem; font-size: clamp(1.45rem,2.5vw,2.7rem); line-height: 1; letter-spacing: -.045em; }
+    .problem p { max-width: 35rem; margin: 0; color: var(--muted); }
+
+    .architecture { display: grid; grid-template-columns: .8fr 1.2fr; border: 1px solid #303744; }
+    .architecture-thesis { display: flex; flex-direction: column; justify-content: space-between; min-height: 34rem; padding: clamp(1.5rem,3vw,3rem); border-right: 1px solid #303744; }
+    .architecture-thesis strong { max-width: 12ch; font-size: clamp(2.3rem,4.5vw,5rem); line-height: .92; letter-spacing: -.06em; }
+    .architecture-thesis p { max-width: 30rem; margin: 2rem 0 0; color: #aeb6c2; }
+    .stack { counter-reset: layers; }
+    .layer { counter-increment: layers; display: grid; grid-template-columns: 3.5rem minmax(9rem,.55fr) minmax(0,1.45fr); gap: 1rem; align-items: center; min-height: 8.5rem; padding: 1rem 1.4rem; border-bottom: 1px solid #303744; }
+    .layer:last-child { border-bottom: 0; }
+    .layer::before { content: "0" counter(layers); color: var(--blue-light); font: 700 .7rem var(--mono); }
+    .layer h3 { margin: 0; font-size: 1.1rem; }
+    .layer p { margin: 0; color: #9da6b3; font-size: .9rem; }
+
+    .wedge { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid rgba(255,255,255,.4); border-left: 1px solid rgba(255,255,255,.4); }
+    .wedge-copy, .surface-list { min-height: 31rem; padding: clamp(1.5rem,3vw,3rem); border-right: 1px solid rgba(255,255,255,.4); border-bottom: 1px solid rgba(255,255,255,.4); }
+    .wedge-copy { display: flex; flex-direction: column; justify-content: space-between; }
+    .wedge-mark { display: flex; align-items: center; gap: 1rem; font-size: clamp(2.5rem,5vw,5rem); font-weight: 780; letter-spacing: -.055em; }
+    .wedge-mark img { width: 4rem; height: auto; }
+    .wedge-copy p { max-width: 37rem; color: #e1e8ff; font-size: 1.1rem; }
+    .surface-list { display: flex; flex-direction: column; justify-content: center; }
+    .surface { display: grid; grid-template-columns: 3rem 1fr auto; gap: 1rem; align-items: center; padding: 1.25rem 0; border-bottom: 1px solid rgba(255,255,255,.35); }
+    .surface:last-child { border-bottom: 0; }
+    .surface > span { color: #dbe5ff; font: 700 .7rem var(--mono); }
+    .surface h3 { margin: 0 0 .2rem; font-size: 1.25rem; }
+    .surface p { margin: 0; color: #e1e8ff; font-size: .88rem; }
+    .surface strong { color: #fff; font: 700 .68rem var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+
+    .status-grid { display: grid; grid-template-columns: repeat(2,1fr); border-top: 1px solid #303744; border-left: 1px solid #303744; }
+    .status-card { min-height: 16rem; padding: 1.4rem; border-right: 1px solid #303744; border-bottom: 1px solid #303744; }
+    .status-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+    .status-top span { color: var(--blue-light); font: 700 .68rem var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+    .status-badge { padding: .35rem .55rem; border: 1px solid currentColor; color: #a8c2ff !important; }
+    .status-card h3 { margin: 4rem 0 .7rem; font-size: clamp(1.55rem,2.5vw,2.8rem); line-height: 1; letter-spacing: -.045em; }
+    .status-card p { max-width: 36rem; margin: 0; color: #aab3c0; }
+
+    .proofs { counter-reset: proofs; border-top: 1px solid rgba(255,255,255,.4); }
+    .proof { counter-increment: proofs; display: grid; grid-template-columns: 4rem minmax(12rem,.65fr) minmax(0,1.35fr); gap: clamp(1rem,4vw,4rem); align-items: center; min-height: 9rem; border-bottom: 1px solid rgba(255,255,255,.4); }
+    .proof::before { content: "0" counter(proofs); color: #dbe5ff; font: 700 .72rem var(--mono); }
+    .proof h3 { margin: 0; font-size: clamp(1.35rem,2.3vw,2.5rem); line-height: 1; letter-spacing: -.04em; }
+    .proof p { margin: 0; color: #e1e8ff; }
+
+    .decision { display: grid; grid-template-columns: .75fr 1.25fr; min-height: 64svh; background: #fff; }
+    .decision > div { padding: clamp(3rem,7vw,7rem) clamp(1.25rem,4vw,4.5rem); }
+    .decision-aside { display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid var(--line); }
+    .decision-aside img { width: min(10rem,45%); height: auto; }
+    .decision-main { display: flex; flex-direction: column; justify-content: space-between; gap: 4rem; }
+    .decision h2 { max-width: 12ch; margin: 0; font-size: clamp(3.2rem,6vw,7rem); line-height: .9; letter-spacing: -.065em; }
+    .actions { display: flex; flex-wrap: wrap; gap: .8rem; }
+    .action { min-height: 3.25rem; display: inline-flex; align-items: center; justify-content: center; padding: .75rem 1rem; border: 1px solid var(--ink); background: var(--ink); color: #fff; font: 700 .72rem var(--mono); letter-spacing: .06em; text-decoration: none; text-transform: uppercase; }
+    .action::after { content: "↗"; margin-left: .65rem; }
+    .action.secondary { background: transparent; color: var(--ink); }
+    .action:hover { background: var(--blue); border-color: var(--blue); color: #fff; }
+    footer { display: flex; justify-content: space-between; gap: 2rem; padding: 2rem clamp(1.25rem,4vw,4.5rem); background: var(--ink); color: #939daa; font: 650 .7rem var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-art { min-height: 35rem; border-left: 0; border-top: 1px solid #252b34; }
+      .signal { grid-template-columns: repeat(2,1fr); }
+      .architecture, .wedge, .decision { grid-template-columns: 1fr; }
+      .architecture-thesis, .decision-aside { border-right: 0; border-bottom: 1px solid #303744; }
+      .decision-aside { min-height: 18rem; }
+    }
+    @media (max-width: 680px) {
+      header { grid-template-columns: 1fr auto; min-height: 8.5rem; align-content: center; row-gap: .7rem; }
+      .brief-type { display: none; }
+      .header-actions { grid-column: 1 / -1; justify-self: stretch; justify-content: space-between; overflow-x: auto; }
+      h1 { font-size: clamp(3.7rem,17vw,5.8rem); }
+      .hero-copy { padding-top: 4rem; }
+      .hero-thesis { grid-template-columns: 1fr; }
+      .hero-thesis span { min-height: 3.6rem; }
+      .hero-art { min-height: 29rem; background-position: 64% center; }
+      .signal, .problem-grid, .status-grid { grid-template-columns: 1fr; }
+      .signal article, .problem, .status-card { min-height: 14rem; }
+      .section-head { grid-template-columns: 1fr; gap: 1.2rem; }
+      .section-head h2 { font-size: clamp(3.1rem,14vw,5.3rem); }
+      .architecture-thesis { min-height: 27rem; }
+      .layer { grid-template-columns: 2.5rem 1fr; padding-inline: 1rem; }
+      .layer p { grid-column: 2; }
+      .wedge-copy, .surface-list { min-height: 27rem; }
+      .surface { grid-template-columns: 2.5rem 1fr; }
+      .surface strong { grid-column: 2; }
+      .proof { grid-template-columns: 2.5rem 1fr; gap: 1rem; padding: 1.5rem 0; }
+      .proof p { grid-column: 2; }
+      footer { flex-direction: column; }
+    }
+    @media print {
+      .topline, .skip, .header-actions, .actions { display: none !important; }
+      body { background: #fff; color: #000; }
+      header { position: static; min-height: 4rem; padding-block: 0; }
+      .hero { min-height: 0; }
+      .hero-art { min-height: 19rem; }
+      .section { padding-block: 2.5rem; break-inside: avoid; }
+      .signal article, .problem, .status-card, .gate { break-inside: avoid; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#content">Gå til indhold</a>
+  <div class="topline" aria-hidden="true"></div>
+  <header>
+    <a class="brand" href="./" data-en-href="./?lang=en" aria-label="Tilbage til ModelRig"><span class="brand-mark">MR</span><span>ModelRig</span></a>
+    <span class="brief-type">Project brief / Public diligence</span>
+    <div class="header-actions"><a href="./" data-en-href="./?lang=en">Hovedside</a><a href="architecture.html" data-en-href="architecture.html?lang=en">Systemarkitektur</a><a href="proofs.html" data-en-href="proofs.html?lang=en">V1-beviser</a><a href="progress.html" data-en-href="progress.html?lang=en">Project Room</a><span class="lang" aria-label="Vælg sprog"><a href="brief.html" data-language="da" class="is-current" aria-current="page">DA</a><a href="brief.html?lang=en" data-language="en">EN</a></span></div>
+  </header>
+
+  <main id="content">
+    <section class="hero" aria-labelledby="brief-title">
+      <div class="hero-copy">
+        <div><span class="eyebrow">ModelRig / Projektbrief</span><h1 id="brief-title">En AI-person. Ikke endnu en chatbot.</h1><p class="hero-lead">ModelRig bygger det vedvarende, lokalt ejede kontrolplan under Kaliv: identitet, hukommelse, tid, perception og handling, som kan bestå, selv når modellen og enheden skifter.</p></div>
+        <div class="hero-thesis" role="list" aria-label="ModelRigs tre grundegenskaber"><span role="listitem">Local-first</span><span role="listitem">Model-agnostic</span><span role="listitem">Embodied</span></div>
+      </div>
+      <div class="hero-art" role="img" aria-label="Kaliv træder frem fra ModelRigs kognitive kerne"></div>
+    </section>
+
+    <section class="signal" aria-label="Projektets kerne på fire punkter">
+      <article><span class="signal-index">01 / KATEGORI</span><div><h2>Vedvarende intelligens</h2><p>Tilstand og identitet lever uden for kontekstvinduet og uden for én modelleverandør.</p></div></article>
+      <article><span class="signal-index">02 / PRODUKT</span><div><h2>Kaliv</h2><p>Samme personlige AI på Windows, Android og Quest — med stemme, krop og hukommelse.</p></div></article>
+      <article><span class="signal-index">03 / KONTROL</span><div><h2>Eksplicit autoritet</h2><p>Perception, state, kognition og handling har adskilte, testbare ansvarsgrænser.</p></div></article>
+      <article><span class="signal-index">04 / MÅL</span><div><h2>Én ubrudt oplevelse</h2><p>Systemet består først, når samme person kan sanse, huske, handle og erfare resultatet.</p></div></article>
+    </section>
+
+    <section class="section" aria-labelledby="problem-title">
+      <div class="section-head"><span class="section-tag">01 / Problemet</span><div><h2 id="problem-title">AI starter stadig forfra.</h2><p>De stærkeste modeller er blevet markant bedre. Men samtalen, tilstanden og autoriteten er stadig ofte bundet til en session, en leverandør og et tekstfelt.</p></div></div>
+      <div class="problem-grid">
+        <article class="problem"><span>SESSION</span><h3>Kontekst er ikke kontinuitet.</h3><p>Et langt kontekstvindue er stadig ikke en vedvarende person med dokumenteret erfaring og tid.</p></article>
+        <article class="problem"><span>MODEL</span><h3>Kapacitet må ikke eje identiteten.</h3><p>En bedre model skal kunne kobles ind uden at nulstille relation, historik eller handlegrænser.</p></article>
+        <article class="problem"><span>AUTORITET</span><h3>Intention er ikke tilladelse.</h3><p>Et modeloutput må aldrig i sig selv være et mandat til at skrive, købe, sende eller ændre.</p></article>
+        <article class="problem"><span>KROP</span><h3>Intelligens opleves gennem en flade.</h3><p>Stemme, blik, bevægelse og rumlig tilstedeværelse er en del af den samme identitet.</p></article>
+      </div>
+    </section>
+
+    <section class="section dark" aria-labelledby="architecture-title">
+      <div class="section-head"><span class="section-tag">02 / Systemet</span><div><h2 id="architecture-title">Kapacitet kan skifte. Personen består.</h2><p>ModelRig skiller kognition fra autoritativ tilstand. Modellen rådgiver; kontrolplanet ejer kontinuitet, policy og dokumenterede overgange.</p></div></div>
+      <div class="architecture">
+        <div class="architecture-thesis"><span class="section-tag">Designinvariant</span><div><strong>Identitet ligger uden for modellen.</strong><p>Det gør systemet både opgraderbart og lokalt kontrollerbart: nye modeller kan løfte evnerne uden at overtage personen.</p></div></div>
+        <div class="stack">
+          <article class="layer"><h3>Perception & input</h3><p>VisionRig, menneskelig dialog og tid producerer validerbare signaler.</p></article>
+          <article class="layer"><h3>Persistent state</h3><p>Consciousness Core og Memory 4 ejer selv, verden, tid, kontinuitet og autobiografisk genkaldelse.</p></article>
+          <article class="layer"><h3>Kognition & policy</h3><p>ThoughtEngine foreslår; Policy Gate afgør admission og autorisation.</p></article>
+          <article class="layer"><h3>Handling & krop</h3><p>Agent 3, VoiceRig, BodyRig og Kaliv manifesterer godkendte intentioner.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section blue" aria-labelledby="kaliv-title">
+      <div class="section-head"><span class="section-tag">03 / Første produkt</span><div><h2 id="kaliv-title">Kaliv gør arkitekturen menneskelig.</h2><p>ModelRig er infrastrukturen. Kaliv er den vedvarende person, et menneske møder på tværs af arbejde, hverdag og rumlig tilstedeværelse.</p></div></div>
+      <div class="wedge">
+        <div class="wedge-copy"><div class="wedge-mark"><img src="assets/kaliv-ankh-160.webp" alt="" width="160" height="216" loading="lazy" /><span>Kaliv</span></div><p>Én identitet. Én hukommelse. Ét kontrolleret handlingsrum. Tre produktflader.</p></div>
+        <div class="surface-list" role="list" aria-label="Kalivs tre produktflader">
+          <article class="surface" role="listitem"><span>01</span><div><h3>Windows</h3><p>Arbejde, research, værktøjer og kontrolleret handling.</p></div><strong>Arbejder</strong></article>
+          <article class="surface" role="listitem"><span>02</span><div><h3>Android</h3><p>Kontinuitet, lokal stemme og samme personlige tilstand i hverdagen.</p></div><strong>Følger</strong></article>
+          <article class="surface" role="listitem"><span>03</span><div><h3>Quest / VR</h3><p>Krop, blik, bevægelse og tilstedeværelse i et delt rum.</p></div><strong>Kropsliggør</strong></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" aria-labelledby="status-title">
+      <div class="section-head"><span class="section-tag">04 / Status</span><div><h2 id="status-title">Integreret er ikke det samme som bevist.</h2><p>Softwarefundamentet er samlet. De åbne risici er bevidst synlige: kontrolleret aktivering, fysisk perception, enheder og længerevarende drift.</p></div></div>
+      <div class="status-grid">
+        <article class="status-card"><div class="status-top"><span>CONTROL PLANE</span><span class="status-badge">INTEGRERET</span></div><h3>ModelRig</h3><p>Policy, RAG, audit, scheduler, klientintegration og persistent state er samlet i kontrolplanet.</p></article>
+        <article class="status-card"><div class="status-top"><span>COGNITION</span><span class="status-badge">KONTROLLERET</span></div><h3>Consciousness Core</h3><p>Chat→Core og exact-event cognition er landet. Kontrolleret produktionsaktivering mangler.</p></article>
+        <article class="status-card"><div class="status-top"><span>PERCEPTION</span><span class="status-badge">HARDWARE-GATE</span></div><h3>VisionRig</h3><p>Eventkontrakter og admission er integreret. Kamera- og Kinect-kæden mangler fysisk accept.</p></article>
+        <article class="status-card"><div class="status-top"><span>EMBODIMENT</span><span class="status-badge">ENHEDSGATE</span></div><h3>BodyRig + Kaliv VR</h3><p>Softwarepipen og rendering-loopet er langt fremme. Lighed, Quest, latency og soak-test står tilbage.</p></article>
+      </div>
+    </section>
+
+    <section class="section blue" aria-labelledby="proof-title">
+      <div class="section-head"><span class="section-tag">05 / Vejen til V1</span><div><h2 id="proof-title">Fire beviser. Ingen kunstig procent.</h2><p>V1 er defineret af observerbar adfærd på rigtig hardware — ikke af antallet af færdige komponenter.</p></div></div>
+      <div class="proofs" role="list" aria-label="ModelRigs fire V1-beviser">
+        <article class="proof" role="listitem"><h3>Kontrolleret Core-aktivering</h3><p>Kontinuiteten overlever live-aktivering, genstart og modelskift uden tilstandsdivergens.</p></article>
+        <article class="proof" role="listitem"><h3>Fysisk perception</h3><p>Kamera- og Kinect-hændelser når WorldState med accepteret, sporbar oprindelse.</p></article>
+        <article class="proof" role="listitem"><h3>Én vedvarende person</h3><p>Identitet, stemme, krop og adfærd er sammenhængende på Windows, Android og Quest.</p></article>
+        <article class="proof" role="listitem"><h3>Driftsbevis</h3><p>Latency, soak-test og exact-head-kontroller består det registrerede release-manifest.</p></article>
+      </div>
+    </section>
+
+    <section class="decision" aria-labelledby="decision-title">
+      <div class="decision-aside"><span class="section-tag">06 / Teknisk due diligence</span><img src="assets/kaliv-ankh-640.webp" alt="Kalivs futuristiske ankh-symbol" width="640" height="863" loading="lazy" /></div>
+      <div class="decision-main"><h2 id="decision-title">Visionen er stor. Grænserne er konkrete.</h2><div><p>Følg arkitekturen, de offentlige repositories og V1-beviserne direkte. Projektet skal kunne efterprøves—ikke bare præsenteres.</p><div class="actions"><a class="action" href="architecture.html" data-en-href="architecture.html?lang=en">Åbn systemarkitektur</a><a class="action secondary" href="proofs.html" data-en-href="proofs.html?lang=en">Åbn bevisregister</a><a class="action secondary" href="progress.html" data-en-href="progress.html?lang=en">Project Room</a><a class="action secondary" href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer">Åbn GitHub</a></div></div></div>
+    </section>
+  </main>
+
+  <footer><span>ModelRig / Kaliv — public project brief</span><a href="./" data-en-href="./?lang=en">Tilbage til hovedsiden ↑</a></footer>
+  <script>
+    (() => {
+      const isEnglish = new URLSearchParams(location.search).get('lang') === 'en';
+      if (!isEnglish) return;
+      const english = new Map([
+        ['Gå til indhold','Skip to content'],['Hovedside','Main site'],['Systemarkitektur','System architecture'],['V1-beviser','V1 proofs'],['Vælg sprog','Choose language'],
+        ['ModelRig / Projektbrief','ModelRig / Project brief'],['En AI-person. Ikke endnu en chatbot.','An AI person. Not another chatbot.'],
+        ['ModelRig bygger det vedvarende, lokalt ejede kontrolplan under Kaliv: identitet, hukommelse, tid, perception og handling, som kan bestå, selv når modellen og enheden skifter.','ModelRig builds the persistent, locally owned control plane beneath Kaliv: identity, memory, time, perception and action that can endure even as the model and device change.'],
+        ['01 / KATEGORI','01 / CATEGORY'],['02 / PRODUKT','02 / PRODUCT'],['03 / KONTROL','03 / CONTROL'],['04 / MÅL','04 / GOAL'],
+        ['Vedvarende intelligens','Persistent intelligence'],['Tilstand og identitet lever uden for kontekstvinduet og uden for én modelleverandør.','State and identity live outside the context window and outside any single model provider.'],
+        ['Samme personlige AI på Windows, Android og Quest — med stemme, krop og hukommelse.','The same personal AI across Windows, Android and Quest — with voice, body and memory.'],
+        ['Eksplicit autoritet','Explicit authority'],['Perception, state, kognition og handling har adskilte, testbare ansvarsgrænser.','Perception, state, cognition and action have separate, testable authority boundaries.'],
+        ['Én ubrudt oplevelse','One uninterrupted experience'],['Systemet består først, når samme person kan sanse, huske, handle og erfare resultatet.','The system endures only when the same person can perceive, remember, act and experience the outcome.'],
+        ['01 / Problemet','01 / The problem'],['AI starter stadig forfra.','AI still starts over.'],['De stærkeste modeller er blevet markant bedre. Men samtalen, tilstanden og autoriteten er stadig ofte bundet til en session, en leverandør og et tekstfelt.','The strongest models have improved dramatically. Yet conversation, state and authority are still often bound to a session, a provider and a text box.'],
+        ['AUTORITET','AUTHORITY'],['KROP','EMBODIMENT'],['Kontekst er ikke kontinuitet.','Context is not continuity.'],['Et langt kontekstvindue er stadig ikke en vedvarende person med dokumenteret erfaring og tid.','A long context window is still not a persistent person with documented experience and time.'],
+        ['Kapacitet må ikke eje identiteten.','Capability must not own identity.'],['En bedre model skal kunne kobles ind uden at nulstille relation, historik eller handlegrænser.','A better model must be replaceable without resetting relationship, history or action boundaries.'],
+        ['Intention er ikke tilladelse.','Intent is not permission.'],['Et modeloutput må aldrig i sig selv være et mandat til at skrive, købe, sende eller ændre.','Model output must never by itself authorize writing, buying, sending or changing.'],
+        ['Intelligens opleves gennem en flade.','Intelligence is experienced through a surface.'],['Stemme, blik, bevægelse og rumlig tilstedeværelse er en del af den samme identitet.','Voice, gaze, movement and spatial presence are part of the same identity.'],
+        ['02 / Systemet','02 / The system'],['Kapacitet kan skifte. Personen består.','Capability can change. The person endures.'],['ModelRig skiller kognition fra autoritativ tilstand. Modellen rådgiver; kontrolplanet ejer kontinuitet, policy og dokumenterede overgange.','ModelRig separates cognition from authoritative state. The model advises; the control plane owns continuity, policy and documented transitions.'],
+        ['Designinvariant','Design invariant'],['Identitet ligger uden for modellen.','Identity lives outside the model.'],['Det gør systemet både opgraderbart og lokalt kontrollerbart: nye modeller kan løfte evnerne uden at overtage personen.','This keeps the system upgradeable and locally controllable: new models can improve capability without taking over the person.'],
+        ['Perception & input','Perception & input'],['VisionRig, menneskelig dialog og tid producerer validerbare signaler.','VisionRig, human dialogue and time produce validatable signals.'],['Persistent state','Persistent state'],['Consciousness Core og Memory 4 ejer selv, verden, tid, kontinuitet og autobiografisk genkaldelse.','Consciousness Core and Memory 4 own self, world, time, continuity and autobiographical recall.'],['Kognition & policy','Cognition & policy'],['ThoughtEngine foreslår; Policy Gate afgør admission og autorisation.','ThoughtEngine proposes; Policy Gate decides admission and authorization.'],['Handling & krop','Action & embodiment'],['Agent 3, VoiceRig, BodyRig og Kaliv manifesterer godkendte intentioner.','Agent 3, VoiceRig, BodyRig and Kaliv manifest approved intentions.'],
+        ['03 / Første produkt','03 / First product'],['Kaliv gør arkitekturen menneskelig.','Kaliv makes the architecture human.'],['ModelRig er infrastrukturen. Kaliv er den vedvarende person, et menneske møder på tværs af arbejde, hverdag og rumlig tilstedeværelse.','ModelRig is the infrastructure. Kaliv is the persistent person encountered across work, daily life and spatial presence.'],['Én identitet. Én hukommelse. Ét kontrolleret handlingsrum. Tre produktflader.','One identity. One memory. One controlled action space. Three product surfaces.'],['Arbejde, research, værktøjer og kontrolleret handling.','Work, research, tools and controlled action.'],['Arbejder','Works'],['Kontinuitet, lokal stemme og samme personlige tilstand i hverdagen.','Continuity, local voice and the same personal state throughout the day.'],['Følger','Follows'],['Krop, blik, bevægelse og tilstedeværelse i et delt rum.','Body, gaze, movement and presence in a shared space.'],['Kropsliggør','Embodies'],
+        ['04 / Status','04 / Status'],['Integreret er ikke det samme som bevist.','Integrated is not the same as proven.'],['Softwarefundamentet er samlet. De åbne risici er bevidst synlige: kontrolleret aktivering, fysisk perception, enheder og længerevarende drift.','The software foundation is assembled. The open risks are deliberately visible: controlled activation, physical perception, devices and sustained operation.'],['INTEGRERET','INTEGRATED'],['Policy, RAG, audit, scheduler, klientintegration og persistent state er samlet i kontrolplanet.','Policy, RAG, audit, scheduler, client integration and persistent state are assembled in the control plane.'],['KONTROLLERET','CONTROLLED'],['Chat→Core og exact-event cognition er landet. Kontrolleret produktionsaktivering mangler.','Chat→Core and exact-event cognition have landed. Controlled production activation remains.'],['HARDWARE-GATE','HARDWARE GATE'],['Eventkontrakter og admission er integreret. Kamera- og Kinect-kæden mangler fysisk accept.','Event contracts and admission are integrated. The camera and Kinect chain still needs physical acceptance.'],['ENHEDSGATE','DEVICE GATE'],['Softwarepipen og rendering-loopet er langt fremme. Lighed, Quest, latency og soak-test står tilbage.','The software pipeline and rendering loop are well advanced. Likeness, Quest, latency and soak testing remain.'],
+        ['05 / Vejen til V1','05 / Path to V1'],['Fire beviser. Ingen kunstig procent.','Four proofs. No artificial percentage.'],['V1 er defineret af observerbar adfærd på rigtig hardware — ikke af antallet af færdige komponenter.','V1 is defined by observable behavior on real hardware — not by the number of completed components.'],['Kontrolleret Core-aktivering','Controlled Core activation'],['Kontinuiteten overlever live-aktivering, genstart og modelskift uden tilstandsdivergens.','Continuity survives live activation, restart and model switching without state divergence.'],['Fysisk perception','Physical perception'],['Kamera- og Kinect-hændelser når WorldState med accepteret, sporbar oprindelse.','Camera and Kinect events reach WorldState with accepted, traceable provenance.'],['Én vedvarende person','One persistent person'],['Identitet, stemme, krop og adfærd er sammenhængende på Windows, Android og Quest.','Identity, voice, body and behavior remain coherent across Windows, Android and Quest.'],['Driftsbevis','Operational proof'],['Latency, soak-test og exact-head-kontroller består det registrerede release-manifest.','Latency, soak testing and exact-head checks pass the recorded release manifest.'],
+        ['06 / Teknisk due diligence','06 / Technical due diligence'],['Visionen er stor. Grænserne er konkrete.','The vision is bold. The boundaries are concrete.'],['Følg arkitekturen, de offentlige repositories og V1-beviserne direkte. Projektet skal kunne efterprøves—ikke bare præsenteres.','Inspect the architecture, public repositories and V1 proofs directly. The project must be verifiable — not merely presented.'],['Åbn systemarkitektur','Open system architecture'],['Åbn bevisregister','Open proof ledger'],['Åbn GitHub','Open GitHub'],['Tilbage til hovedsiden ↑','Back to the main site ↑']
+      ]);
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      const nodes = [];
+      while (walker.nextNode()) nodes.push(walker.currentNode);
+      nodes.forEach(node => { const source = node.nodeValue.trim(); const translated = english.get(source); if (translated) node.nodeValue = node.nodeValue.replace(source, translated); });
+      const aria = new Map([['Tilbage til ModelRig','Back to ModelRig'],['Vælg sprog','Choose language'],['ModelRigs tre grundegenskaber','ModelRig’s three core properties'],['Kaliv træder frem fra ModelRigs kognitive kerne','Kaliv emerging from ModelRig’s cognitive core'],['Projektets kerne på fire punkter','The project in four points'],['Kalivs tre produktflader','Kaliv’s three product surfaces'],['ModelRigs fire V1-beviser','ModelRig’s four V1 proofs'],['Kalivs futuristiske ankh-symbol','Kaliv’s futuristic ankh symbol']]);
+      document.querySelectorAll('[aria-label]').forEach(el => { const value = aria.get(el.getAttribute('aria-label')); if (value) el.setAttribute('aria-label',value); });
+      document.querySelectorAll('[data-language]').forEach(link => { const current = link.dataset.language === 'en'; link.classList.toggle('is-current',current); if (current) link.setAttribute('aria-current','page'); else link.removeAttribute('aria-current'); });
+      document.querySelectorAll('[data-en-href]').forEach(link => { link.href = link.dataset.enHref; });
+      document.documentElement.lang = 'en';
+      document.title = 'ModelRig / Kaliv — project brief';
+      const description = 'A compact brief on ModelRig and Kaliv: the thesis, product, architecture, current status and four proofs required for V1.';
+      const setMeta = (selector,value) => document.querySelector(selector)?.setAttribute('content',value);
+      setMeta('meta[name="description"]',description); setMeta('meta[property="og:title"]','ModelRig / Kaliv — project brief'); setMeta('meta[property="og:description"]',description); setMeta('meta[property="og:locale"]','en_US'); setMeta('meta[name="twitter:title"]','ModelRig / Kaliv — project brief'); setMeta('meta[name="twitter:description"]',description);
+      const url = new URL('https://kaliv.dk/brief.html?lang=en'); document.querySelector('link[rel="canonical"]').href = url.href; setMeta('meta[property="og:url"]',url.href);
+      const structured = document.querySelector('script[type="application/ld+json"]'); if (structured) { try { const data = JSON.parse(structured.textContent); data.name = 'ModelRig / Kaliv — project brief'; data.description = description; data.inLanguage = 'en'; data.url = url.href; structured.textContent = JSON.stringify(data); } catch {} }
+    })();
+  </script>
+  <script>
+    if ('serviceWorker' in navigator && location.protocol === 'https:') window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js',{scope:'./',updateViaCache:'none'}).catch(()=>{}),{once:true});
+  </script>
+</body>
+</html>
