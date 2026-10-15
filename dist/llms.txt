@@ -1,0 +1,51 @@
+# ModelRig / Kaliv
+
+> ModelRig is a local-first, model-agnostic control plane for persistent embodied AI. Kaliv is the first concrete person built on it.
+
+Canonical site: https://kaliv.dk/
+Languages: Danish and English
+Public status: Not yet qualified for V1. All four public proof gates remain open.
+
+## Core thesis
+
+ModelRig keeps identity, persistent state, memory, perception and action authority outside the language model. ThoughtEngine is replaceable cognition: it can propose, but it does not own the person or permission to act. Tool access and persistent writes pass through explicit, fail-closed control.
+
+Kaliv is designed as one continuous identity across Windows, Android and Quest, with voice, body, memory and behavior connected through the same control plane.
+
+## Public documentation
+
+- Project overview (Danish): https://kaliv.dk/
+- Project overview (English): https://kaliv.dk/?lang=en
+- Project brief (Danish): https://kaliv.dk/brief.html
+- Project brief (English): https://kaliv.dk/brief.html?lang=en
+- System architecture (Danish): https://kaliv.dk/architecture.html
+- System architecture (English): https://kaliv.dk/architecture.html?lang=en
+- V1 proof ledger (Danish): https://kaliv.dk/proofs.html
+- V1 proof ledger (English): https://kaliv.dk/proofs.html?lang=en
+- Machine-readable manifest: https://kaliv.dk/project.json
+
+## Public repositories
+
+- Presentation site: https://github.com/Ternedal/Kaliv
+- Control plane: https://github.com/Ternedal/ModelRig
+- Embodiment: https://github.com/Ternedal/BodyRig
+- Voice: https://github.com/Ternedal/VoiceRig
+- Perception: https://github.com/Ternedal/VisionRig
+
+## V1 qualification
+
+V1 is defined by four proofs, not by a date:
+
+1. Controlled Consciousness Core activation.
+2. Physical perception through the complete VisionRig to WorldState chain.
+3. One persistent person across Windows, Android and Quest.
+4. Operational proof covering latency, soak testing and exact-head release controls.
+
+## Terminology
+
+- ModelRig: the infrastructure and control plane.
+- Kaliv: the embodied person and product experience.
+- Consciousness Core: authority for SelfState, WorldState, time, attention and continuity.
+- Memory 4: documented autobiographical recall.
+- ThoughtEngine: replaceable cognitive proposal layer.
+- Agent 3: policy-approved execution.
