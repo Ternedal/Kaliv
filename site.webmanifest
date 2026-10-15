@@ -47,6 +47,11 @@
       "name": "Status",
       "short_name": "Status",
       "url": "./#status"
+    },
+    {
+      "name": "Projektbrief",
+      "short_name": "Brief",
+      "url": "./brief.html"
     }
   ]
 }
