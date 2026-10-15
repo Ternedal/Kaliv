@@ -57,6 +57,11 @@
       "name": "V1-beviser",
       "short_name": "Beviser",
       "url": "./proofs.html"
+    },
+    {
+      "name": "Systemarkitektur",
+      "short_name": "Arkitektur",
+      "url": "./architecture.html"
     }
   ]
 }

@@ -64,4 +64,22 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://kaliv.dk/proofs.html?lang=en" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://kaliv.dk/proofs.html" />
   </url>
+  <url>
+    <loc>https://kaliv.dk/architecture.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="da" href="https://kaliv.dk/architecture.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kaliv.dk/architecture.html?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kaliv.dk/architecture.html" />
+  </url>
+  <url>
+    <loc>https://kaliv.dk/architecture.html?lang=en</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="da" href="https://kaliv.dk/architecture.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kaliv.dk/architecture.html?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kaliv.dk/architecture.html" />
+  </url>
 </urlset>

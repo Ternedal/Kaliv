@@ -179,7 +179,7 @@
   <header>
     <a class="brand" href="./" data-en-href="./?lang=en" aria-label="Tilbage til ModelRig"><span class="brand-mark">MR</span><span>ModelRig</span></a>
     <span class="document-type">V1 proof ledger / Public diligence</span>
-    <div class="header-actions"><a href="brief.html" data-en-href="brief.html?lang=en" data-da="Projektbrief" data-en="Project brief">Projektbrief</a><a href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer">GitHub ↗</a><span class="lang" aria-label="Vælg sprog"><a href="proofs.html" data-language="da" class="is-current" aria-current="page">DA</a><a href="proofs.html?lang=en" data-language="en">EN</a></span></div>
+    <div class="header-actions"><a href="brief.html" data-en-href="brief.html?lang=en" data-da="Projektbrief" data-en="Project brief">Projektbrief</a><a href="architecture.html" data-en-href="architecture.html?lang=en" data-da="Arkitektur" data-en="Architecture">Arkitektur</a><span class="lang" aria-label="Vælg sprog"><a href="proofs.html" data-language="da" class="is-current" aria-current="page">DA</a><a href="proofs.html?lang=en" data-language="en">EN</a></span></div>
   </header>
 
   <main id="content">
@@ -236,7 +236,7 @@
 
     <section class="rule" aria-labelledby="rule-title">
       <div class="rule-aside"><span class="micro" data-da="03 / Release-regel" data-en="03 / Release rule">03 / Release-regel</span><img src="assets/kaliv-ankh-640.webp" alt="Kalivs futuristiske ankh-symbol" width="640" height="863" loading="lazy" /></div>
-      <div class="rule-main"><h2 id="rule-title" data-da="V1 findes først, når alle fire beviser findes." data-en="V1 exists only when all four proofs exist.">V1 findes først, når alle fire beviser findes.</h2><div><p data-da="Et grønt delsystem kan ikke kompensere for en åben systemgrænse. ModelRig og Kaliv kvalificeres samlet, fordi kontinuitet kun giver mening gennem hele loopet." data-en="A green subsystem cannot compensate for an open system boundary. ModelRig and Kaliv qualify together because continuity only has meaning across the complete loop.">Et grønt delsystem kan ikke kompensere for en åben systemgrænse. ModelRig og Kaliv kvalificeres samlet, fordi kontinuitet kun giver mening gennem hele loopet.</p><div class="actions"><a class="action" href="brief.html" data-en-href="brief.html?lang=en" data-da="Læs projektbrief" data-en="Read project brief">Læs projektbrief</a><a class="action secondary" href="./#roadmap" data-en-href="./?lang=en#roadmap" data-da="Se V1-planen" data-en="View V1 plan">Se V1-planen</a><a class="action secondary" href="https://github.com/Ternedal/ModelRig" target="_blank" rel="noopener noreferrer" data-da="Åbn ModelRig" data-en="Open ModelRig">Åbn ModelRig</a></div></div></div>
+      <div class="rule-main"><h2 id="rule-title" data-da="V1 findes først, når alle fire beviser findes." data-en="V1 exists only when all four proofs exist.">V1 findes først, når alle fire beviser findes.</h2><div><p data-da="Et grønt delsystem kan ikke kompensere for en åben systemgrænse. ModelRig og Kaliv kvalificeres samlet, fordi kontinuitet kun giver mening gennem hele loopet." data-en="A green subsystem cannot compensate for an open system boundary. ModelRig and Kaliv qualify together because continuity only has meaning across the complete loop.">Et grønt delsystem kan ikke kompensere for en åben systemgrænse. ModelRig og Kaliv kvalificeres samlet, fordi kontinuitet kun giver mening gennem hele loopet.</p><div class="actions"><a class="action" href="architecture.html" data-en-href="architecture.html?lang=en" data-da="Se arkitekturen" data-en="View architecture">Se arkitekturen</a><a class="action secondary" href="brief.html" data-en-href="brief.html?lang=en" data-da="Læs projektbrief" data-en="Read project brief">Læs projektbrief</a><a class="action secondary" href="https://github.com/Ternedal/ModelRig" target="_blank" rel="noopener noreferrer" data-da="Åbn ModelRig" data-en="Open ModelRig">Åbn ModelRig</a></div></div></div>
     </section>
   </main>
 
@@ -261,6 +261,9 @@
       const url = new URL('https://kaliv.dk/proofs.html?lang=en'); document.querySelector('link[rel="canonical"]').href = url.href; setMeta('meta[property="og:url"]',url.href);
       const structured = document.querySelector('script[type="application/ld+json"]'); if (structured) { try { const data = JSON.parse(structured.textContent); data.name = 'ModelRig — V1 proof ledger'; data.description = 'A public, testable definition of when ModelRig and Kaliv are ready for V1.'; data.inLanguage = 'en'; data.url = url.href; structured.textContent = JSON.stringify(data); } catch {} }
     })();
+  </script>
+  <script>
+    if ('serviceWorker' in navigator && location.protocol === 'https:') window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js',{scope:'./',updateViaCache:'none'}).catch(()=>{}),{once:true});
   </script>
 </body>
 </html>

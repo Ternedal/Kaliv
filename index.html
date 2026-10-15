@@ -1168,6 +1168,7 @@
           <p class="acceptance-foot">Det er dén kæde — på rigtig hardware, under reel drift — som gør projektet kategorisk anderledes.</p>
         </aside>
       </div>
+      <a class="gate-ledger" href="architecture.html" data-architecture-link><span>Teknisk systemarkitektur<strong>Se autoritetsgrænser, runtime-loop og systeminvarianter.</strong></span><span class="gate-ledger-action">Åbn arkitektur ↗</span></a>
     </section>
 
     <section class="product-wedge" id="kaliv" aria-labelledby="kaliv-title">
@@ -1387,13 +1388,13 @@
       <div class="closing-copy">
         <h2 id="closing-title" tabindex="-1">Vi bygger ikke en bedre chatbot. Vi bygger det, der kommer efter.</h2>
         <div>
-          <div class="closing-actions"><a class="closing-action" href="brief.html" data-brief-link>Læs projektbrief</a><a class="closing-action" href="proofs.html" data-proof-link>Se bevisregister</a><a class="closing-action" href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Følg udviklingen på GitHub — åbner i ny fane">Følg udviklingen</a><a class="closing-action secondary" href="#architecture">Udforsk arkitekturen</a></div>
+          <div class="closing-actions"><a class="closing-action" href="brief.html" data-brief-link>Læs projektbrief</a><a class="closing-action" href="architecture.html" data-architecture-link>Teknisk arkitektur</a><a class="closing-action" href="proofs.html" data-proof-link>Se bevisregister</a><a class="closing-action" href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Følg udviklingen på GitHub — åbner i ny fane">Følg udviklingen</a></div>
           <div class="closing-meta" role="list" aria-label="ModelRigs fire grundegenskaber"><span role="listitem">Vedvarende hukommelse</span><span role="listitem">Udskiftelig intelligens</span><span role="listitem">Kontrolleret handling</span><span role="listitem">Fysisk tilstedeværelse</span></div>
         </div>
       </div>
     </section>
   </main>
-  <footer><span>ModelRig / Projektets hovedoverblik</span><span><a href="brief.html" data-brief-link>Projektbrief ↗</a> · <a href="proofs.html" data-proof-link>V1-beviser ↗</a> · <a href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Åbn Ternedal/Kaliv på GitHub — åbner i ny fane">GitHub / Ternedal/Kaliv ↗</a></span></footer>
+  <footer><span>ModelRig / Projektets hovedoverblik</span><span><a href="brief.html" data-brief-link>Projektbrief ↗</a> · <a href="architecture.html" data-architecture-link>Arkitektur ↗</a> · <a href="proofs.html" data-proof-link>V1-beviser ↗</a> · <a href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Åbn Ternedal/Kaliv på GitHub — åbner i ny fane">GitHub / Ternedal/Kaliv ↗</a></span></footer>
   <a class="back-top" href="#top" aria-label="Til toppen" aria-hidden="true" tabindex="-1"><span aria-hidden="true">↑</span></a>
   <script>
     (() => {
@@ -1637,6 +1638,11 @@
           ['Offentligt V1-bevisregister', 'Public V1 proof ledger'],
           ['Se status, acceptkriterier og krævet evidens for alle fire gates.', 'Inspect status, acceptance criteria and required evidence for all four gates.'],
           ['Åbn register ↗', 'Open ledger ↗'],
+          ['Teknisk systemarkitektur', 'Technical system architecture'],
+          ['Se autoritetsgrænser, runtime-loop og systeminvarianter.', 'Inspect authority boundaries, runtime loop and system invariants.'],
+          ['Åbn arkitektur ↗', 'Open architecture ↗'],
+          ['Teknisk arkitektur', 'Technical architecture'],
+          ['Arkitektur ↗', 'Architecture ↗'],
           ['Se bevisregister', 'View proof ledger'],
           ['V1-beviser ↗', 'V1 proofs ↗'],
           ['/ Klare svar', '/ Clear answers'],
@@ -1762,6 +1768,7 @@
         });
         document.querySelectorAll('[data-brief-link]').forEach(link => { link.href = 'brief.html?lang=en'; });
         document.querySelectorAll('[data-proof-link]').forEach(link => { link.href = 'proofs.html?lang=en'; });
+        document.querySelectorAll('[data-architecture-link]').forEach(link => { link.href = 'architecture.html?lang=en'; });
       }
 
       const root = document.documentElement;
