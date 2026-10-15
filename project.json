@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0",
+  "project": "ModelRig",
+  "product": "Kaliv",
+  "updated": "2026-10-15",
+  "canonical": "https://kaliv.dk/",
+  "languages": ["da", "en"],
+  "thesis": "A local-first, model-agnostic control plane for persistent embodied AI under explicit control.",
+  "release_status": "Not yet qualified for V1; all four public proof gates remain open.",
+  "properties": [
+    "local-first",
+    "model-agnostic",
+    "embodied",
+    "fail-closed",
+    "auditable"
+  ],
+  "surfaces": [
+    { "name": "Windows", "role": "Work and controlled action" },
+    { "name": "Android", "role": "Continuity and presence" },
+    { "name": "Quest", "role": "Spatial embodiment" }
+  ],
+  "components": [
+    {
+      "name": "ModelRig",
+      "role": "Control plane, policy, persistent state and client integration",
+      "repository": "https://github.com/Ternedal/ModelRig",
+      "status": "Integrated"
+    },
+    {
+      "name": "Consciousness Core",
+      "role": "SelfState, WorldState, time, attention and continuity",
+      "status": "Controlled; production activation remains open"
+    },
+    {
+      "name": "Memory 4",
+      "role": "Documented autobiographical recall",
+      "status": "Integrated through the control plane"
+    },
+    {
+      "name": "ThoughtEngine",
+      "role": "Replaceable cognition without authority over persistent identity",
+      "status": "Model-agnostic boundary"
+    },
+    {
+      "name": "VisionRig",
+      "role": "Visual perception and sensor admission",
+      "repository": "https://github.com/Ternedal/VisionRig",
+      "status": "Physical camera and Kinect acceptance remains open"
+    },
+    {
+      "name": "VoiceRig",
+      "role": "Voice, prosody and timing",
+      "repository": "https://github.com/Ternedal/VoiceRig",
+      "status": "Stable"
+    },
+    {
+      "name": "BodyRig",
+      "role": "Body, geometry, movement and identity likeness",
+      "repository": "https://github.com/Ternedal/BodyRig",
+      "status": "Physical likeness acceptance remains open"
+    },
+    {
+      "name": "Kaliv VR",
+      "role": "Unity and OpenXR embodiment on Quest",
+      "status": "Quest, latency and soak testing remain open"
+    }
+  ],
+  "v1_proofs": [
+    {
+      "id": "P01",
+      "name": "Controlled Core activation",
+      "status": "open",
+      "pass_condition": "Continuity survives restart and model switching without state divergence."
+    },
+    {
+      "id": "P02",
+      "name": "Physical perception",
+      "status": "open",
+      "pass_condition": "Physical sensor events reach WorldState with accepted, traceable provenance."
+    },
+    {
+      "id": "P03",
+      "name": "One persistent person",
+      "status": "open",
+      "pass_condition": "Identity, voice, body and behavior remain coherent across Windows, Android and Quest."
+    },
+    {
+      "id": "P04",
+      "name": "Operational proof",
+      "status": "open",
+      "pass_condition": "Latency, soak testing and exact-head checks pass the recorded release manifest."
+    }
+  ],
+  "documents": {
+    "overview_da": "https://kaliv.dk/",
+    "overview_en": "https://kaliv.dk/?lang=en",
+    "project_brief_da": "https://kaliv.dk/brief.html",
+    "project_brief_en": "https://kaliv.dk/brief.html?lang=en",
+    "architecture_da": "https://kaliv.dk/architecture.html",
+    "architecture_en": "https://kaliv.dk/architecture.html?lang=en",
+    "proof_ledger_da": "https://kaliv.dk/proofs.html",
+    "proof_ledger_en": "https://kaliv.dk/proofs.html?lang=en",
+    "llms": "https://kaliv.dk/llms.txt"
+  },
+  "repositories": [
+    "https://github.com/Ternedal/Kaliv",
+    "https://github.com/Ternedal/ModelRig",
+    "https://github.com/Ternedal/BodyRig",
+    "https://github.com/Ternedal/VoiceRig",
+    "https://github.com/Ternedal/VisionRig"
+  ]
+}

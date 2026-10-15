@@ -727,6 +727,47 @@
     .repo-card-link { display: inline-flex; align-items: center; gap: .55rem; margin-top: 2rem; color: var(--blue); font: 700 .7rem var(--mono); letter-spacing: .06em; text-transform: uppercase; }
     .repo-card-link::after { content: "↗"; font-size: .95rem; }
     .repo-footnote { display: flex; justify-content: space-between; gap: 2rem; margin-top: 1.5rem; color: #68727f; font: 600 .7rem/1.6 var(--mono); letter-spacing: .04em; text-transform: uppercase; }
+    .dossier {
+      margin-top: clamp(3.5rem, 7vw, 7rem);
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+    }
+    .dossier-head {
+      display: grid;
+      grid-template-columns: minmax(10rem,.42fr) minmax(0,1.58fr);
+      gap: clamp(1.5rem, 5vw, 6rem);
+      align-items: end;
+      margin-bottom: 1.5rem;
+    }
+    .dossier-head span { color: var(--blue); font: 700 .72rem var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .dossier-head h3 { max-width: 52rem; margin: 0; font-size: clamp(2.25rem, 5vw, 5.5rem); line-height: .94; letter-spacing: -.06em; }
+    .dossier-grid {
+      display: grid;
+      grid-template-columns: repeat(4,minmax(0,1fr));
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+    .dossier-card {
+      min-height: 20rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: 1.35rem;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: #f8faff;
+      color: var(--ink);
+      text-decoration: none;
+      transition: background-color .22s ease, box-shadow .22s ease, transform .22s ease;
+    }
+    .dossier-card:nth-child(even) { background: #fff; }
+    .dossier-card-code { display: flex; justify-content: space-between; gap: .75rem; color: #6a7482; font: 650 .65rem var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+    .dossier-card-code strong { color: var(--blue); font-weight: 700; }
+    .dossier-card h4 { margin: 0 0 .85rem; font-size: clamp(1.4rem, 2.2vw, 2.25rem); line-height: 1; letter-spacing: -.045em; }
+    .dossier-card p { margin: 0; color: #596472; font-size: .9rem; }
+    .dossier-card-action { display: inline-flex; align-items: center; margin-top: 1.5rem; color: var(--blue); font: 700 .68rem var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+    .dossier-card-action::after { content: "↗"; margin-left: .5rem; font-size: .9rem; }
 
     .status-list { border-top: 1px solid var(--line); }
     .status-row {
@@ -929,6 +970,8 @@
       letter-spacing: .05em;
       text-transform: uppercase;
     }
+    footer a { color: #c4ccd7; text-decoration: none; }
+    footer a:hover, footer a:focus-visible { color: #fff; text-decoration: underline; text-underline-offset: .25rem; }
     .surface, .principle, .control, .gate-item, .unit {
       transition: background-color .22s ease, border-color .22s ease, box-shadow .22s ease;
     }
@@ -962,6 +1005,7 @@
       .principle:hover, .gate-item:hover { background: #f7f9fd; box-shadow: inset 0 3px #1457ff; }
       .control:hover { background: #121722; box-shadow: inset 0 3px #1457ff; }
       .repo-card:hover { background: #f8faff; box-shadow: inset 0 3px #1457ff; transform: translateY(-2px); }
+      .dossier-card:hover { background: #eef3ff; box-shadow: inset 0 3px #1457ff; transform: translateY(-2px); }
       .unit:hover { border-color: #7da3ff; background: #f6f8ff; }
       .back-top.is-visible:hover { transform: translateY(-.18rem); }
     }
@@ -981,6 +1025,8 @@
       .band div:nth-child(2) { border-right: 0; }
       .band div:nth-child(-n+2) { border-bottom: 1px solid var(--line-dark); }
       .gates { grid-template-columns: repeat(2,1fr); }
+      .dossier-head { grid-template-columns: 1fr; gap: 1rem; }
+      .dossier-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
     }
     @media (max-width: 760px) {
       .hero { --hero-art: url("assets/modelrig-continuity-female-hair-mobile.webp"); }
@@ -1072,6 +1118,8 @@
       .repo-grid { grid-template-columns: 1fr; }
       .repo-card { min-height: 15rem; }
       .repo-footnote { flex-direction: column; gap: .4rem; }
+      .dossier-grid { grid-template-columns: 1fr; }
+      .dossier-card { min-height: 15rem; }
       .continuity-step { grid-template-columns: 2.25rem 1fr; gap: 1rem; }
       .continuity-step > div { grid-column: 2; }
       .flow-detail { grid-template-columns: 1fr; min-height: 0; }
@@ -1315,6 +1363,15 @@
         <a class="repo-card" role="listitem" href="https://github.com/Ternedal/VisionRig" target="_blank" rel="noopener noreferrer" aria-label="Åbn VisionRig på GitHub — åbner i ny fane"><span class="repo-card-top"><span class="repo-card-code">04 / Perception</span><span class="repo-card-state">Offentligt repository</span></span><span><h3>VisionRig</h3><p>PerceptionEvents, sensorkontrakter, admission og sporbar WorldState-evidens.</p><span class="repo-card-link">Åbn på GitHub</span></span></a>
       </div>
       <p class="repo-footnote"><span>Runtime-kode og præsentationssite holdes adskilt.</span><span>Denne side: Ternedal/Kaliv</span></p>
+      <div class="dossier" aria-labelledby="dossier-title">
+        <div class="dossier-head"><span>Offentligt dossier / 2026</span><h3 id="dossier-title">Fra vision til noget, der kan granskes.</h3></div>
+        <div class="dossier-grid" role="list" aria-label="ModelRigs offentlige projektdokumentation">
+          <a class="dossier-card" role="listitem" href="brief.html" data-brief-link><span class="dossier-card-code"><strong>01</strong><span>Strategi</span></span><div><h4>Projektbrief</h4><p>Tesen, problemet, produktfladerne og den konkrete vej til V1.</p><span class="dossier-card-action">Læs brief</span></div></a>
+          <a class="dossier-card" role="listitem" href="architecture.html" data-architecture-link><span class="dossier-card-code"><strong>02</strong><span>System</span></span><div><h4>Teknisk arkitektur</h4><p>Runtime-loop, autoritetsgrænser, sikkerhed og ufravigelige invarianter.</p><span class="dossier-card-action">Se arkitektur</span></div></a>
+          <a class="dossier-card" role="listitem" href="proofs.html" data-proof-link><span class="dossier-card-code"><strong>03</strong><span>Evidens</span></span><div><h4>V1-bevisregister</h4><p>Fire åbne gates med acceptkriterier, ejerskab og krævet dokumentation.</p><span class="dossier-card-action">Se beviser</span></div></a>
+          <a class="dossier-card" role="listitem" href="project.json"><span class="dossier-card-code"><strong>04</strong><span>Maskinlæsbar</span></span><div><h4>Projektmanifest</h4><p>Komponenter, repositories, dokumenter og kvalificeringsstatus som JSON.</p><span class="dossier-card-action">Åbn manifest</span></div></a>
+        </div>
+      </div>
     </section>
 
     <section class="section" id="status" aria-labelledby="status-title">
@@ -1394,7 +1451,7 @@
       </div>
     </section>
   </main>
-  <footer><span>ModelRig / Projektets hovedoverblik</span><span><a href="brief.html" data-brief-link>Projektbrief ↗</a> · <a href="architecture.html" data-architecture-link>Arkitektur ↗</a> · <a href="proofs.html" data-proof-link>V1-beviser ↗</a> · <a href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Åbn Ternedal/Kaliv på GitHub — åbner i ny fane">GitHub / Ternedal/Kaliv ↗</a></span></footer>
+  <footer><span>ModelRig / Projektets hovedoverblik</span><span><a href="brief.html" data-brief-link>Projektbrief ↗</a> · <a href="architecture.html" data-architecture-link>Arkitektur ↗</a> · <a href="proofs.html" data-proof-link>V1-beviser ↗</a> · <a href="project.json">Manifest / JSON ↗</a> · <a href="llms.txt">LLMs.txt ↗</a> · <a href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Åbn Ternedal/Kaliv på GitHub — åbner i ny fane">GitHub / Ternedal/Kaliv ↗</a></span></footer>
   <a class="back-top" href="#top" aria-label="Til toppen" aria-hidden="true" tabindex="-1"><span aria-hidden="true">↑</span></a>
   <script>
     (() => {
@@ -1596,6 +1653,23 @@
           ['Åbn på GitHub', 'Open on GitHub'],
           ['Runtime-kode og præsentationssite holdes adskilt.', 'Runtime code and the presentation site are kept separate.'],
           ['Denne side: Ternedal/Kaliv', 'This site: Ternedal/Kaliv'],
+          ['Offentligt dossier / 2026', 'Public dossier / 2026'],
+          ['Fra vision til noget, der kan granskes.', 'From vision to something that can be examined.'],
+          ['Strategi', 'Strategy'],
+          ['Projektbrief', 'Project brief'],
+          ['Tesen, problemet, produktfladerne og den konkrete vej til V1.', 'The thesis, the problem, the product surfaces and the concrete path to V1.'],
+          ['Læs brief', 'Read brief'],
+          ['System', 'System'],
+          ['Runtime-loop, autoritetsgrænser, sikkerhed og ufravigelige invarianter.', 'Runtime loop, authority boundaries, safety and non-negotiable invariants.'],
+          ['Se arkitektur', 'View architecture'],
+          ['Evidens', 'Evidence'],
+          ['V1-bevisregister', 'V1 proof ledger'],
+          ['Fire åbne gates med acceptkriterier, ejerskab og krævet dokumentation.', 'Four open gates with acceptance criteria, ownership and required documentation.'],
+          ['Se beviser', 'View proofs'],
+          ['Maskinlæsbar', 'Machine-readable'],
+          ['Projektmanifest', 'Project manifest'],
+          ['Komponenter, repositories, dokumenter og kvalificeringsstatus som JSON.', 'Components, repositories, documents and qualification status as JSON.'],
+          ['Åbn manifest', 'Open manifest'],
           ['Integreret er ikke det samme som bevist.', 'Integrated is not the same as proven.'],
           ['Status adskiller software, der er landet, fra adfærd der er kvalificeret på faktisk hardware. Det er en bevidst del af projektets definition af færdig.', 'Status separates landed software from behavior qualified on real hardware. That distinction is a deliberate part of the project’s definition of done.'],
           ['Control plane, policy, RAG, audit, scheduler og klientintegration er samlet.', 'Control plane, policy, RAG, audit, scheduler and client integration are assembled.'],
@@ -1697,6 +1771,7 @@
           ['Interaktivt runtime-flow fra perception til observeret resultat. Kan rulles vandret på små skærme.', 'Interactive runtime flow from perception to observed outcome. Scrolls horizontally on small screens.'],
           ['Ansvarstabel. Kan rulles vandret på små skærme.', 'Authority table. Scrolls horizontally on small screens.'],
           ['ModelRigs offentlige systemrepositories', 'ModelRig public system repositories'],
+          ['ModelRigs offentlige projektdokumentation', 'ModelRig public project documentation'],
           ['ModelRigs fire V1-beviser', 'ModelRig’s four V1 proofs'],
           ['Åbn ModelRig på GitHub — åbner i ny fane', 'Open ModelRig on GitHub — opens in a new tab'],
           ['Åbn BodyRig på GitHub — åbner i ny fane', 'Open BodyRig on GitHub — opens in a new tab'],
