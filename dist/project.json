@@ -12,6 +12,11 @@
     "published": "2026-10-15",
     "url": "https://github.com/Ternedal/ModelRig/releases/tag/v2.0.15"
   },
+  "known_boundaries": [
+    "Voice conversation continuity repair PR #2205 was closed without merge and is not included in v2.0.15.",
+    "KalivHub physical Cast proof exists, while normal product integration, microphone input and production hardening remain open.",
+    "Cross-surface continuity, restart behavior, latency and extended soak testing remain unqualified for V1."
+  ],
   "properties": [
     "local-first",
     "model-agnostic",
@@ -126,12 +131,13 @@
   "source_snapshot": {
     "recorded": "2026-10-16",
     "heads": {
-      "ModelRig": "411808cae28a55eb2b939feb4100663e264249f3",
+      "ModelRig": "141add7917e6121c72d874f9eea0656fd52bd565",
       "BodyRig": "8a85597637d0b59947bd179366e27be1bb847c16",
       "VoiceRig": "9f3e594996db7eb2c6e035247ecb168bf17c1dae",
       "VisionRig": "66ea9bfce1c4d219e4bac1d85324a0e6e3f042e5",
-      "KalivHub-Receiver@test/nest-hub-microphone-probe": "a32d4ad6438ede72c2da26ee3d41bb5039c2eb18",
-      "KalivHub@feat/ha-cast-controls-v1": "87d2ff5885426629e78a4f6c3c4e308ec93c8fe7"
+      "KalivHub-Receiver@test/nest-hub-microphone-probe-current": "233a533661d04c460fec66e43fa03d89426d25c0",
+      "KalivHub-Receiver@physical-proof": "a32d4ad6438ede72c2da26ee3d41bb5039c2eb18",
+      "KalivHub@feat/ha-cast-controls-v1": "6d3a6965b80d7b424be47a130f1f43b70899d9c8"
     }
   },
   "repositories": [

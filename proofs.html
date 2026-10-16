@@ -142,7 +142,8 @@
     @media (max-width:760px) {
       header { grid-template-columns:1fr auto; min-height:8.5rem; align-content:center; row-gap:.7rem; }
       .document-type { display:none; }
-      .header-actions { grid-column:1/-1; justify-self:stretch; justify-content:space-between; overflow-x:auto; }
+      .header-actions { grid-column:1/-1; justify-self:stretch; justify-content:flex-start; overflow-x:auto; white-space:nowrap; overscroll-behavior-inline:contain; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+      .header-actions::-webkit-scrollbar { display:none; }
       h1 { font-size:clamp(3.8rem,17vw,5.9rem); }
       .score { grid-template-columns:1fr; }
       .score article { min-height:10rem; }

@@ -44,6 +44,7 @@
       "@type": "WebSite",
       "name": "ModelRig / Kaliv",
       "description": "Et local-first fundament for vedvarende, kropsliggjort AI under eksplicit kontrol.",
+      "dateModified": "2026-10-16",
       "inLanguage": "da",
       "sameAs": "https://github.com/Ternedal/Kaliv",
       "url": "https://kaliv.dk/"
@@ -509,6 +510,40 @@
     .band div:last-child { border-right: 0; }
     .band b { margin-bottom: .3rem; font-size: .95rem; }
     .band span { color: #929aa5; font: 600 .75rem var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+
+    .now {
+      border-bottom: 1px solid var(--line-dark);
+      background: #07101f;
+      color: #fff;
+    }
+    .now-head {
+      display: grid;
+      grid-template-columns: minmax(11rem,.42fr) minmax(0,1.58fr);
+      gap: clamp(2rem,6vw,8rem);
+      padding: clamp(4rem,7vw,7rem) clamp(1.25rem,4vw,4.5rem);
+      border-bottom: 1px solid var(--line-dark);
+    }
+    .now-kicker { color: #8fb0ff; font: 650 .75rem var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .now-head h2 { max-width: 10ch; margin-bottom: 1.25rem; color: #fff; }
+    .now-head p { max-width: 47rem; margin: 0; color: #aeb7c3; font-size: clamp(1.04rem,1.45vw,1.25rem); }
+    .now-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); }
+    .now-card {
+      min-height: 24rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 2.5rem;
+      padding: clamp(1.4rem,2.6vw,2.5rem);
+      border-right: 1px solid var(--line-dark);
+    }
+    .now-card:last-child { border-right: 0; }
+    .now-card.open { background: #101722; }
+    .now-card-label { color: #8fb0ff; font: 650 .7rem var(--mono); letter-spacing: .07em; text-transform: uppercase; }
+    .now-card.open .now-card-label { color: #ffbf69; }
+    .now-card strong { display: block; margin: auto 0 1rem; font-size: clamp(1.7rem,2.6vw,2.8rem); line-height: 1; letter-spacing: -.045em; }
+    .now-card p { margin: 0; color: #aeb7c3; font-size: .95rem; }
+    .now-card a { align-self: flex-start; color: #fff; font: 700 .72rem var(--mono); letter-spacing: .06em; text-decoration: none; text-transform: uppercase; }
+    .now-card a:hover { color: #8fb0ff; }
 
     .shift {
       display: grid;
@@ -1024,6 +1059,9 @@
       .band { grid-template-columns: repeat(2,1fr); }
       .band div:nth-child(2) { border-right: 0; }
       .band div:nth-child(-n+2) { border-bottom: 1px solid var(--line-dark); }
+      .now-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .now-card:nth-child(2) { border-right: 0; }
+      .now-card:nth-child(-n+2) { border-bottom: 1px solid var(--line-dark); }
       .gates { grid-template-columns: repeat(2,1fr); }
       .dossier-head { grid-template-columns: 1fr; gap: 1rem; }
       .dossier-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
@@ -1070,6 +1108,7 @@
       .hero-foot { align-items: flex-start; flex-direction: column; gap: .5rem; margin-top: 0; }
       .hero-foot-actions { width: 100%; justify-content: flex-start; gap: 1rem 1.4rem; }
       .section { padding-block: 4.5rem; }
+      .now-head { grid-template-columns: 1fr; gap: 1rem; }
       .section-head { grid-template-columns: 1fr; gap: 1.25rem; margin-bottom: 3rem; }
       .principles { grid-template-columns: 1fr; }
       .principle { min-height: 14rem; }
@@ -1103,6 +1142,9 @@
       .band div { min-height: 6.4rem; padding: 1rem; }
       .band b { font-size: .88rem; }
       .band span { font-size: .66rem; line-height: 1.45; }
+      .now-grid { grid-template-columns: 1fr; }
+      .now-card { min-height: 18rem; border-right: 0; border-bottom: 1px solid var(--line-dark); }
+      .now-card:last-child { border-bottom: 0; }
       .diagram-row { grid-template-columns: 5.4rem 1fr; }
       .diagram-content { flex-direction: column; align-items: stretch; }
       .unit { min-height: 3.5rem; }
@@ -1171,6 +1213,19 @@
       <div role="listitem"><b>Auditable</b><span>Eksterne kald er sporbare</span></div>
       <div role="listitem"><b>Model-agnostic</b><span>LLM’en kan udskiftes</span></div>
     </div>
+
+    <section class="now" id="now" aria-labelledby="now-title">
+      <div class="now-head">
+        <span class="now-kicker">Nu / 16. oktober 2026</span>
+        <div><h2 id="now-title" tabindex="-1">Fra release til fysisk nærvær.</h2><p>ModelRig er ude som versionslåst release, og Kaliv er nået fysisk ud på en Nest Hub. Næste tærskel er ikke endnu en demo, men én sammenhængende produktionskæde, der overlever tale, genstart og skift mellem flader.</p></div>
+      </div>
+      <div class="now-grid" role="list" aria-label="Aktuel projektstatus">
+        <article class="now-card" role="listitem"><span class="now-card-label">01 / Release</span><div><strong>v2.0.15</strong><p>Android, Windows og serverstakken er publiceret med versionslåste artefakter og SHA256-manifest.</p></div><a href="https://github.com/Ternedal/ModelRig/releases/tag/v2.0.15" target="_blank" rel="noopener noreferrer">Se release ↗</a></article>
+        <article class="now-card" role="listitem"><span class="now-card-label">02 / Fysisk bevis</span><div><strong>Nest Hub 2</strong><p>ModelRig-chat, synlig tilstand og multi-turn sessionshukommelse er kørt gennem KalivHub-Receiver på rigtig hardware.</p></div><a href="hub.html" data-hub-link>Se KalivHub ↗</a></article>
+        <article class="now-card" role="listitem"><span class="now-card-label">03 / Aktuel main</span><div><strong>141add7</strong><p>Repository-audittet og den prioriterede forbedringsplan er landet på ModelRig main den 16. oktober.</p></div><a href="https://github.com/Ternedal/ModelRig/commit/141add7917e6121c72d874f9eea0656fd52bd565" target="_blank" rel="noopener noreferrer">Se commit ↗</a></article>
+        <article class="now-card open" role="listitem"><span class="now-card-label">04 / Åben grænse</span><div><strong>Produktionskæden</strong><p>Voice-kontinuitet, genstart, streaming, klienthandover og længere soak-test mangler stadig samlet kvalificering.</p></div><a href="progress.html" data-progress-link>Se åbne gates ↗</a></article>
+      </div>
+    </section>
 
     <section class="shift" aria-labelledby="shift-title">
       <div class="shift-side"><span>00 / Kategoriskiftet</span><strong>Ikke en wrapper. Ikke en persona-prompt. Ikke endnu et chatvindue.</strong></div>
@@ -1482,6 +1537,22 @@
           ['Ingen uautoriserede writes', 'No unauthorized writes'],
           ['Eksterne kald er sporbare', 'External calls are traceable'],
           ['LLM’en kan udskiftes', 'The LLM can be replaced'],
+          ['Nu / 16. oktober 2026', 'Now / 16 October 2026'],
+          ['Fra release til fysisk nærvær.', 'From release to physical presence.'],
+          ['ModelRig er ude som versionslåst release, og Kaliv er nået fysisk ud på en Nest Hub. Næste tærskel er ikke endnu en demo, men én sammenhængende produktionskæde, der overlever tale, genstart og skift mellem flader.', 'ModelRig is out as a version-locked release, and Kaliv has physically reached a Nest Hub. The next threshold is not another demo, but one coherent production chain that survives voice, restart and transitions between surfaces.'],
+          ['01 / Release', '01 / Release'],
+          ['Android, Windows og serverstakken er publiceret med versionslåste artefakter og SHA256-manifest.', 'Android, Windows and the server stack are published with version-locked artifacts and a SHA256 manifest.'],
+          ['Se release ↗', 'View release ↗'],
+          ['02 / Fysisk bevis', '02 / Physical proof'],
+          ['ModelRig-chat, synlig tilstand og multi-turn sessionshukommelse er kørt gennem KalivHub-Receiver på rigtig hardware.', 'ModelRig chat, visible state and multi-turn session memory have run through KalivHub-Receiver on real hardware.'],
+          ['Se KalivHub ↗', 'View KalivHub ↗'],
+          ['03 / Aktuel main', '03 / Current main'],
+          ['Repository-audittet og den prioriterede forbedringsplan er landet på ModelRig main den 16. oktober.', 'The repository audit and prioritized improvement plan landed on ModelRig main on 16 October.'],
+          ['Se commit ↗', 'View commit ↗'],
+          ['04 / Åben grænse', '04 / Open boundary'],
+          ['Produktionskæden', 'The production chain'],
+          ['Voice-kontinuitet, genstart, streaming, klienthandover og længere soak-test mangler stadig samlet kvalificering.', 'Voice continuity, restart, streaming, client handover and extended soak testing still require integrated qualification.'],
+          ['Se åbne gates ↗', 'View open gates ↗'],
           ['00 / Kategoriskiftet', '00 / The category shift'],
           ['Ikke en wrapper. Ikke en persona-prompt. Ikke endnu et chatvindue.', 'Not a wrapper. Not a persona prompt. Not another chat window.'],
           ['Fra session til eksistens.', 'From session to existence.'],
