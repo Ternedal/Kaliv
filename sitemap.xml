@@ -4,7 +4,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://kaliv.dk/</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="da" href="https://kaliv.dk/" />
@@ -17,7 +17,7 @@
   </url>
   <url>
     <loc>https://kaliv.dk/?lang=en</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="da" href="https://kaliv.dk/" />
@@ -30,7 +30,7 @@
   </url>
   <url>
     <loc>https://kaliv.dk/brief.html</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="da" href="https://kaliv.dk/brief.html" />
@@ -39,7 +39,7 @@
   </url>
   <url>
     <loc>https://kaliv.dk/brief.html?lang=en</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="da" href="https://kaliv.dk/brief.html" />
@@ -48,7 +48,7 @@
   </url>
   <url>
     <loc>https://kaliv.dk/proofs.html</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="da" href="https://kaliv.dk/proofs.html" />
@@ -57,7 +57,7 @@
   </url>
   <url>
     <loc>https://kaliv.dk/proofs.html?lang=en</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="da" href="https://kaliv.dk/proofs.html" />
@@ -66,7 +66,7 @@
   </url>
   <url>
     <loc>https://kaliv.dk/architecture.html</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="da" href="https://kaliv.dk/architecture.html" />
@@ -75,7 +75,7 @@
   </url>
   <url>
     <loc>https://kaliv.dk/architecture.html?lang=en</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="da" href="https://kaliv.dk/architecture.html" />
@@ -84,7 +84,7 @@
   </url>
   <url>
     <loc>https://kaliv.dk/progress.html</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="da" href="https://kaliv.dk/progress.html" />
@@ -93,11 +93,29 @@
   </url>
   <url>
     <loc>https://kaliv.dk/progress.html?lang=en</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="da" href="https://kaliv.dk/progress.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://kaliv.dk/progress.html?lang=en" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://kaliv.dk/progress.html" />
+  </url>
+  <url>
+    <loc>https://kaliv.dk/hub.html</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="da" href="https://kaliv.dk/hub.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kaliv.dk/hub.html?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kaliv.dk/hub.html" />
+  </url>
+  <url>
+    <loc>https://kaliv.dk/hub.html?lang=en</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="da" href="https://kaliv.dk/hub.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kaliv.dk/hub.html?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kaliv.dk/hub.html" />
   </url>
 </urlset>

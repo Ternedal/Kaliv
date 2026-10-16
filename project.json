@@ -2,11 +2,16 @@
   "schema_version": "1.0",
   "project": "ModelRig",
   "product": "Kaliv",
-  "updated": "2026-10-15",
+  "updated": "2026-10-16",
   "canonical": "https://kaliv.dk/",
   "languages": ["da", "en"],
   "thesis": "A local-first, model-agnostic control plane for persistent embodied AI under explicit control.",
   "release_status": "Not yet qualified for V1; all four public proof gates remain open.",
+  "latest_release": {
+    "version": "2.0.15",
+    "published": "2026-10-15",
+    "url": "https://github.com/Ternedal/ModelRig/releases/tag/v2.0.15"
+  },
   "properties": [
     "local-first",
     "model-agnostic",
@@ -17,6 +22,7 @@
   "surfaces": [
     { "name": "Windows", "role": "Work and controlled action" },
     { "name": "Android", "role": "Continuity and presence" },
+    { "name": "KalivHub", "role": "Ambient home presence and controlled device integration" },
     { "name": "Quest", "role": "Spatial embodiment" }
   ],
   "components": [
@@ -63,6 +69,17 @@
       "name": "Kaliv VR",
       "role": "Unity and OpenXR embodiment on Quest",
       "status": "Quest, latency and soak testing remain open"
+    },
+    {
+      "name": "KalivHub",
+      "role": "Private room, Home Assistant and Cast orchestration",
+      "status": "Physical ModelRig-to-Nest Hub chain proven on test branch; normal product integration remains open"
+    },
+    {
+      "name": "KalivHub-Receiver",
+      "role": "Public Cast receiver and visible home-surface boundary",
+      "repository": "https://github.com/Ternedal/KalivHub-Receiver",
+      "status": "Interactive multi-turn ModelRig chat physically verified on Google Nest Hub 2"
     }
   ],
   "v1_proofs": [
@@ -82,7 +99,7 @@
       "id": "P03",
       "name": "One persistent person",
       "status": "open",
-      "pass_condition": "Identity, voice, body and behavior remain coherent across Windows, Android and Quest."
+      "pass_condition": "Identity, voice, body and behavior remain coherent across Windows, Android, KalivHub and Quest."
     },
     {
       "id": "P04",
@@ -96,6 +113,8 @@
     "overview_en": "https://kaliv.dk/?lang=en",
     "project_brief_da": "https://kaliv.dk/brief.html",
     "project_brief_en": "https://kaliv.dk/brief.html?lang=en",
+    "kalivhub_da": "https://kaliv.dk/hub.html",
+    "kalivhub_en": "https://kaliv.dk/hub.html?lang=en",
     "architecture_da": "https://kaliv.dk/architecture.html",
     "architecture_en": "https://kaliv.dk/architecture.html?lang=en",
     "proof_ledger_da": "https://kaliv.dk/proofs.html",
@@ -105,12 +124,14 @@
     "llms": "https://kaliv.dk/llms.txt"
   },
   "source_snapshot": {
-    "recorded": "2026-10-15",
+    "recorded": "2026-10-16",
     "heads": {
-      "ModelRig": "0b2ff455116f4f28a1a41704d9cb81503f17d2df",
+      "ModelRig": "411808cae28a55eb2b939feb4100663e264249f3",
       "BodyRig": "8a85597637d0b59947bd179366e27be1bb847c16",
       "VoiceRig": "9f3e594996db7eb2c6e035247ecb168bf17c1dae",
-      "VisionRig": "66ea9bfce1c4d219e4bac1d85324a0e6e3f042e5"
+      "VisionRig": "66ea9bfce1c4d219e4bac1d85324a0e6e3f042e5",
+      "KalivHub-Receiver@test/nest-hub-microphone-probe": "a32d4ad6438ede72c2da26ee3d41bb5039c2eb18",
+      "KalivHub@feat/ha-cast-controls-v1": "87d2ff5885426629e78a4f6c3c4e308ec93c8fe7"
     }
   },
   "repositories": [
@@ -118,6 +139,11 @@
     "https://github.com/Ternedal/ModelRig",
     "https://github.com/Ternedal/BodyRig",
     "https://github.com/Ternedal/VoiceRig",
-    "https://github.com/Ternedal/VisionRig"
+    "https://github.com/Ternedal/VisionRig",
+    "https://github.com/Ternedal/KalivHub-Receiver"
+  ],
+  "repository_roles": [
+    { "name": "KalivHub", "visibility": "private", "role": "Home orchestration, room authority and release gates" },
+    { "name": "KalivHub-Receiver", "visibility": "public", "role": "Cast receiver and visible home-surface boundary" }
   ]
 }

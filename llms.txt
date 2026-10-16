@@ -5,12 +5,14 @@
 Canonical site: https://kaliv.dk/
 Languages: Danish and English
 Public status: Not yet qualified for V1. All four public proof gates remain open.
+Latest public release: Kaliv / ModelRig v2.0.15, published 2026-10-15.
+Latest physical proof: interactive ModelRig-to-KalivHub-Receiver-to-Google Nest Hub 2 chain with visible state, real model response and active multi-turn session memory.
 
 ## Core thesis
 
 ModelRig keeps identity, persistent state, memory, perception and action authority outside the language model. ThoughtEngine is replaceable cognition: it can propose, but it does not own the person or permission to act. Tool access and persistent writes pass through explicit, fail-closed control.
 
-Kaliv is designed as one continuous identity across Windows, Android and Quest, with voice, body, memory and behavior connected through the same control plane.
+Kaliv is designed as one continuous identity across Windows, Android, KalivHub and Quest, with voice, body, memory and behavior connected through the same control plane.
 
 ## Public documentation
 
@@ -18,6 +20,8 @@ Kaliv is designed as one continuous identity across Windows, Android and Quest, 
 - Project overview (English): https://kaliv.dk/?lang=en
 - Project brief (Danish): https://kaliv.dk/brief.html
 - Project brief (English): https://kaliv.dk/brief.html?lang=en
+- KalivHub (Danish): https://kaliv.dk/hub.html
+- KalivHub (English): https://kaliv.dk/hub.html?lang=en
 - System architecture (Danish): https://kaliv.dk/architecture.html
 - System architecture (English): https://kaliv.dk/architecture.html?lang=en
 - V1 proof ledger (Danish): https://kaliv.dk/proofs.html
@@ -33,6 +37,7 @@ Kaliv is designed as one continuous identity across Windows, Android and Quest, 
 - Embodiment: https://github.com/Ternedal/BodyRig
 - Voice: https://github.com/Ternedal/VoiceRig
 - Perception: https://github.com/Ternedal/VisionRig
+- Home receiver: https://github.com/Ternedal/KalivHub-Receiver
 
 ## V1 qualification
 
@@ -40,13 +45,15 @@ V1 is defined by four proofs, not by a date:
 
 1. Controlled Consciousness Core activation.
 2. Physical perception through the complete VisionRig to WorldState chain.
-3. One persistent person across Windows, Android and Quest.
+3. One persistent person across Windows, Android, KalivHub and Quest.
 4. Operational proof covering latency, soak testing and exact-head release controls.
 
 ## Terminology
 
 - ModelRig: the infrastructure and control plane.
 - Kaliv: the embodied person and product experience.
+- KalivHub: the private home-orchestration layer and ambient product surface.
+- KalivHub-Receiver: the public Cast receiver and visible home-interface boundary.
 - Consciousness Core: authority for SelfState, WorldState, time, attention and continuity.
 - Memory 4: documented autobiographical recall.
 - ThoughtEngine: replaceable cognitive proposal layer.

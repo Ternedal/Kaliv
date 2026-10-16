@@ -54,6 +54,11 @@
       "url": "./brief.html"
     },
     {
+      "name": "KalivHub",
+      "short_name": "KalivHub",
+      "url": "./hub.html"
+    },
+    {
       "name": "V1-beviser",
       "short_name": "Beviser",
       "url": "./proofs.html"
