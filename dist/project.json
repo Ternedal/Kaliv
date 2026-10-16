@@ -14,7 +14,8 @@
   },
   "known_boundaries": [
     "Voice conversation continuity repair PR #2205 was closed without merge and is not included in v2.0.15.",
-    "KalivHub physical Cast proof exists, while normal product integration, microphone input and production hardening remain open.",
+    "KalivHub has a manual physical Cast proof. Its Home Assistant-first sender, room-first receiver and signed Android test path are green in CI, while physical HAOS/Nest Hub and phone-to-rig-to-Nest Hub acceptance remain open.",
+    "Nest Hub microphone input remains unverified after the isolated probe returned NotFoundError.",
     "Cross-surface continuity, restart behavior, latency and extended soak testing remain unqualified for V1."
   ],
   "properties": [
@@ -27,7 +28,7 @@
   "surfaces": [
     { "name": "Windows", "role": "Work and controlled action" },
     { "name": "Android", "role": "Continuity and presence" },
-    { "name": "KalivHub", "role": "Ambient home presence and controlled device integration" },
+    { "name": "KalivHub", "role": "Home Assistant-first room control with an optional Kaliv presence layer" },
     { "name": "Quest", "role": "Spatial embodiment" }
   ],
   "components": [
@@ -77,14 +78,14 @@
     },
     {
       "name": "KalivHub",
-      "role": "Private room, Home Assistant and Cast orchestration",
-      "status": "Physical ModelRig-to-Nest Hub chain proven on test branch; normal product integration remains open"
+      "role": "Home Assistant-first home orchestration, room mapping and allowlisted opt-in control; ModelRig is optional",
+      "status": "Home Assistant sender and room-first receiver are green in CI; physical HAOS and Nest Hub product acceptance remains open"
     },
     {
       "name": "KalivHub-Receiver",
       "role": "Public Cast receiver and visible home-surface boundary",
       "repository": "https://github.com/Ternedal/KalivHub-Receiver",
-      "status": "Interactive multi-turn ModelRig chat physically verified on Google Nest Hub 2"
+      "status": "Manual multi-turn ModelRig chat was physically verified at a32d4ad; current signed mirror head 8e3c12b is green in CI but not physically accepted"
     }
   ],
   "v1_proofs": [
@@ -135,10 +136,19 @@
       "BodyRig": "8a85597637d0b59947bd179366e27be1bb847c16",
       "VoiceRig": "9f3e594996db7eb2c6e035247ecb168bf17c1dae",
       "VisionRig": "66ea9bfce1c4d219e4bac1d85324a0e6e3f042e5",
-      "KalivHub-Receiver@test/nest-hub-microphone-probe-current": "233a533661d04c460fec66e43fa03d89426d25c0",
+      "KalivHub-Receiver@test/nest-hub-microphone-probe-current": "8e3c12bbb6e8d948434ff9fe05a2d53497d13ce3",
       "KalivHub-Receiver@physical-proof": "a32d4ad6438ede72c2da26ee3d41bb5039c2eb18",
-      "KalivHub@feat/ha-cast-controls-v1": "6d3a6965b80d7b424be47a130f1f43b70899d9c8"
+      "KalivHub@feat/ha-cast-controls-v1": "6d3a6965b80d7b424be47a130f1f43b70899d9c8",
+      "ModelRig@feat/android-kalivhub-mirror": "7475a2b685ad9cc44d7815bf09dddfc0395cc1ca"
     }
+  },
+  "qualification_snapshot": {
+    "recorded": "2026-10-16",
+    "manual_modelrig_to_nest_hub": "physically proven at a32d4ad",
+    "home_assistant_sender": "CI green at 6d3a696; physical HAOS/Nest Hub acceptance open",
+    "room_first_receiver": "CI green at f5c5962; physical room, touch and light acceptance open",
+    "signed_android_mirror": "Android CI, CodeQL and acceptance APK green at 7475a2b; exact-head qualification in progress and physical phone chain open",
+    "nest_hub_microphone": "unverified; isolated probe returned NotFoundError"
   },
   "repositories": [
     "https://github.com/Ternedal/Kaliv",
@@ -149,7 +159,7 @@
     "https://github.com/Ternedal/KalivHub-Receiver"
   ],
   "repository_roles": [
-    { "name": "KalivHub", "visibility": "private", "role": "Home orchestration, room authority and release gates" },
+    { "name": "KalivHub", "visibility": "private", "role": "Home Assistant-first orchestration, room authority, allowlisted control and release gates" },
     { "name": "KalivHub-Receiver", "visibility": "public", "role": "Cast receiver and visible home-surface boundary" }
   ]
 }

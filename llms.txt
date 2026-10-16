@@ -8,12 +8,15 @@ Public status: Not yet qualified for V1. All four public proof gates remain open
 Latest public release: Kaliv / ModelRig v2.0.15, published 2026-10-15.
 Latest physical proof: interactive ModelRig-to-KalivHub-Receiver-to-Google Nest Hub 2 chain with visible state, real model response and active multi-turn session memory.
 Current ModelRig main: 141add7917e6121c72d874f9eea0656fd52bd565, repository audit and prioritized improvement plan, 2026-10-16.
-Current KalivHub-Receiver test branch: 233a533661d04c460fec66e43fa03d89426d25c0. The physical Nest Hub proof remains anchored to a32d4ad6438ede72c2da26ee3d41bb5039c2eb18.
+Current KalivHub-Receiver test branch: 8e3c12bbb6e8d948434ff9fe05a2d53497d13ce3. All three receiver workflows are green. The physical Nest Hub proof remains anchored to a32d4ad6438ede72c2da26ee3d41bb5039c2eb18.
+Current signed Android mirror test branch: 7475a2b685ad9cc44d7815bf09dddfc0395cc1ca. Android CI, CodeQL and the acceptance APK are green; exact-head qualification is in progress and the physical phone-to-rig-to-Nest Hub chain remains untested.
+Current Home Assistant-first KalivHub sender branch: 6d3a6965b80d7b424be47a130f1f43b70899d9c8. Cast sender and controls tests are green; physical HAOS and Nest Hub product acceptance remains open.
 
 ## Known boundaries
 
 - Voice conversation continuity repair PR #2205 was closed without merge and is not part of v2.0.15.
-- KalivHub normal product integration, physical microphone input and production hardening remain open.
+- KalivHub's current Home Assistant, room-first receiver and signed Android paths are green in CI but still require physical product acceptance.
+- Nest Hub microphone input is unverified; the isolated probe returned NotFoundError.
 - Restart continuity, client handover, latency and extended soak testing remain unqualified for V1.
 
 ## Core thesis
@@ -60,7 +63,7 @@ V1 is defined by four proofs, not by a date:
 
 - ModelRig: the infrastructure and control plane.
 - Kaliv: the embodied person and product experience.
-- KalivHub: the private home-orchestration layer and ambient product surface.
+- KalivHub: the private Home Assistant-first home-control and orchestration product, with ModelRig as an optional presence layer.
 - KalivHub-Receiver: the public Cast receiver and visible home-interface boundary.
 - Consciousness Core: authority for SelfState, WorldState, time, attention and continuity.
 - Memory 4: documented autobiographical recall.

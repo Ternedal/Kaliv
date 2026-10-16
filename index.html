@@ -1287,7 +1287,7 @@
       <div class="surfaces" role="list" aria-label="Kalivs fire produktflader">
         <article class="surface" role="listitem"><span class="surface-num">01</span><div><h3>Windows</h3><p>Arbejde, værktøjer, research, hukommelse og kontrolleret handling.</p></div><strong>Arbejder</strong></article>
         <article class="surface" role="listitem"><span class="surface-num">02</span><div><h3>Android</h3><p>Kontinuitet i hverdagen, lokal stemme og adgang til samme personlige tilstand.</p></div><strong>Følger</strong></article>
-        <article class="surface" role="listitem"><span class="surface-num">03</span><div><h3>KalivHub</h3><p>Nærvær i hjemmet gennem Nest Hub, Google Cast og samme ModelRig-identitet.</p></div><strong>Er til stede</strong></article>
+        <article class="surface" role="listitem"><span class="surface-num">03</span><div><h3>KalivHub</h3><p>Home Assistant-first rumkontrol på Nest Hub med et valgfrit ModelRig-nærværslag.</p></div><strong>CI grøn · Fysisk gate åben</strong></article>
         <article class="surface" role="listitem"><span class="surface-num">04</span><div><h3>Quest / Kaliv VR</h3><p>Krop, blik, bevægelse og tilstedeværelse i et delt rum.</p></div><strong>Kropsliggør</strong></article>
       </div>
     </section>
@@ -1446,7 +1446,7 @@
         <article class="status-row" role="listitem"><h3>VisionRig</h3><p>PerceptionEvents, admission og health er integreret. Kamera-/Kinect-kæden mangler fysisk accept.</p><span class="status gate">Hardware-gate</span></article>
         <article class="status-row" role="listitem"><h3>VoiceRig</h3><p>Stemmegrænsen og den lokale danske stemmepipeline er stabil.</p><span class="status integrated">Stabil</span></article>
         <article class="status-row" role="listitem"><h3>BodyRig</h3><p>Person Studio og softwarepipen er langt fremme. Fysisk lighed er stadig acceptkriteriet.</p><span class="status gate">Accept</span></article>
-        <article class="status-row" role="listitem"><h3>KalivHub</h3><p>Den interaktive ModelRig→Nest Hub-kæde er fysisk verificeret på testbranch. Normal appintegration, streaming, tale og reconnect er åbne.</p><span class="status guarded">Fysisk bevist</span></article>
+        <article class="status-row" role="listitem"><h3>KalivHub</h3><p>Home Assistant-senderen og den room-first receiver er grønne i CI. Det manuelle ModelRig→Nest Hub-delbevis findes; fysisk HAOS- og signeret Android-kædeaccept står åbne.</p><span class="status guarded">Delvist bevist</span></article>
         <article class="status-row" role="listitem"><h3>Kaliv VR</h3><p>Unity/OpenXR og rendering-loopet er integreret. Quest, latency og soak-test står tilbage.</p><span class="status gate">Enhedsgate</span></article>
       </div>
     </section>
@@ -1587,7 +1587,8 @@
           ['Arbejder', 'Works'],
           ['Kontinuitet i hverdagen, lokal stemme og adgang til samme personlige tilstand.', 'Continuity throughout the day, local voice and access to the same personal state.'],
           ['Følger', 'Follows'],
-          ['Nærvær i hjemmet gennem Nest Hub, Google Cast og samme ModelRig-identitet.', 'Presence in the home through Nest Hub, Google Cast and the same ModelRig identity.'],
+          ['Home Assistant-first rumkontrol på Nest Hub med et valgfrit ModelRig-nærværslag.', 'Home Assistant-first room control on Nest Hub with an optional ModelRig presence layer.'],
+          ['CI grøn · Fysisk gate åben', 'CI green · Physical gate open'],
           ['Er til stede', 'Is present'],
           ['Krop, blik, bevægelse og tilstedeværelse i et delt rum.', 'Body, gaze, movement and presence in a shared space.'],
           ['Kropsliggør', 'Embodies'],
@@ -1767,7 +1768,8 @@
           ['Stabil', 'Stable'],
           ['Person Studio og softwarepipen er langt fremme. Fysisk lighed er stadig acceptkriteriet.', 'Person Studio and the software pipeline are well advanced. Physical likeness remains the acceptance criterion.'],
           ['Accept', 'Acceptance'],
-          ['Den interaktive ModelRig→Nest Hub-kæde er fysisk verificeret på testbranch. Normal appintegration, streaming, tale og reconnect er åbne.', 'The interactive ModelRig→Nest Hub chain is physically verified on a test branch. Normal app integration, streaming, speech and reconnect remain open.'],
+          ['Home Assistant-senderen og den room-first receiver er grønne i CI. Det manuelle ModelRig→Nest Hub-delbevis findes; fysisk HAOS- og signeret Android-kædeaccept står åbne.', 'The Home Assistant sender and room-first receiver are green in CI. The manual ModelRig→Nest Hub partial proof exists; physical HAOS and signed Android chain acceptance remain open.'],
+          ['Delvist bevist', 'Partially proven'],
           ['Fysisk bevist', 'Physically proven'],
           ['Unity/OpenXR og rendering-loopet er integreret. Quest, latency og soak-test står tilbage.', 'Unity/OpenXR and the rendering loop are integrated. Quest, latency and soak testing remain.'],
           ['Enhedsgate', 'Device gate'],
