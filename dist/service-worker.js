@@ -1,5 +1,5 @@
 const CACHE_PREFIX = 'kaliv-shell-';
-const CACHE_NAME = `${CACHE_PREFIX}v66`;
+const CACHE_NAME = `${CACHE_PREFIX}v67`;
 
 const CORE_ASSETS = [
   './',

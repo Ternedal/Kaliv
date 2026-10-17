@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "project": "ModelRig",
   "product": "Kaliv",
-  "updated": "2026-10-17",
+  "updated": "2026-10-18",
   "canonical": "https://kaliv.dk/",
   "languages": ["da", "en"],
   "thesis": "Kaliv is one personal AI across Windows, Android, KalivHub and Quest; ModelRig is the local-first, model-agnostic infrastructure that keeps identity, memory, perception and action under explicit control.",
@@ -85,7 +85,7 @@
       "name": "KalivHub-Receiver",
       "role": "Public Cast receiver and visible home-surface boundary",
       "repository": "https://github.com/Ternedal/KalivHub-Receiver",
-      "status": "Manual multi-turn ModelRig chat was physically verified at a32d4ad; current signed mirror head 0378896 has three green workflows but is not physically accepted"
+      "status": "Public main is f8903f9; manual multi-turn ModelRig chat was physically verified on the separate a32d4ad test snapshot; the signed mirror test path is not physically accepted"
     }
   ],
   "v1_proofs": [
@@ -130,12 +130,13 @@
     "llms": "https://kaliv.dk/llms.txt"
   },
   "source_snapshot": {
-    "recorded": "2026-10-17",
+    "recorded": "2026-10-18",
     "heads": {
       "ModelRig": "141add7917e6121c72d874f9eea0656fd52bd565",
       "BodyRig": "8a85597637d0b59947bd179366e27be1bb847c16",
       "VoiceRig": "9f3e594996db7eb2c6e035247ecb168bf17c1dae",
       "VisionRig": "66ea9bfce1c4d219e4bac1d85324a0e6e3f042e5",
+      "KalivHub-Receiver@main": "f8903f9954ecca4ef4ce1a95588a0154d987c23f",
       "KalivHub-Receiver@test/nest-hub-microphone-probe-current": "03788965b48de3c6d2c75e37e7b7f05db8fe82a8",
       "KalivHub-Receiver@signed-mirror-code-head": "12f65c90b444d15b314853937ae9746d3c18639f",
       "KalivHub-Receiver@physical-proof": "a32d4ad6438ede72c2da26ee3d41bb5039c2eb18",
@@ -144,7 +145,7 @@
     }
   },
   "qualification_snapshot": {
-    "recorded": "2026-10-17",
+    "recorded": "2026-10-18",
     "manual_modelrig_to_nest_hub": "manual physical partial proof at a32d4ad; does not close a V1 gate",
     "home_assistant_sender": "CI green at 6d3a696; physical HAOS/Nest Hub acceptance open",
     "room_first_receiver": "CI green at f5c5962; physical room, touch and light acceptance open",
