@@ -152,7 +152,7 @@
       right: 0;
       z-index: 40;
       display: grid;
-      grid-template-columns: 1fr auto 1fr;
+      grid-template-columns: auto minmax(9rem,1fr) auto;
       align-items: center;
       min-height: 5rem;
       padding: 0 clamp(1.25rem, 4vw, 4.5rem);
@@ -191,6 +191,7 @@
     .header-type {
       display: inline-flex;
       align-items: center;
+      justify-self: center;
       gap: .95rem;
       color: rgba(255,255,255,.72);
       font: 650 .82rem var(--mono);
@@ -499,17 +500,71 @@
     .continuity-step p { max-width: 36rem; margin: 0; color: #929ba7; font-size: .92rem; }
     .continuity-step strong { color: #fff; font-weight: 680; }
 
-    .band {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-bottom: 1px solid var(--line);
+    .gateway {
+      padding: clamp(2.4rem, 4vw, 4rem) clamp(1.25rem, 4vw, 4.5rem);
+      border-bottom: 1px solid var(--line-dark);
       background: var(--ink);
       color: #fff;
     }
-    .band div { min-height: 7rem; padding: 1.2rem clamp(1rem, 2.8vw, 3rem); border-right: 1px solid var(--line-dark); display: flex; flex-direction: column; justify-content: center; }
-    .band div:last-child { border-right: 0; }
-    .band b { margin-bottom: .3rem; font-size: .95rem; }
-    .band span { color: #929aa5; font: 600 .75rem var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+    .gateway-head {
+      display: grid;
+      grid-template-columns: minmax(0,1fr) auto;
+      gap: 2rem;
+      align-items: end;
+      margin-bottom: 1.5rem;
+    }
+    .gateway-kicker {
+      display: block;
+      margin-bottom: .55rem;
+      color: #8fb0ff;
+      font: 650 .7rem var(--mono);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .gateway-head h2 {
+      max-width: none;
+      margin: 0;
+      font-size: clamp(1.9rem, 3vw, 3.35rem);
+      line-height: 1;
+      letter-spacing: -.05em;
+    }
+    .gateway-proof {
+      display: grid;
+      grid-template-columns: repeat(2,auto);
+      gap: 1.25rem;
+      align-items: end;
+      padding-left: 2rem;
+      border-left: 1px solid var(--line-dark);
+    }
+    .gateway-proof span { color: #8f99a7; font: 650 .68rem var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+    .gateway-proof strong { display: block; margin-top: .15rem; color: #fff; font-size: 1rem; }
+    .gateway-grid {
+      display: grid;
+      grid-template-columns: repeat(4,minmax(0,1fr));
+      border-top: 1px solid #343b46;
+      border-left: 1px solid #343b46;
+    }
+    .gateway-card {
+      min-height: 13rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: clamp(1.15rem, 2vw, 1.8rem);
+      border-right: 1px solid #343b46;
+      border-bottom: 1px solid #343b46;
+      color: #fff;
+      text-decoration: none;
+      transition: background-color .22s ease, border-color .22s ease, transform .22s ease;
+    }
+    .gateway-card.primary { background: linear-gradient(145deg, #1457ff, #0b2d7e); border-color: #4f7eff; }
+    .gateway-card-code { display: flex; justify-content: space-between; gap: 1rem; color: #8f99a7; font: 650 .67rem var(--mono); letter-spacing: .07em; text-transform: uppercase; }
+    .gateway-card.primary .gateway-card-code { color: #dbe5ff; }
+    .gateway-card h3 { margin: 0 0 .55rem; font-size: clamp(1.3rem, 2vw, 2rem); line-height: 1; letter-spacing: -.04em; }
+    .gateway-card p { margin: 0; color: #9da6b2; font-size: .86rem; line-height: 1.55; }
+    .gateway-card.primary p { color: #e2eaff; }
+    .gateway-card-action { color: #9fbaff; font: 700 .68rem var(--mono); letter-spacing: .07em; text-transform: uppercase; }
+    .gateway-card.primary .gateway-card-action { color: #fff; }
 
     .now {
       border-bottom: 1px solid var(--line-dark);
@@ -1042,11 +1097,13 @@
       .control:hover { background: #121722; box-shadow: inset 0 3px #1457ff; }
       .repo-card:hover { background: #f8faff; box-shadow: inset 0 3px #1457ff; transform: translateY(-2px); }
       .dossier-card:hover { background: #eef3ff; box-shadow: inset 0 3px #1457ff; transform: translateY(-2px); }
+      .gateway-card:hover { background: #111824; border-color: #526073; transform: translateY(-2px); }
+      .gateway-card.primary:hover { background: linear-gradient(145deg, #2868ff, #103993); border-color: #80a2ff; }
       .unit:hover { border-color: #7da3ff; background: #f6f8ff; }
       .back-top.is-visible:hover { transform: translateY(-.18rem); }
     }
 
-    @media (max-width: 1420px) and (min-width: 1051px) {
+    @media (max-width: 1180px) and (min-width: 1051px) {
       .header-type { display: none; }
       nav { gap: 1rem; }
     }
@@ -1058,9 +1115,7 @@
       .product-copy { border-right: 0; border-bottom: 1px solid var(--line-dark); }
       .continuity { grid-template-columns: 1fr; }
       .continuity-intro { min-height: 30rem; border-right: 0; border-bottom: 1px solid var(--line-dark); }
-      .band { grid-template-columns: repeat(2,1fr); }
-      .band div:nth-child(2) { border-right: 0; }
-      .band div:nth-child(-n+2) { border-bottom: 1px solid var(--line-dark); }
+      .gateway-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
       .now-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
       .now-card:nth-child(2) { border-right: 0; }
       .now-card:nth-child(-n+2) { border-bottom: 1px solid var(--line-dark); }
@@ -1109,6 +1164,8 @@
       .surface strong { grid-column: 2; }
       .hero-foot { align-items: flex-start; flex-direction: column; gap: .5rem; margin-top: 0; }
       .hero-foot-actions { width: 100%; justify-content: flex-start; gap: 1rem 1.4rem; }
+      .gateway-head { grid-template-columns: 1fr; gap: 1.25rem; }
+      .gateway-proof { width: 100%; justify-content: space-between; padding: 1rem 0 0; border-top: 1px solid var(--line-dark); border-left: 0; }
       .section { padding-block: 4.5rem; }
       .now-head { grid-template-columns: 1fr; gap: 1rem; }
       .section-head { grid-template-columns: 1fr; gap: 1.25rem; margin-bottom: 3rem; }
@@ -1141,9 +1198,9 @@
       .closing h2 { min-height: 46svh; display: flex; align-items: center; }
     }
     @media (max-width: 540px) {
-      .band div { min-height: 6.4rem; padding: 1rem; }
-      .band b { font-size: .88rem; }
-      .band span { font-size: .66rem; line-height: 1.45; }
+      .gateway { padding-block: 2.25rem; }
+      .gateway-grid { grid-template-columns: 1fr; }
+      .gateway-card { min-height: 11.5rem; }
       .now-grid { grid-template-columns: 1fr; }
       .now-card { min-height: 18rem; border-right: 0; border-bottom: 1px solid var(--line-dark); }
       .now-card:last-child { border-bottom: 0; }
@@ -1192,7 +1249,7 @@
   <header>
     <a class="brand" href="#top" aria-label="ModelRig — til toppen"><span class="brand-mark">MR</span><span>ModelRig</span></a>
     <div class="header-type"><img src="assets/kaliv-ankh-160.webp" alt="" width="160" height="216" decoding="async" /><span><strong>Kaliv</strong> / embodiment layer</span></div>
-    <nav aria-label="Primær navigation"><a href="#architecture">Arkitektur</a><a href="#kaliv">Kaliv</a><a href="hub.html" data-hub-link>KalivHub</a><a href="#control">Kontrol</a><a href="#status">Status</a><a href="#roadmap">V1-plan</a><a href="proofs.html" data-proof-link>Beviser</a><a href="#questions">Spørgsmål</a><a href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Se projektets GitHub-repository — åbner i ny fane">GitHub ↗</a><span class="lang-switch" aria-label="Vælg sprog"><a href="?lang=da" lang="da" data-language="da" class="is-current" aria-current="page">DA</a><a href="?lang=en" lang="en" data-language="en">EN</a></span></nav>
+    <nav aria-label="Primær navigation"><a href="#architecture">Arkitektur</a><a href="#kaliv">Kaliv</a><a href="brief.html" data-brief-link>Projektbrief</a><a href="hub.html" data-hub-link>KalivHub</a><a href="proofs.html" data-proof-link>V1-beviser</a><a href="progress.html" data-progress-link>Project Room</a><a href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Se projektets GitHub-repository — åbner i ny fane">GitHub ↗</a><span class="lang-switch" aria-label="Vælg sprog"><a href="?lang=da" lang="da" data-language="da" class="is-current" aria-current="page">DA</a><a href="?lang=en" lang="en" data-language="en">EN</a></span></nav>
   </header>
 
   <main id="content" tabindex="-1">
@@ -1204,17 +1261,23 @@
           <p class="lead">ModelRig flytter AI fra isolerede sessioner til én vedvarende, lokalt ejet og kropsliggjort intelligens — med hukommelse, tid, perception og handling under eksplicit kontrol.</p>
         </div>
         <div class="hero-art" aria-hidden="true"></div>
-        <div class="hero-foot"><span>Local-first · Model-agnostic · Embodied</span><div class="hero-foot-actions"><a class="hero-scroll" href="#shift-title">Se systemet</a><a class="hero-source" href="brief.html" data-brief-link>Projektbrief</a><a class="hero-source" href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Se projektets GitHub-repository — åbner i ny fane">GitHub</a></div></div>
+        <div class="hero-foot"><span>Local-first · Model-agnostic · Embodied</span><div class="hero-foot-actions"><a class="hero-scroll" href="#gateway-title">Se projektet</a><a class="hero-source" href="proofs.html" data-proof-link>V1-beviser</a><a class="hero-source" href="brief.html" data-brief-link>Projektbrief</a></div></div>
       </div>
 
     </section>
 
-    <div class="band" role="list" aria-label="ModelRigs designinvarianter">
-      <div role="listitem"><b>Local-first</b><span>Dataklasse afgør routing</span></div>
-      <div role="listitem"><b>Fail-closed</b><span>Ingen uautoriserede writes</span></div>
-      <div role="listitem"><b>Auditable</b><span>Eksterne kald er sporbare</span></div>
-      <div role="listitem"><b>Model-agnostic</b><span>LLM’en kan udskiftes</span></div>
-    </div>
+    <section class="gateway" aria-labelledby="gateway-title">
+      <div class="gateway-head">
+        <div><span class="gateway-kicker">Projektkort / Start her</span><h2 id="gateway-title" tabindex="-1">Gå direkte til det, du vil efterprøve.</h2></div>
+        <div class="gateway-proof" aria-label="Aktuel V1-status"><span>Systemgates<strong>0 / 4 lukket</strong></span><span>Dokumenteret<strong>4 delbeviser</strong></span></div>
+      </div>
+      <div class="gateway-grid" role="list" aria-label="Fire indgange til ModelRig-projektet">
+        <a class="gateway-card" role="listitem" href="brief.html" data-brief-link><span class="gateway-card-code"><span>01 / Vision</span><span>4 min</span></span><div><h3>Projektbrief</h3><p>Problemet, tesen, produktfladerne og den konkrete vej til V1.</p></div><span class="gateway-card-action">Forstå projektet ↗</span></a>
+        <a class="gateway-card primary" role="listitem" href="proofs.html" data-proof-link><span class="gateway-card-code"><span>02 / Evidens</span><span>0 / 4</span></span><div><h3>V1-beviser</h3><p>Acceptkriterier, delbeviser og den præcise grænse mellem integreret og bevist.</p></div><span class="gateway-card-action">Åbn registret ↗</span></a>
+        <a class="gateway-card" role="listitem" href="hub.html" data-hub-link><span class="gateway-card-code"><span>03 / Hjemmet</span><span>Fysisk</span></span><div><h3>KalivHub</h3><p>Home Assistant-first og det dokumenterede ModelRig→Nest Hub-delbevis.</p></div><span class="gateway-card-action">Se hjemmefladen ↗</span></a>
+        <a class="gateway-card" role="listitem" href="progress.html" data-progress-link><span class="gateway-card-code"><span>04 / Fremdrift</span><span>Live</span></span><div><h3>Project Room</h3><p>Repository-heads, åbne risici og næste observerbare skridt.</p></div><span class="gateway-card-action">Se den aktuelle status ↗</span></a>
+      </div>
+    </section>
 
     <section class="now" id="now" aria-labelledby="now-title">
       <div class="now-head">
@@ -1532,9 +1595,30 @@
           ['Fundamentet efter chatbotten', 'The foundation beyond the chatbot'],
           ['Vi bygger AI, der kan bestå.', 'We build AI that endures.'],
           ['ModelRig flytter AI fra isolerede sessioner til én vedvarende, lokalt ejet og kropsliggjort intelligens — med hukommelse, tid, perception og handling under eksplicit kontrol.', 'ModelRig moves AI beyond isolated sessions into one persistent, locally owned and embodied intelligence — with memory, time, perception and action under explicit control.'],
-          ['Se systemet', 'Explore the system'],
+          ['Se projektet', 'Explore the project'],
           ['Projektbrief', 'Project brief'],
           ['Projektbrief ↗', 'Project brief ↗'],
+          ['V1-beviser', 'V1 proofs'],
+          ['Projektkort / Start her', 'Project map / Start here'],
+          ['Gå direkte til det, du vil efterprøve.', 'Go straight to what you want to inspect.'],
+          ['Systemgates', 'System gates'],
+          ['0 / 4 lukket', '0 / 4 closed'],
+          ['Dokumenteret', 'Documented'],
+          ['4 delbeviser', '4 partial proofs'],
+          ['01 / Vision', '01 / Vision'],
+          ['4 min', '4 min'],
+          ['Problemet, tesen, produktfladerne og den konkrete vej til V1.', 'The problem, the thesis, the product surfaces and the concrete path to V1.'],
+          ['Forstå projektet ↗', 'Understand the project ↗'],
+          ['02 / Evidens', '02 / Evidence'],
+          ['Acceptkriterier, delbeviser og den præcise grænse mellem integreret og bevist.', 'Acceptance criteria, partial proofs and the exact boundary between integrated and proven.'],
+          ['Åbn registret ↗', 'Open the ledger ↗'],
+          ['03 / Hjemmet', '03 / Home'],
+          ['Fysisk', 'Physical'],
+          ['Home Assistant-first og det dokumenterede ModelRig→Nest Hub-delbevis.', 'Home Assistant-first and the documented ModelRig→Nest Hub partial proof.'],
+          ['Se hjemmefladen ↗', 'View the home surface ↗'],
+          ['04 / Fremdrift', '04 / Progress'],
+          ['Repository-heads, åbne risici og næste observerbare skridt.', 'Repository heads, open risks and the next observable steps.'],
+          ['Se den aktuelle status ↗', 'View current status ↗'],
           ['Dataklasse afgør routing', 'Data class determines routing'],
           ['Ingen uautoriserede writes', 'No unauthorized writes'],
           ['Eksterne kald er sporbare', 'External calls are traceable'],
@@ -1852,6 +1936,8 @@
           ['Se projektets GitHub-repository — åbner i ny fane', 'View the project repository on GitHub — opens in a new tab'],
           ['Vælg sprog', 'Choose language'],
           ['ModelRigs designinvarianter', 'ModelRig design invariants'],
+          ['Aktuel V1-status', 'Current V1 status'],
+          ['Fire indgange til ModelRig-projektet', 'Four entry points into the ModelRig project'],
           ['Skiftet fra traditionelle AI-systemer til ModelRig', 'The shift from traditional AI systems to ModelRig'],
           ['ModelRigs overordnede systemarkitektur', 'ModelRig high-level system architecture'],
           ['Kalivs fire produktflader', 'Kaliv’s four product surfaces'],
