@@ -28,7 +28,7 @@
   "surfaces": [
     { "name": "Windows", "role": "Work and controlled action" },
     { "name": "Android", "role": "Continuity and presence" },
-    { "name": "KalivHub", "role": "Home Assistant-first room control with an optional Kaliv presence layer" },
+    { "name": "KalivHub", "role": "Home client for the same Kaliv, with room-based Home Assistant control" },
     { "name": "Quest", "role": "Spatial embodiment" }
   ],
   "components": [
@@ -78,7 +78,7 @@
     },
     {
       "name": "KalivHub",
-      "role": "Home Assistant-first home orchestration, room mapping and allowlisted opt-in control; ModelRig is optional",
+      "role": "Home client for Kaliv: ModelRig supplies shared identity, memory, dialogue and policy; Home Assistant supplies room state and allowlisted device control",
       "status": "Home Assistant sender and room-first receiver are green in CI; physical HAOS and Nest Hub product acceptance remains open"
     },
     {
@@ -190,7 +190,7 @@
     "https://github.com/Ternedal/KalivHub-Receiver"
   ],
   "repository_roles": [
-    { "name": "KalivHub", "visibility": "private", "role": "Home Assistant-first orchestration, room authority, allowlisted control and release gates" },
+    { "name": "KalivHub", "visibility": "private", "role": "Home client for Kaliv, Home Assistant room orchestration, allowlisted control and release gates" },
     { "name": "KalivHub-Receiver", "visibility": "public", "role": "Cast receiver and visible home-surface boundary" }
   ]
 }

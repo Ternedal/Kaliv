@@ -67,7 +67,7 @@ Four supporting results reduce risk without closing a V1 gate: the v2.0.15 relea
 
 - ModelRig: the infrastructure and control plane.
 - Kaliv: the embodied person and product experience.
-- KalivHub: the private Home Assistant-first home-control and orchestration product, with ModelRig as an optional presence layer.
+- KalivHub: the home client for the same Kaliv. ModelRig supplies shared identity, memory, dialogue and policy; Home Assistant supplies room state and allowlisted device control.
 - KalivHub-Receiver: the public Cast receiver and visible home-interface boundary.
 - Consciousness Core: authority for SelfState, WorldState, time, attention and continuity.
 - Memory 4: documented autobiographical recall.
