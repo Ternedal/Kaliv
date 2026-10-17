@@ -32,7 +32,7 @@
       "@type":"TechArticle",
       "name":"ModelRig — V1-bevisregister",
       "description":"En offentlig, testbar definition af hvornår ModelRig og Kaliv er V1-klare.",
-      "dateModified":"2026-10-16",
+      "dateModified":"2026-10-17",
       "inLanguage":"da",
       "isPartOf":{"@type":"WebSite","name":"ModelRig / Kaliv","url":"https://kaliv.dk/"},
       "url":"https://kaliv.dk/proofs.html"
@@ -83,11 +83,28 @@
     .state { display:inline-flex; align-items:center; gap:.45rem; color:var(--amber); font:700 .64rem var(--mono); letter-spacing:.08em; text-transform:uppercase; }
     .state::before { content:""; width:.48rem; height:.48rem; border-radius:50%; background:currentColor; box-shadow:0 0 10px currentColor; }
 
-    .score { display:grid; grid-template-columns:repeat(3,1fr); border-left:1px solid var(--line); }
+    .score { display:grid; grid-template-columns:repeat(4,1fr); border-left:1px solid var(--line); }
     .score article { min-height:15rem; display:flex; flex-direction:column; justify-content:space-between; padding:1.4rem; border-right:1px solid var(--line); border-bottom:1px solid var(--line); background:#fff; }
     .score span { color:var(--muted); font:700 .68rem var(--mono); letter-spacing:.07em; text-transform:uppercase; }
     .score strong { font-size:clamp(4rem,7vw,7rem); line-height:.8; letter-spacing:-.07em; }
     .score article:nth-child(2) strong { color:var(--blue); }
+    .score article:nth-child(3) strong { color:var(--green); }
+
+    .evidence-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); border-top:1px solid var(--line); border-left:1px solid var(--line); }
+    .evidence-card { min-height:22rem; display:flex; flex-direction:column; padding:clamp(1.3rem,3vw,2.2rem); border-right:1px solid var(--line); border-bottom:1px solid var(--line); background:#fff; }
+    .evidence-top { display:flex; align-items:center; justify-content:space-between; gap:1rem; color:var(--blue); font:700 .68rem var(--mono); letter-spacing:.07em; text-transform:uppercase; }
+    .evidence-state { padding:.38rem .55rem; border:1px solid currentColor; text-align:center; }
+    .evidence-state.released { color:#1457ff; background:#e8efff; }
+    .evidence-state.physical { color:#087a55; background:#e7f8f1; }
+    .evidence-state.ci { color:#35608e; background:#eef6ff; }
+    .evidence-state.open { color:#a75f00; background:#fff2da; }
+    .evidence-card h3 { max-width:18ch; margin:3rem 0 .8rem; font-size:clamp(1.7rem,3vw,3rem); line-height:.96; letter-spacing:-.05em; }
+    .evidence-card > p { max-width:43rem; margin:0; color:var(--muted); }
+    .evidence-card a { color:var(--blue); text-underline-offset:.25rem; }
+    .evidence-meta { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin:auto 0 0; padding-top:1.4rem; }
+    .evidence-meta div { padding-top:.8rem; border-top:1px solid var(--line); }
+    .evidence-meta dt { color:var(--muted); font:700 .62rem var(--mono); letter-spacing:.06em; text-transform:uppercase; }
+    .evidence-meta dd { margin:.3rem 0 0; font-size:.86rem; line-height:1.45; }
 
     .section { padding:clamp(4.5rem,8vw,8.5rem) clamp(1.25rem,4vw,4.5rem); }
     .section-head { display:grid; grid-template-columns:minmax(9rem,.35fr) minmax(0,1.65fr); gap:clamp(2rem,6vw,7rem); margin-bottom:clamp(3rem,6vw,6rem); }
@@ -136,6 +153,7 @@
       .hero { grid-template-columns:1fr; }
       .hero-board { border-left:0; border-top:1px solid var(--line-dark); }
       .protocol { grid-template-columns:repeat(2,1fr); }
+      .score { grid-template-columns:repeat(2,1fr); }
       .rule { grid-template-columns:1fr; }
       .rule-aside { min-height:17rem; border-right:0; border-bottom:1px solid rgba(255,255,255,.4); }
     }
@@ -154,6 +172,7 @@
       .proof-summary .state { margin-bottom:2.5rem; }
       .proof-detail { grid-column:1/-1; border-left:0; border-top:1px solid var(--line-dark); }
       .protocol { grid-template-columns:1fr; }
+      .evidence-grid { grid-template-columns:1fr; }
       .protocol article { min-height:18rem; }
       footer { flex-direction:column; }
     }
@@ -161,6 +180,7 @@
       .hero-signal { grid-template-columns:2.4rem 1fr; }
       .hero-signal .state { grid-column:2; justify-self:start; }
       .proof-detail { grid-template-columns:1fr; }
+      .evidence-meta { grid-template-columns:1fr; }
       .field,.field:nth-last-child(-n+2) { border-bottom:1px solid var(--line-dark); }
       .field:last-child { border-bottom:0; }
     }
@@ -187,7 +207,7 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
         <div><span class="eyebrow" data-da="ModelRig / V1-bevisregister" data-en="ModelRig / V1 proof ledger">ModelRig / V1-bevisregister</span><h1 id="hero-title" data-da="Færdig er noget, vi kan bevise." data-en="Done is something we can prove.">Færdig er noget, vi kan bevise.</h1><p class="lead" data-da="Dette register gør V1 til en testbar kontrakt. Ingen procentbar og ingen skjult restliste: kun fire åbne systembeviser, klare acceptkriterier og den evidens, der skal eksistere, før status kan ændres." data-en="This ledger turns V1 into a testable contract. No progress bar and no hidden remainder: only four open system proofs, explicit acceptance criteria and the evidence that must exist before status can change.">Dette register gør V1 til en testbar kontrakt. Ingen procentbar og ingen skjult restliste: kun fire åbne systembeviser, klare acceptkriterier og den evidens, der skal eksistere, før status kan ændres.</p></div>
-        <div class="snapshot"><span data-da="Statussnapshot · 16. oktober 2026" data-en="Status snapshot · 16 October 2026">Statussnapshot · 16. oktober 2026</span><span data-da="V1-status · Ikke kvalificeret" data-en="V1 status · Not qualified">V1-status · Ikke kvalificeret</span></div>
+        <div class="snapshot"><span data-da="Statussnapshot · 17. oktober 2026" data-en="Status snapshot · 17 October 2026">Statussnapshot · 17. oktober 2026</span><span data-da="V1-status · Ikke kvalificeret" data-en="V1 status · Not qualified">V1-status · Ikke kvalificeret</span></div>
       </div>
       <div class="hero-board" role="list" aria-label="Fire åbne V1-beviser">
         <article class="hero-signal" role="listitem"><span>P01</span><div><strong data-da="Core-kontinuitet" data-en="Core continuity">Core-kontinuitet</strong><small data-da="Software-gate" data-en="Software gate">Software-gate</small></div><span class="state" data-da="Åben" data-en="Open">Åben</span></article>
@@ -200,11 +220,22 @@
     <section class="score" aria-label="Bevisregisterets status">
       <article><span data-da="Definerede systembeviser" data-en="Defined system proofs">Definerede systembeviser</span><strong>4</strong></article>
       <article><span data-da="Markeret bestået" data-en="Marked as passed">Markeret bestået</span><strong>0</strong></article>
+      <article><span data-da="Dokumenterede delbeviser" data-en="Documented partial proofs">Dokumenterede delbeviser</span><strong>4</strong></article>
       <article><span data-da="Åbne gates" data-en="Open gates">Åbne gates</span><strong>4</strong></article>
     </section>
 
+    <section class="section" aria-labelledby="evidence-title">
+      <div class="section-head"><span class="section-label" data-da="01 / Delbeviser" data-en="01 / Partial proofs">01 / Delbeviser</span><div><h2 id="evidence-title" data-da="0/4 er status. Ikke hele historien." data-en="0/4 is the status. Not the whole story.">0/4 er status. Ikke hele historien.</h2><p data-da="Fire konkrete resultater reducerer risikoen på vejen mod V1. De er værdifulde, men ingen af dem opfylder alene et komplet systembevis." data-en="Four concrete results reduce risk on the path to V1. They are valuable, but none of them alone satisfies a complete system proof.">Fire konkrete resultater reducerer risikoen på vejen mod V1. De er værdifulde, men ingen af dem opfylder alene et komplet systembevis.</p></div></div>
+      <div class="evidence-grid" role="list" aria-label="Dokumenterede delbeviser" data-en-aria-label="Documented partial proofs">
+        <article class="evidence-card" role="listitem"><div class="evidence-top"><span>E01 / RELEASE</span><span class="evidence-state released" data-da="Udgivet" data-en="Released">Udgivet</span></div><h3>Kaliv v2.0.15</h3><p><span data-da="Android, Windows og serverstakken findes som offentlige, versionslåste artefakter med SHA256-manifest." data-en="Android, Windows and the server stack exist as public, version-locked artifacts with a SHA256 manifest.">Android, Windows og serverstakken findes som offentlige, versionslåste artefakter med SHA256-manifest.</span> <a href="https://github.com/Ternedal/ModelRig/releases/tag/v2.0.15" target="_blank" rel="noopener noreferrer" data-da="Se release ↗" data-en="View release ↗">Se release ↗</a></p><dl class="evidence-meta"><div><dt data-da="Bidrager til" data-en="Supports">Bidrager til</dt><dd data-da="P04 · Versionslåsning" data-en="P04 · Version locking">P04 · Versionslåsning</dd></div><div><dt data-da="Lukker ikke" data-en="Does not close">Lukker ikke</dt><dd data-da="Latency eller soak-test" data-en="Latency or soak testing">Latency eller soak-test</dd></div></dl></article>
+        <article class="evidence-card" role="listitem"><div class="evidence-top"><span>E02 / HARDWARE</span><span class="evidence-state physical" data-da="Fysisk delbevis" data-en="Physical partial proof">Fysisk delbevis</span></div><h3 data-da="ModelRig nåede en Nest Hub." data-en="ModelRig reached a Nest Hub.">ModelRig nåede en Nest Hub.</h3><p><span data-da="På a32d4ad blev state, reelt AI-svar og aktiv sessionshukommelse observeret gennem receiveren på rigtig hardware." data-en="At a32d4ad, state, a real AI response and active session memory were observed through the receiver on real hardware.">På a32d4ad blev state, reelt AI-svar og aktiv sessionshukommelse observeret gennem receiveren på rigtig hardware.</span> <a href="hub.html" data-en-href="hub.html?lang=en" data-da="Se delbeviset ↗" data-en="View the partial proof ↗">Se delbeviset ↗</a></p><dl class="evidence-meta"><div><dt data-da="Bidrager til" data-en="Supports">Bidrager til</dt><dd data-da="P03 · Tværflade" data-en="P03 · Cross-surface">P03 · Tværflade</dd></div><div><dt data-da="Lukker ikke" data-en="Does not close">Lukker ikke</dt><dd data-da="Fire flader eller handover" data-en="Four surfaces or handover">Fire flader eller handover</dd></div></dl></article>
+        <article class="evidence-card" role="listitem"><div class="evidence-top"><span>E03 / HOME</span><span class="evidence-state ci" data-da="CI grøn" data-en="CI green">CI grøn</span></div><h3 data-da="KalivHub er Home Assistant-first." data-en="KalivHub is Home Assistant-first.">KalivHub er Home Assistant-first.</h3><p data-da="Allowlist, read-only standard, opt-in writes, automatisk rumkortlægning og room-first receiver er grønne på 6d3a696 og f5c5962." data-en="Allowlisting, read-only default, opt-in writes, automatic room mapping and the room-first receiver are green at 6d3a696 and f5c5962.">Allowlist, read-only standard, opt-in writes, automatisk rumkortlægning og room-first receiver er grønne på 6d3a696 og f5c5962.</p><dl class="evidence-meta"><div><dt data-da="Bidrager til" data-en="Supports">Bidrager til</dt><dd>P03 · P04</dd></div><div><dt data-da="Lukker ikke" data-en="Does not close">Lukker ikke</dt><dd data-da="Fysisk HAOS/Nest Hub-accept" data-en="Physical HAOS/Nest Hub acceptance">Fysisk HAOS/Nest Hub-accept</dd></div></dl></article>
+        <article class="evidence-card" role="listitem"><div class="evidence-top"><span>E04 / ANDROID</span><span class="evidence-state open" data-da="Gate åben" data-en="Gate open">Gate åben</span></div><h3 data-da="Den signerede testvej findes." data-en="The signed test path exists.">Den signerede testvej findes.</h3><p data-da="Android CI, CodeQL og acceptance-APK er grønne på 7475a2b. Receiverens tre workflows er grønne på 0378896, men exact-head-runnet er ikke grønt, og telefon→rig→Nest Hub er ikke fysisk testet." data-en="Android CI, CodeQL and the acceptance APK are green at 7475a2b. The receiver's three workflows are green at 0378896, but the exact-head run is not green and phone→rig→Nest Hub has not been physically tested.">Android CI, CodeQL og acceptance-APK er grønne på 7475a2b. Receiverens tre workflows er grønne på 0378896, men exact-head-runnet er ikke grønt, og telefon→rig→Nest Hub er ikke fysisk testet.</p><dl class="evidence-meta"><div><dt data-da="Bidrager til" data-en="Supports">Bidrager til</dt><dd>P03 · P04</dd></div><div><dt data-da="Næste bevis" data-en="Next proof">Næste bevis</dt><dd data-da="Fysisk signeret kæde" data-en="Physical signed chain">Fysisk signeret kæde</dd></div></dl></article>
+      </div>
+    </section>
+
     <section class="section dark" aria-labelledby="ledger-title">
-      <div class="section-head"><span class="section-label" data-da="01 / Register" data-en="01 / Ledger">01 / Register</span><div><h2 id="ledger-title" data-da="Fire beviser. Fire entydige grænser." data-en="Four proofs. Four unambiguous boundaries.">Fire beviser. Fire entydige grænser.</h2><p data-da="Et proof-point ændrer først status, når det definerede observerbare resultat og den tilhørende evidens begge foreligger. Integration alene er ikke et bestået systembevis." data-en="A proof point changes status only when both the defined observable outcome and its supporting evidence exist. Integration alone is not a passed system proof.">Et proof-point ændrer først status, når det definerede observerbare resultat og den tilhørende evidens begge foreligger. Integration alene er ikke et bestået systembevis.</p></div></div>
+      <div class="section-head"><span class="section-label" data-da="02 / Register" data-en="02 / Ledger">02 / Register</span><div><h2 id="ledger-title" data-da="Fire beviser. Fire entydige grænser." data-en="Four proofs. Four unambiguous boundaries.">Fire beviser. Fire entydige grænser.</h2><p data-da="Et proof-point ændrer først status, når det definerede observerbare resultat og den tilhørende evidens begge foreligger. Integration alene er ikke et bestået systembevis." data-en="A proof point changes status only when both the defined observable outcome and its supporting evidence exist. Integration alone is not a passed system proof.">Et proof-point ændrer først status, når det definerede observerbare resultat og den tilhørende evidens begge foreligger. Integration alene er ikke et bestået systembevis.</p></div></div>
       <div class="ledger">
         <article class="proof">
           <span class="proof-index">P01</span><div class="proof-summary"><span class="state" data-da="Åben" data-en="Open">Åben</span><h3 data-da="Kontrolleret Core-aktivering" data-en="Controlled Core activation">Kontrolleret Core-aktivering</h3><p data-da="Consciousness Core skal kunne aktiveres live uden at bryde den vedvarende tilstand, den aktive session eller eventrækkefølgen." data-en="Consciousness Core must activate live without breaking persistent state, the active session or event ordering.">Consciousness Core skal kunne aktiveres live uden at bryde den vedvarende tilstand, den aktive session eller eventrækkefølgen.</p></div>
@@ -226,7 +257,7 @@
     </section>
 
     <section class="section" aria-labelledby="protocol-title">
-      <div class="section-head"><span class="section-label" data-da="02 / Protokol" data-en="02 / Protocol">02 / Protokol</span><div><h2 id="protocol-title" data-da="Sådan bliver et bevis bestået." data-en="How a proof becomes passed.">Sådan bliver et bevis bestået.</h2><p data-da="Status er et resultat af reproducerbar evidens, ikke en redaktionel vurdering. Den samme regel gælder for alle fire gates." data-en="Status is the result of reproducible evidence, not an editorial judgment. The same rule applies to all four gates.">Status er et resultat af reproducerbar evidens, ikke en redaktionel vurdering. Den samme regel gælder for alle fire gates.</p></div></div>
+      <div class="section-head"><span class="section-label" data-da="03 / Protokol" data-en="03 / Protocol">03 / Protokol</span><div><h2 id="protocol-title" data-da="Sådan bliver et bevis bestået." data-en="How a proof becomes passed.">Sådan bliver et bevis bestået.</h2><p data-da="Status er et resultat af reproducerbar evidens, ikke en redaktionel vurdering. Den samme regel gælder for alle fire gates." data-en="Status is the result of reproducible evidence, not an editorial judgment. The same rule applies to all four gates.">Status er et resultat af reproducerbar evidens, ikke en redaktionel vurdering. Den samme regel gælder for alle fire gates.</p></div></div>
       <div class="protocol">
         <article><h3 data-da="Lås versionerne" data-en="Lock the versions">Lås versionerne</h3><p data-da="Alle deltagende repositories og runtime-afhængigheder registreres før testen." data-en="All participating repositories and runtime dependencies are recorded before the test.">Alle deltagende repositories og runtime-afhængigheder registreres før testen.</p><strong data-da="Output · Exact-head manifest" data-en="Output · Exact-head manifest">Output · Exact-head manifest</strong></article>
         <article><h3 data-da="Kør virkeligheden" data-en="Run reality">Kør virkeligheden</h3><p data-da="Testen gennemføres på de faktiske enheder og sensorer, der indgår i beviset." data-en="The test runs on the actual devices and sensors included in the proof.">Testen gennemføres på de faktiske enheder og sensorer, der indgår i beviset.</p><strong data-da="Output · Observerbart run" data-en="Output · Observable run">Output · Observerbart run</strong></article>
@@ -236,7 +267,7 @@
     </section>
 
     <section class="rule" aria-labelledby="rule-title">
-      <div class="rule-aside"><span class="micro" data-da="03 / Release-regel" data-en="03 / Release rule">03 / Release-regel</span><img src="assets/kaliv-ankh-640.webp" alt="Kalivs futuristiske ankh-symbol" width="640" height="863" loading="lazy" /></div>
+      <div class="rule-aside"><span class="micro" data-da="04 / Release-regel" data-en="04 / Release rule">04 / Release-regel</span><img src="assets/kaliv-ankh-640.webp" alt="Kalivs futuristiske ankh-symbol" width="640" height="863" loading="lazy" /></div>
       <div class="rule-main"><h2 id="rule-title" data-da="V1 findes først, når alle fire beviser findes." data-en="V1 exists only when all four proofs exist.">V1 findes først, når alle fire beviser findes.</h2><div><p data-da="Et grønt delsystem kan ikke kompensere for en åben systemgrænse. ModelRig og Kaliv kvalificeres samlet, fordi kontinuitet kun giver mening gennem hele loopet." data-en="A green subsystem cannot compensate for an open system boundary. ModelRig and Kaliv qualify together because continuity only has meaning across the complete loop.">Et grønt delsystem kan ikke kompensere for en åben systemgrænse. ModelRig og Kaliv kvalificeres samlet, fordi kontinuitet kun giver mening gennem hele loopet.</p><div class="actions"><a class="action" href="progress.html" data-en-href="progress.html?lang=en">Project Room</a><a class="action secondary" href="architecture.html" data-en-href="architecture.html?lang=en" data-da="Se arkitekturen" data-en="View architecture">Se arkitekturen</a><a class="action secondary" href="brief.html" data-en-href="brief.html?lang=en" data-da="Læs projektbrief" data-en="Read project brief">Læs projektbrief</a><a class="action secondary" href="https://github.com/Ternedal/ModelRig" target="_blank" rel="noopener noreferrer" data-da="Åbn ModelRig" data-en="Open ModelRig">Åbn ModelRig</a></div></div></div>
     </section>
   </main>
@@ -254,6 +285,7 @@
       document.querySelector('.brand')?.setAttribute('aria-label','Back to ModelRig');
       document.querySelector('.hero-board')?.setAttribute('aria-label','Four open V1 proofs');
       document.querySelector('.score')?.setAttribute('aria-label','Proof ledger status');
+      document.querySelector('.evidence-grid')?.setAttribute('aria-label','Documented partial proofs');
       document.querySelector('.rule-aside img')?.setAttribute('alt','Kaliv’s futuristic ankh symbol');
       document.title = 'ModelRig — V1 proof ledger';
       const description = 'ModelRig V1 proof ledger: four open gates, their acceptance criteria and the evidence required before production-ready status.';

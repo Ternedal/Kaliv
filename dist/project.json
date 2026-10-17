@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "project": "ModelRig",
   "product": "Kaliv",
-  "updated": "2026-10-16",
+  "updated": "2026-10-17",
   "canonical": "https://kaliv.dk/",
   "languages": ["da", "en"],
   "thesis": "A local-first, model-agnostic control plane for persistent embodied AI under explicit control.",
@@ -85,7 +85,7 @@
       "name": "KalivHub-Receiver",
       "role": "Public Cast receiver and visible home-surface boundary",
       "repository": "https://github.com/Ternedal/KalivHub-Receiver",
-      "status": "Manual multi-turn ModelRig chat was physically verified at a32d4ad; current signed mirror head 8e3c12b is green in CI but not physically accepted"
+      "status": "Manual multi-turn ModelRig chat was physically verified at a32d4ad; current signed mirror head 0378896 has three green workflows but is not physically accepted"
     }
   ],
   "v1_proofs": [
@@ -130,26 +130,57 @@
     "llms": "https://kaliv.dk/llms.txt"
   },
   "source_snapshot": {
-    "recorded": "2026-10-16",
+    "recorded": "2026-10-17",
     "heads": {
       "ModelRig": "141add7917e6121c72d874f9eea0656fd52bd565",
       "BodyRig": "8a85597637d0b59947bd179366e27be1bb847c16",
       "VoiceRig": "9f3e594996db7eb2c6e035247ecb168bf17c1dae",
       "VisionRig": "66ea9bfce1c4d219e4bac1d85324a0e6e3f042e5",
-      "KalivHub-Receiver@test/nest-hub-microphone-probe-current": "8e3c12bbb6e8d948434ff9fe05a2d53497d13ce3",
+      "KalivHub-Receiver@test/nest-hub-microphone-probe-current": "03788965b48de3c6d2c75e37e7b7f05db8fe82a8",
+      "KalivHub-Receiver@signed-mirror-code-head": "12f65c90b444d15b314853937ae9746d3c18639f",
       "KalivHub-Receiver@physical-proof": "a32d4ad6438ede72c2da26ee3d41bb5039c2eb18",
       "KalivHub@feat/ha-cast-controls-v1": "6d3a6965b80d7b424be47a130f1f43b70899d9c8",
       "ModelRig@feat/android-kalivhub-mirror": "7475a2b685ad9cc44d7815bf09dddfc0395cc1ca"
     }
   },
   "qualification_snapshot": {
-    "recorded": "2026-10-16",
+    "recorded": "2026-10-17",
     "manual_modelrig_to_nest_hub": "physically proven at a32d4ad",
     "home_assistant_sender": "CI green at 6d3a696; physical HAOS/Nest Hub acceptance open",
     "room_first_receiver": "CI green at f5c5962; physical room, touch and light acceptance open",
-    "signed_android_mirror": "Android CI, CodeQL and acceptance APK green at 7475a2b; exact-head qualification in progress and physical phone chain open",
+    "signed_android_mirror": "Android CI, CodeQL and acceptance APK green at 7475a2b; exact-head run remains active but immutable-tree equivalence is red, and the physical phone chain is open",
     "nest_hub_microphone": "unverified; isolated probe returned NotFoundError"
   },
+  "supporting_evidence": [
+    {
+      "id": "E01",
+      "name": "Kaliv v2.0.15 release",
+      "status": "released",
+      "supports": ["P04"],
+      "boundary": "Does not prove latency or soak behavior."
+    },
+    {
+      "id": "E02",
+      "name": "Manual ModelRig to Nest Hub run",
+      "status": "physical_partial_proof",
+      "supports": ["P03"],
+      "boundary": "Does not cover four surfaces or a recorded handover."
+    },
+    {
+      "id": "E03",
+      "name": "Home Assistant-first KalivHub",
+      "status": "ci_green",
+      "supports": ["P03", "P04"],
+      "boundary": "Physical HAOS and Nest Hub acceptance remains open."
+    },
+    {
+      "id": "E04",
+      "name": "Signed Android display mirror path",
+      "status": "gate_open",
+      "supports": ["P03", "P04"],
+      "boundary": "Exact-head is not green and phone-to-rig-to-Nest Hub has not been physically tested."
+    }
+  ],
   "repositories": [
     "https://github.com/Ternedal/Kaliv",
     "https://github.com/Ternedal/ModelRig",
