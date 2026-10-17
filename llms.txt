@@ -1,6 +1,6 @@
 # ModelRig / Kaliv
 
-> ModelRig is a local-first, model-agnostic control plane for persistent embodied AI. Kaliv is the first concrete person built on it.
+> Kaliv is one personal AI designed to preserve the same identity, memory and context across computer, phone, home and VR. ModelRig is the local-first infrastructure and control plane behind it.
 
 Canonical site: https://kaliv.dk/
 Languages: Danish and English
@@ -24,6 +24,8 @@ Current Home Assistant-first KalivHub sender branch: 6d3a6965b80d7b424be47a130f1
 ModelRig keeps identity, persistent state, memory, perception and action authority outside the language model. ThoughtEngine is replaceable cognition: it can propose, but it does not own the person or permission to act. Tool access and persistent writes pass through explicit, fail-closed control.
 
 Kaliv is designed as one continuous identity across Windows, Android, KalivHub and Quest, with voice, body, memory and behavior connected through the same control plane.
+
+In plain language: ModelRig is the infrastructure. Kaliv is the AI a person meets. Windows, Android, KalivHub and Quest are four clients for that same AI, not four separate assistants.
 
 ## Public documentation
 

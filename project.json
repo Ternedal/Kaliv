@@ -5,7 +5,7 @@
   "updated": "2026-10-17",
   "canonical": "https://kaliv.dk/",
   "languages": ["da", "en"],
-  "thesis": "A local-first, model-agnostic control plane for persistent embodied AI under explicit control.",
+  "thesis": "Kaliv is one personal AI across Windows, Android, KalivHub and Quest; ModelRig is the local-first, model-agnostic infrastructure that keeps identity, memory, perception and action under explicit control.",
   "release_status": "Not yet qualified for V1; all four public proof gates remain open.",
   "latest_release": {
     "version": "2.0.15",

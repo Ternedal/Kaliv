@@ -11,9 +11,9 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Kaliv" />
-  <meta name="description" content="ModelRig er et local-first fundament for vedvarende AI med hukommelse, perception, handling og krop under eksplicit kontrol." />
+  <meta name="description" content="Kaliv er en personlig AI, bygget til at bevare samme identitet, hukommelse og kontekst på computer, telefon, i hjemmet og i VR. ModelRig er infrastrukturen bag." />
   <meta property="og:title" content="ModelRig — AI, der kan bestå" />
-  <meta property="og:description" content="Et local-first fundament for vedvarende, kropsliggjort AI under eksplicit kontrol." />
+  <meta property="og:description" content="Én personlig AI på tværs af computer, telefon, hjem og VR — med ModelRig som local-first infrastruktur." />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="da_DK" />
   <meta property="og:locale:alternate" content="en_US" />
@@ -27,7 +27,7 @@
   <meta property="og:image:alt" content="ModelRigs vedvarende AI-forløb fra kognitiv kerne til kropsliggjort intelligens" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="ModelRig — AI, der kan bestå" />
-  <meta name="twitter:description" content="Et local-first fundament for vedvarende, kropsliggjort AI under eksplicit kontrol." />
+  <meta name="twitter:description" content="Én personlig AI på tværs af computer, telefon, hjem og VR — med ModelRig som local-first infrastruktur." />
   <meta name="twitter:image" content="https://kaliv.dk/assets/modelrig-continuity-female-hair-1920.webp" />
   <meta name="twitter:image:alt" content="ModelRigs vedvarende AI-forløb fra kognitiv kerne til kropsliggjort intelligens" />
   <link rel="canonical" href="https://kaliv.dk/" />
@@ -43,7 +43,7 @@
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "ModelRig / Kaliv",
-      "description": "Et local-first fundament for vedvarende, kropsliggjort AI under eksplicit kontrol.",
+      "description": "Kaliv er en personlig AI på tværs af computer, telefon, hjem og VR. ModelRig er den local-first infrastruktur, der holder identitet, hukommelse, perception og handling samlet under eksplicit kontrol.",
       "dateModified": "2026-10-17",
       "inLanguage": "da",
       "sameAs": "https://github.com/Ternedal/Kaliv",
@@ -288,6 +288,27 @@
       font-size: clamp(1.08rem, 1.55vw, 1.28rem);
       line-height: 1.58;
     }
+    .hero-definition {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-bottom: 2rem;
+    }
+    .hero-definition span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.35rem;
+      padding: .45rem .7rem;
+      border: 1px solid rgba(255,255,255,.2);
+      background: rgba(5,7,10,.42);
+      color: rgba(255,255,255,.68);
+      font: 600 .68rem var(--mono);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .hero-definition b { margin-right: .45rem; color: #fff; font-weight: 750; }
     .hero-foot {
       display: flex;
       justify-content: space-between;
@@ -499,6 +520,56 @@
     .continuity-step h3 { margin: 0 0 .45rem; font-size: clamp(1.3rem,2vw,2rem); letter-spacing: -.035em; }
     .continuity-step p { max-width: 36rem; margin: 0; color: #929ba7; font-size: .92rem; }
     .continuity-step strong { color: #fff; font-weight: 680; }
+
+    .explainer {
+      padding: clamp(4.5rem, 8vw, 8rem) clamp(1.25rem, 4vw, 4.5rem);
+      border-bottom: 1px solid var(--line);
+      background: #f4f6f8;
+    }
+    .explainer-head {
+      display: grid;
+      grid-template-columns: minmax(11rem,.42fr) minmax(0,1.58fr);
+      gap: clamp(2rem,6vw,8rem);
+      margin-bottom: clamp(3rem,5vw,5rem);
+    }
+    .explainer-kicker { color: var(--blue); font: 700 .72rem var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .explainer-head h2 { max-width: 12ch; }
+    .explainer-head p { max-width: 47rem; margin: 0; color: #56616e; font-size: clamp(1.04rem,1.45vw,1.25rem); }
+    .explainer-chain {
+      display: grid;
+      grid-template-columns: repeat(4,minmax(0,1fr));
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+    .explainer-step {
+      min-height: 16rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: clamp(1.2rem,2.2vw,2rem);
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .explainer-step:nth-child(2) { background: #eef3ff; }
+    .explainer-step-num { color: var(--blue); font: 700 .7rem var(--mono); letter-spacing: .07em; }
+    .explainer-step h3 { margin: 0 0 .8rem; font-size: clamp(1.45rem,2.3vw,2.45rem); line-height: 1; letter-spacing: -.045em; }
+    .explainer-step p { margin: 0; color: #5c6674; font-size: .9rem; }
+    .explainer-scenario {
+      display: grid;
+      grid-template-columns: minmax(11rem,.42fr) minmax(0,1.58fr);
+      gap: clamp(2rem,6vw,8rem);
+      margin-top: 1.5rem;
+      padding: clamp(1.5rem,3vw,2.5rem);
+      background: #07101f;
+      color: #fff;
+    }
+    .explainer-scenario-label { color: #8fb0ff; font: 700 .72rem var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .explainer-scenario h3 { max-width: 32rem; margin: 0 0 1rem; font-size: clamp(1.65rem,3vw,3.15rem); line-height: 1; letter-spacing: -.05em; }
+    .explainer-scenario p { max-width: 50rem; margin: 0; color: #b4bdc9; }
+    .explainer-scenario-note { display: inline-flex; margin-top: 1.2rem; color: #9fbaff; font: 650 .7rem var(--mono); letter-spacing: .05em; text-transform: uppercase; }
+    .explainer-scenario-note a { color: #fff; text-underline-offset: .25rem; }
 
     .gateway {
       padding: clamp(2.4rem, 4vw, 4rem) clamp(1.25rem, 4vw, 4.5rem);
@@ -1115,6 +1186,7 @@
       .product-copy { border-right: 0; border-bottom: 1px solid var(--line-dark); }
       .continuity { grid-template-columns: 1fr; }
       .continuity-intro { min-height: 30rem; border-right: 0; border-bottom: 1px solid var(--line-dark); }
+      .explainer-chain { grid-template-columns: repeat(2,minmax(0,1fr)); }
       .gateway-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
       .now-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
       .now-card:nth-child(2) { border-right: 0; }
@@ -1164,6 +1236,7 @@
       .surface strong { grid-column: 2; }
       .hero-foot { align-items: flex-start; flex-direction: column; gap: .5rem; margin-top: 0; }
       .hero-foot-actions { width: 100%; justify-content: flex-start; gap: 1rem 1.4rem; }
+      .explainer-head, .explainer-scenario { grid-template-columns: 1fr; gap: 1.25rem; }
       .gateway-head { grid-template-columns: 1fr; gap: 1.25rem; }
       .gateway-proof { width: 100%; justify-content: space-between; padding: 1rem 0 0; border-top: 1px solid var(--line-dark); border-left: 0; }
       .section { padding-block: 4.5rem; }
@@ -1198,6 +1271,8 @@
       .closing h2 { min-height: 46svh; display: flex; align-items: center; }
     }
     @media (max-width: 540px) {
+      .explainer-chain { grid-template-columns: 1fr; }
+      .explainer-step { min-height: 12rem; }
       .gateway { padding-block: 2.25rem; }
       .gateway-grid { grid-template-columns: 1fr; }
       .gateway-card { min-height: 11.5rem; }
@@ -1248,27 +1323,45 @@
   <div class="topline" aria-hidden="true"></div>
   <header>
     <a class="brand" href="#top" aria-label="ModelRig — til toppen"><span class="brand-mark">MR</span><span>ModelRig</span></a>
-    <div class="header-type"><img src="assets/kaliv-ankh-160.webp" alt="" width="160" height="216" decoding="async" /><span><strong>Kaliv</strong> / embodiment layer</span></div>
-    <nav aria-label="Primær navigation"><a href="#architecture">Arkitektur</a><a href="#kaliv">Kaliv</a><a href="brief.html" data-brief-link>Projektbrief</a><a href="hub.html" data-hub-link>KalivHub</a><a href="proofs.html" data-proof-link>V1-beviser</a><a href="progress.html" data-progress-link>Project Room</a><a href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Se projektets GitHub-repository — åbner i ny fane">GitHub ↗</a><span class="lang-switch" aria-label="Vælg sprog"><a href="?lang=da" lang="da" data-language="da" class="is-current" aria-current="page">DA</a><a href="?lang=en" lang="en" data-language="en">EN</a></span></nav>
+    <div class="header-type"><img src="assets/kaliv-ankh-160.webp" alt="" width="160" height="216" decoding="async" /><span><strong>Kaliv</strong> / vedvarende personlig AI</span></div>
+    <nav aria-label="Primær navigation"><a href="#explain">Hvad er det?</a><a href="#kaliv">Kaliv</a><a href="brief.html" data-brief-link>Projektbrief</a><a href="hub.html" data-hub-link>KalivHub</a><a href="proofs.html" data-proof-link>V1-beviser</a><a href="progress.html" data-progress-link>Status</a><a href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Se projektets GitHub-repository — åbner i ny fane">GitHub ↗</a><span class="lang-switch" aria-label="Vælg sprog"><a href="?lang=da" lang="da" data-language="da" class="is-current" aria-current="page">DA</a><a href="?lang=en" lang="en" data-language="en">EN</a></span></nav>
   </header>
 
   <main id="content" tabindex="-1">
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="hero-copy">
         <div>
-          <p class="eyebrow">Fundamentet efter chatbotten</p>
-          <h1 id="hero-title" tabindex="-1">Vi bygger AI, der kan bestå.</h1>
-          <p class="lead">ModelRig flytter AI fra isolerede sessioner til én vedvarende, lokalt ejet og kropsliggjort intelligens — med hukommelse, tid, perception og handling under eksplicit kontrol.</p>
+          <p class="eyebrow">Én personlig AI · Fire flader</p>
+          <h1 id="hero-title" tabindex="-1">Den samme AI. På alle dine flader.</h1>
+          <p class="lead">Kaliv er en personlig AI, bygget til at bevare samme identitet, hukommelse og kontekst på din computer, telefon, i hjemmet og i VR. ModelRig er den lokale infrastruktur, der holder det hele sammen — under din kontrol.</p>
+          <div class="hero-definition" aria-label="Forholdet mellem ModelRig og Kaliv"><span><b>ModelRig</b> infrastrukturen</span><span><b>Kaliv</b> den AI, du møder</span></div>
         </div>
         <div class="hero-art" aria-hidden="true"></div>
-        <div class="hero-foot"><span>Local-first · Model-agnostic · Embodied</span><div class="hero-foot-actions"><a class="hero-scroll" href="#gateway-title">Se projektet</a><a class="hero-source" href="proofs.html" data-proof-link>V1-beviser</a><a class="hero-source" href="brief.html" data-brief-link>Projektbrief</a></div></div>
+        <div class="hero-foot"><span>Local-first · Model-agnostic · Embodied</span><div class="hero-foot-actions"><a class="hero-scroll" href="#explain-title">Forstå det på 30 sek.</a><a class="hero-source" href="proofs.html" data-proof-link>Se hvad der er bevist</a><a class="hero-source" href="brief.html" data-brief-link>Projektbrief</a></div></div>
       </div>
 
     </section>
 
+    <section class="explainer" id="explain" aria-labelledby="explain-title">
+      <div class="explainer-head">
+        <span class="explainer-kicker">Forklaret enkelt / 30 sekunder</span>
+        <div><h2 id="explain-title" tabindex="-1">Chatbots starter forfra. Kaliv er bygget til at fortsætte.</h2><p>En sprogmodel kan svare, men den er ikke i sig selv en vedvarende person. ModelRig lægger hukommelse, identitet, tid, sanser, handlinger og regler uden om modellen. Kaliv er den sammenhængende AI-oplevelse, der bruger det fundament.</p></div>
+      </div>
+      <div class="explainer-chain" role="list" aria-label="Sådan hænger ModelRig og Kaliv sammen">
+        <article class="explainer-step" role="listitem"><span class="explainer-step-num">01 / INFRASTRUKTUR</span><div><h3>ModelRig</h3><p>Det lokale kontrolplan holder styr på vedvarende tilstand, hukommelse, tid, tilladelser og forbindelser til sanser og handlinger.</p></div></article>
+        <article class="explainer-step" role="listitem"><span class="explainer-step-num">02 / PERSONEN</span><div><h3>Kaliv</h3><p>Den AI, du taler med og genkender igen. Sprogmodellen kan skiftes ud, uden at identiteten behøver at blive nulstillet.</p></div></article>
+        <article class="explainer-step" role="listitem"><span class="explainer-step-num">03 / FLADERNE</span><div><h3>Fire klienter</h3><p>Windows, Android, KalivHub og Quest er fire forskellige adgangspunkter til den samme Kaliv — ikke fire separate assistenter.</p></div></article>
+        <article class="explainer-step" role="listitem"><span class="explainer-step-num">04 / FORSKELLEN</span><div><h3>Kontinuitet</h3><p>Målet er, at din historik og relation følger med, mens data, tilladelser og handlinger forbliver under eksplicit lokal kontrol.</p></div></article>
+      </div>
+      <div class="explainer-scenario">
+        <span class="explainer-scenario-label">Et konkret forløb</span>
+        <div><h3>Start på telefonen. Fortsæt på computeren. Mød samme Kaliv i hjemmet og i VR.</h3><p>Kaliv skal kunne huske samtalens kontekst, bruge den samme stemme og identitet, vise sin tilstand på rummets skærm og kun udføre handlinger, som systemets regler tillader.</p><span class="explainer-scenario-note">Dette er V1-målet. Hele kæden er endnu ikke kvalificeret. <a href="proofs.html" data-proof-link>Se beviserne ↗</a></span></div>
+      </div>
+    </section>
+
     <section class="gateway" aria-labelledby="gateway-title">
       <div class="gateway-head">
-        <div><span class="gateway-kicker">Projektkort / Start her</span><h2 id="gateway-title" tabindex="-1">Gå direkte til det, du vil efterprøve.</h2></div>
+        <div><span class="gateway-kicker">Dokumentation / Vælg spor</span><h2 id="gateway-title" tabindex="-1">Dyk ned i projektet.</h2></div>
         <div class="gateway-proof" aria-label="Aktuel V1-status"><span>Systemgates<strong>0 / 4 lukket</strong></span><span>Dokumenteret<strong>4 delbeviser</strong></span></div>
       </div>
       <div class="gateway-grid" role="list" aria-label="Fire indgange til ModelRig-projektet">
@@ -1592,15 +1685,38 @@
           ['V1-plan', 'V1 plan'],
           ['Beviser', 'Proofs'],
           ['Spørgsmål', 'Questions'],
-          ['Fundamentet efter chatbotten', 'The foundation beyond the chatbot'],
-          ['Vi bygger AI, der kan bestå.', 'We build AI that endures.'],
-          ['ModelRig flytter AI fra isolerede sessioner til én vedvarende, lokalt ejet og kropsliggjort intelligens — med hukommelse, tid, perception og handling under eksplicit kontrol.', 'ModelRig moves AI beyond isolated sessions into one persistent, locally owned and embodied intelligence — with memory, time, perception and action under explicit control.'],
-          ['Se projektet', 'Explore the project'],
+          ['Hvad er det?', 'What is it?'],
+          ['vedvarende personlig AI', 'persistent personal AI'],
+          ['Én personlig AI · Fire flader', 'One personal AI · Four surfaces'],
+          ['Den samme AI. På alle dine flader.', 'The same AI. Across every surface.'],
+          ['Kaliv er en personlig AI, bygget til at bevare samme identitet, hukommelse og kontekst på din computer, telefon, i hjemmet og i VR. ModelRig er den lokale infrastruktur, der holder det hele sammen — under din kontrol.', 'Kaliv is a personal AI designed to preserve the same identity, memory and context across your computer, phone, home and VR. ModelRig is the local infrastructure that holds it all together — under your control.'],
+          ['infrastrukturen', 'the infrastructure'],
+          ['den AI, du møder', 'the AI you meet'],
+          ['Forstå det på 30 sek.', 'Understand it in 30 sec.'],
+          ['Se hvad der er bevist', 'See what is proven'],
           ['Projektbrief', 'Project brief'],
           ['Projektbrief ↗', 'Project brief ↗'],
           ['V1-beviser', 'V1 proofs'],
-          ['Projektkort / Start her', 'Project map / Start here'],
-          ['Gå direkte til det, du vil efterprøve.', 'Go straight to what you want to inspect.'],
+          ['Forklaret enkelt / 30 sekunder', 'Explained simply / 30 seconds'],
+          ['Chatbots starter forfra. Kaliv er bygget til at fortsætte.', 'Chatbots start over. Kaliv is built to continue.'],
+          ['En sprogmodel kan svare, men den er ikke i sig selv en vedvarende person. ModelRig lægger hukommelse, identitet, tid, sanser, handlinger og regler uden om modellen. Kaliv er den sammenhængende AI-oplevelse, der bruger det fundament.', 'A language model can answer, but it is not a persistent person by itself. ModelRig places memory, identity, time, senses, actions and rules outside the model. Kaliv is the coherent AI experience built on that foundation.'],
+          ['01 / INFRASTRUKTUR', '01 / INFRASTRUCTURE'],
+          ['Det lokale kontrolplan holder styr på vedvarende tilstand, hukommelse, tid, tilladelser og forbindelser til sanser og handlinger.', 'The local control plane manages persistent state, memory, time, permissions and connections to senses and actions.'],
+          ['02 / PERSONEN', '02 / THE PERSON'],
+          ['Den AI, du taler med og genkender igen. Sprogmodellen kan skiftes ud, uden at identiteten behøver at blive nulstillet.', 'The AI you talk to and recognize again. The language model can be replaced without requiring the identity to reset.'],
+          ['03 / FLADERNE', '03 / THE SURFACES'],
+          ['Fire klienter', 'Four clients'],
+          ['Windows, Android, KalivHub og Quest er fire forskellige adgangspunkter til den samme Kaliv — ikke fire separate assistenter.', 'Windows, Android, KalivHub and Quest are four different access points to the same Kaliv — not four separate assistants.'],
+          ['04 / FORSKELLEN', '04 / THE DIFFERENCE'],
+          ['Kontinuitet', 'Continuity'],
+          ['Målet er, at din historik og relation følger med, mens data, tilladelser og handlinger forbliver under eksplicit lokal kontrol.', 'The goal is for your history and relationship to follow you while data, permissions and actions remain under explicit local control.'],
+          ['Et konkret forløb', 'A concrete journey'],
+          ['Start på telefonen. Fortsæt på computeren. Mød samme Kaliv i hjemmet og i VR.', 'Start on your phone. Continue on your computer. Meet the same Kaliv at home and in VR.'],
+          ['Kaliv skal kunne huske samtalens kontekst, bruge den samme stemme og identitet, vise sin tilstand på rummets skærm og kun udføre handlinger, som systemets regler tillader.', 'Kaliv should remember the conversation context, use the same voice and identity, show its state on the room display and only perform actions permitted by the system rules.'],
+          ['Dette er V1-målet. Hele kæden er endnu ikke kvalificeret.', 'This is the V1 target. The complete chain is not yet qualified.'],
+          ['Se beviserne ↗', 'View the proofs ↗'],
+          ['Dokumentation / Vælg spor', 'Documentation / Choose a track'],
+          ['Dyk ned i projektet.', 'Explore the project in depth.'],
           ['Systemgates', 'System gates'],
           ['0 / 4 lukket', '0 / 4 closed'],
           ['Dokumenteret', 'Documented'],
@@ -1936,6 +2052,8 @@
           ['Se projektets GitHub-repository — åbner i ny fane', 'View the project repository on GitHub — opens in a new tab'],
           ['Vælg sprog', 'Choose language'],
           ['ModelRigs designinvarianter', 'ModelRig design invariants'],
+          ['Forholdet mellem ModelRig og Kaliv', 'The relationship between ModelRig and Kaliv'],
+          ['Sådan hænger ModelRig og Kaliv sammen', 'How ModelRig and Kaliv fit together'],
           ['Aktuel V1-status', 'Current V1 status'],
           ['Fire indgange til ModelRig-projektet', 'Four entry points into the ModelRig project'],
           ['Skiftet fra traditionelle AI-systemer til ModelRig', 'The shift from traditional AI systems to ModelRig'],
@@ -1965,7 +2083,7 @@
 
         document.documentElement.lang = 'en';
         document.title = 'ModelRig — AI that endures';
-        const englishDescription = 'ModelRig is a local-first foundation for persistent AI with memory, perception, action and embodiment under explicit control.';
+        const englishDescription = 'Kaliv is a personal AI across computer, phone, home and VR. ModelRig is the local-first infrastructure that keeps identity, memory, perception and action under explicit control.';
         const englishImageAlt = 'ModelRig’s path from cognitive core to embodied intelligence';
         const setMeta = (selector, value) => {
           const element = document.querySelector(selector);
