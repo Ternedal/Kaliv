@@ -145,7 +145,7 @@
   },
   "qualification_snapshot": {
     "recorded": "2026-10-17",
-    "manual_modelrig_to_nest_hub": "physically proven at a32d4ad",
+    "manual_modelrig_to_nest_hub": "manual physical partial proof at a32d4ad; does not close a V1 gate",
     "home_assistant_sender": "CI green at 6d3a696; physical HAOS/Nest Hub acceptance open",
     "room_first_receiver": "CI green at f5c5962; physical room, touch and light acceptance open",
     "signed_android_mirror": "Android CI, CodeQL and acceptance APK green at 7475a2b; exact-head run remains active but immutable-tree equivalence is red, and the physical phone chain is open",
