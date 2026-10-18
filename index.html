@@ -44,7 +44,7 @@
       "@type": "WebSite",
       "name": "ModelRig / Kaliv",
       "description": "Kaliv er en personlig AI på tværs af computer, telefon, hjem og VR. ModelRig er den local-first infrastruktur, der holder identitet, hukommelse, perception og handling samlet under eksplicit kontrol.",
-      "dateModified": "2026-10-17",
+      "dateModified": "2026-10-18",
       "inLanguage": "da",
       "sameAs": "https://github.com/Ternedal/Kaliv",
       "url": "https://kaliv.dk/"
@@ -309,6 +309,18 @@
       -webkit-backdrop-filter: blur(8px);
     }
     .hero-definition b { margin-right: .45rem; color: #fff; font-weight: 750; }
+    .hero-brief {
+      min-height: 2.75rem;
+      display: inline-flex;
+      align-items: center;
+      padding: .55rem .8rem;
+      border: 1px solid #7da3ff;
+      background: #1457ff;
+      color: #fff;
+      text-decoration: none;
+    }
+    .hero-brief::after { content: "↗"; margin-left: .55rem; font-size: .95rem; }
+    .hero-brief:hover, .hero-brief:focus-visible { background: #2d68ff; border-color: #a9c7ff; }
     .hero-foot {
       display: flex;
       flex-direction: column;
@@ -1324,7 +1336,7 @@
   <header>
     <a class="brand" href="#top" aria-label="ModelRig — til toppen"><span class="brand-mark">MR</span><span>ModelRig</span></a>
     <div class="header-type"><img src="assets/kaliv-ankh-160.webp" alt="" width="160" height="216" decoding="async" /><span><strong>Kaliv</strong> / vedvarende personlig AI</span></div>
-    <nav aria-label="Primær navigation"><a href="#explain">Hvad er det?</a><a href="#kaliv">Kaliv</a><a href="brief.html" data-brief-link>Projektbrief</a><a href="hub.html" data-hub-link>KalivHub</a><a href="proofs.html" data-proof-link>V1-beviser</a><a href="progress.html" data-progress-link>Status</a><a href="https://github.com/Ternedal/Kaliv" target="_blank" rel="noopener noreferrer" aria-label="Se projektets GitHub-repository — åbner i ny fane">GitHub ↗</a><span class="lang-switch" aria-label="Vælg sprog"><a href="?lang=da" lang="da" data-language="da" class="is-current" aria-current="page">DA</a><a href="?lang=en" lang="en" data-language="en">EN</a></span></nav>
+    <nav aria-label="Primær navigation"><a href="brief.html" data-brief-link>Projektet</a><a href="hub.html" data-hub-link>KalivHub</a><a href="proofs.html" data-proof-link>V1-beviser</a><a href="progress.html" data-progress-link>Status</a><span class="lang-switch" aria-label="Vælg sprog"><a href="?lang=da" lang="da" data-language="da" class="is-current" aria-current="page">DA</a><a href="?lang=en" lang="en" data-language="en">EN</a></span></nav>
   </header>
 
   <main id="content" tabindex="-1">
@@ -1334,10 +1346,10 @@
           <p class="eyebrow">Computer · Telefon · Hjem · VR</p>
           <h1 id="hero-title" tabindex="-1">Den samme AI. Uanset hvor du møder den.</h1>
           <p class="lead">Kaliv er en personlig AI, bygget til at bevare samme identitet, hukommelse og kontekst på din computer, telefon, i hjemmet og i VR. ModelRig er den lokale infrastruktur, der holder det hele sammen — under din kontrol.</p>
-          <div class="hero-definition" aria-label="Forholdet mellem ModelRig og Kaliv"><span><b>ModelRig</b> infrastrukturen</span><span><b>Kaliv</b> den AI, du møder</span></div>
+          <div class="hero-definition" aria-label="Forholdet mellem Kaliv, ModelRig og AI-modellen"><span><b>Kaliv</b> personen, du møder</span><span><b>ModelRig</b> det, der får hende til at bestå</span><span><b>AI-modellen</b> den udskiftelige intelligens</span></div>
         </div>
         <div class="hero-art" aria-hidden="true"></div>
-        <div class="hero-foot"><span>Local-first · Model-agnostic · Embodied</span><div class="hero-foot-actions"><a class="hero-scroll" href="#explain-title">Forstå det på 30 sek.</a><a class="hero-source" href="proofs.html" data-proof-link>Se hvad der er bevist</a></div></div>
+        <div class="hero-foot"><span>Local-first · Model-agnostic · Embodied</span><div class="hero-foot-actions"><a class="hero-brief" href="brief.html" data-brief-link>Forstå projektet på ét minut</a><a class="hero-source" href="proofs.html" data-proof-link>Se hvad der er bevist</a></div></div>
       </div>
 
     </section>
@@ -1365,8 +1377,8 @@
         <div class="gateway-proof" aria-label="Aktuel V1-status"><span>Systemgates<strong>0 / 4 lukket</strong></span><span>Dokumenteret<strong>4 delbeviser</strong></span></div>
       </div>
       <div class="gateway-grid" role="list" aria-label="Fire indgange til ModelRig-projektet">
-        <a class="gateway-card" role="listitem" href="brief.html" data-brief-link><span class="gateway-card-code"><span>01 / Vision</span><span>4 min</span></span><div><h3>Projektbrief</h3><p>Problemet, tesen, produktfladerne og den konkrete vej til V1.</p></div><span class="gateway-card-action">Forstå projektet ↗</span></a>
-        <a class="gateway-card primary" role="listitem" href="proofs.html" data-proof-link><span class="gateway-card-code"><span>02 / Evidens</span><span>0 / 4</span></span><div><h3>V1-beviser</h3><p>Acceptkriterier, delbeviser og den præcise grænse mellem integreret og bevist.</p></div><span class="gateway-card-action">Åbn registret ↗</span></a>
+        <a class="gateway-card primary" role="listitem" href="brief.html" data-brief-link><span class="gateway-card-code"><span>01 / Start her</span><span>1 min</span></span><div><h3>Projektbrief</h3><p>Kaliv, ModelRig, de fire produktflader og den konkrete vej til V1 — forklaret enkelt.</p></div><span class="gateway-card-action">Forstå projektet ↗</span></a>
+        <a class="gateway-card" role="listitem" href="proofs.html" data-proof-link><span class="gateway-card-code"><span>02 / Evidens</span><span>0 / 4</span></span><div><h3>V1-beviser</h3><p>Acceptkriterier, delbeviser og den præcise grænse mellem integreret og bevist.</p></div><span class="gateway-card-action">Åbn registret ↗</span></a>
         <a class="gateway-card" role="listitem" href="hub.html" data-hub-link><span class="gateway-card-code"><span>03 / Hjemmet</span><span>Fysisk</span></span><div><h3>KalivHub</h3><p>Home Assistant-first og det dokumenterede ModelRig→Nest Hub-delbevis.</p></div><span class="gateway-card-action">Se hjemmefladen ↗</span></a>
         <a class="gateway-card" role="listitem" href="progress.html" data-progress-link><span class="gateway-card-code"><span>04 / Fremdrift</span><span>Live</span></span><div><h3>Project Room</h3><p>Repository-heads, åbne risici og næste observerbare skridt.</p></div><span class="gateway-card-action">Se den aktuelle status ↗</span></a>
       </div>
@@ -1374,14 +1386,14 @@
 
     <section class="now" id="now" aria-labelledby="now-title">
       <div class="now-head">
-        <span class="now-kicker">Nu / 17. oktober 2026</span>
+        <span class="now-kicker">Nu / 18. oktober 2026</span>
         <div><h2 id="now-title" tabindex="-1">Fra release til fysisk nærvær.</h2><p>ModelRig er ude som versionslåst release, og Kaliv er nået fysisk ud på en Nest Hub. Næste tærskel er ikke endnu en demo, men én sammenhængende produktionskæde, der overlever tale, genstart og skift mellem flader.</p></div>
       </div>
       <div class="now-grid" role="list" aria-label="Aktuel projektstatus">
-        <article class="now-card" role="listitem"><span class="now-card-label">01 / Release</span><div><strong>v2.0.15</strong><p>Android, Windows og serverstakken er publiceret med versionslåste artefakter og SHA256-manifest.</p></div><a href="https://github.com/Ternedal/ModelRig/releases/tag/v2.0.15" target="_blank" rel="noopener noreferrer">Se release ↗</a></article>
-        <article class="now-card" role="listitem"><span class="now-card-label">02 / Fysisk delbevis</span><div><strong>Nest Hub 2</strong><p>ModelRig-chat, synlig tilstand og multi-turn sessionshukommelse er kørt gennem KalivHub-Receiver på rigtig hardware.</p></div><a href="hub.html" data-hub-link>Se KalivHub ↗</a></article>
-        <article class="now-card" role="listitem"><span class="now-card-label">03 / Aktuel main</span><div><strong>141add7</strong><p>Repository-audittet og den prioriterede forbedringsplan er landet på ModelRig main den 16. oktober.</p></div><a href="https://github.com/Ternedal/ModelRig/commit/141add7917e6121c72d874f9eea0656fd52bd565" target="_blank" rel="noopener noreferrer">Se commit ↗</a></article>
-        <article class="now-card open" role="listitem"><span class="now-card-label">04 / Åben grænse</span><div><strong>Produktionskæden</strong><p>Voice-kontinuitet, genstart, streaming, klienthandover og længere soak-test mangler stadig samlet kvalificering.</p></div><a href="progress.html" data-progress-link>Se åbne gates ↗</a></article>
+        <article class="now-card" role="listitem"><span class="now-card-label">01 / Kan hentes</span><div><strong>Windows + Android</strong><p>Kaliv-klienterne og ModelRig-serveren er publiceret som en samlet, versionslåst release.</p></div><a href="https://github.com/Ternedal/ModelRig/releases/tag/v2.0.15" target="_blank" rel="noopener noreferrer">Se release ↗</a></article>
+        <article class="now-card" role="listitem"><span class="now-card-label">02 / Set på hardware</span><div><strong>Nest Hub 2</strong><p>ModelRig-chat, synlig tilstand og multi-turn sessionshukommelse er kørt gennem KalivHub-Receiver på rigtig hardware.</p></div><a href="hub.html" data-hub-link>Se KalivHub ↗</a></article>
+        <article class="now-card" role="listitem"><span class="now-card-label">03 / V1-målet</span><div><strong>Én Kaliv · fire flader</strong><p>Samme identitet, hukommelse og adfærd skal fortsætte gennem Windows, Android, KalivHub og Quest.</p></div><a href="brief.html" data-brief-link>Se hele produktet ↗</a></article>
+        <article class="now-card open" role="listitem"><span class="now-card-label">04 / Åben grænse</span><div><strong>Den ubrudte kæde</strong><p>Stemme, genstart, klienthandover og længere drift mangler stadig samlet kvalificering på de faktiske enheder.</p></div><a href="progress.html" data-progress-link>Se åbne gates ↗</a></article>
       </div>
     </section>
 
@@ -1685,14 +1697,16 @@
           ['V1-plan', 'V1 plan'],
           ['Beviser', 'Proofs'],
           ['Spørgsmål', 'Questions'],
-          ['Hvad er det?', 'What is it?'],
+          ['Projektet', 'The project'],
           ['vedvarende personlig AI', 'persistent personal AI'],
           ['Computer · Telefon · Hjem · VR', 'Computer · Phone · Home · VR'],
           ['Den samme AI. Uanset hvor du møder den.', 'The same AI. Wherever you meet it.'],
           ['Kaliv er en personlig AI, bygget til at bevare samme identitet, hukommelse og kontekst på din computer, telefon, i hjemmet og i VR. ModelRig er den lokale infrastruktur, der holder det hele sammen — under din kontrol.', 'Kaliv is a personal AI designed to preserve the same identity, memory and context across your computer, phone, home and VR. ModelRig is the local infrastructure that holds it all together — under your control.'],
-          ['infrastrukturen', 'the infrastructure'],
-          ['den AI, du møder', 'the AI you meet'],
-          ['Forstå det på 30 sek.', 'Understand it in 30 sec.'],
+          ['personen, du møder', 'the person you meet'],
+          ['det, der får hende til at bestå', 'what makes her persist'],
+          ['AI-modellen', 'the AI model'],
+          ['den udskiftelige intelligens', 'the replaceable intelligence'],
+          ['Forstå projektet på ét minut', 'Understand the project in one minute'],
           ['Se hvad der er bevist', 'See what is proven'],
           ['Projektbrief', 'Project brief'],
           ['Projektbrief ↗', 'Project brief ↗'],
@@ -1721,9 +1735,9 @@
           ['0 / 4 lukket', '0 / 4 closed'],
           ['Dokumenteret', 'Documented'],
           ['4 delbeviser', '4 partial proofs'],
-          ['01 / Vision', '01 / Vision'],
-          ['4 min', '4 min'],
-          ['Problemet, tesen, produktfladerne og den konkrete vej til V1.', 'The problem, the thesis, the product surfaces and the concrete path to V1.'],
+          ['01 / Start her', '01 / Start here'],
+          ['1 min', '1 min'],
+          ['Kaliv, ModelRig, de fire produktflader og den konkrete vej til V1 — forklaret enkelt.', 'Kaliv, ModelRig, the four product surfaces and the concrete path to V1 — explained simply.'],
           ['Forstå projektet ↗', 'Understand the project ↗'],
           ['02 / Evidens', '02 / Evidence'],
           ['Acceptkriterier, delbeviser og den præcise grænse mellem integreret og bevist.', 'Acceptance criteria, partial proofs and the exact boundary between integrated and proven.'],
@@ -1739,21 +1753,23 @@
           ['Ingen uautoriserede writes', 'No unauthorized writes'],
           ['Eksterne kald er sporbare', 'External calls are traceable'],
           ['LLM’en kan udskiftes', 'The LLM can be replaced'],
-          ['Nu / 17. oktober 2026', 'Now / 17 October 2026'],
+          ['Nu / 18. oktober 2026', 'Now / 18 October 2026'],
           ['Fra release til fysisk nærvær.', 'From release to physical presence.'],
           ['ModelRig er ude som versionslåst release, og Kaliv er nået fysisk ud på en Nest Hub. Næste tærskel er ikke endnu en demo, men én sammenhængende produktionskæde, der overlever tale, genstart og skift mellem flader.', 'ModelRig is out as a version-locked release, and Kaliv has physically reached a Nest Hub. The next threshold is not another demo, but one coherent production chain that survives voice, restart and transitions between surfaces.'],
-          ['01 / Release', '01 / Release'],
-          ['Android, Windows og serverstakken er publiceret med versionslåste artefakter og SHA256-manifest.', 'Android, Windows and the server stack are published with version-locked artifacts and a SHA256 manifest.'],
+          ['01 / Kan hentes', '01 / Available'],
+          ['Windows + Android', 'Windows + Android'],
+          ['Kaliv-klienterne og ModelRig-serveren er publiceret som en samlet, versionslåst release.', 'The Kaliv clients and ModelRig server are published as one version-locked release.'],
           ['Se release ↗', 'View release ↗'],
-          ['02 / Fysisk delbevis', '02 / Physical partial proof'],
+          ['02 / Set på hardware', '02 / Seen on hardware'],
           ['ModelRig-chat, synlig tilstand og multi-turn sessionshukommelse er kørt gennem KalivHub-Receiver på rigtig hardware.', 'ModelRig chat, visible state and multi-turn session memory have run through KalivHub-Receiver on real hardware.'],
           ['Se KalivHub ↗', 'View KalivHub ↗'],
-          ['03 / Aktuel main', '03 / Current main'],
-          ['Repository-audittet og den prioriterede forbedringsplan er landet på ModelRig main den 16. oktober.', 'The repository audit and prioritized improvement plan landed on ModelRig main on 16 October.'],
-          ['Se commit ↗', 'View commit ↗'],
+          ['03 / V1-målet', '03 / The V1 target'],
+          ['Én Kaliv · fire flader', 'One Kaliv · four surfaces'],
+          ['Samme identitet, hukommelse og adfærd skal fortsætte gennem Windows, Android, KalivHub og Quest.', 'The same identity, memory and behavior must continue across Windows, Android, KalivHub and Quest.'],
+          ['Se hele produktet ↗', 'See the complete product ↗'],
           ['04 / Åben grænse', '04 / Open boundary'],
-          ['Produktionskæden', 'The production chain'],
-          ['Voice-kontinuitet, genstart, streaming, klienthandover og længere soak-test mangler stadig samlet kvalificering.', 'Voice continuity, restart, streaming, client handover and extended soak testing still require integrated qualification.'],
+          ['Den ubrudte kæde', 'The uninterrupted chain'],
+          ['Stemme, genstart, klienthandover og længere drift mangler stadig samlet kvalificering på de faktiske enheder.', 'Voice, restart, client handover and extended operation still require integrated qualification on the actual devices.'],
           ['Se åbne gates ↗', 'View open gates ↗'],
           ['00 / Kategoriskiftet', '00 / The category shift'],
           ['Ikke en wrapper. Ikke en persona-prompt. Ikke endnu et chatvindue.', 'Not a wrapper. Not a persona prompt. Not another chat window.'],
@@ -2053,7 +2069,7 @@
           ['Se projektets GitHub-repository — åbner i ny fane', 'View the project repository on GitHub — opens in a new tab'],
           ['Vælg sprog', 'Choose language'],
           ['ModelRigs designinvarianter', 'ModelRig design invariants'],
-          ['Forholdet mellem ModelRig og Kaliv', 'The relationship between ModelRig and Kaliv'],
+          ['Forholdet mellem Kaliv, ModelRig og AI-modellen', 'The relationship between Kaliv, ModelRig and the AI model'],
           ['Sådan hænger ModelRig og Kaliv sammen', 'How ModelRig and Kaliv fit together'],
           ['Aktuel V1-status', 'Current V1 status'],
           ['Fire indgange til ModelRig-projektet', 'Four entry points into the ModelRig project'],
