@@ -34,21 +34,6 @@
   ],
   "shortcuts": [
     {
-      "name": "Arkitektur",
-      "short_name": "Arkitektur",
-      "url": "./#architecture"
-    },
-    {
-      "name": "Kaliv",
-      "short_name": "Kaliv",
-      "url": "./#kaliv"
-    },
-    {
-      "name": "Status",
-      "short_name": "Status",
-      "url": "./#status"
-    },
-    {
       "name": "Projektbrief",
       "short_name": "Brief",
       "url": "./brief.html"

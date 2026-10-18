@@ -201,14 +201,15 @@
     }
     @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
   </style>
+  <link rel="stylesheet" href="site-shell.css?v=74" />
 </head>
 <body>
   <a class="skip" href="#content" data-da="Gå til indhold" data-en="Skip to content">Gå til indhold</a>
   <div class="topline" aria-hidden="true"></div>
-  <header>
-    <a class="brand" href="./" data-en-href="./?lang=en" aria-label="Tilbage til ModelRig"><span class="brand-mark">MR</span><span>ModelRig</span></a>
-    <span class="document-type">System architecture / Public technical overview</span>
-    <div class="header-actions"><a href="brief.html" data-en-href="brief.html?lang=en" data-da="Projektbrief" data-en="Project brief">Projektbrief</a><a href="hub.html" data-en-href="hub.html?lang=en">KalivHub</a><a href="proofs.html" data-en-href="proofs.html?lang=en" data-da="V1-beviser" data-en="V1 proofs">V1-beviser</a><a href="progress.html" data-en-href="progress.html?lang=en">Project Room</a><span class="lang" aria-label="Vælg sprog"><a href="architecture.html" data-language="da" class="is-current" aria-current="page">DA</a><a href="architecture.html?lang=en" data-language="en">EN</a></span></div>
+  <header class="site-header">
+    <a class="brand" href="./" data-en-href="./?lang=en" aria-label="Kaliv — forsiden" data-en-aria-label="Kaliv — home"><span class="brand-mark">MR</span><span class="brand-copy"><strong>Kaliv</strong><small data-da="bygget på ModelRig" data-en="built on ModelRig">bygget på ModelRig</small></span></a>
+    <span class="document-type" data-da="Systemarkitektur" data-en="System architecture">Systemarkitektur</span>
+    <nav class="header-actions" aria-label="Hovednavigation" data-en-aria-label="Main navigation"><a href="brief.html" data-en-href="brief.html?lang=en" data-da="Start her" data-en="Start here">Start her</a><a href="hub.html" data-en-href="hub.html?lang=en">KalivHub</a><a href="proofs.html" data-en-href="proofs.html?lang=en" data-da="V1-beviser" data-en="V1 proofs">V1-beviser</a><a href="progress.html" data-en-href="progress.html?lang=en" data-da="Status" data-en="Status">Status</a><span class="lang" aria-label="Vælg sprog" data-en-aria-label="Choose language"><a href="architecture.html" data-language="da" class="is-current" aria-current="page">DA</a><a href="architecture.html?lang=en" data-language="en">EN</a></span></nav>
   </header>
 
   <main id="content">
@@ -291,7 +292,7 @@
     <section class="closing" aria-labelledby="closing-title"><div class="closing-aside"><span class="micro" data-da="06 / Efterprøvning" data-en="06 / Verification">06 / Efterprøvning</span><img src="assets/kaliv-ankh-640.webp" alt="Kalivs futuristiske ankh-symbol" width="640" height="863" loading="lazy" /></div><div class="closing-main"><h2 id="closing-title" data-da="Arkitektur er først virkelig, når den kan bevises." data-en="Architecture becomes real only when it can be proven.">Arkitektur er først virkelig, når den kan bevises.</h2><div><p data-da="Det offentlige V1-register binder systemgrænserne til konkrete acceptkriterier på rigtig hardware og under vedvarende drift." data-en="The public V1 ledger binds system boundaries to concrete acceptance criteria on real hardware and under sustained operation.">Det offentlige V1-register binder systemgrænserne til konkrete acceptkriterier på rigtig hardware og under vedvarende drift.</p><div class="actions"><a class="action" href="proofs.html" data-en-href="proofs.html?lang=en" data-da="Åbn V1-beviser" data-en="Open V1 proofs">Åbn V1-beviser</a><a class="action secondary" href="progress.html" data-en-href="progress.html?lang=en">Project Room</a><a class="action secondary" href="brief.html" data-en-href="brief.html?lang=en" data-da="Læs projektbrief" data-en="Read project brief">Læs projektbrief</a><a class="action secondary" href="https://github.com/Ternedal/ModelRig" target="_blank" rel="noopener noreferrer" data-da="Åbn ModelRig" data-en="Open ModelRig">Åbn ModelRig</a></div></div></div></section>
   </main>
 
-  <footer><span data-da="ModelRig / Offentlig systemarkitektur" data-en="ModelRig / Public system architecture">ModelRig / Offentlig systemarkitektur</span><a href="./" data-en-href="./?lang=en" data-da="Tilbage til hovedsiden ↑" data-en="Back to main site ↑">Tilbage til hovedsiden ↑</a></footer>
+  <footer class="site-footer"><div><a class="footer-brand" href="./" data-en-href="./?lang=en">Kaliv <span>/ ModelRig</span></a><p data-da="Én vedvarende AI på tværs af computer, telefon, hjem og VR — under din kontrol." data-en="One persistent AI across computer, phone, home and VR — under your control.">Én vedvarende AI på tværs af computer, telefon, hjem og VR — under din kontrol.</p></div><nav aria-label="Fodnavigation" data-en-aria-label="Footer navigation"><a href="brief.html" data-en-href="brief.html?lang=en" data-da="Start her" data-en="Start here">Start her</a><a href="hub.html" data-en-href="hub.html?lang=en">KalivHub</a><a href="architecture.html" data-en-href="architecture.html?lang=en" data-da="Arkitektur" data-en="Architecture">Arkitektur</a><a href="proofs.html" data-en-href="proofs.html?lang=en" data-da="Beviser" data-en="Proofs">Beviser</a><a href="progress.html" data-en-href="progress.html?lang=en" data-da="Status" data-en="Status">Status</a></nav></footer>
   <script>
     (() => {
       const isEnglish = new URLSearchParams(location.search).get('lang') === 'en';
