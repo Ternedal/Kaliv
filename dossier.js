@@ -15,6 +15,10 @@
     const description = body.dataset.descriptionEn;
     if (description) {
       const setMeta = (selector, value) => { const el = document.querySelector(selector); if (el) el.content = value; };
+      if (body.dataset.titleEn) {
+        setMeta('meta[property="og:title"]', body.dataset.titleEn);
+        setMeta('meta[name="twitter:title"]', body.dataset.titleEn);
+      }
       setMeta('meta[name="description"]', description);
       setMeta('meta[property="og:description"]', description);
       setMeta('meta[name="twitter:description"]', description);
@@ -23,7 +27,7 @@
       const link = document.querySelector('link[rel="canonical"]'); if (link) link.href = canonical.href;
       setMeta('meta[property="og:url"]', canonical.href);
       const structured = document.querySelector('script[type="application/ld+json"]');
-      if (structured) { try { const data = JSON.parse(structured.textContent); data.description = description; data.inLanguage = 'en'; data.url = canonical.href; structured.textContent = JSON.stringify(data); } catch {} }
+      if (structured) { try { const data = JSON.parse(structured.textContent); if (body.dataset.titleEn) data.name = body.dataset.titleEn; data.description = description; data.inLanguage = 'en'; data.url = canonical.href; structured.textContent = JSON.stringify(data); } catch {} }
     }
   }
   if ('serviceWorker' in navigator && location.protocol === 'https:') {

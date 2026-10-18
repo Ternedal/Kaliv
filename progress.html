@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#05070a" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <meta name="description" content="Kaliv og ModelRig lige nu: hvad der virker, hvad der er set på rigtig hardware, og hvad der stadig mangler før V1." />
-  <meta property="og:title" content="ModelRig — Project Room" />
+  <meta property="og:title" content="Kaliv — status" />
   <meta property="og:description" content="En klar status på Kaliv: offentlig release, fysisk delbevis og den åbne vej til én vedvarende AI på tværs af fire flader." />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="da_DK" />
@@ -15,7 +15,7 @@
   <meta property="og:image" content="https://kaliv.dk/assets/modelrig-continuity-female-hair-1920.webp" />
   <meta property="og:image:alt" content="ModelRig fra kognitiv kerne til kropsliggjort intelligens" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="ModelRig — Project Room" />
+  <meta name="twitter:title" content="Kaliv — status" />
   <meta name="twitter:description" content="Hvad virker nu, hvad er fysisk observeret, og hvad mangler før V1." />
   <meta name="twitter:image" content="https://kaliv.dk/assets/modelrig-continuity-female-hair-1920.webp" />
   <link rel="canonical" href="https://kaliv.dk/progress.html" />
@@ -25,16 +25,16 @@
   <link rel="manifest" href="site.webmanifest" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/kaliv-favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/kaliv-apple-touch-icon.png" />
-  <title>ModelRig — Project Room</title>
+  <title>Kaliv — status</title>
   <script type="application/ld+json">
     {
       "@context":"https://schema.org",
       "@type":"WebPage",
-      "name":"ModelRig — Project Room",
+      "name":"Kaliv — status",
       "description":"En klar status på hvad der virker i Kaliv og ModelRig, hvad der er fysisk observeret, og hvad der stadig mangler før V1.",
       "dateModified":"2026-10-18",
       "inLanguage":"da",
-      "isPartOf":{"@type":"WebSite","name":"ModelRig / Kaliv","url":"https://kaliv.dk/"},
+      "isPartOf":{"@type":"WebSite","name":"Kaliv","url":"https://kaliv.dk/"},
       "url":"https://kaliv.dk/progress.html"
     }
   </script>
@@ -181,7 +181,7 @@
     }
     @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
   </style>
-  <link rel="stylesheet" href="site-shell.css?v=74" />
+  <link rel="stylesheet" href="site-shell.css?v=75" />
 </head>
 <body>
   <a class="skip" href="#content" data-da="Gå til indhold" data-en="Skip to content">Gå til indhold</a>
@@ -195,7 +195,7 @@
   <main id="content">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <div><span class="eyebrow" data-da="Kaliv / Status i almindeligt sprog" data-en="Kaliv / Status in plain language">Kaliv / Status i almindeligt sprog</span><h1 id="hero-title" data-da="Det virker. Det er ikke færdigt." data-en="It works. It is not finished.">Det virker. Det er ikke færdigt.</h1><p class="lead" data-da="Kaliv kan hentes til Windows og Android. ModelRig holder hendes identitet, hukommelse og kontekst lokalt. Kaliv er også kørt fysisk gennem KalivHub på en Nest Hub. Det, der mangler, er at bevise den samme ubrudte Kaliv på tværs af computer, telefon, hjem og VR — og at systemet holder i drift." data-en="Kaliv can be downloaded for Windows and Android. ModelRig keeps her identity, memory and context local. Kaliv has also run physically through KalivHub on a Nest Hub. What remains is proving the same uninterrupted Kaliv across computer, phone, home and VR — and proving that the system holds up in operation.">Kaliv kan hentes til Windows og Android. ModelRig holder hendes identitet, hukommelse og kontekst lokalt. Kaliv er også kørt fysisk gennem KalivHub på en Nest Hub. Det, der mangler, er at bevise den samme ubrudte Kaliv på tværs af computer, telefon, hjem og VR — og at systemet holder i drift.</p></div>
+        <div><span class="eyebrow" data-da="Kaliv / Status i almindeligt sprog" data-en="Kaliv / Status in plain language">Kaliv / Status i almindeligt sprog</span><h1 id="hero-title" data-da="Det virker. Det er ikke færdigt." data-en="It works. It is not finished.">Det virker. Det er ikke færdigt.</h1><p class="lead" data-da="Kaliv kan hentes til Windows og Android. ModelRig holder hendes identitet, hukommelse og kontekst lokalt. Et manuelt testforløb har vist AI-svar og sessionshukommelse på en fysisk Nest Hub. Det, der mangler, er den automatiske kæde og beviset for den samme ubrudte Kaliv på tværs af computer, telefon, hjem og VR." data-en="Kaliv can be downloaded for Windows and Android. ModelRig keeps her identity, memory and context local. A manual test flow has shown AI responses and session memory on a physical Nest Hub. What remains is the automatic chain and proof of the same uninterrupted Kaliv across computer, phone, home and VR.">Kaliv kan hentes til Windows og Android. ModelRig holder hendes identitet, hukommelse og kontekst lokalt. Et manuelt testforløb har vist AI-svar og sessionshukommelse på en fysisk Nest Hub. Det, der mangler, er den automatiske kæde og beviset for den samme ubrudte Kaliv på tværs af computer, telefon, hjem og VR.</p></div>
         <div class="snapshot"><span data-da="Opdateret · 18. oktober 2026" data-en="Updated · 18 October 2026">Opdateret · 18. oktober 2026</span><span data-da="Kilder · Releases, commits og fysiske test" data-en="Sources · Releases, commits and physical tests">Kilder · Releases, commits og fysiske test</span></div>
       </div>
       <div class="hero-signal" aria-label="Aktuel V1-status">
@@ -221,7 +221,8 @@
       </div>
     </section>
 
-    <section class="section dark" aria-labelledby="source-title">
+    <details class="technical-detail section dark" aria-labelledby="source-title">
+      <summary class="technical-summary"><span data-da="Teknisk dokumentation" data-en="Technical documentation">Teknisk dokumentation</span><strong data-da="Se commits og kildesnapshot" data-en="View commits and source snapshot">Se commits og kildesnapshot</strong></summary>
       <div class="section-head"><span class="section-label" data-da="02 / Efterprøv" data-en="02 / Verify">02 / Efterprøv</span><div><h2 id="source-title" data-da="Koden bag påstandene." data-en="The code behind the claims.">Koden bag påstandene.</h2><p data-da="Her ligger den tekniske dokumentation. Et commit-id er versionsnummeret på et præcist øjeblik i koden; linket åbner det direkte på GitHub." data-en="This is the technical documentation. A commit ID is the version number of a precise moment in the code; the link opens it directly on GitHub.">Her ligger den tekniske dokumentation. Et commit-id er versionsnummeret på et præcist øjeblik i koden; linket åbner det direkte på GitHub.</p></div></div>
       <div class="repos" role="list" aria-label="Aktuelle repository-heads">
         <article class="repo" role="listitem"><span class="repo-index">01</span><div class="repo-name"><h3>ModelRig</h3><span>141add7 · Control plane</span></div><div class="repo-change"><p data-da="Aktuel main med repository-audit og en prioriteret forbedringsplan efter v2.0.15." data-en="Current main with a repository audit and prioritized improvement plan after v2.0.15.">Aktuel main med repository-audit og en prioriteret forbedringsplan efter v2.0.15.</p><time datetime="2026-10-16" data-da="16. oktober 2026" data-en="16 October 2026">16. oktober 2026</time></div><a class="repo-link" href="https://github.com/Ternedal/ModelRig/commit/141add7917e6121c72d874f9eea0656fd52bd565" target="_blank" rel="noopener noreferrer" data-da="Se commit ↗" data-en="View commit ↗">Se commit ↗</a></article>
@@ -230,7 +231,7 @@
         <article class="repo" role="listitem"><span class="repo-index">04</span><div class="repo-name"><h3>VisionRig</h3><span>66ea9bf · Perception</span></div><div class="repo-change"><p data-da="Exact-head qualification gate for perceptionskæden." data-en="Exact-head qualification gate for the perception chain.">Exact-head qualification gate for perceptionskæden.</p><time datetime="2026-10-01" data-da="1. oktober 2026" data-en="1 October 2026">1. oktober 2026</time></div><a class="repo-link" href="https://github.com/Ternedal/VisionRig/commit/66ea9bfce1c4d219e4bac1d85324a0e6e3f042e5" target="_blank" rel="noopener noreferrer" data-da="Se commit ↗" data-en="View commit ↗">Se commit ↗</a></article>
         <article class="repo" role="listitem"><span class="repo-index">05</span><div class="repo-name"><h3>KalivHub-Receiver</h3><span>f8903f9 · Main</span></div><div class="repo-change"><p data-da="Den offentlige receiver, der viser Kaliv på hjemmets skærm. Det fysiske delbevis ligger på en særskilt testsnapshot; main er den seneste offentlige produktkode." data-en="The public receiver that displays Kaliv on the home screen. The physical partial proof is tied to a separate test snapshot; main is the latest public product code.">Den offentlige receiver, der viser Kaliv på hjemmets skærm. Det fysiske delbevis ligger på en særskilt testsnapshot; main er den seneste offentlige produktkode.</p><time datetime="2026-10-14" data-da="14. oktober 2026" data-en="14 October 2026">14. oktober 2026</time></div><a class="repo-link" href="https://github.com/Ternedal/KalivHub-Receiver/commit/f8903f9954ecca4ef4ce1a95588a0154d987c23f" target="_blank" rel="noopener noreferrer" data-da="Se commit ↗" data-en="View commit ↗">Se commit ↗</a></article>
       </div>
-    </section>
+    </details>
 
     <section class="section" aria-labelledby="gates-title">
       <div class="section-head"><span class="section-label" data-da="03 / Næste bevis" data-en="03 / Next proof">03 / Næste bevis</span><div><h2 id="gates-title" data-da="Vejen frem er observerbar." data-en="The path forward is observable.">Vejen frem er observerbar.</h2><p data-da="Der vises ingen kunstig procent. Hvert workstream flytter sig først, når det definerede systembevis kan reproduceres og dokumenteres." data-en="No artificial percentage is shown. Each workstream moves only when its defined system proof can be reproduced and documented.">Der vises ingen kunstig procent. Hvert workstream flytter sig først, når det definerede systembevis kan reproduceres og dokumenteres.</p></div></div>
@@ -273,12 +274,12 @@
       document.querySelector('.repos')?.setAttribute('aria-label','Current repository heads');
       document.querySelector('.gates')?.setAttribute('aria-label','Next proof for the four V1 gates');
       document.querySelector('.closing-aside img')?.setAttribute('alt','Kaliv’s futuristic ankh symbol');
-      document.title = 'ModelRig — Project Room';
+      document.title = 'Kaliv — status';
       const description = 'Kaliv and ModelRig right now: what works, what has been observed on real hardware and what remains before V1.';
       const setMeta = (selector,value) => { const el = document.querySelector(selector); if (el) el.content = value; };
-      setMeta('meta[name="description"]',description); setMeta('meta[property="og:description"]','A clear status for Kaliv: public release, physical partial proof and the open path to one persistent AI across four surfaces.'); setMeta('meta[property="og:locale"]','en_US'); setMeta('meta[name="twitter:description"]','What works now, what has been physically observed and what remains before V1.');
+      setMeta('meta[name="description"]',description); setMeta('meta[property="og:title"]','Kaliv — status'); setMeta('meta[property="og:description"]','A clear status for Kaliv: public release, physical partial proof and the open path to one persistent AI across four surfaces.'); setMeta('meta[property="og:locale"]','en_US'); setMeta('meta[name="twitter:title"]','Kaliv — status'); setMeta('meta[name="twitter:description"]','What works now, what has been physically observed and what remains before V1.');
       const url = new URL('https://kaliv.dk/progress.html?lang=en'); document.querySelector('link[rel="canonical"]').href = url.href; setMeta('meta[property="og:url"]',url.href);
-      const structured = document.querySelector('script[type="application/ld+json"]'); if (structured) { try { const data = JSON.parse(structured.textContent); data.description = description; data.inLanguage = 'en'; data.url = url.href; structured.textContent = JSON.stringify(data); } catch {} }
+      const structured = document.querySelector('script[type="application/ld+json"]'); if (structured) { try { const data = JSON.parse(structured.textContent); data.name = 'Kaliv — status'; data.description = description; data.inLanguage = 'en'; data.url = url.href; structured.textContent = JSON.stringify(data); } catch {} }
     })();
   </script>
   <script>

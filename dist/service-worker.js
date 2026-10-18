@@ -1,5 +1,5 @@
 const CACHE_PREFIX = 'kaliv-shell-';
-const CACHE_NAME = `${CACHE_PREFIX}v74`;
+const CACHE_NAME = `${CACHE_PREFIX}v75`;
 
 const CORE_ASSETS = [
   './',
@@ -11,7 +11,7 @@ const CORE_ASSETS = [
   './home.css?v=72',
   './home.js?v=72',
   './dossier.css',
-  './site-shell.css?v=74',
+  './site-shell.css?v=75',
   './dossier.js',
   './proofs.html',
   './proofs.html?lang=en',

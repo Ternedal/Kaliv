@@ -6,7 +6,7 @@ Canonical site: https://kaliv.dk/
 Languages: Danish and English
 Public status: Not yet qualified for V1. All four public proof gates remain open.
 Latest public release: Kaliv / ModelRig v2.0.15, published 2026-10-15.
-Latest physical proof: interactive ModelRig-to-KalivHub-Receiver-to-Google Nest Hub 2 chain with visible state, real model response and active multi-turn session memory.
+Latest physical proof: a manual partial test reached a physical Google Nest Hub 2 with Cast acknowledgement, a real model response and active multi-turn session memory. It does not prove automatic ModelRig status, the complete product chain or a V1 gate.
 Current ModelRig main: 141add7917e6121c72d874f9eea0656fd52bd565, repository audit and prioritized improvement plan, 2026-10-16.
 Current public KalivHub-Receiver main: f8903f9954ecca4ef4ce1a95588a0154d987c23f. The signed mirror test snapshot is 03788965b48de3c6d2c75e37e7b7f05db8fe82a8, with later test code at 12f65c90b444d15b314853937ae9746d3c18639f; the physical Nest Hub proof remains anchored to a32d4ad6438ede72c2da26ee3d41bb5039c2eb18. These are distinct evidence states and must not be presented as one qualified release.
 Current signed Android mirror test branch: 7475a2b685ad9cc44d7815bf09dddfc0395cc1ca. Android CI, CodeQL and the acceptance APK are green; the exact-head run remains active but immutable-tree equivalence is red, and the physical phone-to-rig-to-Nest Hub chain remains untested.
