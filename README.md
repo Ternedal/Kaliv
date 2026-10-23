@@ -25,3 +25,12 @@ Hver ændring på `main` udløser den fastlåste GitHub Pages-workflow. Den offe
 ## Repositoryets rolle
 
 Dette repository er den offentlige webpræsentation. ModelRig-systemets komponenter og runtime udvikles i deres respektive projekt-repositories.
+
+
+## Tværgående dokumentation
+
+- [Kaliv-økosystemets komponenter og ansvarsgrænser](docs/KALIV_ECOSYSTEM.md)
+- [KalivNexus](https://github.com/Ternedal/KalivNexus) er et foreslået API-/capability-broker-lag og er ikke dokumenteret som en produktionsklar integration.
+- [ModelRig](https://github.com/Ternedal/ModelRig) er backend- og orkestreringsprojektet; denne repository indeholder websitet og må ikke forveksles med Windows-, Android- eller VR-klienternes runtime.
+
+Den offentlige hjemmeside bør kun beskrive funktioner som tilgængelige, når den relevante integration og release er verificeret.
