@@ -10,7 +10,7 @@ PUBLIC_FILES = (
     ".nojekyll", "CNAME", "index.html", "brief.html", "hub.html",
     "proofs.html", "architecture.html", "progress.html", "404.html",
     "offline.html", "home.css", "home.js", "dossier.css", "dossier.js",
-    "site-shell.css", "project.json", "llms.txt", "robots.txt", "sitemap.xml",
+    "site-shell.css", "architecture.js", "proofs.js", "progress.js", "project.json", "llms.txt", "robots.txt", "sitemap.xml",
     "site.webmanifest", "service-worker.js",
     "assets/kaliv-favicon-32.png", "assets/kaliv-apple-touch-icon.png",
     "assets/kaliv-icon-192.png", "assets/kaliv-icon-512.png",
