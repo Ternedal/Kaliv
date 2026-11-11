@@ -157,7 +157,10 @@ try {
   check(!cacheState.names.includes('kaliv-shell-v75'), 'Old service worker cache remains');
   // Runtime requests can add hero images; measure the actual install list separately.
   const workerSource = await readFile(resolve(root, 'service-worker.js'), 'utf8');
-  const coreAssets = [...workerSource.split('const CORE_ASSETS = [')[1].split('];')[0].matchAll(/'([^']+)'/g)].map(m => m[1]);
+  const coreMatch = workerSource.match(/const CORE_ASSETS\s*=\s*(\[[\s\S]*?\]);/);
+  assert.ok(coreMatch, 'Generated precache list missing');
+  const coreAssets = JSON.parse(coreMatch[1]);
+  check(coreAssets.length > 0, 'Generated precache list is empty');
   let coreBytes = 0;
   for (const asset of coreAssets) coreBytes += (await (await fetch(new URL(asset, base + '/'))).arrayBuffer()).byteLength;
   check(coreBytes < 600 * 1024, `Precache over budget: ${coreBytes}`);

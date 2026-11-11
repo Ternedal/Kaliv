@@ -4,20 +4,20 @@
 
 Canonical site: https://kaliv.dk/
 Languages: Danish and English
-Public status: Not yet qualified for V1. All four public proof gates remain open.
-Latest public release: Kaliv / ModelRig v2.0.19, published 2026-11-09.
-Release download: https://github.com/Ternedal/ModelRig/releases/latest
-Content reviewed: 2026-11-11.
+Public status: Not yet qualified for V1. {{ stats.public_open_en }}
+Latest public release: Kaliv / ModelRig v{{ latest_release.version }}, published {{ latest_release.published }}.
+Release download: {{ latest_release.url }}
+Content reviewed: {{ updated }}.
 Latest physical proof: a manual partial test reached a physical Google Nest Hub 2 with Cast acknowledgement, a real model response and active multi-turn session memory. It does not prove automatic ModelRig status, the complete product chain or a V1 gate.
-Current ModelRig source: https://github.com/Ternedal/ModelRig/tree/main. Main is development code, not evidence of release qualification.
-Current public KalivHub-Receiver source: https://github.com/Ternedal/KalivHub-Receiver/tree/main. Historical evidence recorded on 2026-10-18: the signed mirror test snapshot is 03788965b48de3c6d2c75e37e7b7f05db8fe82a8, with later test code at 12f65c90b444d15b314853937ae9746d3c18639f; the physical Nest Hub proof remains anchored to a32d4ad6438ede72c2da26ee3d41bb5039c2eb18. These are distinct evidence states and must not be presented as one qualified release.
-Signed Android mirroring is parked: ModelRig PR #2206 was closed without merge on 2026-11-07. Restart when KalivHub-Receiver is ready for a sender. Historical test head: 7475a2b685ad9cc44d7815bf09dddfc0395cc1ca; its earlier CI results do not establish physical phone-to-rig-to-Nest Hub acceptance. Source: https://github.com/Ternedal/ModelRig/pull/2206
-Historical Home Assistant-first KalivHub sender snapshot (recorded 2026-10-18): 6d3a6965b80d7b424be47a130f1f43b70899d9c8. Cast sender and controls tests are green; physical HAOS and Nest Hub product acceptance remains open.
+Current ModelRig source: {{ source_repositories.ModelRig }}. Main is development code, not evidence of release qualification.
+Current public KalivHub-Receiver source: {{ source_repositories.KalivHub-Receiver }}. Historical evidence recorded on {{ source_snapshot.recorded }}: the signed mirror test snapshot is {{ heads.receiver_probe }}, with later test code at {{ heads.receiver_signed }}; the physical Nest Hub proof remains anchored to {{ heads.physical_proof }}. These are distinct evidence states and must not be presented as one qualified release.
+Signed Android mirroring is parked: ModelRig PR #{{ android_mirror.number }} was closed without merge on {{ android_mirror.closed }}. Restart when KalivHub-Receiver is ready for a sender. Historical test head: {{ heads.signed_android }}; its earlier CI results do not establish physical phone-to-rig-to-Nest Hub acceptance. Source: https://github.com/Ternedal/ModelRig/pull/{{ android_mirror.number }}
+Historical Home Assistant-first KalivHub sender snapshot (recorded {{ source_snapshot.recorded }}): {{ heads.ha_sender }}. Cast sender and controls tests are green; physical HAOS and Nest Hub product acceptance remains open.
 
 ## Known boundaries
 
 - Original voice continuity PR #2205 was closed without merge on 2026-10-16. This historical PR does not establish voice continuity in the latest release.
-- KalivHub has historical Home Assistant and room-first receiver CI evidence. Signed Android mirroring PR #2206 is parked; these records do not establish physical product acceptance.
+- KalivHub has historical Home Assistant and room-first receiver CI evidence. Signed Android mirroring PR #{{ android_mirror.number }} is parked; these records do not establish physical product acceptance.
 - Nest Hub microphone input is unverified; the isolated probe returned NotFoundError.
 - Restart continuity, client handover, latency and extended soak testing remain unqualified for V1.
 
@@ -63,7 +63,7 @@ V1 is defined by four proofs, not by a date:
 3. One persistent person across Windows, Android, KalivHub and Quest.
 4. Operational proof covering latency, soak testing and exact-head release controls.
 
-Four supporting records do not close a V1 gate: the v2.0.19 release, the manual physical Nest Hub partial proof, the historical Home Assistant-first CI path, and the parked signed Android display-mirror candidate. See https://kaliv.dk/proofs.html for their exact boundaries.
+Four supporting records do not close a V1 gate: the v{{ latest_release.version }} release, the manual physical Nest Hub partial proof, the historical Home Assistant-first CI path, and the parked signed Android display-mirror candidate. See https://kaliv.dk/proofs.html for their exact boundaries.
 
 ## Terminology
 

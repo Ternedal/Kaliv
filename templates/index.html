@@ -31,7 +31,7 @@
   <link rel="preload" as="image" href="assets/modelrig-continuity-female-hair-mobile.webp" type="image/webp" fetchpriority="high" media="(max-width: 780px)" />
   <link rel="preload" as="image" href="assets/modelrig-continuity-female-hair-1920.webp" type="image/webp" fetchpriority="high" media="(min-width: 781px) and (max-resolution: 1.49dppx)" />
   <link rel="preload" as="image" href="assets/modelrig-continuity-female-hair-hires.webp" type="image/webp" fetchpriority="high" media="(min-width: 781px) and (min-resolution: 1.5dppx)" />
-  <link rel="stylesheet" href="home.css?v=76" />
+  <link rel="stylesheet" href="home.css" />
   <title>Kaliv — én AI, fire steder</title>
   <script type="application/ld+json">
     {
@@ -39,13 +39,13 @@
       "@type": "WebSite",
       "name": "Kaliv / ModelRig",
       "description": "Kaliv er én personlig AI på tværs af Windows, Android, KalivHub og Quest. ModelRig er den local-first infrastruktur, der bevarer identitet, hukommelse og kontrol.",
-      "dateModified": "2026-11-11",
+      "dateModified": "{{ updated }}",
       "inLanguage": ["da", "en"],
       "sameAs": "https://github.com/Ternedal/Kaliv",
       "url": "https://kaliv.dk/"
     }
   </script>
-  <script src="home.js?v=76" defer blocking="render"></script>
+  <script src="home.js" defer blocking="render"></script>
 </head>
 <body data-title-da="Kaliv — én AI, fire steder" data-title-en="Kaliv — one AI, four places" data-description-da="Kaliv er én personlig AI på tværs af computer, telefon, hjem og VR. ModelRig bevarer identitet, hukommelse og tilladelser under lokal kontrol." data-description-en="Kaliv is one personal AI across computer, phone, home and VR. ModelRig keeps identity, memory and permissions under local control.">
   <a class="skip-link" href="#main" data-da="Gå til indhold" data-en="Skip to content">Gå til indhold</a>
@@ -163,13 +163,13 @@
 
     <section class="evidence section section-blue" aria-labelledby="evidence-title">
       <div class="evidence-lead">
-        <p class="kicker" data-da="Status / 11. november 2026" data-en="Status / 11 November 2026">Status / 11. november 2026</p>
+        <p class="kicker" data-da="Status / {{ updated | date_da }}" data-en="Status / {{ updated | date_en }}">Status / {{ updated | date_da }}</p>
         <h2 id="evidence-title" data-da="Langt fremme. Ikke færdigbevist." data-en="Far advanced. Not fully proven.">Langt fremme. Ikke færdigbevist.</h2>
-        <p data-da="Software er udgivet, og et manuelt testforløb har nået en fysisk Nest Hub 2. Den automatiske produktkæde og alle fire samlede V1-beviser er fortsat åbne." data-en="Software has been released, and a manual test flow has reached a physical Nest Hub 2. The automatic product chain and all four complete V1 proofs remain open.">Software er udgivet, og et manuelt testforløb har nået en fysisk Nest Hub 2. Den automatiske produktkæde og alle fire samlede V1-beviser er fortsat åbne.</p>
+        <p data-da="Software er udgivet, og et manuelt testforløb har nået en fysisk Nest Hub 2. Den automatiske produktkæde og {{ stats.all_open_da }}." data-en="Software has been released, and a manual test flow has reached a physical Nest Hub 2. The automatic product chain and {{ stats.all_open_en }}.">Software er udgivet, og et manuelt testforløb har nået en fysisk Nest Hub 2. Den automatiske produktkæde og {{ stats.all_open_da }}.</p>
       </div>
-      <div class="evidence-score" role="group" aria-label="Nul af fire V1-beviser lukket" data-da-label="Nul af fire V1-beviser lukket" data-en-label="Zero of four V1 proofs closed"><strong>0<span>/4</span></strong><p data-da="V1-beviser lukket" data-en="V1 proofs closed">V1-beviser lukket</p></div>
+      <div class="evidence-score" role="group" aria-label="{{ stats.closed_word_da | capitalize }} af {{ stats.total_word_da }} V1-beviser lukket" data-da-label="{{ stats.closed_word_da | capitalize }} af {{ stats.total_word_da }} V1-beviser lukket" data-en-label="{{ stats.closed_word_en | capitalize }} of {{ stats.total_word_en }} V1 proofs closed"><strong>{{ stats.closed }}<span>/{{ stats.total }}</span></strong><p data-da="V1-beviser lukket" data-en="V1 proofs closed">V1-beviser lukket</p></div>
       <div class="evidence-facts">
-        <div><span data-da="Udgivet" data-en="Released">Udgivet</span><strong>ModelRig v2.0.19</strong></div>
+        <div><span data-da="Udgivet" data-en="Released">Udgivet</span><strong>ModelRig v{{ latest_release.version }}</strong></div>
         <div><span data-da="Set på hardware" data-en="Seen on hardware">Set på hardware</span><strong data-da="Manuel test → Nest Hub 2" data-en="Manual test → Nest Hub 2">Manuel test → Nest Hub 2</strong></div>
         <div><span data-da="Åben grænse" data-en="Open boundary">Åben grænse</span><strong data-da="Kontinuitet, genstart, handover og soak" data-en="Continuity, restart, handover and soak">Kontinuitet, genstart, handover og soak</strong></div>
       </div>
