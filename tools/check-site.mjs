@@ -52,6 +52,35 @@ try {
     check((await fetch(`${base}/${path}`)).status === 200, `Missing public file: ${path}`);
 
   browser = await chromium.launch({ executablePath: process.env.CHROME_PATH });
+  const firstPaint = [];
+  // A slow language script must not allow a Danish first paint on an English URL.
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const paintContext = await browser.newContext({ serviceWorkers: 'block', viewport: { width: 390, height: 900 } });
+    const paintPage = await paintContext.newPage();
+    await paintPage.route('**/home.js?*', async route => {
+      await new Promise(done => setTimeout(done, 750));
+      await route.continue();
+    });
+    await paintPage.addInitScript(() => {
+      window.kalivPaintCheck = { firstLanguage: null, cls: 0 };
+      new PerformanceObserver(list => {
+        if (list.getEntries().some(entry => entry.name === 'first-contentful-paint'))
+          window.kalivPaintCheck.firstLanguage = document.documentElement.lang;
+      }).observe({ type: 'paint', buffered: true });
+      new PerformanceObserver(list => {
+        for (const entry of list.getEntries())
+          if (!entry.hadRecentInput) window.kalivPaintCheck.cls += entry.value;
+      }).observe({ type: 'layout-shift', buffered: true });
+    });
+    await paintPage.goto(`${base}/index.html?lang=en`, { waitUntil: 'networkidle' });
+    await paintPage.waitForFunction(() => window.kalivPaintCheck.firstLanguage !== null);
+    const result = await paintPage.evaluate(() => window.kalivPaintCheck);
+    firstPaint.push({ attempt, scriptDelayMs: 750, ...result });
+    check(result.firstLanguage === 'en', `Wrong first-paint language: ${result.firstLanguage}`);
+    check(result.cls === 0, `Language-script layout shift: ${result.cls}`);
+    await paintContext.close();
+  }
+  await json('first-paint.json', firstPaint);
   const context = await browser.newContext({ serviceWorkers: 'block' });
   const page = await context.newPage();
   const layout = [], accessibility = [], links = new Set();
@@ -163,7 +192,7 @@ try {
   }
   await json('lighthouse-summary.json', scores);
   await json('summary.json', { layoutCases: layout.length, localLinks: links.size, errors });
-  console.log(JSON.stringify({ layoutCases: layout.length, localLinks: links.size, lighthouse: scores, errors }, null, 2));
+  console.log(JSON.stringify({ layoutCases: layout.length, localLinks: links.size, firstPaint, lighthouse: scores, errors }, null, 2));
   assert.equal(errors.length, 0, errors.join('\n'));
 } finally {
   if (browser) await browser.close();
