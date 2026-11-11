@@ -66,7 +66,8 @@ try {
           language: document.documentElement.lang,
           width: document.documentElement.clientWidth,
           scrollWidth: document.documentElement.scrollWidth,
-          languageLinks: [...document.querySelectorAll('.language a, .lang a')].map(rect),
+          languageLinks: [...document.querySelectorAll('.language a, .lang a')]
+            .map(e => ({ ...rect(e), current: e.getAttribute('aria-current') })),
           footerLinks: [...document.querySelectorAll('footer a')].map(rect),
           localLinks: [...document.querySelectorAll('a[href], link[href], img[src], script[src]')]
             .map(e => e.href || e.src).filter(href => href && new URL(href).origin === location.origin),
@@ -76,6 +77,7 @@ try {
       check(result.language === lang, `Wrong language: ${name}/${lang}`);
       check(result.scrollWidth === result.width, `Overflow: ${name}/${lang}/${width}: ${result.scrollWidth}`);
       check(result.languageLinks.length === 2, `Missing language links: ${name}/${lang}`);
+      check(result.languageLinks.filter(link => link.current === 'page').length === 1, `Current language: ${name}/${lang}`);
       for (const r of result.languageLinks)
         check(r.width >= 24 && r.height >= 24 && r.x >= 0 && r.x + r.width <= result.width + 0.5, `Language target: ${name}/${lang}/${width}`);
       for (const r of result.footerLinks)
@@ -146,7 +148,7 @@ try {
   const scores = [];
   for (const name of pages) for (const lang of ['da', 'en']) {
     const { lhr } = await lighthouse(`${base}/${name}${lang === 'en' ? '?lang=en' : ''}`, {
-      port: chrome.port, onlyCategories: ['performance', 'accessibility'], logLevel: 'error',
+      port: chrome.port, onlyCategories: ['performance', 'accessibility', 'best-practices'], logLevel: 'error',
     });
     const summary = { page: name, lang, performance: lhr.categories.performance.score, accessibility: lhr.categories.accessibility.score, cls: lhr.audits['cumulative-layout-shift'].numericValue };
     scores.push(summary);

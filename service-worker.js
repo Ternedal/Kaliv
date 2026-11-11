@@ -6,7 +6,7 @@ const CORE_ASSETS = [
   './brief.html',
   './hub.html',
   './home.css?v=76',
-  './home.js?v=72',
+  './home.js?v=76',
   './dossier.css?v=76',
   './site-shell.css?v=76',
   './dossier.js',
