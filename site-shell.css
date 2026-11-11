@@ -151,6 +151,10 @@ h1, h2, h3 {
 }
 
 .site-footer .footer-brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  gap: 0.25rem;
   color: #fff;
   font-size: 1.05rem;
   font-weight: 800;

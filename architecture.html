@@ -50,7 +50,7 @@
     html { scroll-behavior:smooth; }
     body { margin:0; min-width:320px; overflow-x:clip; background:var(--paper); color:var(--ink); font:400 1rem/1.6 var(--sans); text-rendering:optimizeLegibility; }
     a { color:inherit; }
-    a:focus-visible,button:focus-visible { outline:2px solid var(--blue-light); outline-offset:4px; }
+    a:focus-visible,button:focus-visible,.matrix-shell:focus-visible { outline:2px solid var(--blue-light); outline-offset:4px; }
     h1,h2,h3,p { margin-top:0; }
     h1,h2,h3 { text-wrap:balance; }
     p { text-wrap:pretty; }
@@ -243,7 +243,7 @@
 
     <section class="section" aria-labelledby="matrix-title">
       <div class="section-head"><span class="section-label" data-da="02 / Ansvarsgrænser" data-en="02 / Responsibility boundaries">02 / Ansvarsgrænser</span><div><h2 id="matrix-title" data-da="Ejerskab skal kunne aflæses." data-en="Ownership must be legible.">Ejerskab skal kunne aflæses.</h2><p data-da="Tabellen beskriver den offentlige arkitekturgrænse. Implementeringen kan udvikle sig, men ejerskabet må ikke flyde sammen." data-en="The table describes the public architecture boundary. Implementation may evolve, but ownership must not blur.">Tabellen beskriver den offentlige arkitekturgrænse. Implementeringen kan udvikle sig, men ejerskabet må ikke flyde sammen.</p></div></div>
-      <div class="matrix-shell"><table class="matrix"><thead><tr><th scope="col" data-da="Komponent" data-en="Component">Komponent</th><th scope="col" data-da="Ejer" data-en="Owns">Ejer</th><th scope="col" data-da="Modtager" data-en="Accepts">Modtager</th><th scope="col" data-da="Må aldrig eje" data-en="Must never own">Må aldrig eje</th></tr></thead><tbody>
+      <div class="matrix-shell" tabindex="0" role="region" aria-labelledby="matrix-title"><table class="matrix"><thead><tr><th scope="col" data-da="Komponent" data-en="Component">Komponent</th><th scope="col" data-da="Ejer" data-en="Owns">Ejer</th><th scope="col" data-da="Modtager" data-en="Accepts">Modtager</th><th scope="col" data-da="Må aldrig eje" data-en="Must never own">Må aldrig eje</th></tr></thead><tbody>
         <tr><th scope="row">VisionRig</th><td data-da="Visuel perception og sensorstatus" data-en="Visual perception and sensor health">Visuel perception og sensorstatus</td><td data-da="Kamera, Kinect og adaptere" data-en="Camera, Kinect and adapters">Kamera, Kinect og adaptere</td><td class="boundary" data-da="Identitet eller varig betydning" data-en="Identity or lasting meaning">Identitet eller varig betydning</td></tr>
         <tr><th scope="row">Memory 4</th><td data-da="Dokumenteret autobiografisk genkaldelse" data-en="Documented autobiographical recall">Dokumenteret autobiografisk genkaldelse</td><td data-da="Godkendte minder og retrieval-signaler" data-en="Admitted memories and retrieval signals">Godkendte minder og retrieval-signaler</td><td class="boundary" data-da="Policy eller fri eksekvering" data-en="Policy or free execution">Policy eller fri eksekvering</td></tr>
         <tr><th scope="row">Consciousness Core</th><td data-da="SelfState, WorldState, tid og kontinuitet" data-en="SelfState, WorldState, time and continuity">SelfState, WorldState, tid og kontinuitet</td><td data-da="Godkendt evidens og relevant hukommelse" data-en="Admitted evidence and relevant memory">Godkendt evidens og relevant hukommelse</td><td class="boundary" data-da="Uautoriserede eksterne writes" data-en="Unauthorized external writes">Uautoriserede eksterne writes</td></tr>

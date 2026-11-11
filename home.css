@@ -30,7 +30,7 @@ body {
 a { color: inherit; }
 img { display: block; max-width: 100%; }
 h1, h2, h3, p, figure { margin: 0; }
-h1, h2, h3 { text-wrap: balance; }
+h1, h2, h3 { text-wrap: balance; overflow-wrap: anywhere; }
 p { text-wrap: pretty; }
 ::selection { background: var(--blue); color: var(--white); }
 a:focus-visible { outline: 2px solid var(--blue-bright); outline-offset: 4px; }
@@ -126,7 +126,7 @@ a:focus-visible { outline: 2px solid var(--blue-bright); outline-offset: 4px; }
 }
 .language { display: flex; align-items: center; gap: .35rem; color: #7b8596; font: 650 .68rem var(--mono); }
 .language a { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; min-height: 24px; padding: .5rem .1rem; color: #7b8596; text-decoration: none; }
-.language a[aria-current="true"] { color: var(--white); }
+.language a[aria-current="page"] { color: var(--white); }
 .header-ankh {
   width: 3.5rem;
   height: 3.5rem;
