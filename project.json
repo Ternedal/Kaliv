@@ -9,16 +9,16 @@
     "en"
   ],
   "thesis": "Kaliv is one personal AI across Windows, Android, KalivHub and Quest; ModelRig is the local-first, model-agnostic infrastructure that keeps identity, memory, perception and action under explicit control.",
-  "release_status": "Not yet qualified for V1; all four public proof gates remain open.",
+  "release_status": "Not yet qualified for V1; {{ stats.public_open_en | lower }}",
   "latest_release": {
     "version": "2.0.19",
     "published": "2026-11-09",
     "url": "https://github.com/Ternedal/ModelRig/releases/latest",
-    "tag_url": "https://github.com/Ternedal/ModelRig/releases/tag/v2.0.19"
+    "tag_url": "https://github.com/Ternedal/ModelRig/releases/tag/v{{ latest_release.version }}"
   },
   "known_boundaries": [
     "Original voice continuity PR #2205 was closed without merge on 2026-10-16. This historical PR does not establish voice continuity in the latest release.",
-    "KalivHub has a manual physical Cast proof and historical Home Assistant/room-first CI evidence. Signed Android mirroring PR #2206 is parked and was closed without merge on 2026-11-07; physical product acceptance is not established by these records.",
+    "KalivHub has a manual physical Cast proof and historical Home Assistant/room-first CI evidence. Signed Android mirroring PR #{{ android_mirror.number }} is parked and was closed without merge on {{ android_mirror.closed }}; physical product acceptance is not established by these records.",
     "Nest Hub microphone input remains unverified after the isolated probe returned NotFoundError.",
     "Cross-surface continuity, restart behavior, latency and extended soak testing remain unqualified for V1."
   ],
@@ -101,7 +101,7 @@
       "name": "KalivHub-Receiver",
       "role": "Public Cast receiver and visible home-surface boundary",
       "repository": "https://github.com/Ternedal/KalivHub-Receiver",
-      "status": "Current source is linked through its main branch; the manual physical multi-turn proof is tied to the separate a32d4ad test snapshot. Signed Android mirroring PR #2206 is parked and not physically accepted."
+      "status": "Current source is linked through its main branch; the manual physical multi-turn proof is tied to the separate {{ heads.physical_proof | short }} test snapshot. Signed Android mirroring PR #{{ android_mirror.number }} is parked and not physically accepted."
     }
   ],
   "v1_proofs": [
@@ -157,18 +157,18 @@
     "description": "Historical test snapshots, not current branch heads."
   },
   "qualification_snapshot": {
-    "recorded": "2026-10-18",
-    "manual_modelrig_to_nest_hub": "manual physical partial proof at a32d4ad; does not close a V1 gate",
-    "home_assistant_sender": "CI green at 6d3a696; physical HAOS/Nest Hub acceptance open",
+    "recorded": "{{ source_snapshot.recorded }}",
+    "manual_modelrig_to_nest_hub": "manual physical partial proof at {{ heads.physical_proof | short }}; does not close a V1 gate",
+    "home_assistant_sender": "CI green at {{ heads.ha_sender | short }}; physical HAOS/Nest Hub acceptance open",
     "room_first_receiver": "CI green at f5c5962; physical room, touch and light acceptance open",
-    "signed_android_mirror": "Parked. PR #2206 was closed without merge on 2026-11-07. Restart when KalivHub-Receiver is ready for a sender; historical tests at 7475a2b do not establish physical acceptance.",
+    "signed_android_mirror": "Parked. PR #{{ android_mirror.number }} was closed without merge on {{ android_mirror.closed }}. Restart when KalivHub-Receiver is ready for a sender; historical tests at {{ heads.signed_android | short }} do not establish physical acceptance.",
     "nest_hub_microphone": "unverified; isolated probe returned NotFoundError",
-    "reviewed": "2026-11-11"
+    "reviewed": "{{ updated }}"
   },
   "supporting_evidence": [
     {
       "id": "E01",
-      "name": "Kaliv v2.0.19 release",
+      "name": "Kaliv v{{ latest_release.version }} release",
       "status": "released",
       "supports": [
         "P04"
@@ -202,7 +202,7 @@
         "P03",
         "P04"
       ],
-      "boundary": "PR #2206 was closed without merge on 2026-11-07. Restart when KalivHub-Receiver is ready for a sender; phone-to-rig-to-Nest Hub is not physically accepted."
+      "boundary": "PR #{{ android_mirror.number }} was closed without merge on {{ android_mirror.closed }}. Restart when KalivHub-Receiver is ready for a sender; phone-to-rig-to-Nest Hub is not physically accepted."
     }
   ],
   "repositories": [
@@ -231,5 +231,17 @@
     "VoiceRig": "https://github.com/Ternedal/VoiceRig/tree/main",
     "VisionRig": "https://github.com/Ternedal/VisionRig/tree/main",
     "KalivHub-Receiver": "https://github.com/Ternedal/KalivHub-Receiver/tree/main"
+  },
+  "android_mirror": {
+    "number": 2206,
+    "closed": "2026-11-07",
+    "source_url": "https://github.com/Ternedal/ModelRig/pull/{{ android_mirror.number }}"
+  },
+  "site_copy": {
+    "mirror_da": "PR #{{ android_mirror.number }} blev lukket uden merge den {{ android_mirror.closed | date_da }}. Arbejdet er parkeret, indtil KalivHub-Receiver er klar til en sender. De tidligere testresultater på {{ heads.signed_android | short }} er historisk evidens; telefon→rig→Nest Hub er ikke fysisk accepteret.",
+    "mirror_en": "PR #{{ android_mirror.number }} was closed without merge on {{ android_mirror.closed | date_en }}. Work is parked until KalivHub-Receiver is ready for a sender. The earlier test results at {{ heads.signed_android | short }} are historical evidence; phone→rig→Nest Hub has not passed physical acceptance.",
+    "proofs_aria_en": "{{ stats.open_word_en | capitalize }} open V1 proofs",
+    "proofs_description_en": "What Kaliv and ModelRig can prove now — and the {{ stats.open_word_en }} concrete results still missing before V1.",
+    "proofs_twitter_en": "What is proven now — and the {{ stats.open_word_en }} concrete results still missing before V1."
   }
 }

@@ -1,32 +1,7 @@
 const CACHE_PREFIX = 'kaliv-shell-';
-const CACHE_NAME = `${CACHE_PREFIX}v79`;
+const CACHE_NAME = `${CACHE_PREFIX}{{ build_version }}`;
 
-const CORE_ASSETS = [
-  './',
-  './brief.html',
-  './hub.html',
-  './home.css?v=76',
-  './home.js?v=76',
-  './dossier.css?v=76',
-  './site-shell.css?v=76',
-  './dossier.js',
-  './architecture.js?v=78',
-  './proofs.js?v=78',
-  './progress.js?v=78',
-  './proofs.html',
-  './architecture.html',
-  './progress.html',
-  './project.json',
-  './llms.txt',
-  './robots.txt',
-  './offline.html',
-  './404.html',
-  './site.webmanifest',
-  './assets/kaliv-favicon-32.png',
-  './assets/kaliv-apple-touch-icon.png',
-  './assets/kaliv-icon-192.png',
-  './assets/kaliv-ankh-160.webp'
-];
+const CORE_ASSETS = {{ core_assets | json }};
 
 self.addEventListener('install', event => {
   event.waitUntil(
