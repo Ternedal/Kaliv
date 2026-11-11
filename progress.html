@@ -41,8 +41,8 @@
   <style>
     :root {
       --ink:#070a0f; --panel:#0d121b; --paper:#eef2f8; --white:#fff;
-      --blue:#1457ff; --blue-light:#8aabff; --green:#16a56f; --green-soft:#e7f8f1;
-      --amber:#b36a00; --amber-soft:#fff2da; --line:#cbd2dc; --line-dark:#2a3340; --muted:#626d7a;
+      --blue:#1457ff; --blue-light:#8aabff; --green:#117d54; --green-soft:#e7f8f1;
+      --amber:#9f5e00; --amber-soft:#fff2da; --line:#cbd2dc; --line-dark:#2a3340; --muted:#626d7a;
       --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
       --sans:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
     }
@@ -181,15 +181,15 @@
     }
     @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
   </style>
-  <link rel="stylesheet" href="site-shell.css?v=75" />
+  <link rel="stylesheet" href="site-shell.css?v=76" />
 </head>
 <body>
   <a class="skip" href="#content" data-da="Gå til indhold" data-en="Skip to content">Gå til indhold</a>
   <div class="topline" aria-hidden="true"></div>
   <header class="site-header">
-    <a class="brand" href="./" data-en-href="./?lang=en" aria-label="Kaliv — forsiden" data-en-aria-label="Kaliv — home"><span class="brand-mark">MR</span><span class="brand-copy"><strong>Kaliv</strong><small data-da="bygget på ModelRig" data-en="built on ModelRig">bygget på ModelRig</small></span></a>
+    <a class="brand" href="./" data-en-href="./?lang=en"><span class="brand-mark" aria-hidden="true">MR</span><span class="brand-copy"><strong>Kaliv</strong><small data-da="bygget på ModelRig" data-en="built on ModelRig">bygget på ModelRig</small></span></a>
     <span class="document-type" data-da="Offentlig status" data-en="Public status">Offentlig status</span>
-    <nav class="header-actions" aria-label="Hovednavigation" data-en-aria-label="Main navigation"><a href="brief.html" data-en-href="brief.html?lang=en" data-da="Start her" data-en="Start here">Start her</a><a href="hub.html" data-en-href="hub.html?lang=en">KalivHub</a><a href="proofs.html" data-en-href="proofs.html?lang=en" data-da="V1-beviser" data-en="V1 proofs">V1-beviser</a><a class="is-current" aria-current="page" href="progress.html" data-en-href="progress.html?lang=en" data-da="Status" data-en="Status">Status</a><span class="lang" aria-label="Vælg sprog" data-en-aria-label="Choose language"><a href="progress.html" data-language="da" class="is-current" aria-current="page">DA</a><a href="progress.html?lang=en" data-language="en">EN</a></span></nav>
+    <nav class="header-actions" aria-label="Hovednavigation" data-en-aria-label="Main navigation"><a href="brief.html" data-en-href="brief.html?lang=en" data-da="Start her" data-en="Start here">Start her</a><a href="hub.html" data-en-href="hub.html?lang=en">KalivHub</a><a href="proofs.html" data-en-href="proofs.html?lang=en" data-da="V1-beviser" data-en="V1 proofs">V1-beviser</a><a class="is-current" aria-current="page" href="progress.html" data-en-href="progress.html?lang=en" data-da="Status" data-en="Status">Status</a><span class="lang" role="group" aria-label="Vælg sprog" data-en-aria-label="Choose language"><a href="progress.html" data-language="da" class="is-current" aria-current="page">DA</a><a href="progress.html?lang=en" data-language="en">EN</a></span></nav>
   </header>
 
   <main id="content">
@@ -198,7 +198,7 @@
         <div><span class="eyebrow" data-da="Kaliv / Status i almindeligt sprog" data-en="Kaliv / Status in plain language">Kaliv / Status i almindeligt sprog</span><h1 id="hero-title" data-da="Det virker. Det er ikke færdigt." data-en="It works. It is not finished.">Det virker. Det er ikke færdigt.</h1><p class="lead" data-da="Kaliv kan hentes til Windows og Android. ModelRig holder hendes identitet, hukommelse og kontekst lokalt. Et manuelt testforløb har vist AI-svar og sessionshukommelse på en fysisk Nest Hub. Det, der mangler, er den automatiske kæde og beviset for den samme ubrudte Kaliv på tværs af computer, telefon, hjem og VR." data-en="Kaliv can be downloaded for Windows and Android. ModelRig keeps her identity, memory and context local. A manual test flow has shown AI responses and session memory on a physical Nest Hub. What remains is the automatic chain and proof of the same uninterrupted Kaliv across computer, phone, home and VR.">Kaliv kan hentes til Windows og Android. ModelRig holder hendes identitet, hukommelse og kontekst lokalt. Et manuelt testforløb har vist AI-svar og sessionshukommelse på en fysisk Nest Hub. Det, der mangler, er den automatiske kæde og beviset for den samme ubrudte Kaliv på tværs af computer, telefon, hjem og VR.</p></div>
         <div class="snapshot"><span data-da="Opdateret · 18. oktober 2026" data-en="Updated · 18 October 2026">Opdateret · 18. oktober 2026</span><span data-da="Kilder · Releases, commits og fysiske test" data-en="Sources · Releases, commits and physical tests">Kilder · Releases, commits og fysiske test</span></div>
       </div>
-      <div class="hero-signal" aria-label="Aktuel V1-status">
+      <div class="hero-signal" role="group" aria-label="Aktuel V1-status">
         <div class="hero-signal-top"><span data-da="Kort svar" data-en="Short answer">Kort svar</span><span data-da="V1 · Stadig åben" data-en="V1 · Still open">V1 · Stadig åben</span></div>
         <div><strong data-da="Delvist" data-en="Partial">Delvist</strong><h2 data-da="En release. Ét fysisk delbevis. Den fulde kæde mangler." data-en="One release. One physical partial proof. The complete chain is missing.">En release. Ét fysisk delbevis. Den fulde kæde mangler.</h2><p data-da="Det er mere end en prototype, men endnu ikke et færdigkvalificeret produkt." data-en="It is more than a prototype, but not yet a fully qualified product.">Det er mere end en prototype, men endnu ikke et færdigkvalificeret produkt.</p><div class="signal-list"><span><b data-da="Udgivet" data-en="Released">Udgivet</b><i data-da="Windows, Android og server" data-en="Windows, Android and server">Windows, Android og server</i></span><span><b data-da="Observeret" data-en="Observed">Observeret</b><i data-da="ModelRig → Nest Hub" data-en="ModelRig → Nest Hub">ModelRig → Nest Hub</i></span><span><b data-da="Åbent" data-en="Open">Åbent</b><i data-da="Computer → telefon → hjem → VR" data-en="Computer → phone → home → VR">Computer → telefon → hjem → VR</i></span></div></div>
       </div>
@@ -268,7 +268,6 @@
       document.querySelectorAll('[data-en-href]').forEach(node => { node.href = node.dataset.enHref; });
       document.querySelectorAll('[data-language]').forEach(link => { const current = link.dataset.language === 'en'; link.classList.toggle('is-current',current); if (current) link.setAttribute('aria-current','page'); else link.removeAttribute('aria-current'); });
       document.querySelector('.lang')?.setAttribute('aria-label','Choose language');
-      document.querySelector('.brand')?.setAttribute('aria-label','Back to ModelRig');
       document.querySelector('.hero-signal')?.setAttribute('aria-label','Current V1 status');
       document.querySelector('.metrics')?.setAttribute('aria-label','Public project key points');
       document.querySelector('.repos')?.setAttribute('aria-label','Current repository heads');

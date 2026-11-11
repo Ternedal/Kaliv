@@ -1,24 +1,18 @@
 const CACHE_PREFIX = 'kaliv-shell-';
-const CACHE_NAME = `${CACHE_PREFIX}v75`;
+const CACHE_NAME = `${CACHE_PREFIX}v76`;
 
 const CORE_ASSETS = [
   './',
-  './?lang=en',
   './brief.html',
-  './brief.html?lang=en',
   './hub.html',
-  './hub.html?lang=en',
-  './home.css?v=72',
+  './home.css?v=76',
   './home.js?v=72',
-  './dossier.css',
-  './site-shell.css?v=75',
+  './dossier.css?v=76',
+  './site-shell.css?v=76',
   './dossier.js',
   './proofs.html',
-  './proofs.html?lang=en',
   './architecture.html',
-  './architecture.html?lang=en',
   './progress.html',
-  './progress.html?lang=en',
   './project.json',
   './llms.txt',
   './robots.txt',
@@ -28,14 +22,7 @@ const CORE_ASSETS = [
   './assets/kaliv-favicon-32.png',
   './assets/kaliv-apple-touch-icon.png',
   './assets/kaliv-icon-192.png',
-  './assets/kaliv-icon-512.png',
-  './assets/kaliv-icon-maskable-512.png',
-  './assets/kaliv-ankh-160.webp',
-  './assets/kaliv-ankh-640.webp',
-  './assets/kaliv-ankh-transparent.webp',
-  './assets/modelrig-continuity-female-hair-mobile.webp',
-  './assets/modelrig-continuity-female-hair-1920.webp',
-  './assets/modelrig-continuity-female-hair-hires.webp'
+  './assets/kaliv-ankh-160.webp'
 ];
 
 self.addEventListener('install', event => {
@@ -78,7 +65,7 @@ self.addEventListener('fetch', event => {
           return response;
         })
         .catch(async () =>
-          (await caches.match(request)) ||
+          (await caches.match(request, { ignoreSearch: true })) ||
           caches.match('./offline.html')
         )
     );

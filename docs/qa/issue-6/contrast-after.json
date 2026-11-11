@@ -1,0 +1,26 @@
+[
+  {
+    "page": "index.html",
+    "failures": []
+  },
+  {
+    "page": "brief.html",
+    "failures": []
+  },
+  {
+    "page": "hub.html",
+    "failures": []
+  },
+  {
+    "page": "proofs.html",
+    "failures": []
+  },
+  {
+    "page": "architecture.html",
+    "failures": []
+  },
+  {
+    "page": "progress.html",
+    "failures": []
+  }
+]
