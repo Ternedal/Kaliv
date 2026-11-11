@@ -51,7 +51,7 @@ try {
   for (const path of [...pages, 'project.json', 'llms.txt', 'sitemap.xml', 'robots.txt', 'site.webmanifest', 'service-worker.js'])
     check((await fetch(`${base}/${path}`)).status === 200, `Missing public file: ${path}`);
 
-  browser = await chromium.launch();
+  browser = await chromium.launch({ executablePath: process.env.CHROME_PATH });
   const context = await browser.newContext({ serviceWorkers: 'block' });
   const page = await context.newPage();
   const layout = [], accessibility = [], links = new Set();
@@ -115,11 +115,13 @@ try {
   await offlinePage.waitForFunction(() => navigator.serviceWorker.controller !== null);
   const cacheState = await offlinePage.evaluate(async () => {
     const names = await caches.keys();
-    const cache = await caches.open('kaliv-shell-v76');
+    const current = names.find(name => name.startsWith('kaliv-shell-') && name !== 'kaliv-shell-v75');
+    if (!current) throw new Error('Current service worker cache missing');
+    const cache = await caches.open(current);
     const entries = await Promise.all((await cache.keys()).map(async request => ({
       url: request.url, bytes: (await (await cache.match(request)).arrayBuffer()).byteLength,
     })));
-    return { names, entries, bytes: entries.reduce((sum, entry) => sum + entry.bytes, 0) };
+    return { names, current, entries, bytes: entries.reduce((sum, entry) => sum + entry.bytes, 0) };
   });
   check(!cacheState.names.includes('kaliv-shell-v75'), 'Old service worker cache remains');
   // Runtime requests can add hero images; measure the actual install list separately.
@@ -140,7 +142,7 @@ try {
   browser = null;
 
   // Mobile Lighthouse on both languages; reports retain individual audit results.
-  chrome = await launchChrome({ chromePath: chromium.executablePath(), chromeFlags: ['--headless=new', '--no-sandbox', '--disable-dev-shm-usage'] });
+  chrome = await launchChrome({ chromePath: process.env.CHROME_PATH, chromeFlags: ['--headless=new', '--no-sandbox', '--disable-dev-shm-usage'] });
   const scores = [];
   for (const name of pages) for (const lang of ['da', 'en']) {
     const { lhr } = await lighthouse(`${base}/${name}${lang === 'en' ? '?lang=en' : ''}`, {
