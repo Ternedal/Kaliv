@@ -8,7 +8,7 @@
   document.querySelector('.lang')?.setAttribute('aria-label','Choose language');
   document.querySelector('.hero-signal')?.setAttribute('aria-label','Current V1 status');
   document.querySelector('.metrics')?.setAttribute('aria-label','Public project key points');
-  document.querySelector('.repos')?.setAttribute('aria-label','Current repository heads');
+  document.querySelector('.repos')?.setAttribute('aria-label','Source repositories');
   document.querySelector('.gates')?.setAttribute('aria-label','Next proof for the four V1 gates');
   document.querySelector('.closing-aside img')?.setAttribute('alt','Kaliv’s futuristic ankh symbol');
   document.title = 'Kaliv — status';
