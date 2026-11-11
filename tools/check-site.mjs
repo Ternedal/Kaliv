@@ -53,11 +53,11 @@ try {
 
   browser = await chromium.launch({ executablePath: process.env.CHROME_PATH });
   const firstPaint = [];
-  // A slow language script must not allow a Danish first paint on an English URL.
-  for (let attempt = 0; attempt < 3; attempt++) {
+  // Slow language scripts must not allow a Danish first paint on any English URL.
+  for (const name of pages) for (let attempt = 0; attempt < 3; attempt++) {
     const paintContext = await browser.newContext({ serviceWorkers: 'block', viewport: { width: 390, height: 900 } });
     const paintPage = await paintContext.newPage();
-    await paintPage.route('**/home.js?*', async route => {
+    await paintPage.route('**/*.js*', async route => {
       await new Promise(done => setTimeout(done, 750));
       await route.continue();
     });
@@ -72,12 +72,12 @@ try {
           if (!entry.hadRecentInput) window.kalivPaintCheck.cls += entry.value;
       }).observe({ type: 'layout-shift', buffered: true });
     });
-    await paintPage.goto(`${base}/index.html?lang=en`, { waitUntil: 'networkidle' });
+    await paintPage.goto(`${base}/${name}?lang=en`, { waitUntil: 'networkidle' });
     await paintPage.waitForFunction(() => window.kalivPaintCheck.firstLanguage !== null);
     const result = await paintPage.evaluate(() => window.kalivPaintCheck);
-    firstPaint.push({ attempt, scriptDelayMs: 750, ...result });
-    check(result.firstLanguage === 'en', `Wrong first-paint language: ${result.firstLanguage}`);
-    check(result.cls === 0, `Language-script layout shift: ${result.cls}`);
+    firstPaint.push({ page: name, attempt, scriptDelayMs: 750, ...result });
+    check(result.firstLanguage === 'en', `Wrong first-paint language: ${name}/${result.firstLanguage}`);
+    check(result.cls === 0, `Language-script layout shift: ${name}/${result.cls}`);
     await paintContext.close();
   }
   await json('first-paint.json', firstPaint);
