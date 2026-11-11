@@ -8,35 +8,39 @@ Repoet er kun websitet. Produktets kode ligger i de repositories, der står unde
 
 ## Sider
 
-| Fil | Indhold |
+Siderne ligger som skabeloner i `templates/` og bygges til `_site/`:
+
+| Skabelon | Indhold |
 |---|---|
-| `index.html` | Forside |
-| `brief.html` | Projektbrief |
-| `hub.html` | KalivHub — Kaliv i hjemmet |
-| `architecture.html` | Systemarkitektur |
-| `proofs.html` | V1-bevisregister |
-| `progress.html` | Status |
-| `404.html` | Fejlside |
-| `offline.html` | Vises af service workeren uden forbindelse |
+| `templates/index.html` | Forside |
+| `templates/brief.html` | Projektbrief |
+| `templates/hub.html` | KalivHub — Kaliv i hjemmet |
+| `templates/architecture.html` | Systemarkitektur |
+| `templates/proofs.html` | V1-bevisregister |
+| `templates/progress.html` | Status |
+| `templates/404.html` | Fejlside |
+| `templates/offline.html` | Vises af service workeren uden forbindelse |
 
 ## Øvrige filer
 
 | Fil | Rolle |
 |---|---|
+| `project.json` | Statuskilden: release, gennemgangsdato, commits, bevisstatus og de fælles statusformuleringer (`site_copy`). Buildet skriver også det offentlige manifest herfra |
+| `templates/llms.txt`, `templates/sitemap.xml` | Tekstoversigt til sprogmodeller og sitemap, genereret fra statuskilden |
+| `templates/service-worker.js` | Cache og offline-side. Cache-navn og precache-liste genereres af buildet |
+| `templates/proofs.js` | Script til bevisregisteret, med værdier fra statuskilden |
 | `home.css`, `home.js` | Forsidens stylesheet og sprogskift |
 | `dossier.css`, `dossier.js` | Stylesheet og sprogskift for `brief.html` og `hub.html` |
-| `site-shell.css` | Fælles header og footer på de fem undersider |
-| `project.json` | Maskinlæsbart manifest: komponenter, status, bevisgrænser og kildesnapshot |
-| `llms.txt` | Samme oversigt i tekstform til sprogmodeller |
-| `sitemap.xml`, `robots.txt` | Indeksering |
-| `site.webmanifest` | Webapp-metadata og ikoner |
-| `service-worker.js` | Cache og offline-side |
+| `site-shell.css` | Fælles header og footer på undersiderne |
+| `architecture.js`, `progress.js` | Sprogskift for arkitektur- og statussiden |
+| `robots.txt`, `site.webmanifest`, `CNAME` | Indeksering, webapp-metadata og domæne |
 | `assets/` | Hero-billede i tre størrelser, Kaliv-ankh og ikoner |
-| `dist/` | En kopi af sitets filer. Ingen side bruger den; se [Publicering](#publicering) |
+| `tools/build.py` | Buildet. Kun Pythons standardbibliotek |
+| `tools/test_build.py` | Tests af statusgenerering og indholdshash |
+| `tools/check-site.mjs` | Kontrol af det byggede site i CI |
+| `docs/qa/issue-6/` | Målinger og skærmbilleder fra rettelserne i [issue #6](https://github.com/Ternedal/Kaliv/issues/6) |
 
-`architecture.html`, `progress.html` og `proofs.html` har deres sidespecifikke CSS og sprogskift inline i filen.
-
-Sitet har ingen build, ingen afhængigheder og ingen eksterne ressourcer.
+Sitet har ingen eksterne ressourcer, og buildet har ingen afhængigheder ud over Python 3. [`tools/README.md`](tools/README.md) beskriver markører og filtre i skabelonerne.
 
 ## Sprog
 
@@ -46,41 +50,31 @@ Når du ændrer en tekst, skal både elementets indhold (dansk) og `data-da`/`da
 
 ## Opdatering af status
 
-Statusoplysninger er skrevet i hånden flere steder og skal rettes samlet:
+Ret status ét sted: `project.json`. Release, gennemgangsdato, commit-snapshot og bevisstatus hentes derfra til alle sider, `llms.txt`, sitemap og JSON-LD, når sitet bygges. En ukendt markør i en skabelon stopper buildet.
 
-| Oplysning | Står i |
-|---|---|
-| Seneste release | `index.html`, `brief.html`, `proofs.html`, `architecture.html`, `progress.html`, `project.json`, `llms.txt` |
-| "Opdateret"-dato | Alle seks indholdssider (synlig tekst og `dateModified` i JSON-LD), `project.json`, `sitemap.xml` (`lastmod`) |
-| Commit-snapshot af de øvrige repositories | `progress.html`, `hub.html`, `project.json`, `llms.txt` |
-| Bevisstatus og kendte grænser | `proofs.html`, `progress.html`, `hub.html`, `project.json`, `llms.txt` |
+Hent version, datoer og commit-id'er fra GitHub, når du retter dem. Behold de historiske testdatoer, når kun gennemgangsdatoen ændres. Siden må ikke beskrive noget som bevist, før beviset findes.
 
-Hent version, datoer og commit-id'er fra GitHub, når du retter dem. Siden må ikke beskrive noget som bevist, før beviset findes.
+## Cache
 
-## Cache-versioner
+Der er ingen versionsnumre at vedligeholde. Buildet giver CSS, JavaScript, billeder og manifest en indholdshash i deres URL, og service workerens cache-navn følger det samlede output.
 
-Browsere og service workeren gemmer filerne. Når en cachet fil ændres, skal versionen hæves:
-
-- `?v=`-nummeret på `home.css`, `home.js` og `site-shell.css` i de HTML-filer, der henter dem.
-- `CACHE_NAME` i `service-worker.js`, og de samme `?v=`-numre i `CORE_ASSETS`.
-
-`dossier.css` og `dossier.js` hentes uden versionsnummer.
-
-## Lokal visning
+## Build og lokal visning
 
 ```bash
-python3 -m http.server 8000
+python3 tools/build.py
+python3 -m unittest discover -s tools -p test_build.py -v
+python3 -m http.server 8000 --directory _site
 ```
 
-Åbn `http://localhost:8000/`. Forsiden registrerer service workeren også på `localhost` (undersiderne gør det kun over HTTPS); ryd sitets data i browseren, hvis du ser en gammel version.
+Åbn `http://localhost:8000/`. `_site/` er genereret og committes ikke. Ryd sitets data i browseren, hvis du ser en gammel version; service workeren gemmer filerne.
 
 ## Publicering
 
-Hvert push til `main` kører `.github/workflows/pages.yml`, som publicerer til GitHub Pages på domænet i `CNAME` (kaliv.dk). Workflowet uploader hele repo-roden. Derfor ligger `README.md`, `LICENSE` og `dist/` også på kaliv.dk.
+Hvert push til `main` kører `.github/workflows/pages.yml`. Den bygger med `tools/build.py` og publicerer kun `_site/` til GitHub Pages på domænet i `CNAME` (kaliv.dk). Skabeloner, værktøjer og denne README publiceres ikke.
 
-Der er ingen automatisk kontrol af en pull request før merge. Åbn siderne lokalt ved mobil- og desktopbredde, og test begge sprog, før du merger.
+`.github/workflows/site-checks.yml` kører på hver pull request og på `main`: build og tests, markup, links, visning ved flere skærmbredder, tilgængelighed, cache og Lighthouse. Rapporterne ligger som artefakt på kørslen.
 
-Planen for at rette deploy, engelske sider og statusvedligeholdelse står i [issue #6](https://github.com/Ternedal/Kaliv/issues/6).
+Planen for sitet og det, der mangler, står i [issue #6](https://github.com/Ternedal/Kaliv/issues/6).
 
 ## Relaterede repositories
 
