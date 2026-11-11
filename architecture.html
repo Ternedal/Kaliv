@@ -50,7 +50,7 @@
     html { scroll-behavior:smooth; }
     body { margin:0; min-width:320px; overflow-x:clip; background:var(--paper); color:var(--ink); font:400 1rem/1.6 var(--sans); text-rendering:optimizeLegibility; }
     a { color:inherit; }
-    a:focus-visible,button:focus-visible { outline:2px solid var(--blue-light); outline-offset:4px; }
+    a:focus-visible,button:focus-visible,.matrix-shell:focus-visible { outline:2px solid var(--blue-light); outline-offset:4px; }
     h1,h2,h3,p { margin-top:0; }
     h1,h2,h3 { text-wrap:balance; }
     p { text-wrap:pretty; }
@@ -117,7 +117,7 @@
     .matrix th,.matrix td { padding:1.2rem 1rem; border-right:1px solid var(--line); border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
     .matrix tr:last-child th,.matrix tr:last-child td { border-bottom:0; }
     .matrix th:last-child,.matrix td:last-child { border-right:0; }
-    .matrix thead th { color:#697380; background:#eef1f5; font:700 .66rem var(--mono); letter-spacing:.07em; text-transform:uppercase; }
+    .matrix thead th { color:#646d7a; background:#eef1f5; font:700 .66rem var(--mono); letter-spacing:.07em; text-transform:uppercase; }
     .matrix tbody th { width:15%; font-size:1rem; }
     .matrix td { color:#4f5a68; font-size:.9rem; }
     .matrix .boundary { color:#7b3c33; background:#fff8f4; }
@@ -201,15 +201,15 @@
     }
     @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
   </style>
-  <link rel="stylesheet" href="site-shell.css?v=75" />
+  <link rel="stylesheet" href="site-shell.css?v=76" />
 </head>
 <body>
   <a class="skip" href="#content" data-da="Gå til indhold" data-en="Skip to content">Gå til indhold</a>
   <div class="topline" aria-hidden="true"></div>
   <header class="site-header">
-    <a class="brand" href="./" data-en-href="./?lang=en" aria-label="Kaliv — forsiden" data-en-aria-label="Kaliv — home"><span class="brand-mark">MR</span><span class="brand-copy"><strong>Kaliv</strong><small data-da="bygget på ModelRig" data-en="built on ModelRig">bygget på ModelRig</small></span></a>
+    <a class="brand" href="./" data-en-href="./?lang=en"><span class="brand-mark" aria-hidden="true">MR</span><span class="brand-copy"><strong>Kaliv</strong><small data-da="bygget på ModelRig" data-en="built on ModelRig">bygget på ModelRig</small></span></a>
     <span class="document-type" data-da="Systemarkitektur" data-en="System architecture">Systemarkitektur</span>
-    <nav class="header-actions" aria-label="Hovednavigation" data-en-aria-label="Main navigation"><a href="brief.html" data-en-href="brief.html?lang=en" data-da="Start her" data-en="Start here">Start her</a><a href="hub.html" data-en-href="hub.html?lang=en">KalivHub</a><a href="proofs.html" data-en-href="proofs.html?lang=en" data-da="V1-beviser" data-en="V1 proofs">V1-beviser</a><a href="progress.html" data-en-href="progress.html?lang=en" data-da="Status" data-en="Status">Status</a><span class="lang" aria-label="Vælg sprog" data-en-aria-label="Choose language"><a href="architecture.html" data-language="da" class="is-current" aria-current="page">DA</a><a href="architecture.html?lang=en" data-language="en">EN</a></span></nav>
+    <nav class="header-actions" aria-label="Hovednavigation" data-en-aria-label="Main navigation"><a href="brief.html" data-en-href="brief.html?lang=en" data-da="Start her" data-en="Start here">Start her</a><a href="hub.html" data-en-href="hub.html?lang=en">KalivHub</a><a href="proofs.html" data-en-href="proofs.html?lang=en" data-da="V1-beviser" data-en="V1 proofs">V1-beviser</a><a href="progress.html" data-en-href="progress.html?lang=en" data-da="Status" data-en="Status">Status</a><span class="lang" role="group" aria-label="Vælg sprog" data-en-aria-label="Choose language"><a href="architecture.html" data-language="da" class="is-current" aria-current="page">DA</a><a href="architecture.html?lang=en" data-language="en">EN</a></span></nav>
   </header>
 
   <main id="content">
@@ -243,7 +243,7 @@
 
     <section class="section" aria-labelledby="matrix-title">
       <div class="section-head"><span class="section-label" data-da="02 / Ansvarsgrænser" data-en="02 / Responsibility boundaries">02 / Ansvarsgrænser</span><div><h2 id="matrix-title" data-da="Ejerskab skal kunne aflæses." data-en="Ownership must be legible.">Ejerskab skal kunne aflæses.</h2><p data-da="Tabellen beskriver den offentlige arkitekturgrænse. Implementeringen kan udvikle sig, men ejerskabet må ikke flyde sammen." data-en="The table describes the public architecture boundary. Implementation may evolve, but ownership must not blur.">Tabellen beskriver den offentlige arkitekturgrænse. Implementeringen kan udvikle sig, men ejerskabet må ikke flyde sammen.</p></div></div>
-      <div class="matrix-shell"><table class="matrix"><thead><tr><th data-da="Komponent" data-en="Component">Komponent</th><th data-da="Ejer" data-en="Owns">Ejer</th><th data-da="Modtager" data-en="Accepts">Modtager</th><th data-da="Må aldrig eje" data-en="Must never own">Må aldrig eje</th></tr></thead><tbody>
+      <div class="matrix-shell" tabindex="0" role="region" aria-labelledby="matrix-title"><table class="matrix"><thead><tr><th scope="col" data-da="Komponent" data-en="Component">Komponent</th><th scope="col" data-da="Ejer" data-en="Owns">Ejer</th><th scope="col" data-da="Modtager" data-en="Accepts">Modtager</th><th scope="col" data-da="Må aldrig eje" data-en="Must never own">Må aldrig eje</th></tr></thead><tbody>
         <tr><th scope="row">VisionRig</th><td data-da="Visuel perception og sensorstatus" data-en="Visual perception and sensor health">Visuel perception og sensorstatus</td><td data-da="Kamera, Kinect og adaptere" data-en="Camera, Kinect and adapters">Kamera, Kinect og adaptere</td><td class="boundary" data-da="Identitet eller varig betydning" data-en="Identity or lasting meaning">Identitet eller varig betydning</td></tr>
         <tr><th scope="row">Memory 4</th><td data-da="Dokumenteret autobiografisk genkaldelse" data-en="Documented autobiographical recall">Dokumenteret autobiografisk genkaldelse</td><td data-da="Godkendte minder og retrieval-signaler" data-en="Admitted memories and retrieval signals">Godkendte minder og retrieval-signaler</td><td class="boundary" data-da="Policy eller fri eksekvering" data-en="Policy or free execution">Policy eller fri eksekvering</td></tr>
         <tr><th scope="row">Consciousness Core</th><td data-da="SelfState, WorldState, tid og kontinuitet" data-en="SelfState, WorldState, time and continuity">SelfState, WorldState, tid og kontinuitet</td><td data-da="Godkendt evidens og relevant hukommelse" data-en="Admitted evidence and relevant memory">Godkendt evidens og relevant hukommelse</td><td class="boundary" data-da="Uautoriserede eksterne writes" data-en="Unauthorized external writes">Uautoriserede eksterne writes</td></tr>
@@ -302,7 +302,6 @@
       document.querySelectorAll('[data-en-href]').forEach(node => { node.href = node.dataset.enHref; });
       document.querySelectorAll('[data-language]').forEach(link => { const current = link.dataset.language === 'en'; link.classList.toggle('is-current',current); if (current) link.setAttribute('aria-current','page'); else link.removeAttribute('aria-current'); });
       document.querySelector('.lang')?.setAttribute('aria-label','Choose language');
-      document.querySelector('.brand')?.setAttribute('aria-label','Back to ModelRig');
       document.querySelector('.hero-map')?.setAttribute('aria-label','ModelRig layered system architecture');
       document.querySelector('.signal-band')?.setAttribute('aria-label','Four architecture properties');
       document.querySelector('.closing-aside img')?.setAttribute('alt','Kaliv’s futuristic ankh symbol');

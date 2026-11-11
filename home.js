@@ -44,7 +44,8 @@
   });
 
   document.querySelectorAll('[data-lang]').forEach((anchor) => {
-    anchor.toggleAttribute('aria-current', anchor.dataset.lang === lang);
+    if (anchor.dataset.lang === lang) anchor.setAttribute('aria-current', 'page');
+    else anchor.removeAttribute('aria-current');
   });
 
   if ('serviceWorker' in navigator) {

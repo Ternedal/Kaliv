@@ -1,0 +1,48 @@
+name: Site checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-checks-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24'
+      - name: Stage public files
+        run: python3 tools/build.py
+      - name: Install isolated QA tools
+        run: >-
+          npm install --prefix "$RUNNER_TEMP/kaliv-qa" --no-save --package-lock=false
+          --ignore-scripts playwright@1.65.0 @axe-core/playwright@4.14.0
+          lighthouse@13.6.0 html-validate@11.21.0
+      - name: Locate runner Chrome
+        run: |
+          kaliv_chrome_path="$(command -v google-chrome)"
+          test -n "$kaliv_chrome_path"
+          echo "CHROME_PATH=$kaliv_chrome_path" >> "$GITHUB_ENV"
+      - name: Check markup, links, viewports, accessibility, cache and Lighthouse
+        env:
+          QA_TOOLS: ${{ runner.temp }}/kaliv-qa
+          QA_REPORTS: ${{ runner.temp }}/kaliv-reports
+        run: node tools/check-site.mjs
+      - name: Upload QA reports
+        if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: kaliv-site-checks
+          path: ${{ runner.temp }}/kaliv-reports
+          if-no-files-found: ignore

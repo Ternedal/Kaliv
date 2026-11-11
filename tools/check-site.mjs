@@ -1,0 +1,172 @@
+// Development tools are installed in the CI runner's temporary directory.
+// The site and its Python build have no npm dependencies.
+import assert from 'node:assert/strict';
+import { createServer } from 'node:http';
+import { readFile, mkdir, writeFile } from 'node:fs/promises';
+import { createRequire } from 'node:module';
+import { resolve, extname } from 'node:path';
+import { pathToFileURL } from 'node:url';
+
+const requireQA = createRequire(resolve(process.env.QA_TOOLS, 'package.json'));
+const { chromium } = requireQA('playwright');
+const { default: AxeBuilder } = requireQA('@axe-core/playwright');
+const { HtmlValidate } = requireQA('html-validate');
+const { default: lighthouse } = await import(pathToFileURL(requireQA.resolve('lighthouse')));
+const { launch: launchChrome } = requireQA('chrome-launcher');
+const root = resolve('_site');
+const reports = resolve(process.env.QA_REPORTS);
+await mkdir(reports, { recursive: true });
+const pages = ['index.html', 'brief.html', 'hub.html', 'proofs.html', 'architecture.html', 'progress.html'];
+const errors = [];
+const check = (ok, message) => { if (!ok) errors.push(message); };
+const json = (name, data) => writeFile(resolve(reports, name), JSON.stringify(data, null, 2));
+const types = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.json': 'application/json', '.webmanifest': 'application/manifest+json', '.png': 'image/png', '.webp': 'image/webp' };
+const server = createServer(async (req, res) => {
+  try {
+    const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
+    const file = resolve(root, '.' + (pathname === '/' ? '/index.html' : pathname));
+    if (!file.startsWith(root + '/')) throw new Error('Outside public site');
+    const body = await readFile(file);
+    res.writeHead(200, { 'Content-Type': `${types[extname(file)] || 'text/plain'}; charset=utf-8`, 'Cache-Control': 'no-store' });
+    res.end(body);
+  } catch {
+    res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end(await readFile(resolve(root, '404.html')));
+  }
+});
+await new Promise(done => server.listen(0, '127.0.0.1', done));
+const base = `http://127.0.0.1:${server.address().port}`;
+let browser, chrome;
+try {
+  const validator = new HtmlValidate({ extends: [], rules: { 'wcag/h63': 'error', 'aria-label-misuse': 'error' } });
+  const markup = [];
+  for (const page of [...pages, '404.html', 'offline.html']) {
+    const report = await validator.validateString(await readFile(resolve(root, page), 'utf8'), page);
+    markup.push({ page, valid: report.valid, results: report.results });
+    check(report.valid, `Markup: ${page}`);
+  }
+  await json('markup.json', markup);
+  for (const path of ['/README.md', '/LICENSE', '/dist/', '/tools/build.py'])
+    check((await fetch(base + path)).status === 404, `Unexpected publication: ${path}`);
+  for (const path of [...pages, 'project.json', 'llms.txt', 'sitemap.xml', 'robots.txt', 'site.webmanifest', 'service-worker.js'])
+    check((await fetch(`${base}/${path}`)).status === 200, `Missing public file: ${path}`);
+
+  browser = await chromium.launch({ executablePath: process.env.CHROME_PATH });
+  const context = await browser.newContext({ serviceWorkers: 'block' });
+  const page = await context.newPage();
+  const layout = [], accessibility = [], links = new Set();
+  for (const width of [320, 360, 390, 768, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    for (const name of pages) for (const lang of ['da', 'en']) {
+      const url = `${base}/${name}${lang === 'en' ? '?lang=en' : ''}`;
+      await page.goto(url, { waitUntil: 'networkidle' });
+      const result = await page.evaluate(() => {
+        const rect = e => { const r = e.getBoundingClientRect(); return { x: r.x, width: r.width, height: r.height }; };
+        return {
+          language: document.documentElement.lang,
+          width: document.documentElement.clientWidth,
+          scrollWidth: document.documentElement.scrollWidth,
+          languageLinks: [...document.querySelectorAll('.language a, .lang a')]
+            .map(e => ({ ...rect(e), current: e.getAttribute('aria-current') })),
+          footerLinks: [...document.querySelectorAll('footer a')].map(rect),
+          localLinks: [...document.querySelectorAll('a[href], link[href], img[src], script[src]')]
+            .map(e => e.href || e.src).filter(href => href && new URL(href).origin === location.origin),
+        };
+      });
+      layout.push({ page: name, lang, viewport: width, ...result });
+      check(result.language === lang, `Wrong language: ${name}/${lang}`);
+      check(result.scrollWidth === result.width, `Overflow: ${name}/${lang}/${width}: ${result.scrollWidth}`);
+      check(result.languageLinks.length === 2, `Missing language links: ${name}/${lang}`);
+      check(result.languageLinks.filter(link => link.current === 'page').length === 1, `Current language: ${name}/${lang}`);
+      for (const r of result.languageLinks)
+        check(r.width >= 24 && r.height >= 24 && r.x >= 0 && r.x + r.width <= result.width + 0.5, `Language target: ${name}/${lang}/${width}`);
+      for (const r of result.footerLinks)
+        check(r.height >= 24, `Footer target: ${name}/${lang}/${width}`);
+      result.localLinks.forEach(link => links.add(link.split('#')[0]));
+      if (width === 390) {
+        const audit = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa']).analyze();
+        accessibility.push({ page: name, lang, violations: audit.violations, incomplete: audit.incomplete });
+        check(audit.violations.length === 0, `Axe: ${name}/${lang}: ${audit.violations.map(v => v.id).join(', ')}`);
+        if (lang === 'da') await page.screenshot({ path: resolve(reports, `${name}-390.png`) });
+      }
+    }
+  }
+  await json('layout.json', layout);
+  await json('accessibility.json', accessibility);
+  for (const link of links) check((await fetch(link)).status === 200, `Broken local link: ${link}`);
+  await json('links.json', [...links]);
+  // Click the mobile EN control, so a visible rectangle alone cannot pass.
+  for (const name of pages) {
+    await page.setViewportSize({ width: 320, height: 900 });
+    await page.goto(`${base}/${name}`);
+    await page.locator('.language a, .lang a').filter({ hasText: 'EN' }).click();
+    await page.waitForFunction(() => document.documentElement.lang === 'en');
+  }
+  await context.close();
+
+  // Simulate an existing v75 cache, then install the new worker at the same URL.
+  const offline = await browser.newContext();
+  const offlinePage = await offline.newPage();
+  await offlinePage.goto(`${base}/offline.html`);
+  await offlinePage.evaluate(async () => {
+    const old = await caches.open('kaliv-shell-v75');
+    await old.put('/home.css?v=72', new Response('/* stale v75 asset */'));
+  });
+  await offlinePage.goto(base + '/');
+  await offlinePage.evaluate(() => navigator.serviceWorker.ready);
+  await offlinePage.waitForFunction(() => navigator.serviceWorker.controller !== null);
+  const cacheState = await offlinePage.evaluate(async () => {
+    const names = await caches.keys();
+    const current = names.find(name => name.startsWith('kaliv-shell-') && name !== 'kaliv-shell-v75');
+    if (!current) throw new Error('Current service worker cache missing');
+    const cache = await caches.open(current);
+    const entries = await Promise.all((await cache.keys()).map(async request => ({
+      url: request.url, bytes: (await (await cache.match(request)).arrayBuffer()).byteLength,
+    })));
+    return { names, current, entries, bytes: entries.reduce((sum, entry) => sum + entry.bytes, 0) };
+  });
+  check(!cacheState.names.includes('kaliv-shell-v75'), 'Old service worker cache remains');
+  // Runtime requests can add hero images; measure the actual install list separately.
+  const workerSource = await readFile(resolve(root, 'service-worker.js'), 'utf8');
+  const coreAssets = [...workerSource.split('const CORE_ASSETS = [')[1].split('];')[0].matchAll(/'([^']+)'/g)].map(m => m[1]);
+  let coreBytes = 0;
+  for (const asset of coreAssets) coreBytes += (await (await fetch(new URL(asset, base + '/'))).arrayBuffer()).byteLength;
+  check(coreBytes < 600 * 1024, `Precache over budget: ${coreBytes}`);
+  await offline.setOffline(true);
+  await offlinePage.goto(`${base}/hub.html?lang=en`);
+  await offlinePage.waitForFunction(() => document.documentElement.lang === 'en');
+  check((await offlinePage.locator('h1').textContent()).includes('Kaliv'), 'Offline English page failed');
+  await offlinePage.goto(`${base}/unvisited-route`);
+  check((await offlinePage.title()).toLowerCase().includes('offline'), 'Offline fallback failed');
+  await json('service-worker.json', { ...cacheState, coreAssets, coreBytes, offlineEnglish: true, offlineFallback: true });
+  await offline.close();
+  await browser.close();
+  browser = null;
+
+  // Mobile Lighthouse on both languages; reports retain individual audit results.
+  chrome = await launchChrome({ chromePath: process.env.CHROME_PATH, chromeFlags: ['--headless=new', '--no-sandbox', '--disable-dev-shm-usage'] });
+  const scores = [];
+  for (const name of pages) for (const lang of ['da', 'en']) {
+    const { lhr } = await lighthouse(`${base}/${name}${lang === 'en' ? '?lang=en' : ''}`, {
+      port: chrome.port, onlyCategories: ['performance', 'accessibility', 'best-practices'], logLevel: 'error',
+    });
+    const summary = { page: name, lang, performance: lhr.categories.performance.score, accessibility: lhr.categories.accessibility.score, cls: lhr.audits['cumulative-layout-shift'].numericValue };
+    scores.push(summary);
+    await json(`lighthouse-${name}-${lang}.json`, lhr);
+    check(summary.performance >= 0.95, `Lighthouse performance: ${name}/${lang}: ${summary.performance}`);
+    check(summary.accessibility >= 0.98, `Lighthouse accessibility: ${name}/${lang}: ${summary.accessibility}`);
+    check(summary.cls === 0, `Layout shift: ${name}/${lang}: ${summary.cls}`);
+    for (const id of ['color-contrast', 'image-aspect-ratio', 'label-content-name-mismatch']) {
+      const audit = lhr.audits[id];
+      check(audit && (audit.score === 1 || audit.scoreDisplayMode === 'notApplicable'), `Lighthouse audit: ${name}/${lang}/${id}`);
+    }
+  }
+  await json('lighthouse-summary.json', scores);
+  await json('summary.json', { layoutCases: layout.length, localLinks: links.size, errors });
+  console.log(JSON.stringify({ layoutCases: layout.length, localLinks: links.size, lighthouse: scores, errors }, null, 2));
+  assert.equal(errors.length, 0, errors.join('\n'));
+} finally {
+  if (browser) await browser.close();
+  if (chrome) await chrome.kill();
+  await new Promise(done => server.close(done));
+}

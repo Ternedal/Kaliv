@@ -1,0 +1,1442 @@
+[
+  {
+    "page": "index.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 320,
+    "clientWidth": 320,
+    "scrollWidth": 320,
+    "language": [
+      {
+        "height": 28,
+        "text": "DA",
+        "width": 24,
+        "x": 167.890625,
+        "y": 25.375
+      },
+      {
+        "height": 28,
+        "text": "EN",
+        "width": 24,
+        "x": 209.609375,
+        "y": 25.375
+      }
+    ]
+  },
+  {
+    "page": "index.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 320,
+    "clientWidth": 320,
+    "scrollWidth": 320,
+    "language": [
+      {
+        "height": 28,
+        "text": "DA",
+        "width": 24,
+        "x": 167.890625,
+        "y": 25.375
+      },
+      {
+        "height": 28,
+        "text": "EN",
+        "width": 24,
+        "x": 209.609375,
+        "y": 25.375
+      }
+    ]
+  },
+  {
+    "page": "brief.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 320,
+    "clientWidth": 320,
+    "scrollWidth": 320,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 247.6875,
+        "y": 105.953125
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 278.40625,
+        "y": 105.953125
+      }
+    ]
+  },
+  {
+    "page": "brief.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 320,
+    "clientWidth": 320,
+    "scrollWidth": 320,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 247.6875,
+        "y": 105.953125
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 278.40625,
+        "y": 105.953125
+      }
+    ]
+  },
+  {
+    "page": "hub.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 320,
+    "clientWidth": 320,
+    "scrollWidth": 320,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 247.6875,
+        "y": 105.953125
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 278.40625,
+        "y": 105.953125
+      }
+    ]
+  },
+  {
+    "page": "hub.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 320,
+    "clientWidth": 320,
+    "scrollWidth": 320,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 247.6875,
+        "y": 105.953125
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 278.40625,
+        "y": 105.953125
+      }
+    ]
+  },
+  {
+    "page": "proofs.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 320,
+    "clientWidth": 320,
+    "scrollWidth": 320,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 247.6875,
+        "y": 105.953125
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 278.40625,
+        "y": 105.953125
+      }
+    ]
+  },
+  {
+    "page": "proofs.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 320,
+    "clientWidth": 320,
+    "scrollWidth": 320,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 247.6875,
+        "y": 105.953125
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 278.40625,
+        "y": 105.953125
+      }
+    ]
+  },
+  {
+    "page": "architecture.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 320,
+    "clientWidth": 320,
+    "scrollWidth": 320,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 247.6875,
+        "y": 105.953125
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 278.40625,
+        "y": 105.953125
+      }
+    ]
+  },
+  {
+    "page": "architecture.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 320,
+    "clientWidth": 320,
+    "scrollWidth": 320,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 247.6875,
+        "y": 105.953125
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 278.40625,
+        "y": 105.953125
+      }
+    ]
+  },
+  {
+    "page": "progress.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 320,
+    "clientWidth": 320,
+    "scrollWidth": 320,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 247.6875,
+        "y": 105.953125
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 278.40625,
+        "y": 105.953125
+      }
+    ]
+  },
+  {
+    "page": "progress.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 320,
+    "clientWidth": 320,
+    "scrollWidth": 320,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 247.6875,
+        "y": 105.953125
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 278.40625,
+        "y": 105.953125
+      }
+    ]
+  },
+  {
+    "page": "index.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 360,
+    "clientWidth": 360,
+    "scrollWidth": 360,
+    "language": [
+      {
+        "height": 28,
+        "text": "DA",
+        "width": 24,
+        "x": 207.890625,
+        "y": 25.375
+      },
+      {
+        "height": 28,
+        "text": "EN",
+        "width": 24,
+        "x": 249.609375,
+        "y": 25.375
+      }
+    ]
+  },
+  {
+    "page": "index.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 360,
+    "clientWidth": 360,
+    "scrollWidth": 360,
+    "language": [
+      {
+        "height": 28,
+        "text": "DA",
+        "width": 24,
+        "x": 207.890625,
+        "y": 25.375
+      },
+      {
+        "height": 28,
+        "text": "EN",
+        "width": 24,
+        "x": 249.609375,
+        "y": 25.375
+      }
+    ]
+  },
+  {
+    "page": "brief.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 360,
+    "clientWidth": 360,
+    "scrollWidth": 360,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 287.6875,
+        "y": 104.765625
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 318.40625,
+        "y": 104.765625
+      }
+    ]
+  },
+  {
+    "page": "brief.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 360,
+    "clientWidth": 360,
+    "scrollWidth": 360,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 287.6875,
+        "y": 104.765625
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 318.40625,
+        "y": 104.765625
+      }
+    ]
+  },
+  {
+    "page": "hub.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 360,
+    "clientWidth": 360,
+    "scrollWidth": 360,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 287.6875,
+        "y": 104.765625
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 318.40625,
+        "y": 104.765625
+      }
+    ]
+  },
+  {
+    "page": "hub.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 360,
+    "clientWidth": 360,
+    "scrollWidth": 360,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 287.6875,
+        "y": 104.765625
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 318.40625,
+        "y": 104.765625
+      }
+    ]
+  },
+  {
+    "page": "proofs.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 360,
+    "clientWidth": 360,
+    "scrollWidth": 360,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 287.6875,
+        "y": 104.765625
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 318.40625,
+        "y": 104.765625
+      }
+    ]
+  },
+  {
+    "page": "proofs.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 360,
+    "clientWidth": 360,
+    "scrollWidth": 360,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 287.6875,
+        "y": 104.765625
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 318.40625,
+        "y": 104.765625
+      }
+    ]
+  },
+  {
+    "page": "architecture.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 360,
+    "clientWidth": 360,
+    "scrollWidth": 360,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 287.6875,
+        "y": 104.765625
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 318.40625,
+        "y": 104.765625
+      }
+    ]
+  },
+  {
+    "page": "architecture.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 360,
+    "clientWidth": 360,
+    "scrollWidth": 360,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 287.6875,
+        "y": 104.765625
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 318.40625,
+        "y": 104.765625
+      }
+    ]
+  },
+  {
+    "page": "progress.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 360,
+    "clientWidth": 360,
+    "scrollWidth": 360,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 287.6875,
+        "y": 104.765625
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 318.40625,
+        "y": 104.765625
+      }
+    ]
+  },
+  {
+    "page": "progress.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 360,
+    "clientWidth": 360,
+    "scrollWidth": 360,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 287.6875,
+        "y": 104.765625
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 318.40625,
+        "y": 104.765625
+      }
+    ]
+  },
+  {
+    "page": "index.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 390,
+    "clientWidth": 390,
+    "scrollWidth": 390,
+    "language": [
+      {
+        "height": 28,
+        "text": "DA",
+        "width": 24,
+        "x": 237.890625,
+        "y": 25.375
+      },
+      {
+        "height": 28,
+        "text": "EN",
+        "width": 24,
+        "x": 279.609375,
+        "y": 25.375
+      }
+    ]
+  },
+  {
+    "page": "index.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 390,
+    "clientWidth": 390,
+    "scrollWidth": 390,
+    "language": [
+      {
+        "height": 28,
+        "text": "DA",
+        "width": 24,
+        "x": 237.890625,
+        "y": 25.375
+      },
+      {
+        "height": 28,
+        "text": "EN",
+        "width": 24,
+        "x": 279.609375,
+        "y": 25.375
+      }
+    ]
+  },
+  {
+    "page": "brief.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 390,
+    "clientWidth": 390,
+    "scrollWidth": 390,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 317.6875,
+        "y": 104.765625
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 348.40625,
+        "y": 104.765625
+      }
+    ]
+  },
+  {
+    "page": "brief.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 390,
+    "clientWidth": 390,
+    "scrollWidth": 390,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 317.6875,
+        "y": 104.765625
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 348.40625,
+        "y": 104.765625
+      }
+    ]
+  },
+  {
+    "page": "hub.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 390,
+    "clientWidth": 390,
+    "scrollWidth": 390,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 317.6875,
+        "y": 104.765625
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 348.40625,
+        "y": 104.765625
+      }
+    ]
+  },
+  {
+    "page": "hub.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 390,
+    "clientWidth": 390,
+    "scrollWidth": 390,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 317.6875,
+        "y": 104.765625
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 348.40625,
+        "y": 104.765625
+      }
+    ]
+  },
+  {
+    "page": "proofs.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 390,
+    "clientWidth": 390,
+    "scrollWidth": 390,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 317.6875,
+        "y": 104.765625
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 348.40625,
+        "y": 104.765625
+      }
+    ]
+  },
+  {
+    "page": "proofs.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 390,
+    "clientWidth": 390,
+    "scrollWidth": 390,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 317.6875,
+        "y": 104.765625
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 348.40625,
+        "y": 104.765625
+      }
+    ]
+  },
+  {
+    "page": "architecture.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 390,
+    "clientWidth": 390,
+    "scrollWidth": 390,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 317.6875,
+        "y": 104.765625
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 348.40625,
+        "y": 104.765625
+      }
+    ]
+  },
+  {
+    "page": "architecture.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 390,
+    "clientWidth": 390,
+    "scrollWidth": 390,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 317.6875,
+        "y": 104.765625
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 348.40625,
+        "y": 104.765625
+      }
+    ]
+  },
+  {
+    "page": "progress.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 390,
+    "clientWidth": 390,
+    "scrollWidth": 390,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 317.6875,
+        "y": 104.765625
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 348.40625,
+        "y": 104.765625
+      }
+    ]
+  },
+  {
+    "page": "progress.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 390,
+    "clientWidth": 390,
+    "scrollWidth": 390,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 317.6875,
+        "y": 104.765625
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 348.40625,
+        "y": 104.765625
+      }
+    ]
+  },
+  {
+    "page": "index.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 768,
+    "clientWidth": 768,
+    "scrollWidth": 768,
+    "language": [
+      {
+        "height": 28,
+        "text": "DA",
+        "width": 24,
+        "x": 615.890625,
+        "y": 25.375
+      },
+      {
+        "height": 28,
+        "text": "EN",
+        "width": 24,
+        "x": 657.609375,
+        "y": 25.375
+      }
+    ]
+  },
+  {
+    "page": "index.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 768,
+    "clientWidth": 768,
+    "scrollWidth": 768,
+    "language": [
+      {
+        "height": 28,
+        "text": "DA",
+        "width": 24,
+        "x": 615.890625,
+        "y": 25.375
+      },
+      {
+        "height": 28,
+        "text": "EN",
+        "width": 24,
+        "x": 657.609375,
+        "y": 25.375
+      }
+    ]
+  },
+  {
+    "page": "brief.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 768,
+    "clientWidth": 768,
+    "scrollWidth": 768,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 406.109375,
+        "y": 64.578125
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 436.828125,
+        "y": 64.578125
+      }
+    ]
+  },
+  {
+    "page": "brief.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 768,
+    "clientWidth": 768,
+    "scrollWidth": 768,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 406.109375,
+        "y": 64.578125
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 436.828125,
+        "y": 64.578125
+      }
+    ]
+  },
+  {
+    "page": "hub.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 768,
+    "clientWidth": 768,
+    "scrollWidth": 768,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 406.109375,
+        "y": 64.578125
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 436.828125,
+        "y": 64.578125
+      }
+    ]
+  },
+  {
+    "page": "hub.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 768,
+    "clientWidth": 768,
+    "scrollWidth": 768,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 406.109375,
+        "y": 64.578125
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 436.828125,
+        "y": 64.578125
+      }
+    ]
+  },
+  {
+    "page": "proofs.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 768,
+    "clientWidth": 768,
+    "scrollWidth": 768,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 406.109375,
+        "y": 64.578125
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 436.828125,
+        "y": 64.578125
+      }
+    ]
+  },
+  {
+    "page": "proofs.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 768,
+    "clientWidth": 768,
+    "scrollWidth": 768,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 406.109375,
+        "y": 64.578125
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 436.828125,
+        "y": 64.578125
+      }
+    ]
+  },
+  {
+    "page": "architecture.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 768,
+    "clientWidth": 768,
+    "scrollWidth": 768,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 406.109375,
+        "y": 64.578125
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 436.828125,
+        "y": 64.578125
+      }
+    ]
+  },
+  {
+    "page": "architecture.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 768,
+    "clientWidth": 768,
+    "scrollWidth": 768,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 406.109375,
+        "y": 64.578125
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 436.828125,
+        "y": 64.578125
+      }
+    ]
+  },
+  {
+    "page": "progress.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 768,
+    "clientWidth": 768,
+    "scrollWidth": 768,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 406.109375,
+        "y": 64.578125
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 436.828125,
+        "y": 64.578125
+      }
+    ]
+  },
+  {
+    "page": "progress.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 768,
+    "clientWidth": 768,
+    "scrollWidth": 768,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 406.109375,
+        "y": 64.578125
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 436.828125,
+        "y": 64.578125
+      }
+    ]
+  },
+  {
+    "page": "index.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 1440,
+    "clientWidth": 1440,
+    "scrollWidth": 1440,
+    "language": [
+      {
+        "height": 28,
+        "text": "DA",
+        "width": 24,
+        "x": 1244.6875,
+        "y": 33.5
+      },
+      {
+        "height": 28,
+        "text": "EN",
+        "width": 24,
+        "x": 1286.40625,
+        "y": 33.5
+      }
+    ]
+  },
+  {
+    "page": "index.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 1440,
+    "clientWidth": 1440,
+    "scrollWidth": 1440,
+    "language": [
+      {
+        "height": 28,
+        "text": "DA",
+        "width": 24,
+        "x": 1244.6875,
+        "y": 33.5
+      },
+      {
+        "height": 28,
+        "text": "EN",
+        "width": 24,
+        "x": 1286.40625,
+        "y": 33.5
+      }
+    ]
+  },
+  {
+    "page": "brief.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 1440,
+    "clientWidth": 1440,
+    "scrollWidth": 1440,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 1344.28125,
+        "y": 33.5
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 1375,
+        "y": 33.5
+      }
+    ]
+  },
+  {
+    "page": "brief.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 1440,
+    "clientWidth": 1440,
+    "scrollWidth": 1440,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 1344.28125,
+        "y": 33.5
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 1375,
+        "y": 33.5
+      }
+    ]
+  },
+  {
+    "page": "hub.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 1440,
+    "clientWidth": 1440,
+    "scrollWidth": 1440,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 1344.28125,
+        "y": 33.5
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 1375,
+        "y": 33.5
+      }
+    ]
+  },
+  {
+    "page": "hub.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 1440,
+    "clientWidth": 1440,
+    "scrollWidth": 1440,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 1344.28125,
+        "y": 33.5
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 1375,
+        "y": 33.5
+      }
+    ]
+  },
+  {
+    "page": "proofs.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 1440,
+    "clientWidth": 1440,
+    "scrollWidth": 1440,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 1344.28125,
+        "y": 33.5
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 1375,
+        "y": 33.5
+      }
+    ]
+  },
+  {
+    "page": "proofs.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 1440,
+    "clientWidth": 1440,
+    "scrollWidth": 1440,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 1344.28125,
+        "y": 33.5
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 1375,
+        "y": 33.5
+      }
+    ]
+  },
+  {
+    "page": "architecture.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 1440,
+    "clientWidth": 1440,
+    "scrollWidth": 1440,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 1344.28125,
+        "y": 33.5
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 1375,
+        "y": 33.5
+      }
+    ]
+  },
+  {
+    "page": "architecture.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 1440,
+    "clientWidth": 1440,
+    "scrollWidth": 1440,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 1344.28125,
+        "y": 33.5
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 1375,
+        "y": 33.5
+      }
+    ]
+  },
+  {
+    "page": "progress.html",
+    "requestedLang": "da",
+    "lang": "da",
+    "width": 1440,
+    "clientWidth": 1440,
+    "scrollWidth": 1440,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 1344.28125,
+        "y": 33.5
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 1375,
+        "y": 33.5
+      }
+    ]
+  },
+  {
+    "page": "progress.html",
+    "requestedLang": "en",
+    "lang": "en",
+    "width": 1440,
+    "clientWidth": 1440,
+    "scrollWidth": 1440,
+    "language": [
+      {
+        "height": 24,
+        "text": "DA",
+        "width": 24,
+        "x": 1344.28125,
+        "y": 33.5
+      },
+      {
+        "height": 24,
+        "text": "EN",
+        "width": 24,
+        "x": 1375,
+        "y": 33.5
+      }
+    ]
+  }
+]

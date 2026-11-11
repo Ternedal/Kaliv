@@ -101,9 +101,37 @@
 }
 
 .site-header .lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
   margin-left: 0.25rem;
   padding-left: 1rem;
   border-left: 1px solid var(--shell-line);
+}
+
+.site-header .lang a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  min-height: 24px;
+}
+
+/* Let long headings and nested grids shrink within the viewport. */
+.hero > *, .hero-copy > *, .section-head > *, .proof > * {
+  min-width: 0;
+}
+
+h1, h2, h3 {
+  overflow-wrap: anywhere;
+}
+
+.section:not(.dark) .section-label {
+  color: #205fff;
+}
+
+.cta .micro, .closing .micro, .rule .micro {
+  color: #e4ecff;
 }
 
 .site-footer {
@@ -123,6 +151,10 @@
 }
 
 .site-footer .footer-brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  gap: 0.25rem;
   color: #fff;
   font-size: 1.05rem;
   font-weight: 800;
@@ -150,6 +182,9 @@
 }
 
 .site-footer nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
   color: #b8bbc2;
   font-family: var(--mono, ui-monospace, monospace);
   font-size: 0.68rem;
@@ -244,10 +279,10 @@ details.technical-detail[open] .technical-summary strong::after {
     position: relative;
     top: auto;
     display: flex;
+    width: 100%;
     min-height: 0;
     margin: 0;
     padding: 1.25rem 1.1rem 0;
-    overflow: hidden;
     border-right: 0;
     border-left: 0;
   }
@@ -265,9 +300,11 @@ details.technical-detail[open] .technical-summary strong::after {
   .site-header .header-actions {
     display: flex;
     flex: 1 1 auto;
-    gap: 1rem;
+    flex-wrap: wrap;
+    min-width: 0;
+    gap: 0.5rem 1rem;
     padding: 0 0 1rem 0.6rem;
-    overflow-x: auto;
+    overflow: visible;
     scrollbar-width: none;
   }
 
@@ -276,6 +313,7 @@ details.technical-detail[open] .technical-summary strong::after {
   }
 
   .site-header .header-actions > a {
+    flex: 0 0 auto;
     font-size: 0.68rem;
   }
 
@@ -324,7 +362,7 @@ details.technical-detail[open] .technical-summary strong::after {
 
   .site-header .header-actions {
     grid-column: 1 / -1;
-    width: calc(100vw - 2.2rem);
+    width: 100%;
     padding-left: 0;
   }
 }
