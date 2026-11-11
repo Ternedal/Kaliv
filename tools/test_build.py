@@ -7,7 +7,7 @@ import shutil
 import tempfile
 import unittest
 
-from build import PUBLIC_FILES, ROOT, TEMPLATE_FILES, build
+from build import PUBLIC_FILES, ROOT, TEMPLATE_FILES, EN_FILES, LEGACY_SCRIPTS, Document, elements, build, page_path
 
 
 class BuildTests(unittest.TestCase):
@@ -15,7 +15,7 @@ class BuildTests(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
-        inputs = [name for name in PUBLIC_FILES if name not in TEMPLATE_FILES]
+        inputs = [name for name in PUBLIC_FILES if name not in TEMPLATE_FILES and name not in EN_FILES and name not in LEGACY_SCRIPTS]
         inputs += ["templates/" + name for name in TEMPLATE_FILES]
         for name in inputs:
             target = self.root / name
@@ -49,7 +49,7 @@ class BuildTests(unittest.TestCase):
         for name in ("index.html", "brief.html", "hub.html", "proofs.html", "architecture.html", "progress.html", "sitemap.xml"):
             self.assertIn("2030-12-24", files[name].decode(), name)
         self.assertIn("24. december 2030", files["index.html"].decode())
-        self.assertIn("24 December 2030", files["index.html"].decode())
+        self.assertIn("24 December 2030", files["en/index.html"].decode())
         self.assertIn("2030-12-23", files["llms.txt"].decode())
         manifest = json.loads(files["project.json"])
         self.assertTrue(manifest["latest_release"]["tag_url"].endswith("v9.8.7"))
@@ -63,9 +63,10 @@ class BuildTests(unittest.TestCase):
         self.assertIn("1<span>/4</span>", files["index.html"].decode())
         self.assertIn("1/4", files["brief.html"].decode())
         self.assertIn("1/4", files["progress.html"].decode())
-        self.assertIn('data-da="Bevist" data-en="Proven"', files["proofs.html"].decode())
-        self.assertIn('data-da="Lukket" data-en="Closed"', files["progress.html"].decode())
-        self.assertIn("three concrete results still missing", files["proofs.js"].decode())
+        self.assertIn('>Bevist</span>', files["proofs.html"].decode())
+        self.assertIn('>Proven</span>', files["en/proofs.html"].decode())
+        self.assertIn('>Lukket</span>', files["progress.html"].decode())
+        self.assertIn("three concrete results still missing", files["en/proofs.html"].decode())
         self.assertIn("Three of four public proof gates remain open.", files["llms.txt"].decode())
 
     def test_historical_heads_are_resolved_in_pages_and_manifest(self):
@@ -112,6 +113,38 @@ class BuildTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Unknown template value"):
             build(self.root)
         self.assertEqual((self.root / "_site/index.html").read_bytes(), before["files"]["index.html"])
+
+    def test_english_is_static_with_matching_metadata(self):
+        result = build(self.root)
+        for name in EN_FILES:
+            document = Document(result["files"][name].decode())
+            nodes = list(elements(document.root))
+            self.assertEqual(next(n for n in nodes if n.tag == "html").attrs["lang"], "en")
+            self.assertFalse(any(key.startswith(("data-en", "data-da")) for n in nodes for key in n.attrs))
+            title = next(n for n in nodes if n.tag == "title")
+            self.assertTrue(title.children)
+            canonical = next((n.attrs["href"] for n in nodes if n.tag == "link" and n.attrs.get("rel") == "canonical"), None)
+            if canonical:
+                self.assertEqual(canonical, "https://kaliv.dk" + page_path(name.removeprefix("en/"), "en"))
+            for n in nodes:
+                if n.tag == "script" and n.attrs.get("type") == "application/ld+json":
+                    structured = json.loads("".join(n.children))
+                    self.assertEqual(structured["inLanguage"], "en")
+                    self.assertEqual(structured["url"], canonical)
+        self.assertIn("The same AI.", result["files"]["en/index.html"].decode())
+        self.assertNotIn("?lang=en", result["files"]["sitemap.xml"].decode())
+        self.assertIn("https://kaliv.dk/en/", result["files"]["llms.txt"].decode())
+
+    def test_language_links_work_without_translation_scripts(self):
+        result = build(self.root)
+        for filename in ("brief.html", "en/brief.html"):
+            nodes = list(elements(Document(result["files"][filename].decode()).root))
+            controls = [n for n in nodes if n.tag == "a" and n.attrs.get("data-language") in ("da", "en")]
+            self.assertEqual({n.attrs["href"] for n in controls}, {"/brief.html", "/en/brief.html"})
+            self.assertEqual(sum(n.attrs.get("aria-current") == "page" for n in controls), 1)
+        for alias in LEGACY_SCRIPTS:
+            self.assertIn("location.replace(target.href)", result["files"][alias].decode())
+            self.assertNotIn("querySelectorAll", result["files"][alias].decode())
 
 
 if __name__ == "__main__":

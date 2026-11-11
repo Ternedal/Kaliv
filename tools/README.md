@@ -22,10 +22,19 @@ Buildet genererer sider, llms.txt, sitemap, JSON-LD og det offentlige project.js
 til `_site/`. Det offentlige manifest indeholder opløste værdier. `site_copy`
 bruges kun under buildet. Kildeskabeloner og værktøjer publiceres ikke.
 
+Dansk og engelsk genereres fra de samme skabeloner. Dansk står i elementets tekst;
+`data-en` og fx `data-en-aria-label` angiver den engelske værdi. Buildet fjerner
+oversættelsesattributterne og skriver færdig HTML til `/` og `/en/`, inklusive
+metadata, lokale links og sprogkontroller. Begge sprog virker uden JavaScript.
+Gamle `?lang=en`-links viderestilles med et lille script, som bevarer øvrige
+query-parametre og fragmentet. De gamle script-URL'er bevares som kompatibilitet
+for allerede cachede sider; `site.js` håndterer kun offline og service worker.
+
 CSS, JavaScript, billeder og manifest får indholdshash i deres URL. Workerens
 cache-navn afhænger af det samlede output og worker-skabelonen. Precache-listen
 genereres fra den eksplicitte publiceringsliste og de små ikoner. Der skal ikke
-længere vedligeholdes `vXX`-numre. Workerens URL og alle side-URL'er er uændrede.
+længere vedligeholdes `vXX`-numre. Workerens URL er uændret, og gamle side-links
+virker fortsat. Nye engelske links peger direkte på `/en/`.
 
 GitHub Pages bygger med samme Python-script og publicerer kun `_site/`.
 Genereret output committes ikke. Buildet har ingen eksterne afhængigheder.
