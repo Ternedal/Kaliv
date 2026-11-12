@@ -56,6 +56,12 @@ GitHub Pages-opsætningen. Se [W3C CSP §3.3](https://www.w3.org/TR/CSP/#meta-el
 CI kontrollerer både almindelig drift uden CSP-brud og at uventede scripts,
 styles og en ændret base-URL faktisk blokeres i browseren.
 
+Offlinesidens genforsøg bindes i `site.js`. Et online-signal alene genindlæser
+ikke siden: en HEAD-request til det offentlige `project.json` skal lykkes først.
+HEAD går uden om workerens GET-cache, og tjekket afbrydes efter fem sekunder.
+En allerede startet navigation får forrang. Knappen bliver brugbar igen efter
+et mislykket tjek. Offlinesidens ankh bruger den lille fil, som ligger i precache.
+
 ## Opdatér en dokumenteret status
 
 1. Kontrollér seneste offentlige release og de relevante PR'er/commits på GitHub.
