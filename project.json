@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "project": "ModelRig",
   "product": "Kaliv",
-  "updated": "2026-11-11",
+  "updated": "2026-11-12",
   "canonical": "https://kaliv.dk/",
   "languages": [
     "da",
@@ -102,6 +102,18 @@
       "role": "Public Cast receiver and visible home-surface boundary",
       "repository": "https://github.com/Ternedal/KalivHub-Receiver",
       "status": "Current source is linked through its main branch; the manual physical multi-turn proof is tied to the separate {{ heads.physical_proof | short }} test snapshot. Signed Android mirroring PR #{{ android_mirror.number }} is parked and not physically accepted."
+    },
+    {
+      "name": "KalivNexus",
+      "role": "Local-first API discovery, capability registry and guarded MCP inspection",
+      "repository": "https://github.com/Ternedal/KalivNexus",
+      "status": "Independent prototype; not integrated with ModelRig. Imported API leads are unverified, and MCP tools/call is disabled."
+    },
+    {
+      "name": "LanguageRig",
+      "role": "Local Danish language-model adaptation and evaluation",
+      "repository": "https://github.com/Ternedal/LanguageRig",
+      "status": "Separate CLI module. GPU training and quality on real Danish books still require rig qualification."
     }
   ],
   "v1_proofs": [
@@ -143,7 +155,9 @@
     "proof_ledger_en": "https://kaliv.dk/en/proofs.html",
     "project_room_da": "https://kaliv.dk/progress.html",
     "project_room_en": "https://kaliv.dk/en/progress.html",
-    "llms": "https://kaliv.dk/llms.txt"
+    "llms": "https://kaliv.dk/llms.txt",
+    "download_da": "https://kaliv.dk/download.html",
+    "download_en": "https://kaliv.dk/en/download.html"
   },
   "source_snapshot": {
     "recorded": "2026-10-18",
@@ -211,7 +225,9 @@
     "https://github.com/Ternedal/BodyRig",
     "https://github.com/Ternedal/VoiceRig",
     "https://github.com/Ternedal/VisionRig",
-    "https://github.com/Ternedal/KalivHub-Receiver"
+    "https://github.com/Ternedal/KalivHub-Receiver",
+    "https://github.com/Ternedal/KalivNexus",
+    "https://github.com/Ternedal/LanguageRig"
   ],
   "repository_roles": [
     {
@@ -230,7 +246,9 @@
     "BodyRig": "https://github.com/Ternedal/BodyRig/tree/main",
     "VoiceRig": "https://github.com/Ternedal/VoiceRig/tree/main",
     "VisionRig": "https://github.com/Ternedal/VisionRig/tree/main",
-    "KalivHub-Receiver": "https://github.com/Ternedal/KalivHub-Receiver/tree/main"
+    "KalivHub-Receiver": "https://github.com/Ternedal/KalivHub-Receiver/tree/main",
+    "KalivNexus": "https://github.com/Ternedal/KalivNexus/tree/main",
+    "LanguageRig": "https://github.com/Ternedal/LanguageRig/tree/main"
   },
   "android_mirror": {
     "number": 2206,
@@ -243,5 +261,21 @@
     "proofs_aria_en": "{{ stats.open_word_en | capitalize }} open V1 proofs",
     "proofs_description_en": "What Kaliv and ModelRig can prove now — and the {{ stats.open_word_en }} concrete results still missing before V1.",
     "proofs_twitter_en": "What is proven now — and the {{ stats.open_word_en }} concrete results still missing before V1."
+  },
+  "downloads": {
+    "release_base": "https://github.com/Ternedal/ModelRig/releases/download/v{{ latest_release.version }}/",
+    "windows": {
+      "filename": "Kaliv-windows-x64-{{ latest_release.version }}.jar",
+      "url": "{{ downloads.release_base }}{{ downloads.windows.filename }}"
+    },
+    "android": {
+      "filename": "kaliv-latest.apk",
+      "url": "{{ downloads.release_base }}{{ downloads.android.filename }}"
+    },
+    "checksums": {
+      "filename": "SHA256SUMS.txt",
+      "url": "{{ downloads.release_base }}{{ downloads.checksums.filename }}"
+    },
+    "setup_url": "https://github.com/Ternedal/ModelRig/blob/main/README.md"
   }
 }
