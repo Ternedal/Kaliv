@@ -82,6 +82,12 @@ try {
   }
   await json('first-paint.json', firstPaint);
   const context = await browser.newContext({ serviceWorkers: 'block' });
+  await context.addInitScript(() => {
+    window.kalivPolicyViolations = [];
+    document.addEventListener('securitypolicyviolation', event => {
+      window.kalivPolicyViolations.push({ directive: event.effectiveDirective, blocked: event.blockedURI });
+    });
+  });
   const page = await context.newPage();
   const layout = [], accessibility = [], links = new Set();
   for (const width of [320, 360, 390, 768, 1440]) {
@@ -95,6 +101,7 @@ try {
           language: document.documentElement.lang,
           width: document.documentElement.clientWidth,
           scrollWidth: document.documentElement.scrollWidth,
+          policyViolations: window.kalivPolicyViolations,
           languageLinks: [...document.querySelectorAll('.language a, .lang a')]
             .map(e => ({ ...rect(e), current: e.getAttribute('aria-current') })),
           footerLinks: [...document.querySelectorAll('footer a')].map(rect),
@@ -105,6 +112,7 @@ try {
       layout.push({ page: name, lang, viewport: width, ...result });
       check(result.language === lang, `Wrong language: ${name}/${lang}`);
       check(result.scrollWidth === result.width, `Overflow: ${name}/${lang}/${width}: ${result.scrollWidth}`);
+      check(result.policyViolations.length === 0, `Unexpected CSP violation: ${name}/${lang}/${width}: ${JSON.stringify(result.policyViolations)}`);
       check(result.languageLinks.length === 2, `Missing language links: ${name}/${lang}`);
       check(result.languageLinks.filter(link => link.current === 'page').length === 1, `Current language: ${name}/${lang}`);
       for (const r of result.languageLinks)
@@ -161,6 +169,45 @@ try {
     check(page.url() === base + path + '?source=legacy#content', `Legacy English redirect: ${name}`);
   }
   await context.close();
+
+  // Check enforcement, not just the presence of a policy string.
+  const policyContext = await browser.newContext({ serviceWorkers: 'block' });
+  const policyPage = await policyContext.newPage();
+  await policyPage.addInitScript(() => {
+    window.kalivPolicyViolations = [];
+    document.addEventListener('securitypolicyviolation', event => {
+      window.kalivPolicyViolations.push({ directive: event.effectiveDirective, blocked: event.blockedURI });
+    });
+  });
+  await policyPage.goto(base + '/');
+  const color = await policyPage.evaluate(() => getComputedStyle(document.body).color);
+  await policyPage.evaluate(() => {
+    const inline = document.createElement('script');
+    inline.textContent = 'window.kalivUntrustedScriptRan = true';
+    document.head.append(inline);
+    const external = document.createElement('script');
+    external.src = 'https://blocked.invalid/kaliv-csp-probe.js';
+    document.head.append(external);
+    const style = document.createElement('style');
+    style.textContent = 'body { color: rgb(1, 2, 3) !important; }';
+    document.head.append(style);
+    const base = document.createElement('base');
+    base.href = 'https://blocked.invalid/';
+    document.head.append(base);
+  });
+  await policyPage.waitForFunction(() => window.kalivPolicyViolations.length >= 4);
+  const enforcement = await policyPage.evaluate(() => ({
+    inlineScriptRan: window.kalivUntrustedScriptRan === true,
+    color: getComputedStyle(document.body).color,
+    baseURI: document.baseURI,
+    violations: window.kalivPolicyViolations,
+  }));
+  check(!enforcement.inlineScriptRan, 'CSP allowed an untrusted inline script');
+  check(enforcement.color === color, 'CSP allowed an untrusted inline style');
+  check(enforcement.baseURI === base + '/', 'CSP allowed a changed document base');
+  check(enforcement.violations.some(v => v.blocked === 'https://blocked.invalid' || v.blocked.startsWith('https://blocked.invalid/')), 'CSP did not block an external script');
+  await json('content-security-policy.json', enforcement);
+  await policyContext.close();
 
   // Simulate an existing v75 cache, then install the new worker at the same URL.
   const offline = await browser.newContext();

@@ -178,6 +178,33 @@ class BuildTests(unittest.TestCase):
                 build(self.root)
             self.assertEqual((self.root / "_site/index.html").read_bytes(), before["files"]["index.html"])
 
+    def test_csp_precedes_resources_and_tracks_generated_inline_metadata(self):
+        from base64 import b64encode
+        from hashlib import sha256
+        before = build(self.root)
+        for name, data in before["files"].items():
+            if not name.endswith(".html"):
+                continue
+            nodes = list(elements(Document(data.decode()).root))
+            head = next(n for n in nodes if n.tag == "head")
+            children = [n for n in head.children if not isinstance(n, str)]
+            self.assertIn("charset", children[0].attrs)
+            self.assertEqual(children[1].attrs.get("http-equiv"), "Content-Security-Policy")
+            policy = children[1].attrs["content"]
+            self.assertNotIn("unsafe-", policy)
+            self.assertIn("worker-src 'self'", policy)
+            self.assertIn("base-uri 'none'", policy)
+            self.assertNotIn("frame-ancestors", policy)
+            for script in (n for n in nodes if n.tag == "script" and not n.attrs.get("src")):
+                digest = b64encode(sha256("".join(script.children).encode()).digest()).decode()
+                self.assertIn("'sha256-" + digest + "'", policy)
+        self.project["updated"] = "2030-12-24"
+        self.save()
+        after = build(self.root)
+        def policy(result):
+            return next(n.attrs["content"] for n in elements(Document(result["files"]["en/index.html"].decode()).root) if n.attrs.get("http-equiv") == "Content-Security-Policy")
+        self.assertNotEqual(policy(before), policy(after))
+
 
 if __name__ == "__main__":
     unittest.main()

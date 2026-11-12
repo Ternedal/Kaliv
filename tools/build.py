@@ -1,6 +1,7 @@
 """Build kaliv.dk from project.json and templates, using only the standard library."""
 
 from copy import deepcopy
+from base64 import b64encode
 from datetime import date
 from dataclasses import dataclass, field
 from hashlib import sha256
@@ -382,6 +383,28 @@ def version_html(source, versions, canonical):
     return ATTR.sub(attribute, source)
 
 
+def protect_html(source):
+    """Apply the policy before fetches and hash the exact generated JSON-LD."""
+    document = Document(source)
+    nodes = list(elements(document.root))
+    head = next(node for node in nodes if node.tag == "head")
+    hashes = []
+    for node in nodes:
+        if node.tag == "script" and not node.attrs.get("src"):
+            digest = b64encode(sha256("".join(node.children).encode("utf-8")).digest()).decode("ascii")
+            hashes.append("'sha256-" + digest + "'")
+    policy = "; ".join((
+        "default-src 'none'", "base-uri 'none'", "object-src 'none'",
+        "script-src 'self'" + (" " + " ".join(sorted(set(hashes))) if hashes else ""),
+        "style-src 'self'", "img-src 'self'", "font-src 'self'",
+        "connect-src 'self'", "worker-src 'self'", "manifest-src 'self'",
+        "frame-src 'none'", "form-action 'none'",
+    ))
+    charset = next((i + 1 for i, node in enumerate(head.children) if isinstance(node, Element) and "charset" in node.attrs), 0)
+    head.children.insert(charset, Element("meta", {"http-equiv": "Content-Security-Policy", "content": policy}))
+    return serialize(document.root)
+
+
 def build(root=ROOT):
     root = Path(root)
     project = json.loads((root / "project.json").read_text(encoding="utf-8"))
@@ -425,8 +448,8 @@ def build(root=ROOT):
         output = render(expand_partials(source, partials), page_context, html=name.endswith((".html", ".xml")))
         if name.endswith(".html"):
             english = compile_html(output, name, "en", project["canonical"])
-            files["en/" + name] = version_html(english, versions, project["canonical"]).encode("utf-8")
-            output = version_html(compile_html(output, name, "da", project["canonical"]), versions, project["canonical"])
+            files["en/" + name] = protect_html(version_html(english, versions, project["canonical"])).encode("utf-8")
+            output = protect_html(version_html(compile_html(output, name, "da", project["canonical"]), versions, project["canonical"]))
         else:
             for page in HTML_TEMPLATES:
                 old = project["canonical"] + ("" if page == "index.html" else page) + "?lang=en"
