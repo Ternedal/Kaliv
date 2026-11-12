@@ -82,6 +82,12 @@ try {
   }
   await json('first-paint.json', firstPaint);
   const context = await browser.newContext({ serviceWorkers: 'block' });
+  await context.addInitScript(() => {
+    window.kalivPolicyViolations = [];
+    document.addEventListener('securitypolicyviolation', event => {
+      window.kalivPolicyViolations.push({ directive: event.effectiveDirective, blocked: event.blockedURI });
+    });
+  });
   const page = await context.newPage();
   const layout = [], accessibility = [], links = new Set();
   for (const width of [320, 360, 390, 768, 1440]) {
@@ -95,6 +101,7 @@ try {
           language: document.documentElement.lang,
           width: document.documentElement.clientWidth,
           scrollWidth: document.documentElement.scrollWidth,
+          policyViolations: window.kalivPolicyViolations,
           languageLinks: [...document.querySelectorAll('.language a, .lang a')]
             .map(e => ({ ...rect(e), current: e.getAttribute('aria-current') })),
           footerLinks: [...document.querySelectorAll('footer a')].map(rect),
@@ -105,6 +112,7 @@ try {
       layout.push({ page: name, lang, viewport: width, ...result });
       check(result.language === lang, `Wrong language: ${name}/${lang}`);
       check(result.scrollWidth === result.width, `Overflow: ${name}/${lang}/${width}: ${result.scrollWidth}`);
+      check(result.policyViolations.length === 0, `Unexpected CSP violation: ${name}/${lang}/${width}: ${JSON.stringify(result.policyViolations)}`);
       check(result.languageLinks.length === 2, `Missing language links: ${name}/${lang}`);
       check(result.languageLinks.filter(link => link.current === 'page').length === 1, `Current language: ${name}/${lang}`);
       for (const r of result.languageLinks)
@@ -162,9 +170,57 @@ try {
   }
   await context.close();
 
+  // Check enforcement, not just the presence of a policy string.
+  const policyContext = await browser.newContext({ serviceWorkers: 'block' });
+  const policyPage = await policyContext.newPage();
+  await policyPage.addInitScript(() => {
+    window.kalivPolicyViolations = [];
+    document.addEventListener('securitypolicyviolation', event => {
+      window.kalivPolicyViolations.push({ directive: event.effectiveDirective, blocked: event.blockedURI });
+    });
+  });
+  await policyPage.goto(base + '/');
+  const color = await policyPage.evaluate(() => getComputedStyle(document.body).color);
+  await policyPage.evaluate(() => {
+    const inline = document.createElement('script');
+    inline.textContent = 'window.kalivUntrustedScriptRan = true';
+    document.head.append(inline);
+    const external = document.createElement('script');
+    external.src = 'https://blocked.invalid/kaliv-csp-probe.js';
+    document.head.append(external);
+    const style = document.createElement('style');
+    style.textContent = 'body { color: rgb(1, 2, 3) !important; }';
+    document.head.append(style);
+    const base = document.createElement('base');
+    base.href = 'https://blocked.invalid/';
+    document.head.append(base);
+  });
+  await policyPage.waitForFunction(() => window.kalivPolicyViolations.length >= 4);
+  const enforcement = await policyPage.evaluate(() => ({
+    inlineScriptRan: window.kalivUntrustedScriptRan === true,
+    color: getComputedStyle(document.body).color,
+    baseURI: document.baseURI,
+    violations: window.kalivPolicyViolations,
+  }));
+  check(!enforcement.inlineScriptRan, 'CSP allowed an untrusted inline script');
+  check(enforcement.color === color, 'CSP allowed an untrusted inline style');
+  check(enforcement.baseURI === base + '/', 'CSP allowed a changed document base');
+  check(enforcement.violations.some(v => v.blocked === 'https://blocked.invalid' || v.blocked.startsWith('https://blocked.invalid/')), 'CSP did not block an external script');
+  await json('content-security-policy.json', enforcement);
+  await policyContext.close();
+
   // Simulate an existing v75 cache, then install the new worker at the same URL.
   const offline = await browser.newContext();
   const offlinePage = await offline.newPage();
+  const offlineEvents = [];
+  offlinePage.on('framenavigated', frame => { if (frame === offlinePage.mainFrame()) offlineEvents.push({ type: 'navigation', url: frame.url() }); });
+  offlinePage.on('requestfailed', request => offlineEvents.push({ type: 'failed', url: request.url(), failure: request.failure() }));
+  offlinePage.on('console', message => offlineEvents.push({ type: 'console', level: message.type(), message: message.text() }));
+  offlinePage.on('pageerror', error => offlineEvents.push({ type: 'error', message: error.message }));
+  await offlinePage.addInitScript(() => {
+    for (const type of ['online', 'offline', 'beforeunload', 'pagehide', 'pageshow'])
+      window.addEventListener(type, () => console.info('kaliv-offline-event ' + JSON.stringify({type, url: location.href, online: navigator.onLine})));
+  });
   await offlinePage.goto(`${base}/offline.html`);
   await offlinePage.evaluate(async () => {
     const old = await caches.open('kaliv-shell-v75');
@@ -173,6 +229,7 @@ try {
   await offlinePage.goto(base + '/');
   await offlinePage.evaluate(() => navigator.serviceWorker.ready);
   await offlinePage.waitForFunction(() => navigator.serviceWorker.controller !== null);
+  const activeWorker = offline.serviceWorkers().find(worker => worker.url().endsWith('/service-worker.js'));
   const cacheState = await offlinePage.evaluate(async () => {
     const names = await caches.keys();
     const current = names.find(name => name.startsWith('kaliv-shell-') && name !== 'kaliv-shell-v75');
@@ -194,14 +251,46 @@ try {
   for (const asset of coreAssets) coreBytes += (await (await fetch(new URL(asset, base + '/'))).arrayBuffer()).byteLength;
   check(coreBytes < 600 * 1024, `Precache over budget: ${coreBytes}`);
   await offline.setOffline(true);
+  const offlineNavigations = [];
+  const recordOffline = async response => {
+    offlineNavigations.push({
+      url: offlinePage.url(), responseURL: response?.url(), status: response?.status(), fromWorker: response?.fromServiceWorker(),
+      ...await offlinePage.evaluate(() => ({ language: document.documentElement.lang, title: document.title, online: navigator.onLine, controller: navigator.serviceWorker.controller?.scriptURL })),
+    });
+  };
   await offlinePage.goto(`${base}/hub.html?lang=en`);
   await offlinePage.waitForFunction(() => document.documentElement.lang === 'en');
   check((await offlinePage.locator('h1').textContent()).includes('Kaliv'), 'Offline English page failed');
-  await offlinePage.goto(`${base}/unvisited-route`);
+  await recordOffline(await offlinePage.goto(`${base}/unvisited-route`));
   check((await offlinePage.title()).toLowerCase().includes('offline'), 'Offline fallback failed');
-  await offlinePage.goto(`${base}/en/unvisited-route`);
+  await recordOffline(await offlinePage.goto(`${base}/en/unvisited-route`));
   check((await offlinePage.locator('html').getAttribute('lang')) === 'en', 'English offline fallback failed');
-  await json('service-worker.json', { ...cacheState, coreAssets, coreBytes, offlineEnglish: true, offlineFallback: true });
+  const workerEvidence = await activeWorker.evaluate(async () => {
+    const page = await caches.match(new URL('/en/offline.html', self.location.href));
+    return { englishCached: { url: page?.url, status: page?.status, language: page && (await page.text()).includes('lang="en"') ? 'en' : null } };
+  });
+  for (let i = 0; i < 6; i++) for (const language of ['da', 'en']) {
+    const path = `${language === 'en' ? '/en' : ''}/offline-probe-${i}`;
+    const response = await offlinePage.goto(base + path);
+    await recordOffline(response);
+    check(offlinePage.url() === base + path && response?.fromServiceWorker(), `Offline navigation did not commit: ${path}`);
+    check((await offlinePage.locator('html').getAttribute('lang')) === language, `Offline language: ${path}`);
+  }
+  await offlinePage.goto(`${base}/en/offline.html`);
+  const retryURL = offlinePage.url();
+  await Promise.all([
+    offlinePage.waitForRequest(request => request.method() === 'HEAD' && request.url() === base + '/project.json'),
+    offlinePage.locator('#retry-connection').click(),
+  ]);
+  await offlinePage.waitForFunction(() => !document.getElementById('retry-connection').disabled);
+  await offlinePage.evaluate(() => window.dispatchEvent(new Event('online')));
+  await offlinePage.waitForFunction(() => !document.getElementById('retry-connection').disabled);
+  check(offlinePage.url() === retryURL && (await offlinePage.locator('html').getAttribute('lang')) === 'en', 'False online signal changed the offline page');
+  check(await offlinePage.locator('.symbol img').evaluate(img => img.complete && img.naturalWidth > 0), 'Offline illustration unavailable');
+  await Promise.all([offlinePage.waitForNavigation(), offline.setOffline(false)]);
+  check(offlinePage.url() === retryURL && (await offlinePage.locator('html').getAttribute('lang')) === 'en', 'Online recovery changed the requested page');
+  await json('service-worker.json', { ...cacheState, coreAssets, coreBytes, offlineNavigations, workerEvidence, offlineEnglish: true, offlineFallback: true });
+  console.log(JSON.stringify({ offlineCases: offlineNavigations.length, workerEvidence, recovery: 'passed' }));
   await offline.close();
   await browser.close();
   browser = null;
