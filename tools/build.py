@@ -2,8 +2,10 @@
 
 from copy import deepcopy
 from datetime import date
+from dataclasses import dataclass, field
 from hashlib import sha256
 from html import escape, unescape
+from html.parser import HTMLParser
 from pathlib import Path
 import json
 import posixpath
@@ -29,8 +31,12 @@ PUBLIC_FILES = (
 )
 
 
-TEMPLATE_FILES = tuple(name for name in PUBLIC_FILES if name.endswith(".html")) + (
-    "llms.txt", "sitemap.xml", "proofs.js", "service-worker.js",
+HTML_TEMPLATES = tuple(name for name in PUBLIC_FILES if name.endswith(".html"))
+LEGACY_SCRIPTS = ("home.js", "dossier.js", "architecture.js", "progress.js", "proofs.js")
+EN_FILES = tuple("en/" + name for name in HTML_TEMPLATES)
+PUBLIC_FILES += ("site.js",) + EN_FILES
+TEMPLATE_FILES = HTML_TEMPLATES + (
+    "llms.txt", "sitemap.xml", "service-worker.js",
 )
 CORE_MEDIA = (
     "assets/kaliv-favicon-32.png", "assets/kaliv-apple-touch-icon.png",
@@ -50,6 +56,172 @@ MONTHS = {
     "en": ("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"),
 }
 WORDS = {"da": ("nul", "ét", "to", "tre", "fire"), "en": ("zero", "one", "two", "three", "four")}
+VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
+REDIRECT = """(() => {
+  const query = new URLSearchParams(location.search);
+  if (query.get('lang') !== 'en' || location.pathname.startsWith('/en/')) return;
+  const page = location.pathname.split('/').pop() || 'index.html';
+  const pages = ['index.html','brief.html','hub.html','proofs.html','architecture.html','progress.html','404.html','offline.html'];
+  if (!pages.includes(page)) return;
+  query.delete('lang');
+  const target = new URL(page === 'index.html' ? '/en/' : '/en/' + page, location.origin);
+  target.search = query.toString();
+  target.hash = location.hash;
+  location.replace(target.href);
+})();"""
+
+
+@dataclass
+class Element:
+    tag: str
+    attrs: dict = field(default_factory=dict)
+    children: list = field(default_factory=list)
+    parent: object = field(default=None, repr=False)
+
+
+class Document(HTMLParser):
+    def __init__(self, source):
+        super().__init__(convert_charrefs=False)
+        self.root = Element("")
+        self.stack = [self.root]
+        self.feed(source)
+
+    def handle_starttag(self, tag, attrs):
+        node = Element(tag, dict(attrs), parent=self.stack[-1])
+        self.stack[-1].children.append(node)
+        if tag not in VOID:
+            self.stack.append(node)
+
+    def handle_startendtag(self, tag, attrs):
+        self.handle_starttag(tag, attrs)
+        if tag not in VOID:
+            self.handle_endtag(tag)
+
+    def handle_endtag(self, tag):
+        if len(self.stack) > 1 and self.stack[-1].tag == tag:
+            self.stack.pop()
+
+    def handle_data(self, value):
+        self.stack[-1].children.append(value)
+
+    def handle_entityref(self, name):
+        self.handle_data(f"&{name};")
+
+    def handle_charref(self, name):
+        self.handle_data(f"&#{name};")
+
+    def handle_comment(self, value):
+        self.handle_data(f"<!--{value}-->")
+
+    def handle_decl(self, value):
+        self.handle_data(f"<!{value}>")
+
+
+def elements(node):
+    for child in node.children:
+        if isinstance(child, Element):
+            yield child
+            yield from elements(child)
+
+
+def serialize(node):
+    if isinstance(node, str):
+        return node
+    body = "".join(serialize(child) for child in node.children)
+    if not node.tag:
+        return body
+    attrs = "".join(" " + key + ("" if value is None else '="' + escape(value, quote=True) + '"') for key, value in node.attrs.items())
+    return f"<{node.tag}{attrs}>" + ("" if node.tag in VOID else body + f"</{node.tag}>")
+
+
+def page_path(name, language):
+    prefix = "/en/" if language == "en" else "/"
+    return prefix if name == "index.html" else prefix + name
+
+
+def local_url(value, language, canonical):
+    url = urlsplit(unescape(value))
+    origin = urlsplit(canonical)
+    if value.startswith("#") or (url.netloc and url.netloc != origin.netloc) or (url.scheme and url.scheme != origin.scheme):
+        return value
+    name = posixpath.normpath("/" + url.path).lstrip("/")
+    if name in ("", "."):
+        name = "index.html"
+    if name.startswith("en/"):
+        name = name[3:] or "index.html"
+    query = [(key, item) for key, item in parse_qsl(url.query, keep_blank_values=True) if key != "lang"]
+    if name in HTML_TEMPLATES:
+        path = page_path(name, language)
+    else:
+        path = "/" + name
+    return urlunsplit((url.scheme, url.netloc, path, urlencode(query), url.fragment))
+
+
+def compile_html(source, name, language, canonical):
+    document = Document(source)
+    nodes = list(elements(document.root))
+    root = next(node for node in nodes if node.tag == "html")
+    head = next(node for node in nodes if node.tag == "head")
+    root.attrs.update(lang=language, **{"data-page": name.removesuffix(".html")})
+    canonical_url = canonical.rstrip("/") + page_path(name, language)
+    for node in nodes:
+        if language == "en":
+            if "data-en" in node.attrs:
+                node.children = [escape(node.attrs["data-en"], quote=False)]
+            for source_key, destination in (("data-en-href", "href"), ("data-en-aria-label", "aria-label"), ("data-en-label", "aria-label"), ("data-en-alt", "alt"), ("data-en-content", "content")):
+                if source_key in node.attrs:
+                    node.attrs[destination] = node.attrs[source_key]
+        chosen = node.attrs.get("data-language", node.attrs.get("data-lang"))
+        if node.attrs.get("id") in ("lang-da", "lang-en"):
+            chosen = node.attrs["id"][-2:]
+        if chosen in ("da", "en"):
+            node.attrs["href"] = page_path(name, chosen)
+            classes = node.attrs.get("class", "").split()
+            classes = [item for item in classes if item != "is-current"]
+            if chosen == language:
+                node.attrs["aria-current"] = "page"
+                classes.append("is-current")
+            else:
+                node.attrs.pop("aria-current", None)
+            if classes:
+                node.attrs["class"] = " ".join(classes)
+            else:
+                node.attrs.pop("class", None)
+        else:
+            for attr in ("href", "src"):
+                if attr in node.attrs:
+                    node.attrs[attr] = local_url(node.attrs[attr], language, canonical)
+        if "srcset" in node.attrs:
+            node.attrs["srcset"] = ", ".join(" ".join([local_url(parts[0], language, canonical)] + parts[1:]) for parts in (item.split() for item in node.attrs["srcset"].split(",")) if parts)
+        if node.tag == "link" and node.attrs.get("rel") == "canonical":
+            node.attrs["href"] = canonical_url
+        if node.tag == "link" and node.attrs.get("rel") == "alternate":
+            other = "en" if node.attrs.get("hreflang") == "en" else "da"
+            node.attrs["href"] = canonical.rstrip("/") + page_path(name, other)
+        if node.tag == "meta":
+            prop = node.attrs.get("property")
+            if prop == "og:url":
+                node.attrs["content"] = canonical_url
+            elif prop == "og:locale":
+                node.attrs["content"] = "en_US" if language == "en" else "da_DK"
+            elif prop == "og:locale:alternate":
+                node.attrs["content"] = "da_DK" if language == "en" else "en_US"
+        if node.tag == "script" and node.attrs.get("type") == "application/ld+json":
+            data = json.loads("".join(node.children))
+            data.update(inLanguage=language, url=canonical_url)
+            if language == "en":
+                for field_name in ("name", "description"):
+                    if "data-en-" + field_name in node.attrs:
+                        data[field_name] = node.attrs["data-en-" + field_name]
+            node.children = [json.dumps(data, ensure_ascii=False, indent=2).replace("<", "\\u003c")]
+        # Existing translation scripts are replaced by static HTML and one bootstrap.
+        node.children = [child for child in node.children if not isinstance(child, Element) or child.tag != "script" or child.attrs.get("type") == "application/ld+json"]
+        node.attrs = {key: value for key, value in node.attrs.items() if not key.startswith(("data-da", "data-en", "data-title", "data-description"))}
+    if language == "da":
+        charset = next((i + 1 for i, node in enumerate(head.children) if isinstance(node, Element) and "charset" in node.attrs), 0)
+        head.children.insert(charset, Element("script", children=[REDIRECT]))
+    head.children.append(Element("script", {"src": "/site.js", "defer": None}))
+    return serialize(document.root)
 
 
 def format_date(value, language):
@@ -185,11 +357,10 @@ def build(root=ROOT):
     files = {}
     templates = {name: (root / "templates" / name).read_text(encoding="utf-8") for name in TEMPLATE_FILES}
     for name in PUBLIC_FILES:
-        if name not in TEMPLATE_FILES and name != "project.json":
+        if name not in TEMPLATE_FILES and name not in EN_FILES and name not in LEGACY_SCRIPTS and name != "project.json":
             files[name] = (root / name).read_bytes()
-    for name, source in templates.items():
-        if name.endswith(".js") and name != "service-worker.js":
-            files[name] = render(source, context).encode("utf-8")
+    for name in LEGACY_SCRIPTS:
+        files[name] = REDIRECT.encode("utf-8") + b"\n" + files["site.js"]
     versions = {}
     # Images and scripts are leaves; CSS and the manifest can reference images.
     for name, data in files.items():
@@ -213,12 +384,18 @@ def build(root=ROOT):
             continue
         output = render(source, context, html=name.endswith((".html", ".xml")))
         if name.endswith(".html"):
-            output = version_html(output, versions, project["canonical"])
+            english = compile_html(output, name, "en", project["canonical"])
+            files["en/" + name] = version_html(english, versions, project["canonical"]).encode("utf-8")
+            output = version_html(compile_html(output, name, "da", project["canonical"]), versions, project["canonical"])
+        else:
+            for page in HTML_TEMPLATES:
+                old = project["canonical"] + ("" if page == "index.html" else page) + "?lang=en"
+                output = output.replace(old, project["canonical"].rstrip("/") + page_path(page, "en"))
         files[name] = output.encode("utf-8")
     core = []
     for name in sorted(files):
         if Path(name).suffix in (".html", ".css", ".js", ".json", ".txt", ".webmanifest") or name in CORE_MEDIA:
-            path = "./" if name == "index.html" else "./" + name
+            path = "./" if name == "index.html" else "./en/" if name == "en/index.html" else "./" + name
             core.append(version_url(path, versions, project["canonical"]))
     digest = sha256(templates["service-worker.js"].encode("utf-8"))
     for name, data in sorted(files.items()):

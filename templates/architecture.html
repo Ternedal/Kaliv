@@ -1,32 +1,32 @@
 <!doctype html>
 <html lang="da">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#05070a" />
-  <meta name="robots" content="index,follow,max-image-preview:large" />
-  <meta name="description" content="Sådan hænger Kaliv sammen: én identitet og hukommelse i ModelRig, fire klienter og en udskiftelig AI-model under eksplicit kontrol." />
-  <meta property="og:title" content="Kaliv — systemarkitektur" />
-  <meta property="og:description" content="Kaliv er den AI, du møder. ModelRig holder fast i identitet, hukommelse og tilladelser på tværs af computer, telefon, hjem og VR." />
-  <meta property="og:type" content="article" />
-  <meta property="og:locale" content="da_DK" />
-  <meta property="og:locale:alternate" content="en_US" />
-  <meta property="og:url" content="https://kaliv.dk/architecture.html" />
-  <meta property="og:image" content="https://kaliv.dk/assets/modelrig-continuity-female-hair-1920.webp" />
-  <meta property="og:image:alt" content="ModelRig fra kognitiv kerne til kropsliggjort intelligens" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Kaliv — systemarkitektur" />
-  <meta name="twitter:description" content="Én Kaliv på fire flader — med identitet og hukommelse uden for den udskiftelige model." />
-  <meta name="twitter:image" content="https://kaliv.dk/assets/modelrig-continuity-female-hair-1920.webp" />
-  <link rel="canonical" href="https://kaliv.dk/architecture.html" />
-  <link rel="alternate" hreflang="da" href="https://kaliv.dk/architecture.html" />
-  <link rel="alternate" hreflang="en" href="https://kaliv.dk/architecture.html?lang=en" />
-  <link rel="alternate" hreflang="x-default" href="https://kaliv.dk/architecture.html" />
-  <link rel="manifest" href="site.webmanifest" />
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/kaliv-favicon-32.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/kaliv-apple-touch-icon.png" />
-  <title>Kaliv — systemarkitektur</title>
-  <script type="application/ld+json">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#05070a">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="description" content="Sådan hænger Kaliv sammen: én identitet og hukommelse i ModelRig, fire klienter og en udskiftelig AI-model under eksplicit kontrol." data-en-content="How Kaliv fits together: one identity and memory in ModelRig, four clients and a replaceable AI model under explicit control.">
+  <meta property="og:title" content="Kaliv — systemarkitektur" data-en-content="Kaliv — system architecture">
+  <meta property="og:description" content="Kaliv er den AI, du møder. ModelRig holder fast i identitet, hukommelse og tilladelser på tværs af computer, telefon, hjem og VR." data-en-content="Kaliv is the AI you meet. ModelRig preserves identity, memory and permissions across computer, phone, home and VR.">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="da_DK">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:url" content="https://kaliv.dk/architecture.html">
+  <meta property="og:image" content="https://kaliv.dk/assets/modelrig-continuity-female-hair-1920.webp">
+  <meta property="og:image:alt" content="ModelRig fra kognitiv kerne til kropsliggjort intelligens" data-en-content="Kaliv moves from ModelRig’s cognitive core into the world">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kaliv — systemarkitektur" data-en-content="Kaliv — system architecture">
+  <meta name="twitter:description" content="Én Kaliv på fire flader — med identitet og hukommelse uden for den udskiftelige model." data-en-content="One Kaliv across four surfaces — with identity and memory outside the replaceable model.">
+  <meta name="twitter:image" content="https://kaliv.dk/assets/modelrig-continuity-female-hair-1920.webp">
+  <link rel="canonical" href="https://kaliv.dk/architecture.html">
+  <link rel="alternate" hreflang="da" href="https://kaliv.dk/architecture.html">
+  <link rel="alternate" hreflang="en" href="https://kaliv.dk/architecture.html?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://kaliv.dk/architecture.html">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/kaliv-favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/kaliv-apple-touch-icon.png">
+  <title data-en="Kaliv — system architecture">Kaliv — systemarkitektur</title>
+  <script type="application/ld+json" data-en-name="Kaliv — system architecture" data-en-description="How Kaliv fits together: one identity and memory in ModelRig, four clients and a replaceable AI model under explicit control.">
     {
       "@context":"https://schema.org",
       "@type":"TechArticle",
@@ -201,8 +201,8 @@
     }
     @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
   </style>
-  <link rel="stylesheet" href="site-shell.css" />
-  <script src="architecture.js" defer blocking="render"></script>
+  <link rel="stylesheet" href="site-shell.css">
+
 </head>
 <body>
   <a class="skip" href="#content" data-da="Gå til indhold" data-en="Skip to content">Gå til indhold</a>
@@ -216,7 +216,7 @@
   <main id="content">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy"><div><span class="eyebrow" data-da="Sådan hænger Kaliv sammen" data-en="How Kaliv fits together">Sådan hænger Kaliv sammen</span><h1 id="hero-title" data-da="Én Kaliv. Fire steder. Én hukommelse." data-en="One Kaliv. Four places. One memory.">Én Kaliv. Fire steder. Én hukommelse.</h1><p class="lead" data-da="Kaliv er den AI, du møder. Windows, Android, KalivHub og Quest er fire klienter til den samme person — ikke fire assistenter. ModelRig holder fast i identitet, hukommelse, tid, kontekst og tilladelser, mens selve AI-modellen kan udskiftes." data-en="Kaliv is the AI you meet. Windows, Android, KalivHub and Quest are four clients for the same person — not four assistants. ModelRig preserves identity, memory, time, context and permissions while the AI model itself can be replaced.">Kaliv er den AI, du møder. Windows, Android, KalivHub og Quest er fire klienter til den samme person — ikke fire assistenter. ModelRig holder fast i identitet, hukommelse, tid, kontekst og tilladelser, mens selve AI-modellen kan udskiftes.</p></div><div class="hero-meta"><span data-da="Opdateret · {{ updated | date_da }}" data-en="Updated · {{ updated | date_en }}">Opdateret · {{ updated | date_da }}</span><span data-da="Local-first · Model-agnostic · Fail-closed" data-en="Local-first · Model-agnostic · Fail-closed">Local-first · Model-agnostic · Fail-closed</span></div></div>
-      <div class="hero-map" role="img" aria-label="ModelRigs lagdelte systemarkitektur"><div class="stack">
+      <div class="hero-map" role="img" aria-label="ModelRigs lagdelte systemarkitektur" data-en-aria-label="ModelRig layered system architecture"><div class="stack">
         <div class="stack-row"><span class="stack-label" data-da="Verden ind" data-en="World in">Verden ind</span><div class="stack-units"><span class="stack-unit"><strong>Chat + Voice</strong><span data-da="Mennesket" data-en="The person">Mennesket</span></span><span class="stack-unit"><strong>VisionRig</strong><span data-da="Kamera og sensorer" data-en="Camera and sensors">Kamera og sensorer</span></span><span class="stack-unit"><strong>Clock</strong><span data-da="Tid" data-en="Time">Tid</span></span></div></div>
         <div class="stack-row"><span class="stack-label" data-da="Kaliv husker" data-en="Kaliv remembers">Kaliv husker</span><div class="stack-units"><span class="stack-unit core"><strong>Consciousness Core</strong><span data-da="Selv · Verden · Kontinuitet" data-en="Self · World · Continuity">Selv · Verden · Kontinuitet</span></span><span class="stack-unit core"><strong>Memory 4</strong><span data-da="Autobiografisk hukommelse" data-en="Autobiographical memory">Autobiografisk hukommelse</span></span></div></div>
         <div class="stack-row"><span class="stack-label" data-da="AI tænker" data-en="AI thinks">AI tænker</span><div class="stack-units"><span class="stack-unit"><strong>ThoughtEngine</strong><span data-da="Udskiftelig model" data-en="Replaceable model">Udskiftelig model</span></span></div></div>
@@ -225,7 +225,7 @@
       </div></div>
     </section>
 
-    <section class="signal-band" aria-label="Fire arkitekturegenskaber">
+    <section class="signal-band" aria-label="Fire arkitekturegenskaber" data-en-aria-label="Four architecture properties">
       <article><span>01 / Kaliv</span><strong data-da="Det er hende, mennesket møder." data-en="She is who the person meets.">Det er hende, mennesket møder.</strong></article>
       <article><span>02 / ModelRig</span><strong data-da="Det holder identitet, hukommelse og kontrol." data-en="It preserves identity, memory and control.">Det holder identitet, hukommelse og kontrol.</strong></article>
       <article><span>03 / ThoughtEngine</span><strong data-da="Det tænker — men ejer ikke personen." data-en="It thinks — but does not own the person.">Det tænker — men ejer ikke personen.</strong></article>
@@ -263,7 +263,7 @@
         <article class="runtime-step"><h3 data-da="Kilden kontrolleres" data-en="The source is checked">Kilden kontrolleres</h3><p data-da="ModelRig kontrollerer hvor signalet kommer fra, om det er aktuelt, og om det må bruges." data-en="ModelRig checks where the signal came from, whether it is current and whether it may be used.">ModelRig kontrollerer hvor signalet kommer fra, om det er aktuelt, og om det må bruges.</p><span class="runtime-owner">Admission</span></article>
         <article class="runtime-step"><h3 data-da="Fakta gemmes som evidens" data-en="Facts are stored as evidence">Fakta gemmes som evidens</h3><p data-da="Det observerede fastholdes uden at blive blandet sammen med modellens fortolkning." data-en="What was observed is retained without being mixed with the model’s interpretation.">Det observerede fastholdes uden at blive blandet sammen med modellens fortolkning.</p><span class="runtime-owner">WorldEvidence</span></article>
         <article class="runtime-step"><h3 data-da="Kaliv får kontekst" data-en="Kaliv gets context">Kaliv får kontekst</h3><p data-da="Nuet sammenholdes med tid, identitet, relevant hukommelse og hendes billede af verden." data-en="The present is reconciled with time, identity, relevant memory and her model of the world.">Nuet sammenholdes med tid, identitet, relevant hukommelse og hendes billede af verden.</p><span class="runtime-owner">Consciousness Core</span></article>
-        <article class="runtime-step"><h3 data-da="AI'en foreslår" data-en="The AI proposes">AI'en foreslår</h3><p data-da="ThoughtEngine foreslår en forståelse, et svar eller et muligt næste skridt." data-en="ThoughtEngine proposes an understanding, a response or a possible next step.">ThoughtEngine foreslår en forståelse, et svar eller et muligt næste skridt.</p><span class="runtime-owner">ThoughtEngine</span></article>
+        <article class="runtime-step"><h3 data-da="AI&#x27;en foreslår" data-en="The AI proposes">AI'en foreslår</h3><p data-da="ThoughtEngine foreslår en forståelse, et svar eller et muligt næste skridt." data-en="ThoughtEngine proposes an understanding, a response or a possible next step.">ThoughtEngine foreslår en forståelse, et svar eller et muligt næste skridt.</p><span class="runtime-owner">ThoughtEngine</span></article>
         <article class="runtime-step"><h3 data-da="Tilladelsen afgør" data-en="Permission decides">Tilladelsen afgør</h3><p data-da="Kun et godkendt forslag bliver til tale, kropsligt udtryk eller en sporbar handling." data-en="Only an approved proposal becomes speech, embodied expression or a traceable action.">Kun et godkendt forslag bliver til tale, kropsligt udtryk eller en sporbar handling.</p><span class="runtime-owner">Policy Gate / Agent 3</span></article>
         <article class="runtime-step"><h3 data-da="Virkeligheden svarer tilbage" data-en="Reality answers back">Virkeligheden svarer tilbage</h3><p data-da="Resultatet observeres igen, så systemet kan skelne mellem hensigten og den virkning, der faktisk opstod." data-en="The outcome is observed again so the system can distinguish intent from the effect that actually occurred.">Resultatet observeres igen, så systemet kan skelne mellem hensigten og den virkning, der faktisk opstod.</p><span class="runtime-owner" data-da="Resultat som evidens" data-en="Outcome as evidence">Resultat som evidens</span></article>
       </div>
@@ -290,7 +290,7 @@
       </div>
     </section>
 
-    <section class="closing" aria-labelledby="closing-title"><div class="closing-aside"><span class="micro" data-da="06 / Efterprøvning" data-en="06 / Verification">06 / Efterprøvning</span><img src="assets/kaliv-ankh-640.webp" alt="Kalivs futuristiske ankh-symbol" width="640" height="863" loading="lazy" /></div><div class="closing-main"><h2 id="closing-title" data-da="Arkitektur er først virkelig, når den kan bevises." data-en="Architecture becomes real only when it can be proven.">Arkitektur er først virkelig, når den kan bevises.</h2><div><p data-da="Det offentlige V1-register binder systemgrænserne til konkrete acceptkriterier på rigtig hardware og under vedvarende drift." data-en="The public V1 ledger binds system boundaries to concrete acceptance criteria on real hardware and under sustained operation.">Det offentlige V1-register binder systemgrænserne til konkrete acceptkriterier på rigtig hardware og under vedvarende drift.</p><div class="actions"><a class="action" href="proofs.html" data-en-href="proofs.html?lang=en" data-da="Åbn V1-beviser" data-en="Open V1 proofs">Åbn V1-beviser</a><a class="action secondary" href="progress.html" data-en-href="progress.html?lang=en">Project Room</a><a class="action secondary" href="brief.html" data-en-href="brief.html?lang=en" data-da="Læs projektbrief" data-en="Read project brief">Læs projektbrief</a><a class="action secondary" href="https://github.com/Ternedal/ModelRig" target="_blank" rel="noopener noreferrer" data-da="Åbn ModelRig" data-en="Open ModelRig">Åbn ModelRig</a></div></div></div></section>
+    <section class="closing" aria-labelledby="closing-title"><div class="closing-aside"><span class="micro" data-da="06 / Efterprøvning" data-en="06 / Verification">06 / Efterprøvning</span><img src="assets/kaliv-ankh-640.webp" alt="Kalivs futuristiske ankh-symbol" width="640" height="863" loading="lazy" data-en-alt="Kaliv’s futuristic ankh symbol"></div><div class="closing-main"><h2 id="closing-title" data-da="Arkitektur er først virkelig, når den kan bevises." data-en="Architecture becomes real only when it can be proven.">Arkitektur er først virkelig, når den kan bevises.</h2><div><p data-da="Det offentlige V1-register binder systemgrænserne til konkrete acceptkriterier på rigtig hardware og under vedvarende drift." data-en="The public V1 ledger binds system boundaries to concrete acceptance criteria on real hardware and under sustained operation.">Det offentlige V1-register binder systemgrænserne til konkrete acceptkriterier på rigtig hardware og under vedvarende drift.</p><div class="actions"><a class="action" href="proofs.html" data-en-href="proofs.html?lang=en" data-da="Åbn V1-beviser" data-en="Open V1 proofs">Åbn V1-beviser</a><a class="action secondary" href="progress.html" data-en-href="progress.html?lang=en">Project Room</a><a class="action secondary" href="brief.html" data-en-href="brief.html?lang=en" data-da="Læs projektbrief" data-en="Read project brief">Læs projektbrief</a><a class="action secondary" href="https://github.com/Ternedal/ModelRig" target="_blank" rel="noopener noreferrer" data-da="Åbn ModelRig" data-en="Open ModelRig">Åbn ModelRig</a></div></div></div></section>
   </main>
 
   <footer class="site-footer"><div><a class="footer-brand" href="./" data-en-href="./?lang=en">Kaliv <span>/ ModelRig</span></a><p data-da="Én vedvarende AI på tværs af computer, telefon, hjem og VR — under din kontrol." data-en="One persistent AI across computer, phone, home and VR — under your control.">Én vedvarende AI på tværs af computer, telefon, hjem og VR — under din kontrol.</p></div><nav aria-label="Fodnavigation" data-en-aria-label="Footer navigation"><a href="brief.html" data-en-href="brief.html?lang=en" data-da="Start her" data-en="Start here">Start her</a><a href="hub.html" data-en-href="hub.html?lang=en">KalivHub</a><a href="architecture.html" data-en-href="architecture.html?lang=en" data-da="Arkitektur" data-en="Architecture">Arkitektur</a><a href="proofs.html" data-en-href="proofs.html?lang=en" data-da="Beviser" data-en="Proofs">Beviser</a><a href="progress.html" data-en-href="progress.html?lang=en" data-da="Status" data-en="Status">Status</a></nav></footer>

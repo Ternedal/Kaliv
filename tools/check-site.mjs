@@ -24,7 +24,7 @@ const types = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascrip
 const server = createServer(async (req, res) => {
   try {
     const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
-    const file = resolve(root, '.' + (pathname === '/' ? '/index.html' : pathname));
+    const file = resolve(root, '.' + (pathname.endsWith('/') ? pathname + 'index.html' : pathname));
     if (!file.startsWith(root + '/')) throw new Error('Outside public site');
     const body = await readFile(file);
     res.writeHead(200, { 'Content-Type': `${types[extname(file)] || 'text/plain'}; charset=utf-8`, 'Cache-Control': 'no-store' });
@@ -40,7 +40,7 @@ let browser, chrome;
 try {
   const validator = new HtmlValidate({ extends: [], rules: { 'wcag/h63': 'error', 'aria-label-misuse': 'error' } });
   const markup = [];
-  for (const page of [...pages, '404.html', 'offline.html']) {
+  for (const page of [...pages, '404.html', 'offline.html', ...[...pages, '404.html', 'offline.html'].map(name => 'en/' + name)]) {
     const report = await validator.validateString(await readFile(resolve(root, page), 'utf8'), page);
     markup.push({ page, valid: report.valid, results: report.results });
     check(report.valid, `Markup: ${page}`);
@@ -87,7 +87,7 @@ try {
   for (const width of [320, 360, 390, 768, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     for (const name of pages) for (const lang of ['da', 'en']) {
-      const url = `${base}/${name}${lang === 'en' ? '?lang=en' : ''}`;
+      const url = `${base}/${lang === 'en' ? 'en/' : ''}${name}`;
       await page.goto(url, { waitUntil: 'networkidle' });
       const result = await page.evaluate(() => {
         const rect = e => { const r = e.getBoundingClientRect(); return { x: r.x, width: r.width, height: r.height }; };
@@ -124,12 +124,41 @@ try {
   await json('accessibility.json', accessibility);
   for (const link of links) check((await fetch(link)).status === 200, `Broken local link: ${link}`);
   await json('links.json', [...links]);
+  // English, canonical URLs, previews and language controls also work with JS off.
+  const noJS = await browser.newContext({ javaScriptEnabled: false, serviceWorkers: 'block', viewport: { width: 390, height: 900 } });
+  const plain = await noJS.newPage();
+  const staticLanguages = [];
+  for (const name of pages) {
+    const path = name === 'index.html' ? '/en/' : '/en/' + name;
+    await plain.goto(base + path);
+    const facts = {
+      page: name,
+      language: await plain.locator('html').getAttribute('lang'),
+      heading: await plain.locator('h1').textContent(),
+      canonical: await plain.locator('link[rel="canonical"]').getAttribute('href'),
+      locale: await plain.locator('meta[property="og:locale"]').getAttribute('content'),
+    };
+    check(facts.language === 'en' && facts.heading.length > 0, `Static English: ${name}`);
+    check(facts.canonical === 'https://kaliv.dk' + path && facts.locale === 'en_US', `English metadata: ${name}`);
+    await plain.locator('.language a, .lang a').filter({ hasText: 'DA' }).click();
+    check((await plain.locator('html').getAttribute('lang')) === 'da', `No-JS Danish control: ${name}`);
+    await plain.locator('.language a, .lang a').filter({ hasText: 'EN' }).click();
+    check((await plain.locator('html').getAttribute('lang')) === 'en', `No-JS English control: ${name}`);
+    staticLanguages.push(facts);
+  }
+  await json('static-languages.json', staticLanguages);
+  await noJS.close();
   // Click the mobile EN control, so a visible rectangle alone cannot pass.
   for (const name of pages) {
     await page.setViewportSize({ width: 320, height: 900 });
     await page.goto(`${base}/${name}`);
     await page.locator('.language a, .lang a').filter({ hasText: 'EN' }).click();
     await page.waitForFunction(() => document.documentElement.lang === 'en');
+  }
+  for (const name of pages) {
+    await page.goto(`${base}/${name}?lang=en&source=legacy#content`, { waitUntil: 'networkidle' });
+    const path = name === 'index.html' ? '/en/' : '/en/' + name;
+    check(page.url() === base + path + '?source=legacy#content', `Legacy English redirect: ${name}`);
   }
   await context.close();
 
@@ -170,6 +199,8 @@ try {
   check((await offlinePage.locator('h1').textContent()).includes('Kaliv'), 'Offline English page failed');
   await offlinePage.goto(`${base}/unvisited-route`);
   check((await offlinePage.title()).toLowerCase().includes('offline'), 'Offline fallback failed');
+  await offlinePage.goto(`${base}/en/unvisited-route`);
+  check((await offlinePage.locator('html').getAttribute('lang')) === 'en', 'English offline fallback failed');
   await json('service-worker.json', { ...cacheState, coreAssets, coreBytes, offlineEnglish: true, offlineFallback: true });
   await offline.close();
   await browser.close();
@@ -179,8 +210,8 @@ try {
   chrome = await launchChrome({ chromePath: process.env.CHROME_PATH, chromeFlags: ['--headless=new', '--no-sandbox', '--disable-dev-shm-usage'] });
   const scores = [];
   for (const name of pages) for (const lang of ['da', 'en']) {
-    const { lhr } = await lighthouse(`${base}/${name}${lang === 'en' ? '?lang=en' : ''}`, {
-      port: chrome.port, onlyCategories: ['performance', 'accessibility', 'best-practices'], logLevel: 'error',
+    const { lhr } = await lighthouse(`${base}/${lang === 'en' ? 'en/' : ''}${name}`, {
+      port: chrome.port, onlyCategories: ['performance', 'accessibility', 'best-practices', 'seo'], logLevel: 'error',
     });
     const summary = { page: name, lang, performance: lhr.categories.performance.score, accessibility: lhr.categories.accessibility.score, cls: lhr.audits['cumulative-layout-shift'].numericValue };
     scores.push(summary);
@@ -188,7 +219,7 @@ try {
     check(summary.performance >= 0.95, `Lighthouse performance: ${name}/${lang}: ${summary.performance}`);
     check(summary.accessibility >= 0.98, `Lighthouse accessibility: ${name}/${lang}: ${summary.accessibility}`);
     check(summary.cls === 0, `Layout shift: ${name}/${lang}: ${summary.cls}`);
-    for (const id of ['color-contrast', 'image-aspect-ratio', 'label-content-name-mismatch']) {
+    for (const id of ['color-contrast', 'image-aspect-ratio', 'label-content-name-mismatch', 'canonical']) {
       const audit = lhr.audits[id];
       check(audit && (audit.score === 1 || audit.scoreDisplayMode === 'notApplicable'), `Lighthouse audit: ${name}/${lang}/${id}`);
     }

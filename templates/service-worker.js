@@ -44,7 +44,7 @@ self.addEventListener('fetch', event => {
         })
         .catch(async () =>
           (await caches.match(request, { ignoreSearch: true })) ||
-          caches.match('./offline.html')
+          caches.match(url.pathname.startsWith('/en/') || url.searchParams.get('lang') === 'en' ? './en/offline.html' : './offline.html')
         )
     );
     return;

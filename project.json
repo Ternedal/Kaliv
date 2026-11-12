@@ -132,17 +132,17 @@
   ],
   "documents": {
     "overview_da": "https://kaliv.dk/",
-    "overview_en": "https://kaliv.dk/?lang=en",
+    "overview_en": "https://kaliv.dk/en/",
     "project_brief_da": "https://kaliv.dk/brief.html",
-    "project_brief_en": "https://kaliv.dk/brief.html?lang=en",
+    "project_brief_en": "https://kaliv.dk/en/brief.html",
     "kalivhub_da": "https://kaliv.dk/hub.html",
-    "kalivhub_en": "https://kaliv.dk/hub.html?lang=en",
+    "kalivhub_en": "https://kaliv.dk/en/hub.html",
     "architecture_da": "https://kaliv.dk/architecture.html",
-    "architecture_en": "https://kaliv.dk/architecture.html?lang=en",
+    "architecture_en": "https://kaliv.dk/en/architecture.html",
     "proof_ledger_da": "https://kaliv.dk/proofs.html",
-    "proof_ledger_en": "https://kaliv.dk/proofs.html?lang=en",
+    "proof_ledger_en": "https://kaliv.dk/en/proofs.html",
     "project_room_da": "https://kaliv.dk/progress.html",
-    "project_room_en": "https://kaliv.dk/progress.html?lang=en",
+    "project_room_en": "https://kaliv.dk/en/progress.html",
     "llms": "https://kaliv.dk/llms.txt"
   },
   "source_snapshot": {
