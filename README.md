@@ -1,6 +1,6 @@
 # Kaliv — projektsiden kaliv.dk
 
-Dette repository indeholder den offentlige projektside for **Kaliv** og **ModelRig**: [kaliv.dk](https://kaliv.dk/) (dansk) og [kaliv.dk/?lang=en](https://kaliv.dk/?lang=en) (engelsk).
+Dette repository indeholder den offentlige projektside for **Kaliv** og **ModelRig**: [kaliv.dk](https://kaliv.dk/) (dansk) og [kaliv.dk/en/](https://kaliv.dk/en/) (engelsk).
 
 Kaliv er én personlig AI på tværs af Windows, Android, hjemmet (KalivHub) og VR (Quest). ModelRig er den lokale infrastruktur, der holder identitet, hukommelse og tilladelser. Siden forklarer projektet og skelner mellem det, der er udgivet, det der er set på rigtig hardware, og det der stadig mangler bevis.
 
@@ -28,15 +28,14 @@ Siderne ligger som skabeloner i `templates/` og bygges til `_site/`:
 | `project.json` | Statuskilden: release, gennemgangsdato, commits, bevisstatus og de fælles statusformuleringer (`site_copy`). Buildet skriver også det offentlige manifest herfra |
 | `templates/llms.txt`, `templates/sitemap.xml` | Tekstoversigt til sprogmodeller og sitemap, genereret fra statuskilden |
 | `templates/service-worker.js` | Cache og offline-side. Cache-navn og precache-liste genereres af buildet |
-| `templates/proofs.js` | Script til bevisregisteret, med værdier fra statuskilden |
-| `home.css`, `home.js` | Forsidens stylesheet og sprogskift |
-| `dossier.css`, `dossier.js` | Stylesheet og sprogskift for `brief.html` og `hub.html` |
-| `site-shell.css` | Fælles header og footer på undersiderne |
-| `architecture.js`, `progress.js` | Sprogskift for arkitektur- og statussiden |
+| `templates/partials/` | Fælles brand, navigation, header og footer med forsiden som layoutvariant |
+| `site.css` | Ét stylesheet med fælles regler og afgrænsede sidevarianter |
+| `site.js` | Lille bootstrap til service worker, offline og kompatibilitet |
 | `robots.txt`, `site.webmanifest`, `CNAME` | Indeksering, webapp-metadata og domæne |
 | `assets/` | Hero-billede i tre størrelser, Kaliv-ankh og ikoner |
 | `tools/build.py` | Buildet. Kun Pythons standardbibliotek |
-| `tools/test_build.py` | Tests af statusgenerering og indholdshash |
+| `tools/test_build.py` | Tests af status, fælles komponenter, statisk engelsk og indholdshash |
+| `tools/check-release.py`, `tools/test_release.py` | Ugentlig kontrol af seneste ModelRig-release og tests af rapporteringen |
 | `tools/check-site.mjs` | Kontrol af det byggede site i CI |
 | `docs/qa/issue-6/` | Målinger og skærmbilleder fra rettelserne i [issue #6](https://github.com/Ternedal/Kaliv/issues/6) |
 
@@ -44,9 +43,9 @@ Sitet har ingen eksterne ressourcer, og buildet har ingen afhængigheder ud over
 
 ## Sprog
 
-Dansk er standard og står direkte i HTML'en. Den engelske tekst står i `data-en`-attributter på de samme elementer, og et script bytter teksten, når adressen har `?lang=en`. Uden JavaScript vises siden derfor altid på dansk.
+Dansk og engelsk bygges fra samme skabelon: dansk til `/` og engelsk til `/en/`. Begge sprog har færdig HTML, almindelige sprog-links og metadata på sidens sprog og virker uden JavaScript. Gamle `?lang=en`-links viderestilles med JavaScript; øvrige query-parametre og fragmentet bevares.
 
-Når du ændrer en tekst, skal både elementets indhold (dansk) og `data-da`/`data-en` rettes.
+Når du ændrer en tekst, skal både elementets indhold (dansk) og `data-en` rettes. Attributoversættelser som `data-en-aria-label` og `data-en-content` bygges på samme måde. Oversættelsesattributterne findes kun i skabelonerne.
 
 ## Opdatering af status
 
@@ -62,17 +61,21 @@ Der er ingen versionsnumre at vedligeholde. Buildet giver CSS, JavaScript, bille
 
 ```bash
 python3 tools/build.py
-python3 -m unittest discover -s tools -p test_build.py -v
+python3 -m unittest discover -s tools -p 'test_*.py' -v
 python3 -m http.server 8000 --directory _site
 ```
 
-Åbn `http://localhost:8000/`. `_site/` er genereret og committes ikke. Ryd sitets data i browseren, hvis du ser en gammel version; service workeren gemmer filerne.
+På Windows kan de samme kommandoer køres med `py` i stedet for `python3`; se [statusvejledningen](tools/README.md).
+
+Åbn `http://localhost:8000/` og `http://localhost:8000/en/`. `_site/` er genereret og committes ikke. Ryd sitets data i browseren, hvis du ser en gammel version; service workeren gemmer filerne.
 
 ## Publicering
 
 Hvert push til `main` kører `.github/workflows/pages.yml`. Den bygger med `tools/build.py` og publicerer kun `_site/` til GitHub Pages på domænet i `CNAME` (kaliv.dk). Skabeloner, værktøjer og denne README publiceres ikke.
 
 `.github/workflows/site-checks.yml` kører på hver pull request og på `main`: build og tests, markup, links, visning ved flere skærmbredder, tilgængelighed, cache og Lighthouse. Rapporterne ligger som artefakt på kørslen.
+
+`.github/workflows/release-drift.yml` sammenligner statusfilen med seneste offentlige ModelRig-release hver mandag kl. 07.20 UTC. Ved afvigelse opretter eller opdaterer den én opgave fra GitHub Actions; den ændrer ikke indhold eller bevisstatus. Den kan også startes manuelt, med eller uden oprettelse af opgaven. API-fejl får kørslen til at fejle frem for at blive rapporteret som ajourført.
 
 Planen for sitet og det, der mangler, står i [issue #6](https://github.com/Ternedal/Kaliv/issues/6).
 

@@ -24,8 +24,8 @@ jobs:
           node-version: '24'
       - name: Stage public files
         run: python3 tools/build.py
-      - name: Check status generation and content hashes
-        run: python3 -m unittest discover -s tools -p 'test_build.py' -v
+      - name: Check build, shared components and release reporting
+        run: python3 -m unittest discover -s tools -p 'test_*.py' -v
       - name: Install isolated QA tools
         run: >-
           npm install --prefix "$RUNNER_TEMP/kaliv-qa" --no-save --package-lock=false

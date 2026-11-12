@@ -33,8 +33,9 @@ PUBLIC_FILES = (
 
 HTML_TEMPLATES = tuple(name for name in PUBLIC_FILES if name.endswith(".html"))
 LEGACY_SCRIPTS = ("home.js", "dossier.js", "architecture.js", "progress.js", "proofs.js")
+LEGACY_STYLES = ("home.css", "dossier.css", "site-shell.css")
 EN_FILES = tuple("en/" + name for name in HTML_TEMPLATES)
-PUBLIC_FILES += ("site.js",) + EN_FILES
+PUBLIC_FILES += ("site.js", "site.css") + EN_FILES
 TEMPLATE_FILES = HTML_TEMPLATES + (
     "llms.txt", "sitemap.xml", "service-worker.js",
 )
@@ -50,6 +51,14 @@ HEAD_KEYS = {
     "signed_android": "ModelRig@feat/android-kalivhub-mirror",
 }
 TOKEN = re.compile(r"{{\s*([\w.-]+)(?:\s*\|\s*(\w+))?\s*}}")
+INCLUDE = re.compile(r'{%\s*include\s+"([a-z-]+)"\s*%}')
+PAGE_TITLES = {
+    "brief": ("Projektbrief", "Project brief"),
+    "hub": ("KalivHub / hjemmet", "KalivHub / home"),
+    "architecture": ("Systemarkitektur", "System architecture"),
+    "proofs": ("V1-bevisregister", "V1 proof ledger"),
+    "progress": ("Offentlig status", "Public status"),
+}
 ATTR = re.compile(r"(?P<prefix>\b(?:[\w-]*href|src|srcset|content)\s*=\s*)(?P<quote>[\"'])(?P<value>.*?)(?P=quote)", re.DOTALL)
 MONTHS = {
     "da": ("januar", "februar", "marts", "april", "maj", "juni", "juli", "august", "september", "oktober", "november", "december"),
@@ -163,6 +172,11 @@ def compile_html(source, name, language, canonical):
     root = next(node for node in nodes if node.tag == "html")
     head = next(node for node in nodes if node.tag == "head")
     root.attrs.update(lang=language, **{"data-page": name.removesuffix(".html")})
+    page = name.removesuffix(".html")
+    classes = root.attrs.get("class", "").split() + ["page-" + page]
+    if page in PAGE_TITLES:
+        classes += ["site-document", "layout-dossier" if page in ("brief", "hub") else "layout-system"]
+    root.attrs["class"] = " ".join(classes)
     canonical_url = canonical.rstrip("/") + page_path(name, language)
     for node in nodes:
         if language == "en":
@@ -191,6 +205,10 @@ def compile_html(source, name, language, canonical):
             for attr in ("href", "src"):
                 if attr in node.attrs:
                     node.attrs[attr] = local_url(node.attrs[attr], language, canonical)
+        if "data-navlink" in node.attrs:
+            node.attrs.pop("data-navlink")
+            if urlsplit(node.attrs["href"]).path == page_path(name, language):
+                node.attrs.update(**{"class": "is-current", "aria-current": "page"})
         if "srcset" in node.attrs:
             node.attrs["srcset"] = ", ".join(" ".join([local_url(parts[0], language, canonical)] + parts[1:]) for parts in (item.split() for item in node.attrs["srcset"].split(",")) if parts)
         if node.tag == "link" and node.attrs.get("rel") == "canonical":
@@ -217,10 +235,10 @@ def compile_html(source, name, language, canonical):
         # Existing translation scripts are replaced by static HTML and one bootstrap.
         node.children = [child for child in node.children if not isinstance(child, Element) or child.tag != "script" or child.attrs.get("type") == "application/ld+json"]
         node.attrs = {key: value for key, value in node.attrs.items() if not key.startswith(("data-da", "data-en", "data-title", "data-description"))}
+    script_attrs = {"src": "/site.js", "defer": None}
     if language == "da":
-        charset = next((i + 1 for i, node in enumerate(head.children) if isinstance(node, Element) and "charset" in node.attrs), 0)
-        head.children.insert(charset, Element("script", children=[REDIRECT]))
-    head.children.append(Element("script", {"src": "/site.js", "defer": None}))
+        script_attrs["blocking"] = "render"
+    head.children.append(Element("script", script_attrs))
     return serialize(document.root)
 
 
@@ -317,6 +335,20 @@ def render_data(value, context):
     return render(value, context) if isinstance(value, str) else value
 
 
+def expand_partials(source, partials, stack=()):
+    def include(match):
+        name = match[1]
+        if name in stack:
+            raise ValueError(f"Circular partial: {' -> '.join((*stack, name))}")
+        if name not in partials:
+            raise ValueError(f"Unknown partial: {name}")
+        return expand_partials(partials[name], partials, (*stack, name))
+    result = INCLUDE.sub(include, source)
+    if "{%" in result:
+        raise ValueError("Unsupported partial directive")
+    return result
+
+
 def version_url(url, versions, canonical, relative_to=""):
     parts = urlsplit(unescape(url))
     origin = urlsplit(canonical)
@@ -356,11 +388,13 @@ def build(root=ROOT):
     context = context_for(project)
     files = {}
     templates = {name: (root / "templates" / name).read_text(encoding="utf-8") for name in TEMPLATE_FILES}
+    partials = {path.stem: path.read_text(encoding="utf-8") for path in (root / "templates" / "partials").glob("*.html")}
     for name in PUBLIC_FILES:
-        if name not in TEMPLATE_FILES and name not in EN_FILES and name not in LEGACY_SCRIPTS and name != "project.json":
+        if name not in TEMPLATE_FILES and name not in EN_FILES and name not in LEGACY_SCRIPTS + LEGACY_STYLES and name != "project.json":
             files[name] = (root / name).read_bytes()
+    files["site.js"] = REDIRECT.encode("utf-8") + b"\n" + files["site.js"]
     for name in LEGACY_SCRIPTS:
-        files[name] = REDIRECT.encode("utf-8") + b"\n" + files["site.js"]
+        files[name] = files["site.js"]
     versions = {}
     # Images and scripts are leaves; CSS and the manifest can reference images.
     for name, data in files.items():
@@ -370,6 +404,10 @@ def build(root=ROOT):
         source = files[name].decode("utf-8")
         source = re.sub(r"url\((['\"]?)([^)'\"]+)\1\)", lambda match: f"url({match[1]}{version_url(match[2], versions, project['canonical'])}{match[1]})", source)
         files[name] = source.encode("utf-8")
+        versions[name] = sha256(files[name]).hexdigest()[:12]
+    # Older cached HTML still uses these URLs. Keep a single maintained CSS source.
+    for name in LEGACY_STYLES:
+        files[name] = ('@import url("/site.css?v=' + versions["site.css"] + '");\n').encode("utf-8")
         versions[name] = sha256(files[name]).hexdigest()[:12]
     manifest = json.loads(files["site.webmanifest"])
     for icon in manifest.get("icons", []):
@@ -382,7 +420,9 @@ def build(root=ROOT):
     for name, source in templates.items():
         if name.endswith(".js"):
             continue
-        output = render(source, context, html=name.endswith((".html", ".xml")))
+        titles = PAGE_TITLES.get(Path(name).stem, ("", ""))
+        page_context = {**context, "page": {"title_da": titles[0], "title_en": titles[1]}}
+        output = render(expand_partials(source, partials), page_context, html=name.endswith((".html", ".xml")))
         if name.endswith(".html"):
             english = compile_html(output, name, "en", project["canonical"])
             files["en/" + name] = version_html(english, versions, project["canonical"]).encode("utf-8")

@@ -6,3 +6,10 @@ if ('serviceWorker' in navigator) {
 if (document.documentElement.dataset.page === 'offline') {
   window.addEventListener('online', () => window.location.reload(), { once: true });
 }
+// Old cached documents predate the static page marker used by the shared CSS.
+if (!document.documentElement.dataset.page)
+  document.documentElement.dataset.page = (location.pathname.split('/').pop() || 'index.html').replace(/\.html$/, '');
+const kalivPage = document.documentElement.dataset.page;
+document.documentElement.classList.add('page-' + kalivPage);
+if (['brief', 'hub', 'architecture', 'proofs', 'progress'].includes(kalivPage))
+  document.documentElement.classList.add('site-document', ['brief', 'hub'].includes(kalivPage) ? 'layout-dossier' : 'layout-system');
