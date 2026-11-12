@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parent.parent
 PUBLIC_FILES = (
     ".nojekyll", "CNAME", "index.html", "brief.html", "hub.html",
     "proofs.html", "architecture.html", "progress.html", "404.html",
-    "offline.html", "home.css", "home.js", "dossier.css", "dossier.js",
+    "offline.html", "download.html", "home.css", "home.js", "dossier.css", "dossier.js",
     "site-shell.css", "architecture.js", "proofs.js", "progress.js", "project.json", "llms.txt", "robots.txt", "sitemap.xml",
     "site.webmanifest", "service-worker.js",
     "assets/kaliv-favicon-32.png", "assets/kaliv-apple-touch-icon.png",
@@ -59,6 +59,7 @@ PAGE_TITLES = {
     "architecture": ("Systemarkitektur", "System architecture"),
     "proofs": ("V1-bevisregister", "V1 proof ledger"),
     "progress": ("Offentlig status", "Public status"),
+    "download": ("Hent Kaliv", "Get Kaliv"),
 }
 ATTR = re.compile(r"(?P<prefix>\b(?:[\w-]*href|src|srcset|content)\s*=\s*)(?P<quote>[\"'])(?P<value>.*?)(?P=quote)", re.DOTALL)
 MONTHS = {
@@ -71,7 +72,7 @@ REDIRECT = """(() => {
   const query = new URLSearchParams(location.search);
   if (query.get('lang') !== 'en' || location.pathname.startsWith('/en/')) return;
   const page = location.pathname.split('/').pop() || 'index.html';
-  const pages = ['index.html','brief.html','hub.html','proofs.html','architecture.html','progress.html','404.html','offline.html'];
+  const pages = ['index.html','brief.html','hub.html','proofs.html','architecture.html','progress.html','404.html','offline.html','download.html'];
   if (!pages.includes(page)) return;
   query.delete('lang');
   const target = new URL(page === 'index.html' ? '/en/' : '/en/' + page, location.origin);
@@ -176,7 +177,7 @@ def compile_html(source, name, language, canonical):
     page = name.removesuffix(".html")
     classes = root.attrs.get("class", "").split() + ["page-" + page]
     if page in PAGE_TITLES:
-        classes += ["site-document", "layout-dossier" if page in ("brief", "hub") else "layout-system"]
+        classes += ["site-document", "layout-dossier" if page in ("brief", "hub", "download") else "layout-system"]
     root.attrs["class"] = " ".join(classes)
     canonical_url = canonical.rstrip("/") + page_path(name, language)
     for node in nodes:
@@ -285,6 +286,7 @@ def context_for(project):
         for item in items
     }
     context["heads"] = {name: project["source_snapshot"]["heads"][key] for name, key in HEAD_KEYS.items()}
+    context["component"] = {item["name"]: item for item in project["components"]}
     mirror_status = next(item["status"] for item in project["supporting_evidence"] if item["id"] == "E04")
     labels = {"parked": ("Parkeret", "Parked"), "gate_open": ("Gate åben", "Gate open"), "ci_green": ("CI grøn", "CI green"), "released": ("Udgivet", "Released")}
     if mirror_status not in labels:

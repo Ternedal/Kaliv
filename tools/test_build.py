@@ -154,7 +154,7 @@ class BuildTests(unittest.TestCase):
         partial = self.root / "templates/partials/brand.html"
         partial.write_text(partial.read_text().replace("<strong>Kaliv</strong>", "<strong>Kaliv build test</strong>"))
         result = build(self.root)
-        for name in ("index", "brief", "hub", "architecture", "proofs", "progress"):
+        for name in ("index", "brief", "hub", "architecture", "proofs", "progress", "download"):
             for prefix in ("", "en/"):
                 html = result["files"][prefix + name + ".html"].decode()
                 self.assertIn("<strong>Kaliv build test</strong>", html)
@@ -204,6 +204,34 @@ class BuildTests(unittest.TestCase):
         def policy(result):
             return next(n.attrs["content"] for n in elements(Document(result["files"]["en/index.html"].decode()).root) if n.attrs.get("http-equiv") == "Content-Security-Policy")
         self.assertNotEqual(policy(before), policy(after))
+
+    def test_downloads_follow_the_reviewed_release_and_share_links_with_manifest(self):
+        self.project["latest_release"]["version"] = "9.8.7"
+        self.save()
+        files = build(self.root)["files"]
+        manifest = json.loads(files["project.json"])
+        for locale in ("", "en/"):
+            html = files[locale + "download.html"].decode()
+            for name in ("windows", "android", "checksums"):
+                asset = manifest["downloads"][name]
+                self.assertTrue(asset["url"].startswith("https://github.com/Ternedal/ModelRig/releases/download/v9.8.7/"))
+                self.assertIn(asset["url"], html)
+            self.assertIn("-LiteralPath", html)
+            self.assertIn("-Algorithm SHA256", html)
+            self.assertIn(manifest["latest_release"]["url"], html)
+        self.assertEqual(manifest["downloads"]["windows"]["filename"], "Kaliv-windows-x64-9.8.7.jar")
+
+    def test_ecosystem_status_has_one_source_and_does_not_change_proof_states(self):
+        for name in ("KalivNexus", "LanguageRig"):
+            component = next(item for item in self.project["components"] if item["name"] == name)
+            component["status"] = name + " status propagation test"
+        self.save()
+        files = build(self.root)["files"]
+        manifest = json.loads(files["project.json"])
+        for name in ("KalivNexus", "LanguageRig"):
+            self.assertIn("https://github.com/Ternedal/" + name, manifest["repositories"])
+            self.assertIn(name + " status propagation test", files["llms.txt"].decode())
+        self.assertEqual([item["status"] for item in manifest["v1_proofs"]], ["open"] * 4)
 
 
 if __name__ == "__main__":

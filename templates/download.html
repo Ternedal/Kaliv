@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#05070a">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="description" content="Hent Kaliv til Windows og Android fra den officielle ModelRig-udgivelse, og kontrollér filens SHA-256 før brug." data-en-content="Get Kaliv for Windows and Android from the official ModelRig release, and verify the file's SHA-256 before use.">
+  <meta property="og:title" content="Hent Kaliv" data-en-content="Get Kaliv">
+  <meta property="og:description" content="Offentlige downloads og en kort vejledning til checksumkontrol." data-en-content="Public downloads and a short guide to checksum verification.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="da_DK">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:url" content="https://kaliv.dk/download.html">
+  <meta property="og:image" content="https://kaliv.dk/assets/modelrig-continuity-female-hair-1920.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hent Kaliv" data-en-content="Get Kaliv">
+  <meta name="twitter:description" content="Hent fra den officielle udgivelse, og kontrollér filen før brug." data-en-content="Download from the official release and verify the file before use.">
+  <meta name="twitter:image" content="https://kaliv.dk/assets/modelrig-continuity-female-hair-1920.webp">
+  <link rel="canonical" href="https://kaliv.dk/download.html">
+  <link rel="alternate" hreflang="da" href="https://kaliv.dk/download.html">
+  <link rel="alternate" hreflang="en" href="https://kaliv.dk/en/download.html">
+  <link rel="alternate" hreflang="x-default" href="https://kaliv.dk/download.html">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/kaliv-favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/kaliv-apple-touch-icon.png">
+  <title data-en="Get Kaliv — downloads and checksums">Hent Kaliv — downloads og checksums</title>
+  <script type="application/ld+json" data-en-name="Get Kaliv" data-en-description="Official Windows and Android downloads and SHA-256 verification.">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Hent Kaliv",
+      "description": "Officielle Windows- og Android-downloads og kontrol af SHA-256.",
+      "dateModified": "{{ updated }}",
+      "url": "https://kaliv.dk/download.html",
+      "inLanguage": "da"
+    }
+  </script>
+  <link rel="stylesheet" href="/site.css">
+</head>
+<body>
+  <a class="skip" href="#content" data-en="Skip to content">Gå til indhold</a>
+  <div class="topline" aria-hidden="true"></div>
+  {% include "header" %}
+  <main id="content" tabindex="-1">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div>
+          <span class="eyebrow" data-en="Official downloads">Officielle downloads</span>
+          <h1 id="hero-title" data-en="Get Kaliv.">Hent Kaliv.</h1>
+          <p class="lead" data-en="Get the Windows client or Android app from the official ModelRig release. Connect the client to your ModelRig setup and verify the downloaded file before use.">Hent Windows-klienten eller Android-appen fra den officielle ModelRig-udgivelse. Forbind klienten til din ModelRig-opsætning, og kontrollér den hentede fil før brug.</p>
+          <div class="actions"><a class="action" href="{{ latest_release.url }}" data-en="View the latest release">Se seneste udgivelse</a><a class="action secondary" href="#files" data-en="Choose a file">Vælg en fil</a></div>
+        </div>
+        <div class="hero-meta"><span data-en="Reviewed · {{ updated | date_en }}">Gennemgået · {{ updated | date_da }}</span><span>Windows · Android</span></div>
+      </div>
+      <aside class="hero-panel" aria-label="Gennemgået udgivelse" data-en-aria-label="Reviewed release">
+        <div><span class="micro" data-en="Reviewed release">Gennemgået udgivelse</span><h2>v{{ latest_release.version }}</h2><p data-en="Published {{ latest_release.published | date_en }}. The files below belong to this release.">Udgivet {{ latest_release.published | date_da }}. Filerne herunder tilhører denne udgivelse.</p></div>
+        <div><span class="status-chip" data-en="Publicly released">Offentligt udgivet</span><p data-en="Release availability is separate from V1 qualification. See the evidence ledger for the remaining proofs.">En offentlig udgivelse er ikke det samme som V1-kvalifikation. Se bevisregisteret for de resterende beviser.</p><a class="inline-link" href="proofs.html" data-en="View V1 evidence ↗">Se V1-beviser ↗</a></div>
+      </aside>
+    </section>
+    <section id="files" class="section" aria-labelledby="files-title">
+      <div class="section-head"><span class="section-label" data-en="01 / Choose your client">01 / Vælg din klient</span><div><h2 id="files-title" data-en="Two ways to meet Kaliv.">To måder at møde Kaliv.</h2><p data-en="These links download the reviewed v{{ latest_release.version }} files directly from GitHub. Use the release page above to check for a newer version.">Disse links henter de gennemgåede filer fra v{{ latest_release.version }} direkte fra GitHub. Brug udgivelsessiden ovenfor til at se, om der er en nyere version.</p></div></div>
+      <div class="brief-grid">
+        <article class="brief-card"><span>01 / Windows</span><div><h3 data-en="Kaliv on your computer">Kaliv på din computer</h3><p class="download-filename">{{ downloads.windows.filename }}</p><p data-en="The Windows client. Follow the ModelRig setup guide for prerequisites and connection.">Windows-klienten. Følg ModelRigs opsætningsvejledning for forudsætninger og forbindelse.</p></div><a class="inline-link" href="{{ downloads.windows.url }}" data-en="Download Windows client ↗">Hent Windows-klient ↗</a></article>
+        <article class="brief-card"><span>02 / Android</span><div><h3 data-en="Kaliv on your phone">Kaliv på din telefon</h3><p class="download-filename">{{ downloads.android.filename }}</p><p data-en="The Android app as an APK. Follow the ModelRig setup guide to connect the phone to your rig.">Android-appen som APK. Følg ModelRigs opsætningsvejledning for at forbinde telefonen med din rig.</p></div><a class="inline-link" href="{{ downloads.android.url }}" data-en="Download Android app ↗">Hent Android-app ↗</a></article>
+      </div>
+      <p class="download-setup"><a class="inline-link" href="{{ downloads.setup_url }}" data-en="Read the ModelRig setup guide ↗">Læs ModelRigs opsætningsvejledning ↗</a></p>
+    </section>
+    <section class="section" aria-labelledby="checksum-title">
+      <div class="section-head"><span class="section-label" data-en="02 / Verify your file">02 / Kontrollér din fil</span><div><h2 id="checksum-title" data-en="Compare before you open it.">Sammenlign, før du åbner.</h2><p data-en="A matching SHA-256 confirms that your file matches the checksum published with the same release. Use the exact filename in the checksum list.">En matchende SHA-256 bekræfter, at filen svarer til checksummen i den samme udgivelse. Brug det præcise filnavn i checksumlisten.</p></div></div>
+      <ol class="brief-grid three checksum-steps">
+        <li class="brief-card"><span>01</span><div><h3 data-en="Get the checksum list">Hent checksumlisten</h3><p data-en="Save SHA256SUMS.txt from the same v{{ latest_release.version }} release as your download.">Gem SHA256SUMS.txt fra den samme v{{ latest_release.version }}-udgivelse som din download.</p></div><a class="inline-link" href="{{ downloads.checksums.url }}" data-en="Open SHA256SUMS.txt ↗">Åbn SHA256SUMS.txt ↗</a></li>
+        <li class="brief-card"><span>02 / PowerShell</span><div><h3 data-en="Compute the hash">Beregn hashværdien</h3><p data-en="Open PowerShell in your download folder. Replace FILE_NAME with the exact name of your downloaded file.">Åbn PowerShell i din downloadmappe. Erstat FILNAVN med det præcise navn på den hentede fil.</p><pre><code data-en='Get-FileHash -LiteralPath ".\FILE_NAME" -Algorithm SHA256'>Get-FileHash -LiteralPath ".\FILNAVN" -Algorithm SHA256</code></pre></div></li>
+        <li class="brief-card"><span>03</span><div><h3 data-en="Compare all characters">Sammenlign alle tegn</h3><p data-en="Find the filename in SHA256SUMS.txt and compare all 64 hash characters. Uppercase and lowercase do not matter. If they differ, download the file and checksum list again from the same release before proceeding.">Find filnavnet i SHA256SUMS.txt, og sammenlign alle 64 tegn. Store og små bogstaver er uden betydning. Hvis værdierne er forskellige, skal du hente fil og checksumliste igen fra den samme udgivelse, før du går videre.</p></div><a class="inline-link" href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-filehash" data-en="About Get-FileHash ↗">Om Get-FileHash ↗</a></li>
+      </ol>
+    </section>
+  </main>
+  {% include "footer" %}
+</body>
+</html>
