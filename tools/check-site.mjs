@@ -212,6 +212,15 @@ try {
   // Simulate an existing v75 cache, then install the new worker at the same URL.
   const offline = await browser.newContext();
   const offlinePage = await offline.newPage();
+  const offlineEvents = [];
+  offlinePage.on('framenavigated', frame => { if (frame === offlinePage.mainFrame()) offlineEvents.push({ type: 'navigation', url: frame.url() }); });
+  offlinePage.on('requestfailed', request => offlineEvents.push({ type: 'failed', url: request.url(), failure: request.failure() }));
+  offlinePage.on('console', message => offlineEvents.push({ type: 'console', level: message.type(), message: message.text() }));
+  offlinePage.on('pageerror', error => offlineEvents.push({ type: 'error', message: error.message }));
+  await offlinePage.addInitScript(() => {
+    for (const type of ['online', 'offline', 'beforeunload', 'pagehide', 'pageshow'])
+      window.addEventListener(type, () => console.info('kaliv-offline-event ' + JSON.stringify({type, url: location.href, online: navigator.onLine})));
+  });
   await offlinePage.goto(`${base}/offline.html`);
   await offlinePage.evaluate(async () => {
     const old = await caches.open('kaliv-shell-v75');
@@ -256,7 +265,7 @@ try {
   await recordOffline(await offlinePage.goto(`${base}/en/unvisited-route`));
   check((await offlinePage.locator('html').getAttribute('lang')) === 'en', 'English offline fallback failed');
   await json('service-worker.json', { ...cacheState, coreAssets, coreBytes, offlineNavigations, offlineEnglish: true, offlineFallback: true });
-  console.log(JSON.stringify({ offlineNavigations, cachedOfflinePages: cacheState.entries.filter(entry => entry.url.includes('offline.html')) }, null, 2));
+  console.log(JSON.stringify({ offlineNavigations, offlineEvents, cachedOfflinePages: cacheState.entries.filter(entry => entry.url.includes('offline.html')) }, null, 2));
   await offline.close();
   await browser.close();
   browser = null;
