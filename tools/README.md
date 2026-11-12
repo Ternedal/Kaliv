@@ -59,6 +59,8 @@ Genereret output committes ikke. Buildet har ingen eksterne afhængigheder.
 ## Ugentlig releasekontrol
 
 `release-drift.yml` kører mandag kl. 07.20 UTC og kan startes manuelt i Actions.
+Den kører også på main, når selve tjekket eller dets workflow ændres, så den
+faktiske integration kontrolleres ved publicering af rettelser til tjekket.
 Den opretter eller opdaterer en enkelt bot-opgave ved afvigelse. Gentagne kørsler
 med samme afvigelse skriver ikke igen. Personers opgaver ændres ikke. En løst
 opgave lukkes som del af den dokumenterede indholdsgennemgang.

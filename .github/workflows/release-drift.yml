@@ -1,6 +1,11 @@
 name: Release drift
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/release-drift.yml
+      - tools/check-release.py
   schedule:
     - cron: '20 7 * * 1'
   workflow_dispatch:
@@ -29,7 +34,7 @@ jobs:
       - name: Compare latest public ModelRig release
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          REPORT_ISSUE: ${{ github.event_name == 'schedule' || inputs.report_issue }}
+          REPORT_ISSUE: ${{ github.event_name != 'workflow_dispatch' || inputs.report_issue }}
         run: |
           if [ "$REPORT_ISSUE" = "true" ]; then
             python3 tools/check-release.py --write
