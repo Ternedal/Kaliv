@@ -15,7 +15,7 @@ bevisstatus skal fortsat være dokumenterede og godkendte.
 
 Siderne ligger i `templates/`. Fælles elementer hentes med `{% include "header" %}` fra `templates/partials/`. Headerens sidetitel og aktive navigation vælges af buildet. Forsiden har sin egen layoutvariant med samme brand og navigationslinks. Alle sider bruger `site.css`; `:where(...)` afgrænser varianterne uden at øge selectorernes specificitet. Ukendte eller cirkulære includes stopper buildet.
 
- Markører som `{{ latest_release.version }}` og
+Markører som `{{ latest_release.version }}` og
 `{{ updated | date_da }}` henter værdier fra statuskilden. `short`, `date_en`,
 `capitalize`, `lower` og `json` er også understøttet. HTML og attributter escapes;
 `json` bruges til JavaScript-værdier. Ukendte markører stopper buildet.
@@ -30,7 +30,8 @@ oversættelsesattributterne og skriver færdig HTML til `/` og `/en/`, inklusive
 metadata, lokale links og sprogkontroller. Begge sprog virker uden JavaScript.
 Gamle `?lang=en`-links viderestilles med et lille script, som bevarer øvrige
 query-parametre og fragmentet. De gamle script-URL'er bevares som kompatibilitet
-for allerede cachede sider; `site.js` håndterer kun offline og service worker.
+for allerede cachede sider. Den fælles bootstrap håndterer viderestilling,
+kompatibilitet, offline og service worker; der er ingen runtime-oversættelse.
 
 CSS, JavaScript, billeder og manifest får indholdshash i deres URL. Workerens
 cache-navn afhænger af det samlede output og worker-skabelonen. Precache-listen
