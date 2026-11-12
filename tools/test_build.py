@@ -126,6 +126,7 @@ class BuildTests(unittest.TestCase):
             canonical = next((n.attrs["href"] for n in nodes if n.tag == "link" and n.attrs.get("rel") == "canonical"), None)
             if canonical:
                 self.assertEqual(canonical, "https://kaliv.dk" + page_path(name.removeprefix("en/"), "en"))
+                self.assertEqual(next(n.attrs["content"] for n in nodes if n.tag == "meta" and n.attrs.get("property") == "og:locale"), "en_US")
             for n in nodes:
                 if n.tag == "script" and n.attrs.get("type") == "application/ld+json":
                     structured = json.loads("".join(n.children))
