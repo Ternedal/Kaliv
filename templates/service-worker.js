@@ -42,10 +42,18 @@ self.addEventListener('fetch', event => {
           }
           return response;
         })
-        .catch(async () =>
-          (await caches.match(request, { ignoreSearch: true })) ||
-          caches.match(url.pathname.startsWith('/en/') || url.searchParams.get('lang') === 'en' ? './en/offline.html' : './offline.html')
-        )
+        .catch(async () => {
+          const known = await caches.match(request, { ignoreSearch: true });
+          if (known) return known;
+          const language = url.pathname.startsWith('/en/') || url.searchParams.get('lang') === 'en' ? 'en' : 'da';
+          const fallback = await caches.match(language === 'en' ? './en/offline.html' : './offline.html');
+          if (!fallback) return Response.error();
+          // A fallback answers this navigation rather than retaining a cached URL.
+          const headers = new Headers(fallback.headers);
+          for (const name of ['content-length', 'content-encoding', 'transfer-encoding']) headers.delete(name);
+          headers.set('X-Kaliv-Offline-Language', language);
+          return new Response(await fallback.arrayBuffer(), { status: fallback.status, statusText: fallback.statusText, headers });
+        })
     );
     return;
   }

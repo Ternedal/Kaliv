@@ -186,6 +186,7 @@ class BuildTests(unittest.TestCase):
             if not name.endswith(".html"):
                 continue
             nodes = list(elements(Document(data.decode()).root))
+            self.assertFalse(any(key.lower().startswith("on") for node in nodes for key in node.attrs), name)
             head = next(n for n in nodes if n.tag == "head")
             children = [n for n in head.children if not isinstance(n, str)]
             self.assertIn("charset", children[0].attrs)

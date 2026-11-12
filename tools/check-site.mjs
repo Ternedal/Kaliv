@@ -229,6 +229,7 @@ try {
   await offlinePage.goto(base + '/');
   await offlinePage.evaluate(() => navigator.serviceWorker.ready);
   await offlinePage.waitForFunction(() => navigator.serviceWorker.controller !== null);
+  const activeWorker = offline.serviceWorkers().find(worker => worker.url().endsWith('/service-worker.js'));
   const cacheState = await offlinePage.evaluate(async () => {
     const names = await caches.keys();
     const current = names.find(name => name.startsWith('kaliv-shell-') && name !== 'kaliv-shell-v75');
@@ -253,7 +254,7 @@ try {
   const offlineNavigations = [];
   const recordOffline = async response => {
     offlineNavigations.push({
-      url: offlinePage.url(), responseURL: response?.url(), status: response?.status(), fromWorker: response?.fromServiceWorker(),
+      url: offlinePage.url(), responseURL: response?.url(), status: response?.status(), fromWorker: response?.fromServiceWorker(), fallbackLanguage: response?.headers()['x-kaliv-offline-language'],
       ...await offlinePage.evaluate(() => ({ language: document.documentElement.lang, title: document.title, online: navigator.onLine, controller: navigator.serviceWorker.controller?.scriptURL })),
     });
   };
@@ -264,8 +265,27 @@ try {
   check((await offlinePage.title()).toLowerCase().includes('offline'), 'Offline fallback failed');
   await recordOffline(await offlinePage.goto(`${base}/en/unvisited-route`));
   check((await offlinePage.locator('html').getAttribute('lang')) === 'en', 'English offline fallback failed');
-  await json('service-worker.json', { ...cacheState, coreAssets, coreBytes, offlineNavigations, offlineEnglish: true, offlineFallback: true });
-  console.log(JSON.stringify({ offlineNavigations, offlineEvents, cachedOfflinePages: cacheState.entries.filter(entry => entry.url.includes('offline.html')) }, null, 2));
+  const workerEvidence = await activeWorker.evaluate(async () => {
+    const page = await caches.match(new URL('/en/offline.html', self.location.href));
+    return { englishCached: { url: page?.url, headers: page ? Object.fromEntries(page.headers) : {}, html: page ? await page.text() : '' } };
+  });
+  console.log(JSON.stringify({ offlineNavigations, offlineEvents, workerEvidence }, null, 2));
+  for (let i = 0; i < 6; i++) for (const language of ['da', 'en']) {
+    const path = `${language === 'en' ? '/en' : ''}/offline-probe-${i}`;
+    const response = await offlinePage.goto(base + path);
+    await recordOffline(response);
+    check(offlinePage.url() === base + path && response?.fromServiceWorker(), `Offline navigation did not commit: ${path}`);
+    check((await offlinePage.locator('html').getAttribute('lang')) === language, `Offline language: ${path}`);
+    check(response?.headers()['x-kaliv-offline-language'] === language, `Offline response language: ${path}`);
+  }
+  await offlinePage.goto(`${base}/en/offline.html`);
+  const retryError = await Promise.all([offlinePage.waitForNavigation(), offlinePage.locator('#retry-connection').click()]).then(() => null, error => error.message);
+  if (retryError) console.log(JSON.stringify({ retryError, offlineEvents }, null, 2));
+  check(!retryError, 'Offline retry navigation failed');
+  check((await offlinePage.locator('html').getAttribute('lang')) === 'en', 'Offline retry changed language');
+  check(await offlinePage.locator('.symbol img').evaluate(img => img.complete && img.naturalWidth > 0), 'Offline illustration unavailable');
+  await json('service-worker.json', { ...cacheState, coreAssets, coreBytes, offlineNavigations, workerEvidence, offlineEnglish: true, offlineFallback: true });
+  console.log(JSON.stringify({ offlineNavigations, offlineEvents, workerEvidence, cachedOfflinePages: cacheState.entries.filter(entry => entry.url.includes('offline.html')) }, null, 2));
   await offline.close();
   await browser.close();
   browser = null;
