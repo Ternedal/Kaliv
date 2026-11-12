@@ -31,7 +31,7 @@
   <link rel="preload" as="image" href="assets/modelrig-continuity-female-hair-mobile.webp" type="image/webp" fetchpriority="high" media="(max-width: 780px)">
   <link rel="preload" as="image" href="assets/modelrig-continuity-female-hair-1920.webp" type="image/webp" fetchpriority="high" media="(min-width: 781px) and (max-resolution: 1.49dppx)">
   <link rel="preload" as="image" href="assets/modelrig-continuity-female-hair-hires.webp" type="image/webp" fetchpriority="high" media="(min-width: 781px) and (min-resolution: 1.5dppx)">
-  <link rel="stylesheet" href="home.css">
+
   <title data-en="Kaliv — one AI, four places">Kaliv — én AI, fire steder</title>
   <script type="application/ld+json" data-en-name="Kaliv / ModelRig" data-en-description="Kaliv is one personal AI across computer, phone, home and VR. ModelRig keeps identity, memory and permissions under local control.">
     {
@@ -46,33 +46,11 @@
     }
   </script>
 
-</head>
+<link rel="stylesheet" href="/site.css"></head>
 <body>
   <a class="skip-link" href="#main" data-da="Gå til indhold" data-en="Skip to content">Gå til indhold</a>
 
-  <header class="site-header">
-    <a class="brand local-link" href="./">
-      <span class="brand-mark" aria-hidden="true">MR</span>
-      <span class="brand-copy">
-        <strong>Kaliv</strong>
-        <small data-da="bygget på ModelRig" data-en="built on ModelRig">bygget på ModelRig</small>
-      </span>
-    </a>
-    <nav class="primary-nav" aria-label="Primær navigation" data-da-label="Primær navigation" data-en-label="Primary navigation">
-      <a class="local-link" href="brief.html" data-da="Start her" data-en="Start here">Start her</a>
-      <a class="local-link" href="hub.html">KalivHub</a>
-      <a class="local-link" href="proofs.html" data-da="V1-beviser" data-en="V1 proofs">V1-beviser</a>
-      <a class="local-link" href="progress.html" data-da="Status" data-en="Status">Status</a>
-    </nav>
-    <div class="header-actions">
-      <div class="language" role="group" aria-label="Sprog" data-da-label="Sprog" data-en-label="Language">
-        <a href="./" data-lang="da" hreflang="da">DA</a>
-        <span aria-hidden="true">/</span>
-        <a href="./?lang=en" data-lang="en" hreflang="en">EN</a>
-      </div>
-      <img class="header-ankh" src="assets/kaliv-ankh-160.webp" width="160" height="216" alt="Kaliv ankh">
-    </div>
-  </header>
+  {% include "header-home" %}
 
   <main id="main" tabindex="-1">
     <section class="hero" aria-labelledby="hero-title">
@@ -190,15 +168,6 @@
     </section>
   </main>
 
-  <footer>
-    <a class="footer-brand local-link" href="./">Kaliv <span>/ ModelRig</span></a>
-    <p data-da="Én vedvarende AI. Lokalt ejet. Eksplicit kontrolleret." data-en="One persistent AI. Locally owned. Explicitly controlled.">Én vedvarende AI. Lokalt ejet. Eksplicit kontrolleret.</p>
-    <nav aria-label="Supplerende navigation" data-da-label="Supplerende navigation" data-en-label="Secondary navigation">
-      <a class="local-link" href="brief.html" data-da="Projektbrief" data-en="Project brief">Projektbrief</a>
-      <a class="local-link" href="hub.html">KalivHub</a>
-      <a class="local-link" href="proofs.html" data-da="Beviser" data-en="Evidence">Beviser</a>
-      <a class="local-link" href="progress.html" data-da="Status" data-en="Status">Status</a>
-    </nav>
-  </footer>
+  {% include "footer-home" %}
 </body>
 </html>

@@ -7,7 +7,7 @@ import shutil
 import tempfile
 import unittest
 
-from build import PUBLIC_FILES, ROOT, TEMPLATE_FILES, EN_FILES, LEGACY_SCRIPTS, Document, elements, build, page_path
+from build import PUBLIC_FILES, ROOT, TEMPLATE_FILES, EN_FILES, LEGACY_SCRIPTS, LEGACY_STYLES, Document, elements, build, page_path
 
 
 class BuildTests(unittest.TestCase):
@@ -15,8 +15,9 @@ class BuildTests(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
-        inputs = [name for name in PUBLIC_FILES if name not in TEMPLATE_FILES and name not in EN_FILES and name not in LEGACY_SCRIPTS]
+        inputs = [name for name in PUBLIC_FILES if name not in TEMPLATE_FILES and name not in EN_FILES and name not in LEGACY_SCRIPTS + LEGACY_STYLES]
         inputs += ["templates/" + name for name in TEMPLATE_FILES]
+        inputs += [path.relative_to(ROOT).as_posix() for path in (ROOT / "templates/partials").glob("*.html")]
         for name in inputs:
             target = self.root / name
             target.parent.mkdir(parents=True, exist_ok=True)
@@ -82,13 +83,15 @@ class BuildTests(unittest.TestCase):
 
     def test_asset_and_html_changes_invalidate_cache(self):
         before = build(self.root)
-        target = self.root / "home.css"
+        target = self.root / "site.css"
         target.write_bytes(target.read_bytes() + b"\n/* changed CSS */\n")
         after = build(self.root)
         self.assertNotEqual(before["version"], after["version"])
-        self.assertNotEqual(before["versions"]["home.css"], after["versions"]["home.css"])
-        self.assertIn("home.css?v=" + after["versions"]["home.css"], after["files"]["index.html"].decode())
-        self.assertIn("./home.css?v=" + after["versions"]["home.css"], after["core_assets"])
+        self.assertNotEqual(before["versions"]["site.css"], after["versions"]["site.css"])
+        self.assertIn("site.css?v=" + after["versions"]["site.css"], after["files"]["index.html"].decode())
+        self.assertIn("./site.css?v=" + after["versions"]["site.css"], after["core_assets"])
+        for alias in LEGACY_STYLES:
+            self.assertIn("site.css?v=" + after["versions"]["site.css"], after["files"][alias].decode())
         template = self.root / "templates/index.html"
         template.write_text(template.read_text() + "\n<!-- changed HTML -->\n", encoding="utf-8")
         self.assertNotEqual(after["version"], build(self.root)["version"])
@@ -146,6 +149,34 @@ class BuildTests(unittest.TestCase):
         for alias in LEGACY_SCRIPTS:
             self.assertIn("location.replace(target.href)", result["files"][alias].decode())
             self.assertNotIn("querySelectorAll", result["files"][alias].decode())
+
+    def test_shared_brand_reaches_both_languages_and_each_navigation_is_current(self):
+        partial = self.root / "templates/partials/brand.html"
+        partial.write_text(partial.read_text().replace("<strong>Kaliv</strong>", "<strong>Kaliv build test</strong>"))
+        result = build(self.root)
+        for name in ("index", "brief", "hub", "architecture", "proofs", "progress"):
+            for prefix in ("", "en/"):
+                html = result["files"][prefix + name + ".html"].decode()
+                self.assertIn("<strong>Kaliv build test</strong>", html)
+                nodes = list(elements(Document(html).root))
+                styles = [n for n in nodes if n.tag == "link" and n.attrs.get("rel") == "stylesheet"]
+                self.assertEqual(len(styles), 1)
+                self.assertTrue(styles[0].attrs["href"].startswith("/site.css?v="))
+                self.assertFalse(any(n.tag == "style" or (n.tag == "script" and not n.attrs.get("src") and n.attrs.get("type") != "application/ld+json") for n in nodes))
+                nav = next(n for n in nodes if n.tag == "nav" and n.attrs.get("class") in ("header-actions", "primary-nav"))
+                current = [n for n in nav.children if not isinstance(n, str) and n.attrs.get("aria-current") == "page"]
+                self.assertEqual(len(current), 0 if name in ("index", "architecture") else 1)
+                if current:
+                    self.assertEqual(current[0].attrs["href"], "/" + prefix + name + ".html")
+
+    def test_partial_failures_preserve_last_valid_output(self):
+        before = build(self.root)
+        partial = self.root / "templates/partials/brand.html"
+        for source, message in (('{% include "missing" %}', "Unknown partial"), ('{% include "brand" %}', "Circular partial")):
+            partial.write_text(source)
+            with self.subTest(message=message), self.assertRaisesRegex(ValueError, message):
+                build(self.root)
+            self.assertEqual((self.root / "_site/index.html").read_bytes(), before["files"]["index.html"])
 
 
 if __name__ == "__main__":
