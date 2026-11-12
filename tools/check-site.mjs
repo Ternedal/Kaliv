@@ -241,14 +241,22 @@ try {
   for (const asset of coreAssets) coreBytes += (await (await fetch(new URL(asset, base + '/'))).arrayBuffer()).byteLength;
   check(coreBytes < 600 * 1024, `Precache over budget: ${coreBytes}`);
   await offline.setOffline(true);
+  const offlineNavigations = [];
+  const recordOffline = async response => {
+    offlineNavigations.push({
+      url: offlinePage.url(), responseURL: response?.url(), status: response?.status(), fromWorker: response?.fromServiceWorker(),
+      ...await offlinePage.evaluate(() => ({ language: document.documentElement.lang, title: document.title, online: navigator.onLine, controller: navigator.serviceWorker.controller?.scriptURL })),
+    });
+  };
   await offlinePage.goto(`${base}/hub.html?lang=en`);
   await offlinePage.waitForFunction(() => document.documentElement.lang === 'en');
   check((await offlinePage.locator('h1').textContent()).includes('Kaliv'), 'Offline English page failed');
-  await offlinePage.goto(`${base}/unvisited-route`);
+  await recordOffline(await offlinePage.goto(`${base}/unvisited-route`));
   check((await offlinePage.title()).toLowerCase().includes('offline'), 'Offline fallback failed');
-  await offlinePage.goto(`${base}/en/unvisited-route`);
+  await recordOffline(await offlinePage.goto(`${base}/en/unvisited-route`));
   check((await offlinePage.locator('html').getAttribute('lang')) === 'en', 'English offline fallback failed');
-  await json('service-worker.json', { ...cacheState, coreAssets, coreBytes, offlineEnglish: true, offlineFallback: true });
+  await json('service-worker.json', { ...cacheState, coreAssets, coreBytes, offlineNavigations, offlineEnglish: true, offlineFallback: true });
+  console.log(JSON.stringify({ offlineNavigations, cachedOfflinePages: cacheState.entries.filter(entry => entry.url.includes('offline.html')) }, null, 2));
   await offline.close();
   await browser.close();
   browser = null;
