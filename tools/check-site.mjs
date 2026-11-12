@@ -275,8 +275,11 @@ try {
     const page = await caches.match(new URL('/en/offline.html', self.location.href));
     return { requests: self.kalivNavigationRequests, englishCached: { url: page?.url, headers: page ? Object.fromEntries(page.headers) : {}, html: page ? await page.text() : '' } };
   });
+  console.log(JSON.stringify({ offlineNavigations, offlineEvents, workerEvidence }, null, 2));
   await offlinePage.goto(`${base}/en/offline.html`);
-  await Promise.all([offlinePage.waitForNavigation(), offlinePage.locator('#retry-connection').click()]);
+  const retryError = await Promise.all([offlinePage.waitForNavigation(), offlinePage.locator('#retry-connection').click()]).then(() => null, error => error.message);
+  if (retryError) console.log(JSON.stringify({ retryError, offlineEvents }, null, 2));
+  check(!retryError, 'Offline retry navigation failed');
   check((await offlinePage.locator('html').getAttribute('lang')) === 'en', 'Offline retry changed language');
   check(await offlinePage.locator('.symbol img').evaluate(img => img.complete && img.naturalWidth > 0), 'Offline illustration unavailable');
   await json('service-worker.json', { ...cacheState, coreAssets, coreBytes, offlineNavigations, workerEvidence, offlineEnglish: true, offlineFallback: true });

@@ -1,4 +1,4 @@
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && navigator.onLine) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/service-worker.js', { scope: '/', updateViaCache: 'none' }).catch(() => {});
   }, { once: true });
