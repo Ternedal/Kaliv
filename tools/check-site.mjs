@@ -267,9 +267,8 @@ try {
   check((await offlinePage.locator('html').getAttribute('lang')) === 'en', 'English offline fallback failed');
   const workerEvidence = await activeWorker.evaluate(async () => {
     const page = await caches.match(new URL('/en/offline.html', self.location.href));
-    return { englishCached: { url: page?.url, headers: page ? Object.fromEntries(page.headers) : {}, html: page ? await page.text() : '' } };
+    return { englishCached: { url: page?.url, status: page?.status, language: page && (await page.text()).includes('lang="en"') ? 'en' : null } };
   });
-  console.log(JSON.stringify({ offlineNavigations, offlineEvents, workerEvidence }, null, 2));
   for (let i = 0; i < 6; i++) for (const language of ['da', 'en']) {
     const path = `${language === 'en' ? '/en' : ''}/offline-probe-${i}`;
     const response = await offlinePage.goto(base + path);
@@ -291,7 +290,7 @@ try {
   await Promise.all([offlinePage.waitForNavigation(), offline.setOffline(false)]);
   check(offlinePage.url() === retryURL && (await offlinePage.locator('html').getAttribute('lang')) === 'en', 'Online recovery changed the requested page');
   await json('service-worker.json', { ...cacheState, coreAssets, coreBytes, offlineNavigations, workerEvidence, offlineEnglish: true, offlineFallback: true });
-  console.log(JSON.stringify({ offlineNavigations, offlineEvents, workerEvidence, cachedOfflinePages: cacheState.entries.filter(entry => entry.url.includes('offline.html')) }, null, 2));
+  console.log(JSON.stringify({ offlineCases: offlineNavigations.length, workerEvidence, recovery: 'passed' }));
   await offline.close();
   await browser.close();
   browser = null;

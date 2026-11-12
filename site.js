@@ -12,13 +12,16 @@ if (document.documentElement.dataset.page === 'offline') {
     if (checking || leaving) return;
     checking = true;
     if (retry) retry.disabled = true;
+    const connection = new AbortController();
+    const timeout = setTimeout(() => connection.abort(), 5000);
     try {
       // HEAD bypasses the GET-only service worker cache and checks the network.
-      const response = await fetch('/project.json', { method: 'HEAD', cache: 'no-store' });
+      const response = await fetch('/project.json', { method: 'HEAD', cache: 'no-store', signal: connection.signal });
       if (response.ok && !leaving) window.location.reload();
     } catch {
       // Stay on the usable offline page when an online signal is premature.
     } finally {
+      clearTimeout(timeout);
       checking = false;
       if (retry) retry.disabled = false;
     }
