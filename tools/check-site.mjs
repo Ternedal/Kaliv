@@ -229,6 +229,13 @@ try {
   await offlinePage.goto(base + '/');
   await offlinePage.evaluate(() => navigator.serviceWorker.ready);
   await offlinePage.waitForFunction(() => navigator.serviceWorker.controller !== null);
+  const activeWorker = offline.serviceWorkers().find(worker => worker.url().endsWith('/service-worker.js'));
+  await activeWorker.evaluate(() => {
+    self.kalivNavigationRequests = [];
+    self.addEventListener('fetch', event => {
+      if (event.request.mode === 'navigate') self.kalivNavigationRequests.push(event.request.url);
+    });
+  });
   const cacheState = await offlinePage.evaluate(async () => {
     const names = await caches.keys();
     const current = names.find(name => name.startsWith('kaliv-shell-') && name !== 'kaliv-shell-v75');
@@ -264,8 +271,16 @@ try {
   check((await offlinePage.title()).toLowerCase().includes('offline'), 'Offline fallback failed');
   await recordOffline(await offlinePage.goto(`${base}/en/unvisited-route`));
   check((await offlinePage.locator('html').getAttribute('lang')) === 'en', 'English offline fallback failed');
-  await json('service-worker.json', { ...cacheState, coreAssets, coreBytes, offlineNavigations, offlineEnglish: true, offlineFallback: true });
-  console.log(JSON.stringify({ offlineNavigations, offlineEvents, cachedOfflinePages: cacheState.entries.filter(entry => entry.url.includes('offline.html')) }, null, 2));
+  const workerEvidence = await activeWorker.evaluate(async () => {
+    const page = await caches.match(new URL('/en/offline.html', self.location.href));
+    return { requests: self.kalivNavigationRequests, englishCached: { url: page?.url, headers: page ? Object.fromEntries(page.headers) : {}, html: page ? await page.text() : '' } };
+  });
+  await offlinePage.goto(`${base}/en/offline.html`);
+  await Promise.all([offlinePage.waitForNavigation(), offlinePage.locator('#retry-connection').click()]);
+  check((await offlinePage.locator('html').getAttribute('lang')) === 'en', 'Offline retry changed language');
+  check(await offlinePage.locator('.symbol img').evaluate(img => img.complete && img.naturalWidth > 0), 'Offline illustration unavailable');
+  await json('service-worker.json', { ...cacheState, coreAssets, coreBytes, offlineNavigations, workerEvidence, offlineEnglish: true, offlineFallback: true });
+  console.log(JSON.stringify({ offlineNavigations, offlineEvents, workerEvidence, cachedOfflinePages: cacheState.entries.filter(entry => entry.url.includes('offline.html')) }, null, 2));
   await offline.close();
   await browser.close();
   browser = null;

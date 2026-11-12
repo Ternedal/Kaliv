@@ -4,6 +4,7 @@ if ('serviceWorker' in navigator) {
   }, { once: true });
 }
 if (document.documentElement.dataset.page === 'offline') {
+  document.getElementById('retry-connection')?.addEventListener('click', () => window.location.reload());
   window.addEventListener('online', () => window.location.reload(), { once: true });
 }
 // Old cached documents predate the static page marker used by the shared CSS.
