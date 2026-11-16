@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "project": "ModelRig",
   "product": "Kaliv",
-  "updated": "2026-11-12",
+  "updated": "2026-11-16",
   "canonical": "https://kaliv.dk/",
   "languages": [
     "da",
@@ -11,8 +11,8 @@
   "thesis": "Kaliv is one personal AI across Windows, Android, KalivHub and Quest; ModelRig is the local-first, model-agnostic infrastructure that keeps identity, memory, perception and action under explicit control.",
   "release_status": "Not yet qualified for V1; {{ stats.public_open_en | lower }}",
   "latest_release": {
-    "version": "2.0.19",
-    "published": "2026-11-09",
+    "version": "2.0.20",
+    "published": "2026-11-14",
     "url": "https://github.com/Ternedal/ModelRig/releases/latest",
     "tag_url": "https://github.com/Ternedal/ModelRig/releases/tag/v{{ latest_release.version }}"
   },
