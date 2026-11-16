@@ -3,6 +3,19 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/service-worker.js', { scope: '/', updateViaCache: 'none' }).catch(() => {});
   }, { once: true });
 }
+// Keep the current section when switching between the static language pages.
+const syncLanguageSections = () => {
+  for (const link of document.querySelectorAll('.language a, .lang a')) {
+    const target = new URL(link.href);
+    target.hash = location.hash;
+    link.setAttribute('href', target.pathname + target.search + target.hash);
+  }
+};
+if (document.readyState === 'loading')
+  document.addEventListener('DOMContentLoaded', syncLanguageSections, { once: true });
+else
+  syncLanguageSections();
+window.addEventListener('hashchange', syncLanguageSections);
 if (document.documentElement.dataset.page === 'offline') {
   const retry = document.getElementById('retry-connection');
   let checking = false, leaving = false;

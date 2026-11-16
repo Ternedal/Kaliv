@@ -36,7 +36,7 @@
 <div class="download-grid">
 <article class="download-card" id="windows">
 <h2>Windows</h2>
-<p data-en="The client for your computer.">Klienten til din computer.</p>
+<p data-en="The client for your computer. Requires Java {{ downloads.windows.java_version }}.">Klienten til din computer. Kræver Java {{ downloads.windows.java_version }}.</p>
 <p class="filename">{{ downloads.windows.filename }}</p>
 <a class="button primary" href="{{ downloads.windows.url }}" data-en="Download Windows client">Hent Windows-klient</a>
 </article>
@@ -59,15 +59,24 @@
 </div>
 <section class="section narrow">
 <h2 data-en="First time?">Første gang?</h2>
-<p data-en="ModelRig needs to be running on your rig. Follow the setup guide for prerequisites and connection. Quest has its own build guide above.">Du skal have ModelRig kørende på din rig. Følg opsætningsvejledningen for forudsætninger og forbindelse. Quest har sin egen byggevejledning ovenfor.</p>
-<a class="text-link" href="{{ downloads.setup_url }}" data-en="Open the setup guide">Åbn opsætningsvejledningen</a>
+<p data-en="Start ModelRig on your rig, download the app and connect it to your rig. Quest has its own build guide above.">Start ModelRig på din rig, hent appen, og forbind den til riggen. Quest har sin egen byggevejledning ovenfor.</p>
+<a class="text-link" href="{{ downloads.setup_url }}" data-en="Start ModelRig">Start ModelRig</a>
+<details class="disclosure" id="windows-start">
+<summary><span data-en="Start on Windows">Start på Windows</span></summary>
+<div>
+<p data-en="Install Java {{ downloads.windows.java_version }}. Open PowerShell in the download folder and run:">Installér Java {{ downloads.windows.java_version }}. Åbn PowerShell i downloadmappen, og kør:</p>
+<pre>java -jar ".\{{ downloads.windows.filename }}"</pre>
+<p data-en="Use the client settings to connect to your rig. The desktop guide describes setup and connection.">Brug klientens indstillinger til at forbinde til riggen. Desktopvejledningen beskriver opsætning og forbindelse.</p>
+<a class="text-link" href="{{ downloads.windows.setup_url }}" data-en="Windows setup guide">Windows-vejledning</a>
+</div>
+</details>
 </section>
 <section class="section narrow">
 <h2>
 <span data-en="Verify your download">Kontrollér din download</span>
 </h2>
 <p data-en="Compare the file’s SHA-256 with the checksum list from the same release before opening it.">Sammenlign filens SHA-256 med checksumlisten fra den samme udgivelse, før du åbner filen.</p>
-<details class="disclosure">
+<details class="disclosure" id="checksum-guide">
 <summary>
 <span data-en="Show checksum guide">Vis checksumvejledning</span>
 </summary>

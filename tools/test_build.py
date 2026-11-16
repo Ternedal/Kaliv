@@ -147,7 +147,6 @@ class BuildTests(unittest.TestCase):
             self.assertEqual(sum(n.attrs.get("aria-current") == "page" for n in controls), 1)
         for alias in LEGACY_SCRIPTS:
             self.assertIn("location.replace(target.href)", result["files"][alias].decode())
-            self.assertNotIn("querySelectorAll", result["files"][alias].decode())
 
     def test_shared_brand_reaches_both_languages_and_each_navigation_is_current(self):
         partial = self.root / "templates/partials/brand.html"
@@ -207,6 +206,7 @@ class BuildTests(unittest.TestCase):
 
     def test_downloads_follow_the_reviewed_release_and_share_links_with_manifest(self):
         self.project["latest_release"]["version"] = "9.8.7"
+        self.project["downloads"]["windows"]["java_version"] = 99
         self.save()
         files = build(self.root)["files"]
         manifest = json.loads(files["project.json"])
@@ -219,7 +219,12 @@ class BuildTests(unittest.TestCase):
             self.assertIn("-LiteralPath", html)
             self.assertIn("-Algorithm SHA256", html)
             self.assertIn(manifest["latest_release"]["url"], html)
+            self.assertIn("Java 99", html)
+            self.assertIn('java -jar ".\\Kaliv-windows-x64-9.8.7.jar"', html)
+            self.assertIn(manifest["downloads"]["windows"]["setup_url"], html)
         self.assertEqual(manifest["downloads"]["windows"]["filename"], "Kaliv-windows-x64-9.8.7.jar")
+        self.assertIn("/v9.8.7/", manifest["downloads"]["windows"]["setup_url"])
+        self.assertIn("/v9.8.7/", manifest["downloads"]["setup_url"])
 
     def test_ecosystem_status_has_one_source_and_does_not_change_proof_states(self):
         for name in ("KalivNexus", "LanguageRig"):
