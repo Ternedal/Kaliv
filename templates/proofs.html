@@ -1,121 +1,93 @@
 <!doctype html>
 <html lang="da">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#05070a">
-  <meta name="robots" content="index,follow,max-image-preview:large">
-  <meta name="description" content="Det Kaliv og ModelRig kan bevise nu — og de {{ stats.open_word_da }} konkrete resultater, der stadig mangler før V1." data-en-content="{{ site_copy.proofs_description_en }}">
-  <meta property="og:title" content="Kaliv — V1-bevisregister" data-en-content="Kaliv — V1 proof ledger">
-  <meta property="og:description" content="En ærlig grænse mellem offentlig release, fysisk observation, softwaretest og fuldt V1-bevis." data-en-content="An honest boundary between public release, physical observation, software tests and complete V1 proof.">
-  <meta property="og:type" content="article">
-  <meta property="og:locale" content="da_DK">
-  <meta property="og:locale:alternate" content="en_US">
-  <meta property="og:url" content="https://kaliv.dk/proofs.html">
-  <meta property="og:image" content="https://kaliv.dk/assets/modelrig-continuity-female-hair-1920.webp">
-  <meta property="og:image:alt" content="ModelRig fra kognitiv kerne til kropsliggjort intelligens" data-en-content="Kaliv moves from ModelRig’s cognitive core into the world">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Kaliv — V1-bevisregister" data-en-content="Kaliv — V1 proof ledger">
-  <meta name="twitter:description" content="Fire åbne gates. Klare acceptkriterier. Ingen kunstig procent." data-en-content="{{ site_copy.proofs_twitter_en }}">
-  <meta name="twitter:image" content="https://kaliv.dk/assets/modelrig-continuity-female-hair-1920.webp">
-  <link rel="canonical" href="https://kaliv.dk/proofs.html">
-  <link rel="alternate" hreflang="da" href="https://kaliv.dk/proofs.html">
-  <link rel="alternate" hreflang="en" href="https://kaliv.dk/proofs.html?lang=en">
-  <link rel="alternate" hreflang="x-default" href="https://kaliv.dk/proofs.html">
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/kaliv-favicon-32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/kaliv-apple-touch-icon.png">
-  <title data-en="Kaliv — V1 proof ledger">Kaliv — V1-bevisregister</title>
-  <script type="application/ld+json" data-en-name="Kaliv — V1 proof ledger" data-en-description="An honest boundary between what Kaliv and ModelRig can prove now and what remains before V1.">
-    {
-      "@context":"https://schema.org",
-      "@type":"TechArticle",
-      "name":"Kaliv — V1-bevisregister",
-      "description":"En ærlig grænse mellem det Kaliv og ModelRig kan bevise nu, og det der stadig mangler før V1.",
-      "dateModified":"{{ updated }}",
-      "inLanguage":"da",
-      "isPartOf":{"@type":"WebSite","name":"Kaliv","url":"https://kaliv.dk/"},
-      "url":"https://kaliv.dk/proofs.html"
-    }
-  </script>
-
-
-
-<link rel="stylesheet" href="/site.css"></head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080c12">
+<meta name="description" content="Kalivs fire samlede V1-beviser og deres aktuelle status." data-en-content="Kaliv’s four overall V1 proofs and their current status.">
+<meta property="og:title" content="Kaliv — testbeviser" data-en-content="Kaliv — test evidence">
+<meta property="og:description" content="Kalivs fire samlede V1-beviser og deres aktuelle status." data-en-content="Kaliv’s four overall V1 proofs and their current status.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="da_DK">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://kaliv.dk/proofs.html">
+<meta property="og:image" content="https://kaliv.dk/assets/modelrig-continuity-female-hair-1920.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://kaliv.dk/proofs.html">
+<link rel="alternate" hreflang="da" href="https://kaliv.dk/proofs.html">
+<link rel="alternate" hreflang="en" href="https://kaliv.dk/proofs.html">
+<link rel="alternate" hreflang="x-default" href="https://kaliv.dk/proofs.html">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/kaliv-favicon-32.png">
+<link rel="apple-touch-icon" href="assets/kaliv-apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<title data-en="Kaliv — test evidence">Kaliv — testbeviser</title>
+<script type="application/ld+json" data-en-name="Kaliv — test evidence" data-en-description="Kaliv’s four overall V1 proofs and their current status.">{"@context": "https://schema.org", "@type": "WebPage", "name": "Kaliv — testbeviser", "description": "Kalivs fire samlede V1-beviser og deres aktuelle status.", "dateModified": "{{ updated }}", "inLanguage": "da", "url": "https://kaliv.dk/proofs.html"}</script>
+<link rel="stylesheet" href="/site.css">
+</head>
 <body>
-  <a class="skip" href="#content" data-da="Gå til indhold" data-en="Skip to content">Gå til indhold</a>
-  <div class="topline" aria-hidden="true"></div>
-  {% include "header" %}
-
-  <main id="content">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <div><span class="eyebrow" data-da="Kaliv / Hvad kan vi bevise?" data-en="Kaliv / What can we prove?">Kaliv / Hvad kan vi bevise?</span><h1 id="hero-title" data-da="Her stopper løftet." data-en="This is where the promise stops.">Her stopper løftet.</h1><p class="lead" data-da="Vi har en offentlig release og et fysisk delbevis på Nest Hub. Vi har ikke endnu bevist én ubrudt Kaliv på tværs af computer, telefon, hjem og VR. De fire felter herunder er den præcise grænse mellem fremskridt og færdigt produkt." data-en="We have a public release and a physical partial proof on Nest Hub. We have not yet proven one uninterrupted Kaliv across computer, phone, home and VR. The four fields below are the exact boundary between progress and a finished product.">Vi har en offentlig release og et fysisk delbevis på Nest Hub. Vi har ikke endnu bevist én ubrudt Kaliv på tværs af computer, telefon, hjem og VR. De fire felter herunder er den præcise grænse mellem fremskridt og færdigt produkt.</p></div>
-        <div class="snapshot"><span data-da="Opdateret · {{ updated | date_da }}" data-en="Updated · {{ updated | date_en }}">Opdateret · {{ updated | date_da }}</span><span data-da="V1-status · {{ stats.closed }} af {{ stats.total }} fulde beviser" data-en="V1 status · {{ stats.closed }} of {{ stats.total }} complete proofs">V1-status · {{ stats.closed }} af {{ stats.total }} fulde beviser</span></div>
-      </div>
-      <div class="hero-board" role="list" aria-label="{{ stats.open_word_da | capitalize }} åbne V1-beviser" data-en-aria-label="{{ site_copy.proofs_aria_en }}">
-        <article class="hero-signal" role="listitem"><span>P01</span><div><strong data-da="Husker efter genstart" data-en="Remembers after restart">Husker efter genstart</strong><small data-da="Identitet og hukommelse" data-en="Identity and memory">Identitet og hukommelse</small></div><span class="state" data-da="{{ proofs.P01.label_da }}" data-en="{{ proofs.P01.label_en }}">{{ proofs.P01.label_da }}</span></article>
-        <article class="hero-signal" role="listitem"><span>P02</span><div><strong data-da="Sanser virkeligheden" data-en="Senses reality">Sanser virkeligheden</strong><small data-da="Kamera og sensorer" data-en="Camera and sensors">Kamera og sensorer</small></div><span class="state" data-da="{{ proofs.P02.label_da }}" data-en="{{ proofs.P02.label_en }}">{{ proofs.P02.label_da }}</span></article>
-        <article class="hero-signal" role="listitem"><span>P03</span><div><strong data-da="Følger med mellem flader" data-en="Follows across surfaces">Følger med mellem flader</strong><small data-da="Computer, telefon, hjem og VR" data-en="Computer, phone, home and VR">Computer, telefon, hjem og VR</small></div><span class="state" data-da="{{ proofs.P03.label_da }}" data-en="{{ proofs.P03.label_en }}">{{ proofs.P03.label_da }}</span></article>
-        <article class="hero-signal" role="listitem"><span>P04</span><div><strong data-da="Holder over tid" data-en="Holds up over time">Holder over tid</strong><small data-da="Hastighed og stabilitet" data-en="Speed and stability">Hastighed og stabilitet</small></div><span class="state" data-da="{{ proofs.P04.label_da }}" data-en="{{ proofs.P04.label_en }}">{{ proofs.P04.label_da }}</span></article>
-      </div>
-    </section>
-
-    <section class="score" aria-label="Bevisregisterets status" data-en-aria-label="Proof ledger status">
-      <article><span data-da="Offentlig release" data-en="Public release">Offentlig release</span><strong>1</strong></article>
-      <article><span data-da="Fysisk delbevis" data-en="Physical partial proof">Fysisk delbevis</span><strong>1</strong></article>
-      <article><span data-da="Fulde V1-beviser" data-en="Complete V1 proofs">Fulde V1-beviser</span><strong>{{ stats.closed }}</strong></article>
-      <article><span data-da="Resultater der stadig mangler" data-en="Results still missing">Resultater der stadig mangler</span><strong>{{ stats.open }}</strong></article>
-    </section>
-
-    <section class="section" aria-labelledby="evidence-title">
-      <div class="section-head"><span class="section-label" data-da="01 / Dokumenteret nu" data-en="01 / Documented now">01 / Dokumenteret nu</span><div><h2 id="evidence-title" data-da="Det kan vi allerede stå på mål for." data-en="This is what we can already stand behind.">Det kan vi allerede stå på mål for.</h2><p data-da="Hvert resultat er reelt, men afgrænset. Kortene siger både hvad resultatet viser, og hvad man ikke må konkludere ud fra det." data-en="Each result is real, but bounded. The cards state both what the result demonstrates and what must not be concluded from it.">Hvert resultat er reelt, men afgrænset. Kortene siger både hvad resultatet viser, og hvad man ikke må konkludere ud fra det.</p></div></div>
-      <div class="evidence-grid" role="list" aria-label="Dokumenterede delbeviser" data-en-aria-label="Documented partial proofs">
-        <article class="evidence-card" role="listitem"><div class="evidence-top"><span>E01 / RELEASE</span><span class="evidence-state released" data-da="Kan hentes" data-en="Available">Kan hentes</span></div><h3 data-da="Kaliv er blevet leveret." data-en="Kaliv has been delivered.">Kaliv er blevet leveret.</h3><p><span data-da="v{{ latest_release.version }} indeholder offentlige, versionslåste downloads til Windows, Android og ModelRig-serveren. Filerne har kontrolsummer, så man kan kontrollere præcis hvad man har hentet." data-en="v{{ latest_release.version }} contains public, version-locked downloads for Windows, Android and the ModelRig server. The files include checksums so anyone can verify exactly what they downloaded.">v{{ latest_release.version }} indeholder offentlige, versionslåste downloads til Windows, Android og ModelRig-serveren. Filerne har kontrolsummer, så man kan kontrollere præcis hvad man har hentet.</span> <a href="{{ latest_release.url }}" target="_blank" rel="noopener noreferrer" data-da="Se release ↗" data-en="View release ↗">Se release ↗</a></p><dl class="evidence-meta"><div><dt data-da="Det viser" data-en="It shows">Det viser</dt><dd data-da="Produktet kan bygges og leveres" data-en="The product can be built and delivered">Produktet kan bygges og leveres</dd></div><div><dt data-da="Det viser ikke" data-en="It does not show">Det viser ikke</dt><dd data-da="Langvarig stabilitet" data-en="Long-term stability">Langvarig stabilitet</dd></div></dl></article>
-        <article class="evidence-card" role="listitem"><div class="evidence-top"><span>E02 / HARDWARE</span><span class="evidence-state physical" data-da="Set i virkeligheden" data-en="Seen in reality">Set i virkeligheden</span></div><h3 data-da="Kaliv nåede hjemmets skærm." data-en="Kaliv reached the home screen.">Kaliv nåede hjemmets skærm.</h3><p><span data-da="I et manuelt testforløb blev AI-svar, Cast-kvittering og sessionshukommelse observeret på en fysisk Google Nest Hub 2." data-en="In a manual test flow, AI responses, Cast acknowledgement and session memory were observed on a physical Google Nest Hub 2.">I et manuelt testforløb blev AI-svar, Cast-kvittering og sessionshukommelse observeret på en fysisk Google Nest Hub 2.</span> <a href="hub.html" data-en-href="hub.html?lang=en" data-da="Se KalivHub ↗" data-en="View KalivHub ↗">Se KalivHub ↗</a></p><dl class="evidence-meta"><div><dt data-da="Det viser" data-en="It shows">Det viser</dt><dd data-da="Receiveren kan nå rigtig hjemmehardware" data-en="The receiver can reach real home hardware">Receiveren kan nå rigtig hjemmehardware</dd></div><div><dt data-da="Det viser ikke" data-en="It does not show">Det viser ikke</dt><dd data-da="Automatisk ModelRig-status eller handover mellem alle fire flader" data-en="Automatic ModelRig status or handover across all four surfaces">Automatisk ModelRig-status eller handover mellem alle fire flader</dd></div></dl></article>
-        <article class="evidence-card" role="listitem"><div class="evidence-top"><span>E03 / HOME</span><span class="evidence-state ci" data-da="Softwaretest bestået" data-en="Software test passed">Softwaretest bestået</span></div><h3 data-da="Hjemmeintegrationen har klare sikkerhedsgrænser." data-en="The home integration has explicit safety boundaries.">Hjemmeintegrationen har klare sikkerhedsgrænser.</h3><p data-da="KalivHub læser som standard kun hjemmets tilstand. Styring kræver eksplicit tilladelse, og rum og enheder er afgrænset gennem Home Assistant. Den logik er testet i software." data-en="By default, KalivHub only reads the state of the home. Control requires explicit permission, and rooms and devices are bounded through Home Assistant. That logic is tested in software.">KalivHub læser som standard kun hjemmets tilstand. Styring kræver eksplicit tilladelse, og rum og enheder er afgrænset gennem Home Assistant. Den logik er testet i software.</p><dl class="evidence-meta"><div><dt data-da="Det viser" data-en="It shows">Det viser</dt><dd data-da="Kontrolmodellen er bygget og testet" data-en="The control model is built and tested">Kontrolmodellen er bygget og testet</dd></div><div><dt data-da="Det viser ikke" data-en="It does not show">Det viser ikke</dt><dd data-da="Fuld fysisk hjemmeaccept" data-en="Complete physical home acceptance">Fuld fysisk hjemmeaccept</dd></div></dl></article>
-        <article class="evidence-card" role="listitem"><div class="evidence-top"><span>E04 / ANDROID</span><span class="evidence-state open" data-da="{{ mirror.label_da }}" data-en="{{ mirror.label_en }}">{{ mirror.label_da }}</span></div><h3 data-da="Telefonvejen er {{ mirror.label_da | lower }}." data-en="The phone path is {{ mirror.label_en | lower }}.">Telefonvejen er {{ mirror.label_da | lower }}.</h3><p data-da="{{ site_copy.mirror_da }}" data-en="{{ site_copy.mirror_en }}">{{ site_copy.mirror_da }}</p><dl class="evidence-meta"><div><dt data-da="Det viser" data-en="It shows">Det viser</dt><dd data-da="Tidligere softwaretest er dokumenteret" data-en="Earlier software tests are documented">Tidligere softwaretest er dokumenteret</dd></div><div><dt data-da="Næste bevis" data-en="Next proof">Næste bevis</dt><dd data-da="Telefon → ModelRig → Nest Hub" data-en="Phone → ModelRig → Nest Hub">Telefon → ModelRig → Nest Hub</dd></div></dl></article>
-      </div>
-    </section>
-
-    <section class="section dark" aria-labelledby="ledger-title">
-      <div class="section-head"><span class="section-label" data-da="02 / Før V1" data-en="02 / Before V1">02 / Før V1</span><div><h2 id="ledger-title" data-da="Det her mangler, før vi kalder det færdigt." data-en="This is what is missing before we call it finished.">Det her mangler, før vi kalder det færdigt.</h2><p data-da="Hvert punkt beskriver først det menneskelige resultat og derefter den tekniske dokumentation, der skal følge med. {{ stats.ledger_open_da }}" data-en="Each point describes the human outcome first and then the technical documentation that must accompany it. {{ stats.ledger_open_en }}">Hvert punkt beskriver først det menneskelige resultat og derefter den tekniske dokumentation, der skal følge med. {{ stats.ledger_open_da }}</p></div></div>
-      <div class="ledger">
-        <article class="proof">
-          <span class="proof-index">P01</span><div class="proof-summary"><span class="state" data-da="{{ proofs.P01.label_da }}" data-en="{{ proofs.P01.label_en }}">{{ proofs.P01.label_da }}</span><h3 data-da="Kaliv husker efter genstart" data-en="Kaliv remembers after restart">Kaliv husker efter genstart</h3><p data-da="En genstart eller et skift af AI-model må ikke skabe en ny Kaliv, slette samtalen eller ændre hendes vedvarende tilstand." data-en="A restart or a change of AI model must not create a new Kaliv, erase the conversation or change her persistent state.">En genstart eller et skift af AI-model må ikke skabe en ny Kaliv, slette samtalen eller ændre hendes vedvarende tilstand.</p></div>
-          <div class="proof-detail"><div class="field"><span data-da="Ejer" data-en="Owner">Ejer</span><p><a href="https://github.com/Ternedal/ModelRig" target="_blank" rel="noopener noreferrer">ModelRig ↗</a></p></div><div class="field"><span data-da="Acceptkriterium" data-en="Acceptance criterion">Acceptkriterium</span><p data-da="Kontinuiteten overlever live-aktivering, genstart og modelskift uden tilstandsdivergens." data-en="Continuity survives live activation, restart and model switching without state divergence.">Kontinuiteten overlever live-aktivering, genstart og modelskift uden tilstandsdivergens.</p></div><div class="field"><span data-da="Krævet evidens" data-en="Required evidence">Krævet evidens</span><p data-da="Exact-head run, før/efter state-diff, eventlog og genstartsrapport." data-en="Exact-head run, before/after state diff, event log and restart report.">Exact-head run, før/efter state-diff, eventlog og genstartsrapport.</p></div><div class="field"><span data-da="Afviser beviset" data-en="Invalidates the proof">Afviser beviset</span><p data-da="Tabt session, dobbelt event, hukommelsesbrud eller divergerende SelfState." data-en="Lost session, duplicate event, memory break or divergent SelfState.">Tabt session, dobbelt event, hukommelsesbrud eller divergerende SelfState.</p></div></div>
-        </article>
-        <article class="proof">
-          <span class="proof-index">P02</span><div class="proof-summary"><span class="state" data-da="{{ proofs.P02.label_da }}" data-en="{{ proofs.P02.label_en }}">{{ proofs.P02.label_da }}</span><h3 data-da="Kaliv sanser den virkelige verden" data-en="Kaliv senses the real world">Kaliv sanser den virkelige verden</h3><p data-da="Det Kaliv ser gennem rigtige kameraer og sensorer, skal nå hendes verdensbillede uden ukendt oprindelse eller tavst tab." data-en="What Kaliv sees through real cameras and sensors must reach her world model without unknown provenance or silent loss.">Det Kaliv ser gennem rigtige kameraer og sensorer, skal nå hendes verdensbillede uden ukendt oprindelse eller tavst tab.</p></div>
-          <div class="proof-detail"><div class="field"><span data-da="Ejere" data-en="Owners">Ejere</span><p><a href="https://github.com/Ternedal/VisionRig" target="_blank" rel="noopener noreferrer">VisionRig ↗</a> + <a href="https://github.com/Ternedal/ModelRig" target="_blank" rel="noopener noreferrer">ModelRig ↗</a></p></div><div class="field"><span data-da="Acceptkriterium" data-en="Acceptance criterion">Acceptkriterium</span><p data-da="Fysiske sensorhændelser når WorldState med accepteret, tidsstemplet og sporbar oprindelse." data-en="Physical sensor events reach WorldState with accepted, timestamped and traceable provenance.">Fysiske sensorhændelser når WorldState med accepteret, tidsstemplet og sporbar oprindelse.</p></div><div class="field"><span data-da="Krævet evidens" data-en="Required evidence">Krævet evidens</span><p data-da="Sensorcapture, admission-resultat, event-ID-kæde og WorldState-diff fra samme exact-head run." data-en="Sensor capture, admission result, event-ID chain and WorldState diff from the same exact-head run.">Sensorcapture, admission-resultat, event-ID-kæde og WorldState-diff fra samme exact-head run.</p></div><div class="field"><span data-da="Afviser beviset" data-en="Invalidates the proof">Afviser beviset</span><p data-da="Syntetisk input alene, ukendt oprindelse, manglende tidsstempel eller tavst droppet event." data-en="Synthetic input alone, unknown provenance, missing timestamp or silently dropped event.">Syntetisk input alene, ukendt oprindelse, manglende tidsstempel eller tavst droppet event.</p></div></div>
-        </article>
-        <article class="proof">
-          <span class="proof-index">P03</span><div class="proof-summary"><span class="state" data-da="{{ proofs.P03.label_da }}" data-en="{{ proofs.P03.label_en }}">{{ proofs.P03.label_da }}</span><h3 data-da="Kaliv følger med dig" data-en="Kaliv follows you">Kaliv følger med dig</h3><p data-da="Den samme identitet, relevante hukommelse, stemme og krop skal hænge sammen, når samtalen flytter mellem Windows, Android, KalivHub og Quest." data-en="The same identity, relevant memory, voice and body must remain coherent as the conversation moves across Windows, Android, KalivHub and Quest.">Den samme identitet, relevante hukommelse, stemme og krop skal hænge sammen, når samtalen flytter mellem Windows, Android, KalivHub og Quest.</p></div>
-          <div class="proof-detail"><div class="field"><span data-da="Ejere" data-en="Owners">Ejere</span><p><a href="https://github.com/Ternedal/ModelRig" target="_blank" rel="noopener noreferrer">ModelRig ↗</a> · <a href="https://github.com/Ternedal/VoiceRig" target="_blank" rel="noopener noreferrer">VoiceRig ↗</a> · <a href="https://github.com/Ternedal/BodyRig" target="_blank" rel="noopener noreferrer">BodyRig ↗</a> · <a href="https://github.com/Ternedal/KalivHub-Receiver" target="_blank" rel="noopener noreferrer">KalivHub-Receiver ↗</a></p></div><div class="field"><span data-da="Acceptkriterium" data-en="Acceptance criterion">Acceptkriterium</span><p data-da="Identitet, relevant hukommelse, stemme, krop og adfærd hænger sammen på alle fire flader." data-en="Identity, relevant memory, voice, body and behavior remain coherent across all four surfaces.">Identitet, relevant hukommelse, stemme, krop og adfærd hænger sammen på alle fire flader.</p></div><div class="field"><span data-da="Krævet evidens" data-en="Required evidence">Krævet evidens</span><p data-da="Én session på tværs af fire flader, korrelerede events, identitetskontrol og optaget klienthandover." data-en="One session across four surfaces, correlated events, identity check and recorded client handover.">Én session på tværs af fire flader, korrelerede events, identitetskontrol og optaget klienthandover.</p></div><div class="field"><span data-da="Afviser beviset" data-en="Invalidates the proof">Afviser beviset</span><p data-da="Ny persona pr. klient, tabt kontekst, afvigende stemmeprofil eller usammenhængende krop/adfærd." data-en="A new persona per client, lost context, divergent voice profile or incoherent body/behavior.">Ny persona pr. klient, tabt kontekst, afvigende stemmeprofil eller usammenhængende krop/adfærd.</p></div></div>
-        </article>
-        <article class="proof">
-          <span class="proof-index">P04</span><div class="proof-summary"><span class="state" data-da="{{ proofs.P04.label_da }}" data-en="{{ proofs.P04.label_en }}">{{ proofs.P04.label_da }}</span><h3 data-da="Kaliv holder over tid" data-en="Kaliv holds up over time">Kaliv holder over tid</h3><p data-da="Hele systemet skal svare hurtigt, overleve længere drift og kunne testes igen på præcis de samme versioner." data-en="The complete system must respond quickly, survive extended operation and be testable again on the exact same versions.">Hele systemet skal svare hurtigt, overleve længere drift og kunne testes igen på præcis de samme versioner.</p></div>
-          <div class="proof-detail"><div class="field"><span data-da="Omfang" data-en="Scope">Omfang</span><p data-da="Alle deltagende runtime-repositories og de fire produktflader." data-en="All participating runtime repositories and the four product surfaces.">Alle deltagende runtime-repositories og de fire produktflader.</p></div><div class="field"><span data-da="Acceptkriterium" data-en="Acceptance criterion">Acceptkriterium</span><p data-da="Latency, soak-test og exact-head-kontroller består det registrerede release-manifest." data-en="Latency, soak test and exact-head controls pass the recorded release manifest.">Latency, soak-test og exact-head-kontroller består det registrerede release-manifest.</p></div><div class="field"><span data-da="Krævet evidens" data-en="Required evidence">Krævet evidens</span><p data-da="Versionslåst manifest, målt end-to-end latency, soak-rapport og grønne beskyttede checks." data-en="Version-locked manifest, measured end-to-end latency, soak report and green protected checks.">Versionslåst manifest, målt end-to-end latency, soak-rapport og grønne beskyttede checks.</p></div><div class="field"><span data-da="Afviser beviset" data-en="Invalidates the proof">Afviser beviset</span><p data-da="Uregistreret kode, ikke-reproducerbart run, skjult degradering eller manglende fejlhåndtering." data-en="Unregistered code, non-reproducible run, hidden degradation or missing failure handling.">Uregistreret kode, ikke-reproducerbart run, skjult degradering eller manglende fejlhåndtering.</p></div></div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="protocol-title">
-      <div class="section-head"><span class="section-label" data-da="03 / Protokol" data-en="03 / Protocol">03 / Protokol</span><div><h2 id="protocol-title" data-da="Sådan bliver et bevis bestået." data-en="How a proof becomes passed.">Sådan bliver et bevis bestået.</h2><p data-da="Status er et resultat af reproducerbar evidens, ikke en redaktionel vurdering. Den samme regel gælder for alle fire gates." data-en="Status is the result of reproducible evidence, not an editorial judgment. The same rule applies to all four gates.">Status er et resultat af reproducerbar evidens, ikke en redaktionel vurdering. Den samme regel gælder for alle fire gates.</p></div></div>
-      <div class="protocol">
-        <article><h3 data-da="Lås versionerne" data-en="Lock the versions">Lås versionerne</h3><p data-da="Alle deltagende repositories og runtime-afhængigheder registreres før testen." data-en="All participating repositories and runtime dependencies are recorded before the test.">Alle deltagende repositories og runtime-afhængigheder registreres før testen.</p><strong data-da="Output · Exact-head manifest" data-en="Output · Exact-head manifest">Output · Exact-head manifest</strong></article>
-        <article><h3 data-da="Kør virkeligheden" data-en="Run reality">Kør virkeligheden</h3><p data-da="Testen gennemføres på de faktiske enheder og sensorer, der indgår i beviset." data-en="The test runs on the actual devices and sensors included in the proof.">Testen gennemføres på de faktiske enheder og sensorer, der indgår i beviset.</p><strong data-da="Output · Observerbart run" data-en="Output · Observable run">Output · Observerbart run</strong></article>
-        <article><h3 data-da="Saml evidensen" data-en="Collect the evidence">Saml evidensen</h3><p data-da="Logs, målinger, optagelser og state-diffs korreleres til samme testkørsel." data-en="Logs, measurements, recordings and state diffs are correlated to the same test run.">Logs, målinger, optagelser og state-diffs korreleres til samme testkørsel.</p><strong data-da="Output · Reproducerbar pakke" data-en="Output · Reproducible package">Output · Reproducerbar pakke</strong></article>
-        <article><h3 data-da="Skift først status til sidst" data-en="Change status last">Skift først status til sidst</h3><p data-da="Et proof-point markeres kun bestået, når acceptkriteriet er opfyldt uden aktive undtagelser." data-en="A proof point is marked passed only when its acceptance criterion is met without active exceptions.">Et proof-point markeres kun bestået, når acceptkriteriet er opfyldt uden aktive undtagelser.</p><strong data-da="Output · Dokumenteret beslutning" data-en="Output · Documented decision">Output · Dokumenteret beslutning</strong></article>
-      </div>
-    </section>
-
-    <section class="rule" aria-labelledby="rule-title">
-      <div class="rule-aside"><span class="micro" data-da="04 / Release-regel" data-en="04 / Release rule">04 / Release-regel</span><img src="assets/kaliv-ankh-640.webp" alt="Kalivs futuristiske ankh-symbol" width="640" height="863" loading="lazy" data-en-alt="Kaliv’s futuristic ankh symbol"></div>
-      <div class="rule-main"><h2 id="rule-title" data-da="V1 findes først, når alle fire beviser findes." data-en="V1 exists only when all four proofs exist.">V1 findes først, når alle fire beviser findes.</h2><div><p data-da="Et grønt delsystem kan ikke kompensere for en åben systemgrænse. ModelRig og Kaliv kvalificeres samlet, fordi kontinuitet kun giver mening gennem hele loopet." data-en="A green subsystem cannot compensate for an open system boundary. ModelRig and Kaliv qualify together because continuity only has meaning across the complete loop.">Et grønt delsystem kan ikke kompensere for en åben systemgrænse. ModelRig og Kaliv kvalificeres samlet, fordi kontinuitet kun giver mening gennem hele loopet.</p><div class="actions"><a class="action" href="progress.html" data-en-href="progress.html?lang=en">Project Room</a><a class="action secondary" href="architecture.html" data-en-href="architecture.html?lang=en" data-da="Se arkitekturen" data-en="View architecture">Se arkitekturen</a><a class="action secondary" href="brief.html" data-en-href="brief.html?lang=en" data-da="Læs projektbrief" data-en="Read project brief">Læs projektbrief</a><a class="action secondary" href="https://github.com/Ternedal/ModelRig" target="_blank" rel="noopener noreferrer" data-da="Åbn ModelRig" data-en="Open ModelRig">Åbn ModelRig</a></div></div></div>
-    </section>
-  </main>
-
-  {% include "footer" %}
+<a class="skip-link" href="#content" data-en="Skip to content">Gå til indhold</a>
+{% include "header" %}
+<main id="content" tabindex="-1">
+<div class="reading">
+<section class="page-intro">
+<p class="eyebrow" data-en="Test evidence">Testbeviser</p>
+<h1 data-en="The overall V1 test.">Den samlede V1-test.</h1>
+<p class="lead" data-en="Four cross-system proofs track continuity, perception, identity and operation.">Fire tværgående beviser følger systemets kontinuitet, sanser, identitet og drift.</p>
+</section>
+<section class="section">
+<h2 data-en="{{ stats.closed }}/{{ stats.total }} proofs closed">{{ stats.closed }}/{{ stats.total }} beviser lukket</h2>
+<p data-en="Apps can be developed and released while these overall tests remain open. This is what each test must demonstrate.">Apps kan være udviklet og udgivet, mens disse samlede tests stadig er åbne. Her er det, hver test skal dokumentere.</p>
+<div class="proof-list">
+<article class="proof-row">
+<span class="eyebrow">P01</span>
+<div>
+<h3 data-en="Memory persists">Hukommelsen består</h3>
+<p data-en="Identity and context survive restart and model changes.">Identitet og kontekst overlever genstart og modelskift.</p>
+</div>
+<span class="badge" data-en="{{ proofs.P01.label_en }}">{{ proofs.P01.label_da }}</span>
+</article>
+<article class="proof-row">
+<span class="eyebrow">P02</span>
+<div>
+<h3 data-en="The world can be sensed">Verden kan sanses</h3>
+<p data-en="Physical sensors provide traceable evidence to the system.">Fysiske sensorer leverer sporbar viden til systemet.</p>
+</div>
+<span class="badge" data-en="{{ proofs.P02.label_en }}">{{ proofs.P02.label_da }}</span>
+</article>
+<article class="proof-row">
+<span class="eyebrow">P03</span>
+<div>
+<h3 data-en="Kaliv carries across">Kaliv følger med</h3>
+<p data-en="Identity, voice and behavior remain coherent across devices.">Identitet, stemme og adfærd hænger sammen på tværs af enheder.</p>
+</div>
+<span class="badge" data-en="{{ proofs.P03.label_en }}">{{ proofs.P03.label_da }}</span>
+</article>
+<article class="proof-row">
+<span class="eyebrow">P04</span>
+<div>
+<h3 data-en="The system holds">Systemet holder</h3>
+<p data-en="Latency, sustained operation and the release chain meet their requirements.">Forsinkelse, lang drift og udgivelseskæden består de aftalte krav.</p>
+</div>
+<span class="badge" data-en="{{ proofs.P04.label_en }}">{{ proofs.P04.label_da }}</span>
+</article>
+</div>
+</section>
+<details class="disclosure">
+<summary>
+<span data-en="Supporting evidence">Supplerende dokumentation</span>
+</summary>
+<div>
+<p data-en="v{{ latest_release.version }} records a public release. The manual Nest Hub test at {{ heads.physical_proof | short }} records a bounded physical run. Home Assistant has historical CI evidence. None of these records alone closes an overall V1 test.">v{{ latest_release.version }} dokumenterer en offentlig udgivelse. Den manuelle Nest Hub-test på {{ heads.physical_proof | short }} dokumenterer et afgrænset fysisk forløb. Home Assistant har historisk CI-evidens. Ingen af disse poster lukker alene en samlet V1-test.</p>
+<p data-en="{{ site_copy.mirror_en }}">{{ site_copy.mirror_da }}</p>
+</div>
+</details>
+<section class="section ">
+<h2 data-en="Follow the actual work.">Følg det konkrete arbejde.</h2>
+<a class="text-link" href="progress.html" data-en="Back to status">Tilbage til status</a>
+<a class="text-link" href="project.json" data-en="All evidence in the project manifest">Alle beviser i projektmanifestet</a>
+</section>
+</div>
+</main>
+{% include "footer" %}
 </body>
 </html>

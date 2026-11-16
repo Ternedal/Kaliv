@@ -13,11 +13,11 @@ Siderne ligger som skabeloner i `templates/` og bygges til `_site/`:
 | Skabelon | Indhold |
 |---|---|
 | `templates/index.html` | Forside |
-| `templates/brief.html` | Projektbrief |
+| `templates/brief.html` | Kort introduktion til Kaliv |
 | `templates/hub.html` | KalivHub — Kaliv i hjemmet |
 | `templates/architecture.html` | Systemarkitektur |
-| `templates/proofs.html` | V1-bevisregister |
-| `templates/progress.html` | Status |
+| `templates/proofs.html` | Samlede V1-testbeviser |
+| `templates/progress.html` | Samlet teknisk status og videre læsning |
 | `templates/download.html` | Windows-/Android-downloads og SHA-256-kontrol |
 | `templates/404.html` | Fejlside |
 | `templates/offline.html` | Vises af service workeren uden forbindelse |
@@ -29,8 +29,8 @@ Siderne ligger som skabeloner i `templates/` og bygges til `_site/`:
 | `project.json` | Statuskilden: release, gennemgangsdato, commits, bevisstatus og de fælles statusformuleringer (`site_copy`). Buildet skriver også det offentlige manifest herfra |
 | `templates/llms.txt`, `templates/sitemap.xml` | Tekstoversigt til sprogmodeller og sitemap, genereret fra statuskilden |
 | `templates/service-worker.js` | Cache og offline-side. Cache-navn og precache-liste genereres af buildet |
-| `templates/partials/` | Fælles brand, navigation, header og footer med forsiden som layoutvariant |
-| `site.css` | Ét stylesheet med fælles regler og afgrænsede sidevarianter |
+| `templates/partials/` | Fælles brand, tre primære menupunkter, header og footer |
+| `site.css` | Ét fælles layout; egne visninger til offline og 404 |
 | `site.js` | Lille bootstrap til service worker, offline og kompatibilitet |
 | `robots.txt`, `site.webmanifest`, `CNAME` | Indeksering, webapp-metadata og domæne |
 | `assets/` | Hero-billede i tre størrelser, Kaliv-ankh og ikoner |
@@ -59,6 +59,12 @@ mod releasens Assets og `SHA256SUMS.txt`, når versionen ændres. Downloadsidens
 fil-links følger den viste version; linket til seneste udgivelse peger altid på
 GitHubs `releases/latest`. KalivNexus og LanguageRig beskrives i manifestet og
 `llms.txt` med deres aktuelle grænser, adskilt fra V1-beviserne.
+
+`kaliv_vr` beskriver den implementerede Quest-klient og dens kilde/byggevejledning.
+Implementering og samlet fysisk V1-kvalifikation er separate felter. Forsiden
+fokuserer på appsene; arkitektur og testbeviser findes via teknisk status.
+Checksumvejledningen på downloadsiden åbnes med et almindeligt details-element,
+som virker uden JavaScript.
 
 ## Cache
 

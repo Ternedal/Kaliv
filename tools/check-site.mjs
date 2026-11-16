@@ -155,6 +155,17 @@ try {
     staticLanguages.push(facts);
   }
   await json('static-languages.json', staticLanguages);
+  // The shorter download flow keeps checksum instructions usable without JS.
+  await plain.goto(base + '/en/download.html');
+  const checksumDetails = plain.locator('details');
+  check(await checksumDetails.getAttribute('open') === null, 'Checksum guide must start collapsed');
+  await checksumDetails.locator('summary').click();
+  check(await plain.locator('pre').isVisible(), 'No-JS checksum guide did not open');
+  await checksumDetails.locator('summary').press('Enter');
+  check(!await plain.locator('pre').isVisible(), 'Keyboard could not close checksum guide');
+  await plain.getByRole('navigation', { name: 'Main navigation', exact: true }).getByRole('link', { name: 'Kaliv VR', exact: true }).click();
+  check(plain.url() === base + '/en/#vr', 'English VR navigation did not retain its language and anchor');
+  check(await plain.locator('#vr').isVisible(), 'VR section missing from no-JS navigation');
   await noJS.close();
   // Click the mobile EN control, so a visible rectangle alone cannot pass.
   for (const name of pages) {

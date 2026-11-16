@@ -210,7 +210,10 @@ def compile_html(source, name, language, canonical):
         if "data-navlink" in node.attrs:
             node.attrs.pop("data-navlink")
             if urlsplit(node.attrs["href"]).path == page_path(name, language):
-                node.attrs.update(**{"class": "is-current", "aria-current": "page"})
+                current_classes = node.attrs.get("class", "").split()
+                if "is-current" not in current_classes:
+                    current_classes.append("is-current")
+                node.attrs.update(**{"class": " ".join(current_classes), "aria-current": "page"})
         if "srcset" in node.attrs:
             node.attrs["srcset"] = ", ".join(" ".join([local_url(parts[0], language, canonical)] + parts[1:]) for parts in (item.split() for item in node.attrs["srcset"].split(",")) if parts)
         if node.tag == "link" and node.attrs.get("rel") == "canonical":

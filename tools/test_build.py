@@ -45,7 +45,7 @@ class BuildTests(unittest.TestCase):
         self.project["updated"] = "2030-12-24"
         self.save()
         files = build(self.root)["files"]
-        for name in ("index.html", "brief.html", "proofs.html", "architecture.html", "progress.html", "llms.txt"):
+        for name in ("index.html", "download.html", "proofs.html", "progress.html", "llms.txt"):
             self.assertIn("v9.8.7", files[name].decode(), name)
         for name in ("index.html", "brief.html", "hub.html", "proofs.html", "architecture.html", "progress.html", "sitemap.xml"):
             self.assertIn("2030-12-24", files[name].decode(), name)
@@ -61,13 +61,12 @@ class BuildTests(unittest.TestCase):
         self.project["v1_proofs"][0]["status"] = "closed"
         self.save()
         files = build(self.root)["files"]
-        self.assertIn("1<span>/4</span>", files["index.html"].decode())
-        self.assertIn("1/4", files["brief.html"].decode())
+        self.assertNotIn("1/4", files["index.html"].decode())
+        self.assertNotIn("1/4", files["brief.html"].decode())
+        self.assertIn("1/4", files["proofs.html"].decode())
         self.assertIn("1/4", files["progress.html"].decode())
         self.assertIn('>Bevist</span>', files["proofs.html"].decode())
         self.assertIn('>Proven</span>', files["en/proofs.html"].decode())
-        self.assertIn('>Lukket</span>', files["progress.html"].decode())
-        self.assertIn("three concrete results still missing", files["en/proofs.html"].decode())
         self.assertIn("Three of four public proof gates remain open.", files["llms.txt"].decode())
 
     def test_historical_heads_are_resolved_in_pages_and_manifest(self):
@@ -135,7 +134,7 @@ class BuildTests(unittest.TestCase):
                     structured = json.loads("".join(n.children))
                     self.assertEqual(structured["inLanguage"], "en")
                     self.assertEqual(structured["url"], canonical)
-        self.assertIn("The same AI.", result["files"]["en/index.html"].decode())
+        self.assertIn("Your personal AI.", result["files"]["en/index.html"].decode())
         self.assertNotIn("?lang=en", result["files"]["sitemap.xml"].decode())
         self.assertIn("https://kaliv.dk/en/", result["files"]["llms.txt"].decode())
 
@@ -165,7 +164,7 @@ class BuildTests(unittest.TestCase):
                 self.assertFalse(any(n.tag == "style" or (n.tag == "script" and not n.attrs.get("src") and n.attrs.get("type") != "application/ld+json") for n in nodes))
                 nav = next(n for n in nodes if n.tag == "nav" and n.attrs.get("class") in ("header-actions", "primary-nav"))
                 current = [n for n in nav.children if not isinstance(n, str) and n.attrs.get("aria-current") == "page"]
-                self.assertEqual(len(current), 0 if name in ("index", "architecture") else 1)
+                self.assertEqual(len(current), 1 if name in ("brief", "download") else 0)
                 if current:
                     self.assertEqual(current[0].attrs["href"], "/" + prefix + name + ".html")
 
@@ -233,6 +232,27 @@ class BuildTests(unittest.TestCase):
             self.assertIn("https://github.com/Ternedal/" + name, manifest["repositories"])
             self.assertIn(name + " status propagation test", files["llms.txt"].decode())
         self.assertEqual([item["status"] for item in manifest["v1_proofs"]], ["open"] * 4)
+
+    def test_vr_implementation_is_visible_without_promoting_system_qualification(self):
+        self.project["kaliv_vr"]["status_da"] = "VR status fra manifest"
+        self.project["kaliv_vr"]["status_en"] = "VR status from manifest"
+        self.save()
+        files = build(self.root)["files"]
+        for locale, label in (("", "VR status fra manifest"), ("en/", "VR status from manifest")):
+            for page in ("index.html", "progress.html"):
+                self.assertIn(label, files[locale + page].decode())
+            download = files[locale + "download.html"].decode()
+            self.assertIn(self.project["kaliv_vr"]["setup_url"], download)
+            self.assertNotIn("KalivVR-dev.apk", download)
+            home = list(elements(Document(files[locale + "index.html"].decode()).root))
+            nav = next(n for n in home if n.tag == "nav" and n.attrs.get("class") == "primary-nav")
+            links = [n for n in nav.children if not isinstance(n, str) and n.tag == "a"]
+            self.assertEqual(len(links), 3)
+            self.assertTrue(any(n.attrs["href"].endswith("#vr") for n in links))
+            self.assertFalse(any("proofs.html" in n.attrs["href"] or "progress.html" in n.attrs["href"] for n in links))
+        self.assertIn(self.project["kaliv_vr"]["source_url"], files["llms.txt"].decode())
+        manifest = json.loads(files["project.json"])
+        self.assertEqual([p["status"] for p in manifest["v1_proofs"]], ["open"] * 4)
 
 
 if __name__ == "__main__":
