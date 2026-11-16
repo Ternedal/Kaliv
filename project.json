@@ -266,7 +266,9 @@
     "release_base": "https://github.com/Ternedal/ModelRig/releases/download/v{{ latest_release.version }}/",
     "windows": {
       "filename": "Kaliv-windows-x64-{{ latest_release.version }}.jar",
-      "url": "{{ downloads.release_base }}{{ downloads.windows.filename }}"
+      "url": "{{ downloads.release_base }}{{ downloads.windows.filename }}",
+      "java_version": 21,
+      "setup_url": "https://github.com/Ternedal/ModelRig/blob/v{{ latest_release.version }}/desktop/README.md"
     },
     "android": {
       "filename": "kaliv-latest.apk",
@@ -276,7 +278,7 @@
       "filename": "SHA256SUMS.txt",
       "url": "{{ downloads.release_base }}{{ downloads.checksums.filename }}"
     },
-    "setup_url": "https://github.com/Ternedal/ModelRig/blob/main/README.md"
+    "setup_url": "https://github.com/Ternedal/ModelRig/blob/v{{ latest_release.version }}/scripts/START_HERE.md"
   },
   "kaliv_vr": {
     "state": "developed",
@@ -284,6 +286,6 @@
     "status_en": "Developed",
     "source_revision": "884c294cf2e114fd1d7d0dc1868acea142675547",
     "source_url": "https://github.com/Ternedal/ModelRig/blob/884c294cf2e114fd1d7d0dc1868acea142675547/vr/README.md",
-    "setup_url": "https://github.com/Ternedal/ModelRig/tree/main/vr"
+    "setup_url": "https://github.com/Ternedal/ModelRig/blob/main/vr/README.md#build"
   }
 }

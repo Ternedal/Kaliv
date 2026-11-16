@@ -66,6 +66,11 @@ fokuserer på appsene; arkitektur og testbeviser findes via teknisk status.
 Checksumvejledningen på downloadsiden åbnes med et almindeligt details-element,
 som virker uden JavaScript.
 
+Windows-krav og startkommando følger `downloads.windows`: Java-version, filnavn
+og desktopvejledning. Riggens startguide følger den gennemgåede release; VR-linket
+går direkte til byggeafsnittet. Sprogskift bevarer det aktuelle afsnit med et lille
+progressivt script; de statiske sproglinks fungerer fortsat uden JavaScript.
+
 ## Cache
 
 Der er ingen versionsnumre at vedligeholde. Buildet giver CSS, JavaScript, billeder og manifest en indholdshash i deres URL, og service workerens cache-navn følger det samlede output.

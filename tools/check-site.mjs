@@ -157,12 +157,16 @@ try {
   await json('static-languages.json', staticLanguages);
   // The shorter download flow keeps checksum instructions usable without JS.
   await plain.goto(base + '/en/download.html');
-  const checksumDetails = plain.locator('details');
+  const checksumDetails = plain.locator('#checksum-guide');
   check(await checksumDetails.getAttribute('open') === null, 'Checksum guide must start collapsed');
   await checksumDetails.locator('summary').click();
-  check(await plain.locator('pre').isVisible(), 'No-JS checksum guide did not open');
+  check(await checksumDetails.locator('pre').isVisible(), 'No-JS checksum guide did not open');
   await checksumDetails.locator('summary').press('Enter');
-  check(!await plain.locator('pre').isVisible(), 'Keyboard could not close checksum guide');
+  check(!await checksumDetails.locator('pre').isVisible(), 'Keyboard could not close checksum guide');
+  const windowsStart = plain.locator('#windows-start');
+  await windowsStart.locator('summary').click();
+  check(await windowsStart.locator('pre').isVisible(), 'No-JS Windows start guide did not open');
+  check((await windowsStart.locator('pre').textContent()).includes('java -jar'), 'Windows launch command missing');
   await plain.getByRole('navigation', { name: 'Main navigation', exact: true }).getByRole('link', { name: 'Kaliv VR', exact: true }).click();
   check(plain.url() === base + '/en/#vr', 'English VR navigation did not retain its language and anchor');
   check(await plain.locator('#vr').isVisible(), 'VR section missing from no-JS navigation');
@@ -174,6 +178,22 @@ try {
     await page.locator('.language a, .lang a').filter({ hasText: 'EN' }).click();
     await page.waitForFunction(() => document.documentElement.lang === 'en');
   }
+  // Both arrival with an anchor and a same-page hash change retain context.
+  const languageSections = [];
+  for (const path of ['/#vr', '/download.html#windows', '/download.html#android', '/download.html#quest', '/download.html#windows-start']) {
+    await page.goto(base + path);
+    await page.locator('.language a, .lang a').filter({ hasText: 'EN' }).click();
+    check(page.url() === base + '/en' + path, `English section lost: ${path}`);
+    await page.locator('.language a, .lang a').filter({ hasText: 'DA' }).click();
+    check(page.url() === base + path, `Danish section lost: ${path}`);
+    languageSections.push({ path, roundTrip: page.url() });
+  }
+  await page.goto(base + '/');
+  await page.getByRole('navigation', { name: 'Hovednavigation', exact: true }).getByRole('link', { name: 'Kaliv VR', exact: true }).click();
+  await page.waitForFunction(() => document.querySelector('.language a[hreflang="en"]').getAttribute('href') === '/en/#vr');
+  await page.goBack();
+  await page.waitForFunction(() => document.querySelector('.language a[hreflang="en"]').getAttribute('href') === '/en/');
+  await json('language-sections.json', languageSections);
   for (const name of pages) {
     await page.goto(`${base}/${name}?lang=en&source=legacy#content`, { waitUntil: 'networkidle' });
     const path = name === 'index.html' ? '/en/' : '/en/' + name;
