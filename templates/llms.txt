@@ -43,6 +43,8 @@ In plain language: ModelRig is the infrastructure. Kaliv is the AI a person meet
 - V1 proof ledger (English): https://kaliv.dk/proofs.html?lang=en
 - Project Room (Danish): https://kaliv.dk/progress.html
 - Project Room (English): https://kaliv.dk/progress.html?lang=en
+- Downloads and checksum guide (Danish): {{ documents.download_da }}
+- Downloads and checksum guide (English): {{ documents.download_en }}
 - Machine-readable manifest: https://kaliv.dk/project.json
 
 ## Public repositories
@@ -53,6 +55,11 @@ In plain language: ModelRig is the infrastructure. Kaliv is the AI a person meet
 - Voice: https://github.com/Ternedal/VoiceRig
 - Perception: https://github.com/Ternedal/VisionRig
 - Home receiver: https://github.com/Ternedal/KalivHub-Receiver
+- {{ component.KalivNexus.role }}: https://github.com/Ternedal/KalivNexus
+- {{ component.LanguageRig.role }}: https://github.com/Ternedal/LanguageRig
+
+KalivNexus: {{ component.KalivNexus.status }}
+LanguageRig: {{ component.LanguageRig.status }}
 
 ## V1 qualification
 

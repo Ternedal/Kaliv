@@ -34,5 +34,5 @@ if (!document.documentElement.dataset.page)
   document.documentElement.dataset.page = (location.pathname.split('/').pop() || 'index.html').replace(/\.html$/, '');
 const kalivPage = document.documentElement.dataset.page;
 document.documentElement.classList.add('page-' + kalivPage);
-if (['brief', 'hub', 'architecture', 'proofs', 'progress'].includes(kalivPage))
-  document.documentElement.classList.add('site-document', ['brief', 'hub'].includes(kalivPage) ? 'layout-dossier' : 'layout-system');
+if (['brief', 'hub', 'architecture', 'proofs', 'progress', 'download'].includes(kalivPage))
+  document.documentElement.classList.add('site-document', ['brief', 'hub', 'download'].includes(kalivPage) ? 'layout-dossier' : 'layout-system');

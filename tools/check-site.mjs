@@ -16,7 +16,7 @@ const { launch: launchChrome } = requireQA('chrome-launcher');
 const root = resolve('_site');
 const reports = resolve(process.env.QA_REPORTS);
 await mkdir(reports, { recursive: true });
-const pages = ['index.html', 'brief.html', 'hub.html', 'proofs.html', 'architecture.html', 'progress.html'];
+const pages = ['index.html', 'brief.html', 'hub.html', 'proofs.html', 'architecture.html', 'progress.html', 'download.html'];
 const errors = [];
 const check = (ok, message) => { if (!ok) errors.push(message); };
 const json = (name, data) => writeFile(resolve(reports, name), JSON.stringify(data, null, 2));

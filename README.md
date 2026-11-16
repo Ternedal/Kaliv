@@ -18,6 +18,7 @@ Siderne ligger som skabeloner i `templates/` og bygges til `_site/`:
 | `templates/architecture.html` | Systemarkitektur |
 | `templates/proofs.html` | V1-bevisregister |
 | `templates/progress.html` | Status |
+| `templates/download.html` | Windows-/Android-downloads og SHA-256-kontrol |
 | `templates/404.html` | Fejlside |
 | `templates/offline.html` | Vises af service workeren uden forbindelse |
 
@@ -52,6 +53,12 @@ Når du ændrer en tekst, skal både elementets indhold (dansk) og `data-en` ret
 Ret status ét sted: `project.json`. Release, gennemgangsdato, commit-snapshot og bevisstatus hentes derfra til alle sider, `llms.txt`, sitemap og JSON-LD, når sitet bygges. En ukendt markør i en skabelon stopper buildet.
 
 Hent version, datoer og commit-id'er fra GitHub, når du retter dem. Behold de historiske testdatoer, når kun gennemgangsdatoen ændres. Siden må ikke beskrive noget som bevist, før beviset findes.
+
+`downloads` samler filnavne og links til den gennemgåede release. Kontrollér dem
+mod releasens Assets og `SHA256SUMS.txt`, når versionen ændres. Downloadsidens
+fil-links følger den viste version; linket til seneste udgivelse peger altid på
+GitHubs `releases/latest`. KalivNexus og LanguageRig beskrives i manifestet og
+`llms.txt` med deres aktuelle grænser, adskilt fra V1-beviserne.
 
 ## Cache
 

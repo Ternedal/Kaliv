@@ -1299,3 +1299,29 @@ html:where(.layout-system) { scroll-behavior:auto; }
 :where(.page-offline) .symbol { min-height: 15rem; border-top: 1px solid #29313c; }
 :where(.page-offline) .symbol img { width: 9rem; }
 }
+
+/* Download guide uses the established dossier layout. */
+:where(.page-download) .download-filename {
+  overflow-wrap: anywhere;
+  margin: 0 0 1rem;
+  font-family: var(--mono);
+  font-size: .82rem;
+}
+:where(.page-download) .download-setup { margin: 2rem 0 0; }
+:where(.page-download) .section .inline-link {
+  min-height: 24px;
+  align-items: center;
+  color: var(--blue);
+}
+:where(.page-download) .hero-panel .inline-link { color: var(--blue-light); }
+:where(.page-download) .checksum-steps { margin: 0; padding: 0; list-style: none; }
+:where(.page-download) pre {
+  max-width: 100%;
+  margin: 1rem 0 0;
+  padding: 1rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: #eef1f5;
+  color: #070a0f;
+  font: .85rem/1.6 var(--mono);
+}
