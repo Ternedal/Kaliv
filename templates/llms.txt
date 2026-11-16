@@ -29,6 +29,13 @@ Kaliv is designed as one continuous identity across Windows, Android, KalivHub a
 
 In plain language: ModelRig is the infrastructure. Kaliv is the AI a person meets. Windows, Android, KalivHub and Quest are four clients for that same AI, not four separate assistants.
 
+## Kaliv VR
+
+Kaliv VR is developed and implemented on main as the third first-party client. It provides pairing, model selection, buffered chat, verified BodyRig VRM avatars, live body-state rendering and flat/VR180/VR360 media. Physical Quest qualification, profiling and conversation parity remain open.
+Implementation source: {{ kaliv_vr.source_url }}
+Build guide: {{ kaliv_vr.setup_url }}
+This implementation status does not close an overall V1 proof.
+
 ## Public documentation
 
 - Project overview (Danish): https://kaliv.dk/

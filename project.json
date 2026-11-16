@@ -89,8 +89,8 @@
     },
     {
       "name": "Kaliv VR",
-      "role": "Unity and OpenXR embodiment on Quest",
-      "status": "Quest, latency and soak testing remain open"
+      "role": "Developed Unity/OpenXR Quest client with pairing, chat, BodyRig avatars and media playback",
+      "status": "Implemented on main. Physical Quest qualification, performance profiling and conversation feature parity remain open."
     },
     {
       "name": "KalivHub",
@@ -277,5 +277,13 @@
       "url": "{{ downloads.release_base }}{{ downloads.checksums.filename }}"
     },
     "setup_url": "https://github.com/Ternedal/ModelRig/blob/main/README.md"
+  },
+  "kaliv_vr": {
+    "state": "developed",
+    "status_da": "Udviklet",
+    "status_en": "Developed",
+    "source_revision": "884c294cf2e114fd1d7d0dc1868acea142675547",
+    "source_url": "https://github.com/Ternedal/ModelRig/blob/884c294cf2e114fd1d7d0dc1868acea142675547/vr/README.md",
+    "setup_url": "https://github.com/Ternedal/ModelRig/tree/main/vr"
   }
 }
