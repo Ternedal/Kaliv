@@ -48,6 +48,8 @@ Dansk og engelsk bygges fra samme skabelon: dansk til `/` og engelsk til `/en/`.
 
 Når du ændrer en tekst, skal både elementets indhold (dansk) og `data-en` rettes. Attributoversættelser som `data-en-aria-label` og `data-en-content` bygges på samme måde. Oversættelsesattributterne findes kun i skabelonerne.
 
+Omtal Kaliv kønsneutralt: brug navnet eller klienten frem for kønnede pronominer. Hold introduktionen konkret om, hvad man kan gøre med Kaliv; avatar- og kropsbegreber bruges som tekniske beskrivelser.
+
 ## Opdatering af status
 
 Ret status ét sted: `project.json`. Release, gennemgangsdato, commit-snapshot og bevisstatus hentes derfra til alle sider, `llms.txt`, sitemap og JSON-LD, når sitet bygges. En ukendt markør i en skabelon stopper buildet.
