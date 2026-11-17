@@ -16,7 +16,7 @@ const { launch: launchChrome } = requireQA('chrome-launcher');
 const root = resolve('_site');
 const reports = resolve(process.env.QA_REPORTS);
 await mkdir(reports, { recursive: true });
-const pages = ['index.html', 'brief.html', 'hub.html', 'proofs.html', 'architecture.html', 'progress.html', 'download.html'];
+const pages = ['index.html', 'brief.html', 'hub.html', 'proofs.html', 'architecture.html', 'progress.html', 'download.html', 'privacy.html'];
 const errors = [];
 const check = (ok, message) => { if (!ok) errors.push(message); };
 const json = (name, data) => writeFile(resolve(reports, name), JSON.stringify(data, null, 2));
@@ -102,6 +102,8 @@ try {
           width: document.documentElement.clientWidth,
           scrollWidth: document.documentElement.scrollWidth,
           policyViolations: window.kalivPolicyViolations,
+          homeAnswers: [...document.querySelectorAll('.landing .lead, .landing-requirements, .landing .availability')]
+            .map(e => ({ text: e.textContent, bottom: e.getBoundingClientRect().bottom })),
           languageLinks: [...document.querySelectorAll('.language a, .lang a')]
             .map(e => ({ ...rect(e), current: e.getAttribute('aria-current') })),
           footerLinks: [...document.querySelectorAll('footer a')].map(rect),
@@ -113,6 +115,10 @@ try {
       check(result.language === lang, `Wrong language: ${name}/${lang}`);
       check(result.scrollWidth === result.width, `Overflow: ${name}/${lang}/${width}: ${result.scrollWidth}`);
       check(result.policyViolations.length === 0, `Unexpected CSP violation: ${name}/${lang}/${width}: ${JSON.stringify(result.policyViolations)}`);
+      if (name === 'index.html') {
+        check(result.homeAnswers.length === 4, `Missing home-page answers: ${lang}/${width}`);
+        check(result.homeAnswers.every(answer => answer.bottom <= 900), `Home-page answers below fold: ${lang}/${width}: ${JSON.stringify(result.homeAnswers)}`);
+      }
       check(result.languageLinks.length === 2, `Missing language links: ${name}/${lang}`);
       check(result.languageLinks.filter(link => link.current === 'page').length === 1, `Current language: ${name}/${lang}`);
       for (const r of result.languageLinks)

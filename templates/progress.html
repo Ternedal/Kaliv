@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080c12">
-<meta name="description" content="Aktuel release, udviklet Kaliv VR og samlet teststatus for Kaliv." data-en-content="Current release, developed Kaliv VR and overall testing status for Kaliv.">
+<meta name="description" content="Udgivne apps, VR og Hub under udvikling samt Kalivs fire V1-kriterier." data-en-content="Released apps, VR and Hub under development, and Kaliv’s four V1 criteria.">
 <meta property="og:title" content="Kaliv — teknik og status" data-en-content="Kaliv — technical status">
-<meta property="og:description" content="Aktuel release, udviklet Kaliv VR og samlet teststatus for Kaliv." data-en-content="Current release, developed Kaliv VR and overall testing status for Kaliv.">
+<meta property="og:description" content="Udgivne apps, VR og Hub under udvikling samt Kalivs fire V1-kriterier." data-en-content="Released apps, VR and Hub under development, and Kaliv’s four V1 criteria.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="da_DK">
 <meta property="og:locale:alternate" content="en_US">
@@ -21,7 +21,7 @@
 <link rel="apple-touch-icon" href="assets/kaliv-apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <title data-en="Kaliv — technical status">Kaliv — teknik og status</title>
-<script type="application/ld+json" data-en-name="Kaliv — technical status" data-en-description="Current release, developed Kaliv VR and overall testing status for Kaliv.">{"@context": "https://schema.org", "@type": "WebPage", "name": "Kaliv — teknik og status", "description": "Aktuel release, udviklet Kaliv VR og samlet teststatus for Kaliv.", "dateModified": "{{ updated }}", "inLanguage": "da", "url": "https://kaliv.dk/progress.html"}</script>
+<script type="application/ld+json" data-en-name="Kaliv — technical status" data-en-description="Released apps, VR and Hub under development, and Kaliv’s four V1 criteria.">{"@context": "https://schema.org", "@type": "WebPage", "name": "Kaliv — teknik og status", "description": "Udgivne apps, VR og Hub under udvikling samt Kalivs fire V1-kriterier.", "dateModified": "{{ updated }}", "inLanguage": "da", "url": "https://kaliv.dk/progress.html"}</script>
 <link rel="stylesheet" href="/site.css">
 </head>
 <body>
@@ -32,7 +32,7 @@
 <section class="page-intro">
 <p class="eyebrow" data-en="Technical status">Teknik og status</p>
 <h1 data-en="Where Kaliv stands.">Her står Kaliv nu.</h1>
-<p class="lead" data-en="Releases, implementation and testing in one place.">Udgivelser, implementering og test samlet ét sted.</p>
+<p class="lead" data-en="{{ site_copy.available_en }}">{{ site_copy.available_da }}</p>
 </section>
 <section class="section">
 <h2>
@@ -49,7 +49,7 @@
 <article class="status-row">
 <div>
 <h3>Kaliv VR</h3>
-<p data-en="The Quest client is on main with pairing, chat, VRM avatars and media playback. Physical headset testing, performance and additional conversation features are tracked separately.">Quest-klienten er på main med parring, chat, VRM-avatarer og medievisning. Fysisk headset-test, ydelse og flere samtalefunktioner følges særskilt.</p>
+<p data-en="Source code includes pairing, chat, avatars and media playback. There is no public VR APK in the current release. Physical headset testing and performance qualification remain open.">Kildekoden omfatter parring, chat, avatarer og medievisning. Den aktuelle udgivelse har ingen offentlig VR-APK. Fysisk headset-test og afprøvning af ydelsen mangler stadig.</p>
 </div>
 <span class="badge" data-en="{{ kaliv_vr.status_en }}">{{ kaliv_vr.status_da }}</span>
 </article>
@@ -58,14 +58,15 @@
 <h3>KalivHub</h3>
 <p data-en="A manual Nest Hub test is recorded. Combined Home Assistant and Nest Hub acceptance remains open.">Manuel Nest Hub-test er dokumenteret. Samlet Home Assistant- og Nest Hub-godkendelse er åben.</p>
 </div>
-<span class="badge" data-en="In testing">Under afprøvning</span>
+<span class="badge" data-en="{{ kaliv_hub.status_en }}">{{ kaliv_hub.status_da }}</span>
 </article>
 </div>
 <p class="caption" data-en="Reviewed {{ updated | date_en }}. Latest release: {{ latest_release.published | date_en }}.">Gennemgået {{ updated | date_da }}. Seneste udgivelse: {{ latest_release.published | date_da }}.</p>
 </section>
 <section class="section ">
-<h2 data-en="The overall V1 test.">Den samlede V1-test.</h2>
-<p data-en="{{ stats.closed }}/{{ stats.total }} overall proofs are closed. This measures joint system qualification; implemented apps are listed above.">{{ stats.closed }}/{{ stats.total }} samlede beviser er lukket. Det måler den fælles kvalifikation af systemet; de implementerede apps fremgår ovenfor.</p>
+<h2 data-en="V1 criteria: {{ stats.closed }} of {{ stats.total }} confirmed">V1-kriterier: {{ stats.closed }} af {{ stats.total }} bekræftet</h2>
+{% include "v1-criteria" %}
+<p data-en="These criteria measure the complete system. Public app downloads and individual test results do not confirm all four.">Kriterierne måler det samlede system. Offentlige app-downloads og enkelte testresultater bekræfter ikke alle fire.</p>
 <div class="actions">
 <a class="text-link" href="proofs.html" data-en="View test evidence">Se testbeviser</a>
 <a class="text-link" href="architecture.html" data-en="View architecture">Se arkitekturen</a>
@@ -79,6 +80,7 @@
 <p data-en="Release version, VR status and test evidence are maintained in the public project manifest. Historical test revisions are retained there.">Releaseversion, VR-status og testbeviser vedligeholdes i det offentlige projektmanifest. Historiske testrevisioner er bevaret dér.</p>
 <a class="text-link" href="project.json" data-en="Open project manifest">Åbn projektmanifest</a>
 </section>
+{% include "status-terms" %}
 </div>
 </main>
 {% include "footer" %}

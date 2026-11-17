@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "project": "ModelRig",
   "product": "Kaliv",
-  "updated": "2026-11-16",
+  "updated": "2026-11-17",
   "canonical": "https://kaliv.dk/",
   "languages": [
     "da",
@@ -89,7 +89,7 @@
     },
     {
       "name": "Kaliv VR",
-      "role": "Developed Unity/OpenXR Quest client with pairing, chat, BodyRig avatars and media playback",
+      "role": "Unity/OpenXR Quest client under development, with pairing, chat, BodyRig avatars and media playback",
       "status": "Implemented on main. Physical Quest qualification, performance profiling and conversation feature parity remain open."
     },
     {
@@ -157,7 +157,9 @@
     "project_room_en": "https://kaliv.dk/en/progress.html",
     "llms": "https://kaliv.dk/llms.txt",
     "download_da": "https://kaliv.dk/download.html",
-    "download_en": "https://kaliv.dk/en/download.html"
+    "download_en": "https://kaliv.dk/en/download.html",
+    "privacy_da": "https://kaliv.dk/privacy.html",
+    "privacy_en": "https://kaliv.dk/en/privacy.html"
   },
   "source_snapshot": {
     "recorded": "2026-10-18",
@@ -256,11 +258,15 @@
     "source_url": "https://github.com/Ternedal/ModelRig/pull/{{ android_mirror.number }}"
   },
   "site_copy": {
-    "mirror_da": "PR #{{ android_mirror.number }} blev lukket uden merge den {{ android_mirror.closed | date_da }}. Arbejdet er parkeret, indtil KalivHub-Receiver er klar til en sender. De tidligere testresultater på {{ heads.signed_android | short }} er historisk evidens; telefon→rig→Nest Hub er ikke fysisk accepteret.",
-    "mirror_en": "PR #{{ android_mirror.number }} was closed without merge on {{ android_mirror.closed | date_en }}. Work is parked until KalivHub-Receiver is ready for a sender. The earlier test results at {{ heads.signed_android | short }} are historical evidence; phone→rig→Nest Hub has not passed physical acceptance.",
+    "mirror_da": "PR #{{ android_mirror.number }} blev lukket uden merge den {{ android_mirror.closed | date_da }}. Arbejdet er parkeret, indtil KalivHub-Receiver er klar til den komponent, der sender data til skærmen. De tidligere testresultater på {{ heads.signed_android | short }} er historisk evidens; telefon→rig→Nest Hub er ikke fysisk accepteret.",
+    "mirror_en": "PR #{{ android_mirror.number }} was closed without merge on {{ android_mirror.closed | date_en }}. Work is parked until KalivHub-Receiver is ready for the component that sends data to the display. The earlier test results at {{ heads.signed_android | short }} are historical evidence; phone→rig→Nest Hub has not passed physical acceptance.",
     "proofs_aria_en": "{{ stats.open_word_en | capitalize }} open V1 proofs",
     "proofs_description_en": "What Kaliv and ModelRig can prove now — and the {{ stats.open_word_en }} concrete results still missing before V1.",
-    "proofs_twitter_en": "What is proven now — and the {{ stats.open_word_en }} concrete results still missing before V1."
+    "proofs_twitter_en": "What is proven now — and the {{ stats.open_word_en }} concrete results still missing before V1.",
+    "available_da": "Windows og Android: Udgivet. VR og Hub: Under udvikling.",
+    "available_en": "Windows and Android: Released. VR and Hub: Under development.",
+    "requirements_da": "Til lokal AI skal du bruge en rig: din egen Windows- eller Linux-maskine med ModelRig. Krav til GPU og hukommelse afhænger af modellen.",
+    "requirements_en": "For local AI you need a rig: your own Windows or Linux machine running ModelRig. GPU and memory requirements depend on the model."
   },
   "downloads": {
     "release_base": "https://github.com/Ternedal/ModelRig/releases/download/v{{ latest_release.version }}/",
@@ -268,11 +274,13 @@
       "filename": "Kaliv-windows-x64-{{ latest_release.version }}.jar",
       "url": "{{ downloads.release_base }}{{ downloads.windows.filename }}",
       "java_version": 21,
-      "setup_url": "https://github.com/Ternedal/ModelRig/blob/v{{ latest_release.version }}/desktop/README.md"
+      "setup_url": "https://github.com/Ternedal/ModelRig/blob/v{{ latest_release.version }}/desktop/README.md",
+      "java_url": "https://adoptium.net/temurin/releases/?arch=x64&mode=filter&os=windows&package=jdk&version=21"
     },
     "android": {
       "filename": "kaliv-latest.apk",
-      "url": "{{ downloads.release_base }}{{ downloads.android.filename }}"
+      "url": "{{ downloads.release_base }}{{ downloads.android.filename }}",
+      "minimum_version": "8.0"
     },
     "checksums": {
       "filename": "SHA256SUMS.txt",
@@ -281,11 +289,16 @@
     "setup_url": "https://github.com/Ternedal/ModelRig/blob/v{{ latest_release.version }}/scripts/START_HERE.md"
   },
   "kaliv_vr": {
-    "state": "developed",
-    "status_da": "Udviklet",
-    "status_en": "Developed",
+    "state": "under_development",
+    "status_da": "Under udvikling",
+    "status_en": "Under development",
     "source_revision": "884c294cf2e114fd1d7d0dc1868acea142675547",
     "source_url": "https://github.com/Ternedal/ModelRig/blob/884c294cf2e114fd1d7d0dc1868acea142675547/vr/README.md",
     "setup_url": "https://github.com/Ternedal/ModelRig/blob/main/vr/README.md#build"
+  },
+  "kaliv_hub": {
+    "state": "under_development",
+    "status_da": "Under udvikling",
+    "status_en": "Under development"
   }
 }

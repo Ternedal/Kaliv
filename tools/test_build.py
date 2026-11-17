@@ -7,7 +7,7 @@ import shutil
 import tempfile
 import unittest
 
-from build import PUBLIC_FILES, ROOT, TEMPLATE_FILES, EN_FILES, LEGACY_SCRIPTS, LEGACY_STYLES, Document, elements, build, page_path
+from build import PUBLIC_FILES, ROOT, TEMPLATE_FILES, EN_FILES, LEGACY_SCRIPTS, LEGACY_STYLES, REDIRECT, Document, elements, build, page_path
 
 
 class BuildTests(unittest.TestCase):
@@ -63,10 +63,10 @@ class BuildTests(unittest.TestCase):
         files = build(self.root)["files"]
         self.assertNotIn("1/4", files["index.html"].decode())
         self.assertNotIn("1/4", files["brief.html"].decode())
-        self.assertIn("1/4", files["proofs.html"].decode())
-        self.assertIn("1/4", files["progress.html"].decode())
-        self.assertIn('>Bevist</span>', files["proofs.html"].decode())
-        self.assertIn('>Proven</span>', files["en/proofs.html"].decode())
+        self.assertIn("V1-kriterier: 1 af 4 bekræftet", files["proofs.html"].decode())
+        self.assertIn("V1-kriterier: 1 af 4 bekræftet", files["progress.html"].decode())
+        self.assertIn('>Bekræftet</span>', files["proofs.html"].decode())
+        self.assertIn('>Confirmed</span>', files["en/proofs.html"].decode())
         self.assertIn("Three of four public proof gates remain open.", files["llms.txt"].decode())
 
     def test_historical_heads_are_resolved_in_pages_and_manifest(self):
@@ -152,7 +152,7 @@ class BuildTests(unittest.TestCase):
         partial = self.root / "templates/partials/brand.html"
         partial.write_text(partial.read_text().replace("<strong>Kaliv</strong>", "<strong>Kaliv build test</strong>"))
         result = build(self.root)
-        for name in ("index", "brief", "hub", "architecture", "proofs", "progress", "download"):
+        for name in ("index", "brief", "hub", "architecture", "proofs", "progress", "download", "privacy"):
             for prefix in ("", "en/"):
                 html = result["files"][prefix + name + ".html"].decode()
                 self.assertIn("<strong>Kaliv build test</strong>", html)
@@ -160,7 +160,7 @@ class BuildTests(unittest.TestCase):
                 styles = [n for n in nodes if n.tag == "link" and n.attrs.get("rel") == "stylesheet"]
                 self.assertEqual(len(styles), 1)
                 self.assertTrue(styles[0].attrs["href"].startswith("/site.css?v="))
-                self.assertFalse(any(n.tag == "style" or (n.tag == "script" and not n.attrs.get("src") and n.attrs.get("type") != "application/ld+json") for n in nodes))
+                self.assertFalse(any(n.tag == "style" or (n.tag == "script" and not n.attrs.get("src") and n.attrs.get("type") != "application/ld+json" and "".join(n.children) != REDIRECT) for n in nodes))
                 nav = next(n for n in nodes if n.tag == "nav" and n.attrs.get("class") in ("header-actions", "primary-nav"))
                 current = [n for n in nav.children if not isinstance(n, str) and n.attrs.get("aria-current") == "page"]
                 self.assertEqual(len(current), 1 if name in ("brief", "download") else 0)
@@ -203,6 +203,41 @@ class BuildTests(unittest.TestCase):
         def policy(result):
             return next(n.attrs["content"] for n in elements(Document(result["files"]["en/index.html"].decode()).root) if n.attrs.get("http-equiv") == "Content-Security-Policy")
         self.assertNotEqual(policy(before), policy(after))
+
+    def test_legacy_language_redirect_is_early_without_blocking_site_js(self):
+        files = build(self.root)["files"]
+        self.assertNotIn("location.replace", files["site.js"].decode())
+        for name, data in files.items():
+            if not name.endswith(".html"):
+                continue
+            nodes = list(elements(Document(data.decode()).root))
+            self.assertFalse(any("blocking" in node.attrs for node in nodes), name)
+            head = next(n for n in nodes if n.tag == "head")
+            children = [n for n in head.children if not isinstance(n, str)]
+            redirects = [n for n in nodes if n.tag == "script" and "".join(n.children) == REDIRECT]
+            self.assertEqual(len(redirects), 0 if name.startswith("en/") else 1, name)
+            if redirects:
+                self.assertIs(children[2], redirects[0], name)
+            self.assertTrue(any(n.tag == "script" and n.attrs.get("src", "").startswith("/site.js?v=") and "defer" in n.attrs for n in nodes), name)
+
+    def test_visible_evidence_and_bilingual_page_structure(self):
+        files = build(self.root)["files"]
+        for name in ("index.html", "brief.html", "download.html", "progress.html", "proofs.html", "hub.html", "architecture.html", "privacy.html"):
+            structures = []
+            for prefix in ("", "en/"):
+                document = Document(files[prefix + name].decode())
+                main = next(n for n in elements(document.root) if n.tag == "main")
+                structures.append([(n.tag, n.attrs.get("id"), n.attrs.get("role")) for n in elements(main)])
+                def public_text(node):
+                    if isinstance(node, str):
+                        return node
+                    if node.tag in ("details", "script", "style"):
+                        return ""
+                    return " ".join(public_text(child) for child in node.children)
+                text = public_text(main)
+                self.assertNotRegex(text, r"\b[0-9a-f]{7,40}\b|(?:PR|issue)\s*#?\d+|NotFoundError")
+                self.assertNotRegex(text, r"\bUdviklet\b|\bDeveloped\b")
+            self.assertEqual(structures[0], structures[1], name)
 
     def test_downloads_follow_the_reviewed_release_and_share_links_with_manifest(self):
         self.project["latest_release"]["version"] = "9.8.7"

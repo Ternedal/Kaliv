@@ -32,19 +32,20 @@
 <section class="page-intro">
 <p class="eyebrow" data-en="KalivHub">KalivHub</p>
 <h1 data-en="Kaliv at home.">Kaliv i hjemmet.</h1>
-<p class="lead" data-en="KalivHub connects Kaliv to Nest Hub and Home Assistant.">KalivHub forbinder Kaliv med Nest Hub og Home Assistant.</p>
+<p class="badge" data-en="{{ kaliv_hub.status_en }}">{{ kaliv_hub.status_da }}</p>
+<p class="lead" data-en="A manual conversation has been tested on a physical Nest Hub. You cannot yet install a complete, accepted Kaliv home setup. Nest Hub microphone input is unverified.">En manuel samtale er afprøvet på en fysisk Nest Hub. Du kan endnu ikke installere en samlet, godkendt Kaliv-opsætning til hjemmet. Mikrofoninput fra Nest Hub er ikke verificeret.</p>
 </section>
 <section class="section ">
 <h2 data-en="A place in your home.">Et sted i dit hjem.</h2>
 <p data-en="Nest Hub is the display. Home Assistant provides rooms and approved devices. ModelRig handles conversation and memory.">Nest Hub er skærmen. Home Assistant giver adgang til rum og godkendte enheder. ModelRig står for samtalen og hukommelsen.</p>
-<p data-en="The integration is being tested. A manual conversation has run on a physical Nest Hub 2; the complete home flow has not yet passed physical acceptance.">Integrationen er under afprøvning. En manuel samtale er afprøvet på en fysisk Nest Hub 2; hele hjemmekæden er endnu ikke fysisk godkendt.</p>
+<p data-en="The goal is to speak with Kaliv and control selected devices from the home display. The complete Home Assistant and Nest Hub flow still needs physical testing.">Målet er at tale med Kaliv og styre udvalgte enheder fra hjemmets skærm. Den samlede Home Assistant- og Nest Hub-kæde mangler stadig fysisk afprøvning.</p>
 </section>
 <details class="disclosure">
 <summary>
-<span data-en="View technical scope">Se teknisk afgrænsning</span>
+<span data-en="Technical evidence">Teknisk evidens</span>
 </summary>
 <div>
-<p data-en="The manual test is recorded at {{ heads.physical_proof | short }}. The Home Assistant sender has historical CI evidence at {{ heads.ha_sender | short }}. These are separate test runs.">Den manuelle test er dokumenteret på {{ heads.physical_proof | short }}. Home Assistant-senderen har historisk CI-evidens på {{ heads.ha_sender | short }}. De er separate testforløb.</p>
+<p data-en="The manual test is recorded at {{ heads.physical_proof | short }}. The Home Assistant component that sends data to the display has historical CI evidence at {{ heads.ha_sender | short }}. These are separate test runs.">Den manuelle test er dokumenteret på {{ heads.physical_proof | short }}. Home Assistant-komponenten, som sender data til skærmen, har historisk CI-evidens på {{ heads.ha_sender | short }}. De er separate testforløb.</p>
 <p data-en="{{ site_copy.mirror_en }}">{{ site_copy.mirror_da }}</p>
 <p data-en="The Nest Hub microphone is unverified; the isolated probe returned NotFoundError.">Nest Hub-mikrofonen er ikke verificeret; den isolerede test gav NotFoundError.</p>
 </div>
@@ -52,7 +53,7 @@
 <section class="section ">
 <h2 data-en="Follow development.">Følg udviklingen.</h2>
 <a class="text-link" href="progress.html" data-en="Technical status">Teknik og status</a>
-<a class="text-link" href="https://github.com/Ternedal/KalivHub-Receiver" data-en="View the receiver source">Se receiverens kildekode</a>
+<a class="text-link" href="https://github.com/Ternedal/KalivHub-Receiver" data-en="Source code for the Nest Hub display">Kildekode til visningen på Nest Hub</a>
 </section>
 </div>
 </main>

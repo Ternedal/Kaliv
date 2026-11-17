@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080c12">
+<meta name="description" content="Hvor Kaliv gemmer samtaler og hukommelse, og hvilke data valgfri cloud modtager." data-en-content="Where Kaliv stores conversations and memory, and what data optional cloud receives.">
+<meta property="og:title" content="Kaliv — privatliv og data" data-en-content="Kaliv — privacy and data">
+<meta property="og:description" content="Hvor Kaliv gemmer samtaler og hukommelse, og hvilke data valgfri cloud modtager." data-en-content="Where Kaliv stores conversations and memory, and what data optional cloud receives.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="da_DK">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://kaliv.dk/privacy.html">
+<meta property="og:image" content="https://kaliv.dk/assets/modelrig-continuity-female-hair-1920.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://kaliv.dk/privacy.html">
+<link rel="alternate" hreflang="da" href="https://kaliv.dk/privacy.html">
+<link rel="alternate" hreflang="en" href="https://kaliv.dk/privacy.html">
+<link rel="alternate" hreflang="x-default" href="https://kaliv.dk/privacy.html">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/kaliv-favicon-32.png">
+<link rel="apple-touch-icon" href="assets/kaliv-apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<title data-en="Kaliv — privacy and data">Kaliv — privatliv og data</title>
+<script type="application/ld+json" data-en-name="Kaliv — privacy &amp; data" data-en-description="Where Kaliv stores conversations and memory, and what data optional cloud receives.">{"@context":"https://schema.org","@type":"WebPage","name":"Kaliv — privatliv og data","description":"Hvor Kaliv gemmer samtaler og hukommelse, og hvilke data valgfri cloud modtager.","dateModified":"{{ updated }}","inLanguage":"da","url":"https://kaliv.dk/privacy.html"}</script>
+<link rel="stylesheet" href="/site.css">
+</head>
+<body>
+<a class="skip-link" href="#content" data-en="Skip to content">Gå til indhold</a>
+{% include "header" %}
+<main id="content" tabindex="-1">
+<div class="reading">
+<section class="page-intro">
+<p class="eyebrow" data-en="Privacy &amp; data">Privatliv &amp; data</p>
+<h1 data-en="Where your data goes.">Her ligger dine data.</h1>
+<p class="lead" data-en="Local use keeps model processing on your rig. Cloud is optional and changes which data is sent to a provider.">Ved lokal brug behandles modelkald på din rig. Cloud er et tilvalg og ændrer, hvilke data der sendes til en udbyder.</p>
+<p class="caption" data-en="Describes v{{ latest_release.version }}, published {{ latest_release.published | date_en }}.">Beskriver v{{ latest_release.version }} fra {{ latest_release.published | date_da }}.</p>
+</section>
+<section class="section">
+<h2 data-en="Conversations and memory.">Samtaler og hukommelse.</h2>
+<ul>
+<li data-en="Android: conversations and settings are stored in the app’s local storage. The chat database and preferences are excluded from Android cloud backup and device transfer.">Android: samtaler og indstillinger gemmes lokalt i appen. Chatdatabasen og indstillingerne er undtaget fra Androids cloud-backup og overførsel mellem enheder.</li>
+<li data-en="Windows: conversations and settings are stored in modelrig.db in the .modelrig folder under your user folder.">Windows: samtaler og indstillinger ligger i modelrig.db i mappen .modelrig under din brugermappe.</li>
+<li data-en="Your rig: document indexes and enabled server memory are stored in local databases. By default, the worker uses %LOCALAPPDATA%\Kaliv on Windows and ~/.local/share/kaliv on Linux; the location can be changed.">Din rig: dokumentindeks og aktiveret serverhukommelse ligger i lokale databaser. Som standard bruger workeren %LOCALAPPDATA%\Kaliv på Windows og ~/.local/share/kaliv på Linux; placeringen kan ændres.</li>
+</ul>
+<p data-en="A chat stored on one client is not proof of one shared memory across every device. The complete continuity experience is still being qualified.">En gemt chat på én klient er ikke bevis for én fælles hukommelse på alle enheder. Den samlede sammenhæng afprøves stadig.</p>
+</section>
+<section class="section">
+<h2 data-en="When you choose cloud.">Når du vælger cloud.</h2>
+<p data-en="Ordinary cloud chat sends the current user message and system instructions. Previous conversation turns are filtered out. An image attached to the current message may also be sent. A direct cloud connection from the apps can work without a rig.">Almindelig cloud-chat sender den aktuelle brugerbesked og systeminstruktioner. Tidligere samtaleture filtreres fra. Et billede vedhæftet den aktuelle besked kan også blive sendt. En direkte cloud-forbindelse fra appsene kan bruges uden en rig.</p>
+<p data-en="Enabled tools can send relevant results to the selected cloud model, such as model names, GPU and job status. Some read results, including document names, are not blocked by default. Sending document excerpts through retrieval (RAG) has a separate opt-in. Do not assume that only the text you type leaves the rig when tools are enabled.">Aktiverede værktøjer kan sende relevante resultater til den valgte cloud-model, eksempelvis modelnavne, GPU- og jobstatus. Nogle læseresultater, herunder dokumentnavne, blokeres ikke som standard. Afsendelse af dokumentudsnit gennem videnssøgning (RAG) har et særskilt tilvalg. Du kan derfor ikke regne med, at kun det, du skriver, forlader riggen, når værktøjer er aktiveret.</p>
+<p data-en="Cloud requires provider access. Automatic fallback from a local model to cloud is a separate setting and is off by default.">Cloud kræver adgang hos udbyderen. Automatisk skift fra en lokal model til cloud er en særskilt indstilling og er slået fra som standard.</p>
+</section>
+<section class="section">
+<h2 data-en="Voice and network.">Tale og netværk.</h2>
+<p data-en="For rig-based voice, speech recognition and speech synthesis run on your rig. If cloud is selected for the language model, it receives the current question’s transcription; previous conversation turns are filtered out.">Ved tale gennem riggen sker talegenkendelse og talesyntese på din rig. Hvis cloud er valgt til sprogmodellen, modtager den transskriptionen af det aktuelle spørgsmål; tidligere samtaleture filtreres fra.</p>
+<p data-en="The connection between app and rig uses HTTP on your local network by default. It is not automatically encrypted end to end. Use a trusted network; access from outside the home requires separate network configuration.">Forbindelsen mellem app og rig bruger som standard HTTP på lokalnettet. Den er ikke automatisk krypteret fra ende til ende. Brug et betroet netværk; adgang udefra kræver særskilt netværksopsætning.</p>
+<p data-en="Downloading apps, models and updates contacts their hosting services. Those requests are separate from processing a local conversation.">Downloads af apps, modeller og opdateringer kontakter de tjenester, der leverer filerne. De kald er adskilt fra behandlingen af en lokal samtale.</p>
+</section>
+<section class="section">
+<h2 data-en="This website.">Denne hjemmeside.</h2>
+<p data-en="kaliv.dk is a static site hosted on GitHub Pages. The site contains no analytics or external scripts. Its service worker caches public site files on your device for offline access; it does not store your Kaliv conversations.">kaliv.dk er en statisk hjemmeside på GitHub Pages. Siden indeholder ingen analytics eller eksterne scripts. Dens service worker gemmer offentlige sidefiler på din enhed til offlinebrug; den gemmer ikke dine Kaliv-samtaler.</p>
+<a class="text-link" href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" data-en="GitHub’s privacy statement">GitHubs privatlivspolitik</a>
+</section>
+<details class="disclosure">
+<summary><span data-en="Technical sources for this release">Tekniske kilder for denne udgivelse</span></summary>
+<div>
+<a class="text-link" href="https://github.com/Ternedal/ModelRig/blob/v{{ latest_release.version }}/SECURITY.md" data-en="Data flow and cloud boundaries">Dataflow og cloud-afgrænsning</a>
+<a class="text-link" href="https://github.com/Ternedal/ModelRig/blob/v{{ latest_release.version }}/worker/app/paths.py" data-en="Worker data locations">Workerens dataplaceringer</a>
+<a class="text-link" href="https://github.com/Ternedal/ModelRig/blob/v{{ latest_release.version }}/android/app/src/main/java/dk/ternedal/modelrig/data/ChatDb.kt" data-en="Android conversation storage">Androids samtalelagring</a>
+<a class="text-link" href="https://github.com/Ternedal/ModelRig/blob/v{{ latest_release.version }}/desktop/composeApp/src/main/kotlin/dk/ternedal/modelrig/desktop/data/DesktopChatDb.kt" data-en="Windows conversation storage">Windows' samtalelagring</a>
+</div>
+</details>
+</div>
+</main>
+{% include "footer" %}
+</body>
+</html>
