@@ -136,4 +136,22 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://kaliv.dk/en/download.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://kaliv.dk/download.html" />
   </url>
+  <url>
+    <loc>https://kaliv.dk/privacy.html</loc>
+    <lastmod>{{ updated }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="da" href="https://kaliv.dk/privacy.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kaliv.dk/en/privacy.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kaliv.dk/privacy.html" />
+  </url>
+  <url>
+    <loc>https://kaliv.dk/en/privacy.html</loc>
+    <lastmod>{{ updated }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="da" href="https://kaliv.dk/privacy.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://kaliv.dk/en/privacy.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://kaliv.dk/privacy.html" />
+  </url>
 </urlset>

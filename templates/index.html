@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080c12">
-<meta name="description" content="Personlig AI på Windows, Android og i VR. Bygget på ModelRig og din egen hardware." data-en-content="Personal AI on Windows, Android and in VR. Built on ModelRig and your own hardware.">
+<meta name="description" content="Personlig AI til computer og telefon. Windows og Android: Udgivet. VR og Hub: Under udvikling." data-en-content="Personal AI for computer and phone. Windows and Android: Released. VR and Hub: Under development.">
 <meta property="og:title" content="Kaliv — din personlige AI" data-en-content="Kaliv — your personal AI">
-<meta property="og:description" content="Personlig AI på Windows, Android og i VR. Bygget på ModelRig og din egen hardware." data-en-content="Personal AI on Windows, Android and in VR. Built on ModelRig and your own hardware.">
+<meta property="og:description" content="Personlig AI til computer og telefon. Windows og Android: Udgivet. VR og Hub: Under udvikling." data-en-content="Personal AI for computer and phone. Windows and Android: Released. VR and Hub: Under development.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="da_DK">
 <meta property="og:locale:alternate" content="en_US">
@@ -23,7 +23,7 @@
 <link rel="preload" as="image" href="assets/modelrig-continuity-female-hair-mobile.webp" media="(max-width: 700px)">
 <link rel="preload" as="image" href="assets/modelrig-continuity-female-hair-1920.webp" media="(min-width: 701px)">
 <title data-en="Kaliv — your personal AI">Kaliv — din personlige AI</title>
-<script type="application/ld+json" data-en-name="Kaliv — your personal AI" data-en-description="Personal AI on Windows, Android and in VR. Built on ModelRig and your own hardware.">{"@context": "https://schema.org", "@type": "WebPage", "name": "Kaliv — din personlige AI", "description": "Personlig AI på Windows, Android og i VR. Bygget på ModelRig og din egen hardware.", "dateModified": "{{ updated }}", "inLanguage": "da", "url": "https://kaliv.dk/"}</script>
+<script type="application/ld+json" data-en-name="Kaliv — your personal AI" data-en-description="Personal AI for computer and phone. Windows and Android: Released. VR and Hub: Under development.">{"@context": "https://schema.org", "@type": "WebPage", "name": "Kaliv — din personlige AI", "description": "Personlig AI til computer og telefon. Windows og Android: Udgivet. VR og Hub: Under udvikling.", "dateModified": "{{ updated }}", "inLanguage": "da", "url": "https://kaliv.dk/"}</script>
 <link rel="stylesheet" href="/site.css">
 </head>
 <body>
@@ -34,12 +34,15 @@
 <div class="landing-copy">
 <p class="eyebrow" data-en="Local AI. Your control.">Lokal AI. Din kontrol.</p>
 <h1 id="hero-title" data-en="Your personal AI.">Din personlige AI.</h1>
-<p class="lead" data-en="Talk and write on your computer and phone. Meet Kaliv in VR. The models run on your own rig.">Tal og skriv på computer og telefon. Mød Kaliv i VR. Modellerne kører på din egen rig.</p>
+<p class="lead" data-en="Kaliv is a personal AI you can write and talk to on your computer and phone.">Kaliv er en personlig AI, som du kan skrive og tale med på computer og telefon.</p>
+<p class="supporting landing-requirements" data-en="{{ site_copy.requirements_en }}">{{ site_copy.requirements_da }}</p>
+<p class="supporting landing-requirements" data-en="Documented model setup: RTX 3060 with 12 GB VRAM; a general minimum has not yet been established.">Dokumenteret modelopsætning: RTX 3060 med 12 GB VRAM; et generelt minimum er endnu ikke fastlagt.</p>
+<p class="availability" data-en="{{ site_copy.available_en }}">{{ site_copy.available_da }}</p>
 <div class="actions">
 <a class="button primary" href="download.html" data-en="Get Kaliv">Hent Kaliv</a>
 <a class="button quiet" href="#vr" data-en="Explore Kaliv VR">Udforsk Kaliv VR</a>
 </div>
-<p class="caption" data-en="Windows · Android · Meta Quest">Windows · Android · Meta Quest</p>
+<a class="text-link requirement-link" href="download.html#requirements" data-en="Check requirements and setup">Se krav og opsætning</a>
 </div>
 <figure class="landing-image">
 <picture>
@@ -54,23 +57,26 @@
 <article class="app">
 <p class="eyebrow" data-en="Windows">Windows</p>
 <h3 data-en="On your computer">På computeren</h3>
+<p class="badge" data-en="Released">Udgivet</p>
 <p data-en="Chat, voice and access to your knowledge.">Chat, stemme og adgang til din viden.</p>
 <a class="text-link" href="download.html#windows" data-en="Get the Windows client">Hent Windows-klienten</a>
 </article>
 <article class="app">
 <p class="eyebrow" data-en="Android">Android</p>
 <h3 data-en="On the move">Med på farten</h3>
+<p class="badge" data-en="Released">Udgivet</p>
 <p data-en="Conversations and voice on your phone, connected to your rig.">Samtaler og stemme fra telefonen, forbundet til din rig.</p>
 <a class="text-link" href="download.html#android" data-en="Get the Android app">Hent Android-appen</a>
 </article>
 <article class="app">
 <p class="eyebrow" data-en="Meta Quest">Meta Quest</p>
 <h3 data-en="Kaliv VR">Kaliv VR</h3>
+<p class="badge" data-en="{{ kaliv_vr.status_en }}">{{ kaliv_vr.status_da }}</p>
 <p data-en="Chat, avatars and media in a space around you.">Chat, avatarer og medier i et rum omkring dig.</p>
 <a class="text-link" href="#vr" data-en="Explore Kaliv VR">Se Kaliv VR</a>
 </article>
 </div>
-<p class="supporting" data-en="KalivHub also connects the project to Nest Hub and Home Assistant.">KalivHub forbinder også projektet med Nest Hub og Home Assistant.</p>
+<p class="supporting" data-en="KalivHub: {{ kaliv_hub.status_en }}. The aim is to use Kaliv on Nest Hub with Home Assistant.">KalivHub: {{ kaliv_hub.status_da }}. Målet er at bruge Kaliv på Nest Hub med Home Assistant.</p>
 <a class="text-link" href="hub.html" data-en="Read about Kaliv at home">Læs om Kaliv i hjemmet</a>
 </section>
 <section class="vr-section" id="vr">
@@ -78,10 +84,10 @@
 <p class="eyebrow" data-en="Kaliv VR / Meta Quest">Kaliv VR / Meta Quest</p>
 <h2 data-en="Meet Kaliv in VR.">Mød Kaliv i VR.</h2>
 <p class="badge" data-en="{{ kaliv_vr.status_en }}">{{ kaliv_vr.status_da }}</p>
-<p data-en="The Quest client is developed in Unity and OpenXR. Pair it with ModelRig, choose a model and chat with Kaliv in VR.">Quest-klienten er udviklet i Unity og OpenXR. Par den med ModelRig, vælg en model, og chat med Kaliv i VR.</p>
+<p data-en="The Quest client has code for pairing, chat, avatars and media playback. It must be built from source; there is no public VR APK in the current release. Physical headset testing and performance qualification remain open.">Quest-klienten har kode til parring, chat, avatarer og medievisning. Den skal bygges fra kildekoden; den aktuelle udgivelse har ingen offentlig VR-APK. Fysisk headset-test og afprøvning af ydelsen mangler stadig.</p>
 <ul class="feature-list">
 <li data-en="Chat and model selection">Chat og modelvalg</li>
-<li data-en="BodyRig avatars and motion">BodyRig-avatarer og bevægelse</li>
+<li data-en="Avatars and motion">Avatarer og bevægelse</li>
 <li data-en="Flat video, VR180 and VR360">Video, VR180 og VR360</li>
 </ul>
 <a class="button primary" href="{{ kaliv_vr.setup_url }}" data-en="Build Kaliv VR">Byg Kaliv VR</a>
@@ -89,7 +95,21 @@
 <a class="text-link" href="progress.html" data-en="View development status">Se udviklingsstatus</a>
 </div>
 <div class="vr-symbol" aria-hidden="true">
-<img src="assets/kaliv-ankh-640.webp" width="640" height="863" alt="" loading="lazy">
+<img src="assets/kaliv-ankh-640.webp" width="640" height="863" alt="" aria-hidden="true" loading="lazy">
+</div>
+</section>
+<section class="section" id="screenshots">
+<h2 data-en="Inside the Android app.">Inde i Android-appen.</h2>
+<p class="supporting" data-en="Actual app screens rendered by the v{{ latest_release.version }} UI tests with test data. These captures show the interface; they do not document a physical device test.">Appens faktiske skærme, gengivet af UI-testene til v{{ latest_release.version }} med testdata. Optagelserne viser brugerfladen; de dokumenterer ikke en fysisk enhedstest.</p>
+<div class="screenshot-grid">
+<figure>
+<picture><img src="assets/kaliv-android-chat.webp" width="1078" height="2399" loading="lazy" alt="Android-appens chatskærm med modelvalg, beskedfelt og mikrofon" data-en-alt="Android chat screen with model selection, message input and microphone"></picture>
+<figcaption data-en="Android · Chat and model selection (Danish interface).">Android · Chat og modelvalg.</figcaption>
+</figure>
+<figure>
+<picture><img src="assets/kaliv-android-pairing.webp" width="1078" height="1430" loading="lazy" alt="Android-appens opsætning med serveradresse og eksempel på parringskode" data-en-alt="Android setup with server address and example pairing code (Danish interface)"></picture>
+<figcaption data-en="Android · Connect to your rig. Address and code are test data.">Android · Forbind til din rig. Adresse og kode er testdata.</figcaption>
+</figure>
 </div>
 </section>
 <section class="section narrow closing">

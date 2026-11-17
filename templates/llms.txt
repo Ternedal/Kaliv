@@ -31,7 +31,7 @@ In plain language: ModelRig is the infrastructure. Kaliv is the AI a person meet
 
 ## Kaliv VR
 
-Kaliv VR is developed and implemented on main as the third first-party client. It provides pairing, model selection, buffered chat, verified BodyRig VRM avatars, live body-state rendering and flat/VR180/VR360 media. Physical Quest qualification, profiling and conversation parity remain open.
+Kaliv VR is under development and implemented on main as the third first-party client. It provides pairing, model selection, buffered chat, verified BodyRig VRM avatars, live body-state rendering and flat/VR180/VR360 media. Physical Quest qualification, profiling and conversation parity remain open.
 Implementation source: {{ kaliv_vr.source_url }}
 Build guide: {{ kaliv_vr.setup_url }}
 This implementation status does not close an overall V1 proof.
@@ -89,3 +89,7 @@ Four supporting records do not close a V1 gate: the v{{ latest_release.version }
 - Memory 4: documented autobiographical recall.
 - ThoughtEngine: replaceable cognitive proposal layer.
 - Agent 3: policy-approved execution.
+
+Visitor status: Windows and Android: Released. VR and Hub: Under development.
+Privacy and data (DA): https://kaliv.dk/privacy.html
+Privacy and data (EN): https://kaliv.dk/en/privacy.html

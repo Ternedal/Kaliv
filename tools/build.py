@@ -19,13 +19,14 @@ ROOT = Path(__file__).resolve().parent.parent
 PUBLIC_FILES = (
     ".nojekyll", "CNAME", "index.html", "brief.html", "hub.html",
     "proofs.html", "architecture.html", "progress.html", "404.html",
-    "offline.html", "download.html", "home.css", "home.js", "dossier.css", "dossier.js",
+    "offline.html", "download.html", "privacy.html", "home.css", "home.js", "dossier.css", "dossier.js",
     "site-shell.css", "architecture.js", "proofs.js", "progress.js", "project.json", "llms.txt", "robots.txt", "sitemap.xml",
     "site.webmanifest", "service-worker.js",
     "assets/kaliv-favicon-32.png", "assets/kaliv-apple-touch-icon.png",
     "assets/kaliv-icon-192.png", "assets/kaliv-icon-512.png",
     "assets/kaliv-icon-maskable-512.png", "assets/kaliv-ankh-160.webp",
     "assets/kaliv-ankh-640.webp",
+    "assets/kaliv-android-chat.webp", "assets/kaliv-android-pairing.webp",
     "assets/modelrig-continuity-female-hair-mobile.webp",
     "assets/modelrig-continuity-female-hair-1920.webp",
     "assets/modelrig-continuity-female-hair-hires.webp",
@@ -52,7 +53,7 @@ HEAD_KEYS = {
     "signed_android": "ModelRig@feat/android-kalivhub-mirror",
 }
 TOKEN = re.compile(r"{{\s*([\w.-]+)(?:\s*\|\s*(\w+))?\s*}}")
-INCLUDE = re.compile(r'{%\s*include\s+"([a-z-]+)"\s*%}')
+INCLUDE = re.compile(r'{%\s*include\s+"([a-z][a-z0-9-]*)"\s*%}')
 PAGE_TITLES = {
     "brief": ("Projektbrief", "Project brief"),
     "hub": ("KalivHub / hjemmet", "KalivHub / home"),
@@ -60,6 +61,7 @@ PAGE_TITLES = {
     "proofs": ("V1-bevisregister", "V1 proof ledger"),
     "progress": ("Offentlig status", "Public status"),
     "download": ("Hent Kaliv", "Get Kaliv"),
+    "privacy": ("Privatliv og data", "Privacy and data"),
 }
 ATTR = re.compile(r"(?P<prefix>\b(?:[\w-]*href|src|srcset|content)\s*=\s*)(?P<quote>[\"'])(?P<value>.*?)(?P=quote)", re.DOTALL)
 MONTHS = {
@@ -72,7 +74,7 @@ REDIRECT = """(() => {
   const query = new URLSearchParams(location.search);
   if (query.get('lang') !== 'en' || location.pathname.startsWith('/en/')) return;
   const page = location.pathname.split('/').pop() || 'index.html';
-  const pages = ['index.html','brief.html','hub.html','proofs.html','architecture.html','progress.html','404.html','offline.html','download.html'];
+  const pages = ['index.html','brief.html','hub.html','proofs.html','architecture.html','progress.html','404.html','offline.html','download.html','privacy.html'];
   if (!pages.includes(page)) return;
   query.delete('lang');
   const target = new URL(page === 'index.html' ? '/en/' : '/en/' + page, location.origin);
@@ -240,10 +242,12 @@ def compile_html(source, name, language, canonical):
         # Existing translation scripts are replaced by static HTML and one bootstrap.
         node.children = [child for child in node.children if not isinstance(child, Element) or child.tag != "script" or child.attrs.get("type") == "application/ld+json"]
         node.attrs = {key: value for key, value in node.attrs.items() if not key.startswith(("data-da", "data-en", "data-title", "data-description"))}
-    script_attrs = {"src": "/site.js", "defer": None}
+    # Resolve old language URLs before resources or first paint. protect_html()
+    # inserts the CSP before this exact, build-owned and hash-authorized script.
     if language == "da":
-        script_attrs["blocking"] = "render"
-    head.children.append(Element("script", script_attrs))
+        charset = next(i + 1 for i, node in enumerate(head.children) if isinstance(node, Element) and "charset" in node.attrs)
+        head.children.insert(charset, Element("script", {}, [REDIRECT]))
+    head.children.append(Element("script", {"src": "/site.js", "defer": None}))
     return serialize(document.root)
 
 
@@ -281,8 +285,8 @@ def context_for(project):
     context["proofs"] = {
         item["id"]: {
             **item,
-            "label_da": "Mangler" if item["status"] == "open" else "Bevist",
-            "label_en": "Missing" if item["status"] == "open" else "Proven",
+            "label_da": "Ikke bekræftet" if item["status"] == "open" else "Bekræftet",
+            "label_en": "Not confirmed" if item["status"] == "open" else "Confirmed",
             "gate_da": "Åben" if item["status"] == "open" else "Lukket",
             "gate_en": "Open" if item["status"] == "open" else "Closed",
         }
@@ -389,7 +393,7 @@ def version_html(source, versions, canonical):
 
 
 def protect_html(source):
-    """Apply the policy before fetches and hash the exact generated JSON-LD."""
+    """Apply CSP before resources; hash exact JSON-LD and language redirect."""
     document = Document(source)
     nodes = list(elements(document.root))
     head = next(node for node in nodes if node.tag == "head")
@@ -420,9 +424,9 @@ def build(root=ROOT):
     for name in PUBLIC_FILES:
         if name not in TEMPLATE_FILES and name not in EN_FILES and name not in LEGACY_SCRIPTS + LEGACY_STYLES and name != "project.json":
             files[name] = (root / name).read_bytes()
-    files["site.js"] = REDIRECT.encode("utf-8") + b"\n" + files["site.js"]
     for name in LEGACY_SCRIPTS:
-        files[name] = files["site.js"]
+        # Cached documents may still use the former bootstrap's redirect.
+        files[name] = REDIRECT.encode("utf-8") + b"\n" + files["site.js"]
     versions = {}
     # Images and scripts are leaves; CSS and the manifest can reference images.
     for name, data in files.items():

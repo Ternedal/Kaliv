@@ -31,7 +31,8 @@
 <section class="page-intro">
 <p class="eyebrow" data-en="Get started">Kom i gang</p>
 <h1 data-en="Get Kaliv.">Hent Kaliv.</h1>
-<p class="lead" data-en="Choose your app and connect it to your ModelRig.">Vælg din app, og forbind den til din ModelRig.</p>
+<p class="lead" data-en="{{ site_copy.requirements_en }}">{{ site_copy.requirements_da }}</p>
+<p class="availability" data-en="{{ site_copy.available_en }}">{{ site_copy.available_da }}</p>
 </section>
 <div class="download-grid">
 <article class="download-card" id="windows">
@@ -42,32 +43,96 @@
 </article>
 <article class="download-card" id="android">
 <h2>Android</h2>
-<p data-en="The app for your phone.">Appen til din telefon.</p>
+<p data-en="The app for your phone. Requires Android {{ downloads.android.minimum_version }} or newer.">Appen til din telefon. Kræver Android {{ downloads.android.minimum_version }} eller nyere.</p>
 <p class="filename">{{ downloads.android.filename }}</p>
 <a class="button primary" href="{{ downloads.android.url }}" data-en="Download Android app">Hent Android-app</a>
 </article>
 <article class="download-card" id="quest">
 <h2>Kaliv VR · Quest</h2>
-<p data-en="Developed in Unity and OpenXR. Build from source.">Udviklet i Unity og OpenXR. Bygges fra kildekoden.</p>
+<p data-en="{{ kaliv_vr.status_en }}. Build from source; no public APK in this release.">{{ kaliv_vr.status_da }}. Bygges fra kildekoden; ingen offentlig APK i denne udgivelse.</p>
 <p class="filename">Unity / OpenXR</p>
 <a class="button primary" href="{{ kaliv_vr.setup_url }}" data-en="Build Kaliv VR">Byg Kaliv VR</a>
 </article>
 </div>
 <div class="download-meta">
+<p data-en="No macOS or Linux client is released. A Linux machine can run the ModelRig server.">Der er ingen udgivet macOS- eller Linux-klient. En Linux-maskine kan køre ModelRig-serveren.</p>
 <p data-en="The Windows and Android files belong to v{{ latest_release.version }}, published {{ latest_release.published | date_en }}.">Windows- og Android-filerne tilhører v{{ latest_release.version }} fra {{ latest_release.published | date_da }}.</p>
 <a class="text-link" href="{{ latest_release.url }}" data-en="View the latest release">Se seneste udgivelse</a>
 </div>
-<section class="section narrow">
-<h2 data-en="First time?">Første gang?</h2>
-<p data-en="Start ModelRig on your rig, download the app and connect it to your rig. Quest has its own build guide above.">Start ModelRig på din rig, hent appen, og forbind den til riggen. Quest har sin egen byggevejledning ovenfor.</p>
-<a class="text-link" href="{{ downloads.setup_url }}" data-en="Start ModelRig">Start ModelRig</a>
+<section class="section narrow" id="requirements">
+<h2 data-en="Hardware and network.">Hardware og netværk.</h2>
+<p data-en="For local use, your rig runs the model; your phone connects over the local network. These requirements are separate from the app requirements.">Ved lokal brug kører din rig modellen; telefonen forbinder over lokalnettet. Disse krav er adskilt fra kravene til selve appen.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Krav til lokal opsætning" data-en-aria-label="Local setup requirements">
+<table>
+<thead><tr><th scope="col" data-en="Requirement">Krav</th><th scope="col" data-en="Local setup">Lokal opsætning</th></tr></thead>
+<tbody>
+<tr><th scope="row" data-en="Operating system">Styresystem</th><td data-en="ModelRig: Windows or Linux. Released clients: Windows x64 with Java {{ downloads.windows.java_version }}, or Android {{ downloads.android.minimum_version }}+.">ModelRig: Windows eller Linux. Udgivne klienter: Windows x64 med Java {{ downloads.windows.java_version }} eller Android {{ downloads.android.minimum_version }}+.</td></tr>
+<tr><th scope="row">RAM</th><td data-en="Depends on the model and enabled features. A qualified minimum has not yet been established.">Afhænger af model og aktive funktioner. Et afprøvet minimum er endnu ikke fastlagt.</td></tr>
+<tr><th scope="row">GPU / VRAM</th><td data-en="A documented example is qwen3:14b on an RTX 3060 with 12 GB VRAM. This is a tested model configuration, not a minimum for every feature. CPU-only use of the complete setup has not been qualified.">Et dokumenteret eksempel er qwen3:14b på RTX 3060 med 12 GB VRAM. Det er en afprøvet modelkonfiguration, ikke et minimum for alle funktioner. Hele opsætningen er ikke kvalificeret til ren CPU-drift.</td></tr>
+<tr><th scope="row" data-en="Disk">Disk</th><td data-en="Space is needed for models, the installation and your data. A complete minimum has not yet been established; the model choice changes the download size.">Der skal være plads til modeller, installation og dine data. Et samlet minimum er endnu ikke fastlagt; modelvalget ændrer downloadstørrelsen.</td></tr>
+<tr><th scope="row" data-en="Network">Netværk</th><td data-en="Use the same trusted LAN or Wi-Fi for phone and rig. The rig must remain running and reachable. Internet is needed for downloads, updates and optional cloud use.">Brug samme betroede LAN eller Wi-Fi til telefon og rig. Riggen skal være tændt og kunne nås. Internet bruges til downloads, opdateringer og valgfri cloud-brug.</td></tr>
+</tbody>
+</table>
+</div>
+<a class="text-link" href="https://github.com/Ternedal/ModelRig/blob/v{{ latest_release.version }}/MODELS.md" data-en="Documented model configurations">Dokumenterede modelkonfigurationer</a>
+</section>
+<section class="section narrow" id="first-time">
+<h2 data-en="First time: start your rig.">Første gang: start din rig.</h2>
+<p data-en="The steps below describe the Windows server setup. For Linux service installation, use the full deployment guide.">Trinene her beskriver Windows-serveren. Til Linux-installation som tjeneste: brug den fulde installationsvejledning.</p>
+<ol class="steps">
+<li>
+<p data-en="Install Ollama for Windows. Choose and download a model that fits your hardware. The commands below use qwen3:8b as an example, not a minimum-hardware promise.">Installér Ollama til Windows. Vælg og hent en model, der passer til din hardware. Kommandoerne her bruger qwen3:8b som eksempel, ikke som et løfte om minimumshardware.</p>
+<a class="text-link" href="https://ollama.com/download/windows" data-en="Get Ollama for Windows">Hent Ollama til Windows</a>
+<pre>ollama pull qwen3:8b
+ollama pull nomic-embed-text</pre>
+</li>
+<li>
+<p data-en="Download the Windows server and worker from this release. Save both in C:\Kaliv. These executables do not require a Python or Go installation.">Hent Windows-serveren og workeren fra denne udgivelse. Gem begge i C:\Kaliv. De færdige programmer kræver ikke en Python- eller Go-installation.</p>
+<a class="text-link" href="{{ downloads.release_base }}modelrig-server-windows-x64.exe" data-en="Get Windows server">Hent Windows-server</a>
+<a class="text-link" href="{{ downloads.release_base }}modelrig-worker-windows-x64.exe" data-en="Get Windows worker">Hent Windows-worker</a>
+</li>
+<li>
+<p data-en="Open two PowerShell windows. Start the worker in the first window; keep it running:">Åbn to PowerShell-vinduer. Start workeren i det første vindue, og lad den køre:</p>
+<pre>Set-Location C:\Kaliv
+$env:MODELRIG_GEN_MODEL = "qwen3:8b"
+.\modelrig-worker-windows-x64.exe</pre>
+<p data-en="Start the server in the second window. MODELRIG_HOST makes it reachable on your trusted local network:">Start serveren i det andet vindue. MODELRIG_HOST gør den tilgængelig på dit betroede lokalnet:</p>
+<pre>Set-Location C:\Kaliv
+$env:MODELRIG_HOST = "0.0.0.0"
+.\modelrig-server-windows-x64.exe</pre>
+</li>
+<li>
+<p data-en="While the server is running, open a third PowerShell window and create a pairing code:">Mens serveren kører, åbn et tredje PowerShell-vindue, og opret en parringskode:</p>
+<pre>Set-Location C:\Kaliv
+.\modelrig-server-windows-x64.exe -pair</pre>
+</li>
+<li>
+<p data-en="Install a client using the instructions below. On the rig itself, connect to http://localhost:8080. On your phone, use http://RIG-LAN-IP:8080 on the same network, enter the pairing code and select your downloaded model. Send a short text message before trying voice.">Installér en klient med vejledningen nedenfor. På selve riggen forbindes til http://localhost:8080. På telefonen bruges http://RIGGENS-LAN-IP:8080 på samme netværk; indtast parringskoden, og vælg din hentede model. Send en kort tekstbesked, før du prøver stemme.</p>
+</li>
+</ol>
+<a class="text-link" href="{{ latest_release.tag_url }}" data-en="Server files in this release">Serverfiler i denne udgivelse</a>
+<a class="text-link" href="{{ downloads.setup_url }}" data-en="Full source-code setup guide">Fuld vejledning fra kildekode</a>
+<a class="text-link" href="https://github.com/Ternedal/ModelRig/blob/v{{ latest_release.version }}/deploy/README.md" data-en="Full deployment guide (Windows and Linux)">Fuld installationsvejledning (Windows og Linux)</a>
 <details class="disclosure" id="windows-start">
-<summary><span data-en="Start on Windows">Start på Windows</span></summary>
+<summary><span data-en="Install and start on Windows">Installér og start på Windows</span></summary>
 <div>
-<p data-en="Install Java {{ downloads.windows.java_version }}. Open PowerShell in the download folder and run:">Installér Java {{ downloads.windows.java_version }}. Åbn PowerShell i downloadmappen, og kør:</p>
+<p data-en="Recommended Java build: Eclipse Temurin JDK {{ downloads.windows.java_version }} LTS, Windows x64, HotSpot, MSI installer. Keep the installer’s Add to PATH option enabled, then open a new PowerShell window.">Anbefalet Java-build: Eclipse Temurin JDK {{ downloads.windows.java_version }} LTS, Windows x64, HotSpot, MSI-installation. Behold installationens Add to PATH-valg, og åbn derefter et nyt PowerShell-vindue.</p>
+<a class="text-link" href="{{ downloads.windows.java_url }}" data-en="Get Temurin Java {{ downloads.windows.java_version }} for Windows x64">Hent Temurin Java {{ downloads.windows.java_version }} til Windows x64</a>
+<p data-en="Download the client above. Open PowerShell in the download folder and run:">Hent klienten ovenfor. Åbn PowerShell i downloadmappen, og kør:</p>
 <pre>java -jar ".\{{ downloads.windows.filename }}"</pre>
-<p data-en="Use the client settings to connect to your rig. The desktop guide describes setup and connection.">Brug klientens indstillinger til at forbinde til riggen. Desktopvejledningen beskriver opsætning og forbindelse.</p>
-<a class="text-link" href="{{ downloads.windows.setup_url }}" data-en="Windows setup guide">Windows-vejledning</a>
+<p data-en="Use the client settings to connect to your rig. The full desktop guide describes connection options.">Brug klientens indstillinger til at forbinde til din rig. Den fulde desktopvejledning beskriver forbindelsesmulighederne.</p>
+<a class="text-link" href="{{ downloads.windows.setup_url }}" data-en="Full Windows client guide">Fuld Windows-klientvejledning</a>
+</div>
+</details>
+<details class="disclosure" id="android-start">
+<summary><span data-en="Install and update on Android">Installér og opdatér på Android</span></summary>
+<div>
+<ol class="steps">
+<li data-en="Check that the phone runs Android {{ downloads.android.minimum_version }} or newer. Download the APK above and open it from the browser or Files app.">Kontrollér, at telefonen har Android {{ downloads.android.minimum_version }} eller nyere. Hent APK-filen ovenfor, og åbn den fra browseren eller appen Filer.</li>
+<li data-en="If Android asks, open Settings → Install unknown apps and allow the browser or file app you used. Return to the APK and confirm installation. The exact wording varies by phone.">Hvis Android spørger, åbn Indstillinger → Installér ukendte apps, og tillad den browser eller filapp, du brugte. Gå tilbage til APK-filen, og bekræft installationen. Ordlyden varierer mellem telefoner.</li>
+<li data-en="Open Kaliv, enter the rig’s server address and pairing code, and choose a model. Use the same local network as the rig.">Åbn Kaliv, indtast riggens serveradresse og parringskode, og vælg en model. Brug samme lokalnet som riggen.</li>
+</ol>
+<p data-en="The app offers new versions. You start the update yourself and confirm installation in Android; it does not install updates silently.">Appen tilbyder nye versioner. Du starter selv opdateringen og bekræfter installationen i Android; opdateringer installeres ikke i stilhed.</p>
 </div>
 </details>
 </section>
@@ -95,6 +160,16 @@
 </ol>
 </div>
 </details>
+</section>
+<section class="section narrow" id="faq">
+<h2 data-en="Frequently asked questions.">Ofte stillede spørgsmål.</h2>
+<details class="disclosure"><summary><span data-en="Do I need a rig?">Skal jeg have en rig?</span></summary><div><p data-en="For local AI, yes: your own Windows or Linux machine running ModelRig. The apps can also connect directly to optional cloud services, which require an account and access from the provider.">Til lokal AI, ja: din egen Windows- eller Linux-maskine med ModelRig. Appsene kan også forbindes direkte til valgfri cloud; det kræver konto og adgang hos udbyderen.</p></div></details>
+<details class="disclosure"><summary><span data-en="Does Kaliv work without internet?">Virker Kaliv uden internet?</span></summary><div><p data-en="Local use connects the app to your rig over your network. Models and other required files must be downloaded first. Downloads, updates and cloud require internet.">Lokal brug forbinder appen til riggen over dit netværk. Modeller og øvrige nødvendige filer skal være hentet først. Downloads, opdateringer og cloud kræver internet.</p></div></details>
+<details class="disclosure"><summary><span data-en="Is there a macOS or Linux app?">Findes der en macOS- eller Linux-app?</span></summary><div><p data-en="There is no released macOS or Linux client. Windows and Android clients are released. Linux is supported as a host for the ModelRig server.">Der er ingen udgivet macOS- eller Linux-klient. Windows- og Android-klienterne er udgivet. Linux understøttes som maskine til ModelRig-serveren.</p></div></details>
+<details class="disclosure"><summary><span data-en="Can I download Kaliv VR or Hub now?">Kan jeg hente Kaliv VR eller Hub nu?</span></summary><div><p data-en="VR and Hub are under development. VR can be built from source, but this release has no public VR APK. Hub is not yet a complete home setup that has passed physical acceptance.">VR og Hub er under udvikling. VR kan bygges fra kildekoden, men den aktuelle udgivelse har ingen offentlig VR-APK. Hub er endnu ikke en samlet, fysisk godkendt hjemmeopsætning.</p></div></details>
+<details class="disclosure"><summary><span data-en="What do the V1 criteria mean?">Hvad betyder V1-kriterierne?</span></summary><div><p data-en="The four criteria concern the complete experience: memory across restarts, physical perception, continuity between devices and stable operation. Released apps alone do not prove all four.">De fire kriterier handler om den samlede oplevelse: hukommelse ved genstart, fysiske sanser, sammenhæng mellem enheder og stabil drift. Udgivne apps er ikke i sig selv bevis for alle fire.</p></div></details>
+<details class="disclosure"><summary><span data-en="Where is my data stored?">Hvor ligger mine data?</span></summary><div><p data-en="Conversations and settings are stored locally on the client. Document indexes and enabled server memory are stored on the rig. Cloud is optional and can send the current message and relevant attachments or tool data to the provider.">Samtaler og indstillinger ligger lokalt på klienten. Dokumentindeks og aktiveret serverhukommelse ligger på riggen. Cloud er et tilvalg, som kan sende den aktuelle besked og relevante vedhæftninger eller værktøjsdata til udbyderen.</p></div></details>
+<a class="text-link" href="privacy.html" data-en="Read about privacy and data">Læs om privatliv og data</a>
 </section>
 </main>
 {% include "footer" %}
